@@ -1,0 +1,10 @@
+.DS_Store
+.dart_tool/
+.packages
+build/
+*.iml
+.idea/
+ios/Pods/
+
+# ImpactLens index cache
+.impactlens/
