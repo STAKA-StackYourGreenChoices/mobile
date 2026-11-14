@@ -10,6 +10,13 @@ import 'package:staka/core/auth/token_store.dart';
 /// because interceptors write per-request state into `extra`.
 Options publicRequest() => Options(extra: {AuthInterceptor.publicKey: true});
 
+/// Options for signed-in endpoints whose 401 means "wrong password", not
+/// "token expired" (`/auth/change-password`). The token is still sent and
+/// still refreshed beforehand when close to expiry, but a 401 is returned
+/// as is instead of spending a refresh token on a retry.
+Options passwordCheckRequest() =>
+    Options(extra: {AuthInterceptor.no401RetryKey: true});
+
 /// Adds `Authorization: Bearer` to every non-public request, refreshing
 /// first when the token is about to expire, and retries once after a 401.
 class AuthInterceptor extends Interceptor {
@@ -21,6 +28,7 @@ class AuthInterceptor extends Interceptor {
   }) : _now = now ?? DateTime.now;
 
   static const publicKey = 'auth.public';
+  static const no401RetryKey = 'auth.no401Retry';
   static const _retriedKey = 'auth.retried';
 
   final Dio _dio;
@@ -52,6 +60,7 @@ class AuthInterceptor extends Interceptor {
     final sentToken = _bearer(options);
     if (err.response?.statusCode != 401 ||
         options.extra[publicKey] == true ||
+        options.extra[no401RetryKey] == true ||
         options.extra[_retriedKey] == true ||
         sentToken == null) {
       return handler.next(err);

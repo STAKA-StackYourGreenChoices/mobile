@@ -20,12 +20,22 @@ final class SignedIn extends SessionState {
   final bool isNewAccount;
 }
 
-final class SignedOut extends SessionState {
-  const new({this.sessionExpired = false});
+/// Why the app signed someone out without them asking. Sign-in explains it.
+enum SignedOutReason {
+  /// The API refused the refresh token (expired or revoked).
+  sessionExpired,
 
-  /// True when the API ended the session (refresh token expired or revoked),
-  /// so sign-in can say "Your session has ended. Sign in again."
-  final bool sessionExpired;
+  /// The password was changed but signing back in on this phone failed.
+  passwordChanged,
+}
+
+final class SignedOut extends SessionState {
+  const new({this.reason});
+
+  /// Null when the user signed out themselves.
+  final SignedOutReason? reason;
+
+  bool get sessionExpired => reason == SignedOutReason.sessionExpired;
 }
 
 /// Tokens exist but the API couldn't be reached at launch. The app is

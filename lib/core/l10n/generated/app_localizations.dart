@@ -405,6 +405,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An account already uses this email. Sign in instead.'**
   String get registerEmailTaken;
+
+  /// Forgot-password heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get forgotTitle;
+
+  /// Under the forgot-password heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the email you signed up with and we\'ll send you a link to choose a new password.'**
+  String get forgotLede;
+
+  /// Forgot-password submit. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset link'**
+  String get sendResetLink;
+
+  /// Forgot-password submit after a link was sent. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Send another link'**
+  String get sendAnotherLink;
+
+  /// Forgot-password button while waiting. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending link…'**
+  String get sendingLink;
+
+  /// Forgot-password success. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'If {email} has a STAKA account, a reset link is on its way. It works once and expires in 1 hour.'**
+  String resetLinkSent(String email);
+
+  /// Mobile-only addition after the reset success message: the link opens the website (decision 7).
+  ///
+  /// In en, this message translates to:
+  /// **'The link opens the STAKA website: choose your new password there, then sign in here.'**
+  String get resetLinkOpensWebsite;
+
+  /// Before 'Back to sign in'. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Remembered it?'**
+  String get rememberedIt;
+
+  /// Link back to sign-in. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to sign in'**
+  String get backToSignIn;
+
+  /// Sign-out button while waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing out…'**
+  String get signingOut;
+
+  /// Account row, screen heading and submit button (decision 14; not on the website).
+  ///
+  /// In en, this message translates to:
+  /// **'Change password'**
+  String get changePassword;
+
+  /// Under the change-password heading. The API revokes every session on change.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll stay signed in on this phone. Other devices will need to sign in again.'**
+  String get changePasswordLede;
+
+  /// Change-password field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password'**
+  String get fieldCurrentPassword;
+
+  /// Change-password field label.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get fieldNewPassword;
+
+  /// Change-password confirmation label.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get fieldConfirmPassword;
+
+  /// Empty current password.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password'**
+  String get validationCurrentPasswordRequired;
+
+  /// Change-password button while waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Changing password…'**
+  String get changingPassword;
+
+  /// Change-password 401, shown on the current-password field.
+  ///
+  /// In en, this message translates to:
+  /// **'That isn\'t your current password. Check it and try again.'**
+  String get currentPasswordWrong;
+
+  /// Snackbar after a successful change.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed. Other devices will need to sign in again.'**
+  String get passwordChanged;
+
+  /// Sign-in alert when re-signing in after a change failed. Website's reset-password success copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed. Sign in with your new password.'**
+  String get passwordChangedSignIn;
 }
 
 class _AppLocalizationsDelegate

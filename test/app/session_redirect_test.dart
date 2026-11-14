@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:staka/app/router/router.dart';
 import 'package:staka/app/router/session_redirect.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/models/user.dart';
@@ -49,10 +50,15 @@ void main() {
   });
 
   test('an expired session lands on sign-in, which explains why', () {
-    const expired = SignedOut(sessionExpired: true);
+    const expired = SignedOut(reason: SignedOutReason.sessionExpired);
     expect(redirectFor(expired, '/wardrobe'), '/login');
     expect(redirectFor(expired, '/login'), isNull);
     expect(redirectFor(expired, '/register'), isNull);
+  });
+
+  test('signed out after a password change: straight to sign-in', () {
+    const changed = SignedOut(reason: SignedOutReason.passwordChanged);
+    expect(redirectFor(changed, '/account'), '/login');
   });
 
   test('signed in: guest and launch pages go to the wardrobe', () {
@@ -76,4 +82,22 @@ void main() {
     expect(redirectFor(_admin, '/admin/claims/42'), isNull);
     expect(redirectFor(_shopper, '/administrator'), isNull);
   });
+  test(
+    'router refreshes only when navigation-relevant session data changes',
+    () {
+      // Same person signed back in (new tokens, re-read user): no refresh.
+      expect(routingKeyOf(_shopper), routingKeyOf(SignedIn(_shopper.user)));
+      // Becoming admin, signing out, or why: refresh.
+      expect(routingKeyOf(_shopper), isNot(routingKeyOf(_admin)));
+      expect(routingKeyOf(_shopper), isNot(routingKeyOf(const SignedOut())));
+      expect(
+        routingKeyOf(const SignedOut()),
+        isNot(
+          routingKeyOf(
+            const SignedOut(reason: SignedOutReason.passwordChanged),
+          ),
+        ),
+      );
+    },
+  );
 }

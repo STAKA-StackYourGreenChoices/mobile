@@ -163,4 +163,18 @@ void main() {
     );
     expect(refreshAdapter.requests, isEmpty);
   });
+  test('a wrong-password 401 is returned as is, no refresh spent', () async {
+    final api = FakeHttpAdapter([
+      json(401, {'message': 'Current password is invalid'}),
+    ]);
+
+    await expectLater(
+      clientWith(
+        api,
+      ).post<Object?>('/auth/change-password', options: passwordCheckRequest()),
+      throwsA(isA<DioException>()),
+    );
+    expect(bearerOf(api.requests.single), 'Bearer $validToken');
+    expect(refreshAdapter.requests, isEmpty);
+  });
 }

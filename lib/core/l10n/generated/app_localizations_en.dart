@@ -174,4 +174,72 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get registerEmailTaken =>
       'An account already uses this email. Sign in instead.';
+
+  @override
+  String get forgotTitle => 'Reset your password';
+
+  @override
+  String get forgotLede =>
+      'Enter the email you signed up with and we\'ll send you a link to choose a new password.';
+
+  @override
+  String get sendResetLink => 'Send reset link';
+
+  @override
+  String get sendAnotherLink => 'Send another link';
+
+  @override
+  String get sendingLink => 'Sending link…';
+
+  @override
+  String resetLinkSent(String email) {
+    return 'If $email has a STAKA account, a reset link is on its way. It works once and expires in 1 hour.';
+  }
+
+  @override
+  String get resetLinkOpensWebsite =>
+      'The link opens the STAKA website: choose your new password there, then sign in here.';
+
+  @override
+  String get rememberedIt => 'Remembered it?';
+
+  @override
+  String get backToSignIn => 'Back to sign in';
+
+  @override
+  String get signingOut => 'Signing out…';
+
+  @override
+  String get changePassword => 'Change password';
+
+  @override
+  String get changePasswordLede =>
+      'You\'ll stay signed in on this phone. Other devices will need to sign in again.';
+
+  @override
+  String get fieldCurrentPassword => 'Current password';
+
+  @override
+  String get fieldNewPassword => 'New password';
+
+  @override
+  String get fieldConfirmPassword => 'Confirm new password';
+
+  @override
+  String get validationCurrentPasswordRequired => 'Enter your current password';
+
+  @override
+  String get changingPassword => 'Changing password…';
+
+  @override
+  String get currentPasswordWrong =>
+      'That isn\'t your current password. Check it and try again.';
+
+  @override
+  String get passwordChanged =>
+      'Password changed. Other devices will need to sign in again.';
+
+  @override
+  String get passwordChangedSignIn =>
+      'Password changed. Sign in with your new password.';
 }

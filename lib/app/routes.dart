@@ -15,7 +15,10 @@ enum AppRoute {
   wardrobe('/wardrobe'),
   scan('/scan'),
   account('/account'),
-  adminHome('/admin');
+  adminHome('/admin'),
+
+  // Inside a tab (keep the bottom bar).
+  changePassword('/account/change-password');
 
   new(this.path);
 

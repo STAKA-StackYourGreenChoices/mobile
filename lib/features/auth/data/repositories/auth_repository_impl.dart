@@ -46,4 +46,19 @@ class AuthRepositoryImpl implements AuthRepository {
     );
     return response.toDomain();
   });
+
+  @override
+  Future<Result<void>> requestPasswordReset({required String email}) =>
+      guardApi(() => _remote.requestPasswordReset(email: email.trim()));
+
+  @override
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) => guardApi(
+    () => _remote.changePassword(
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    ),
+  );
 }

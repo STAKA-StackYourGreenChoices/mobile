@@ -14,8 +14,9 @@ String? redirectFor(SessionState session, String path) {
   return switch (session) {
     SessionRestoring() => goTo(AppRoute.launch),
     SessionUnreachable() => goTo(AppRoute.unreachable),
-    // An ended session goes straight to sign-in, which explains why.
-    SignedOut(sessionExpired: true) when !atGuestRoute => AppRoute.login.path,
+    // Signed out by the app (session ended, password changed): straight to
+    // sign-in, which explains why.
+    SignedOut(reason: _?) when !atGuestRoute => AppRoute.login.path,
     SignedOut() => atGuestRoute ? null : AppRoute.welcome.path,
     SignedIn()
         when atGuestRoute || at(AppRoute.launch) || at(AppRoute.unreachable) =>

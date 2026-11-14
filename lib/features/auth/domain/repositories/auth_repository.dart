@@ -16,4 +16,15 @@ abstract interface class AuthRepository {
     required String email,
     required String password,
   });
+
+  /// Emails a reset link (it opens the website). The API answers the same
+  /// whether or not the email has an account.
+  Future<Result<void>> requestPasswordReset({required String email});
+
+  /// `UnauthorizedFailure` means [currentPassword] is wrong. On success the
+  /// API revokes every session, including this one.
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  });
 }

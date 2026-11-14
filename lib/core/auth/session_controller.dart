@@ -60,7 +60,16 @@ class SessionController extends _$SessionController {
   }
 
   /// The API refused the refresh token: tokens are already cleared.
-  void onSessionExpired() => state = const SignedOut(sessionExpired: true);
+  void onSessionExpired() =>
+      state = const SignedOut(reason: SignedOutReason.sessionExpired);
+
+  /// After a password change the API has already revoked every session,
+  /// so there is nothing to revoke here: forget the tokens and ask for the
+  /// new password.
+  Future<void> signOutAfterPasswordChange() async {
+    await _repository.clearTokens();
+    state = const SignedOut(reason: SignedOutReason.passwordChanged);
+  }
 
   Future<void> _loadUser({
     required SessionState whenUnreachable,
@@ -80,6 +89,6 @@ class SessionController extends _$SessionController {
 
   Future<SessionState> _expire() async {
     await _repository.clearTokens();
-    return const SignedOut(sessionExpired: true);
+    return const SignedOut(reason: SignedOutReason.sessionExpired);
   }
 }

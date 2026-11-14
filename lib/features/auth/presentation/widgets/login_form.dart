@@ -15,14 +15,14 @@ class LoginForm extends StatefulWidget {
   const new({
     required this.onSubmitted,
     required this.onForgotPasswordPressed,
-    this.alertMessage,
+    this.alert,
     this.isSubmitting = false,
     super.key,
   });
 
   final LoginSubmit onSubmitted;
   final VoidCallback onForgotPasswordPressed;
-  final String? alertMessage;
+  final ({String message, AlertTone tone})? alert;
   final bool isSubmitting;
 
   @override
@@ -57,8 +57,8 @@ class _LoginFormState extends State<LoginForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: AppSpacing.md,
           children: [
-            if (widget.alertMessage case final message?)
-              AppFormAlert(message: message, tone: AlertTone.error),
+            if (widget.alert case (:final message, :final tone))
+              AppFormAlert(message: message, tone: tone),
             AppTextField(
               label: l10n.fieldEmail,
               controller: _email,

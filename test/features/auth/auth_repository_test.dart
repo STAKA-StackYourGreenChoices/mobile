@@ -86,4 +86,38 @@ void main() {
 
     expect((result as Err<AuthSession>).failure, isA<ConflictFailure>());
   });
+  test('reset link: exactly the trimmed email, publicly', () async {
+    api = FakeHttpAdapter([
+      json(200, {'success': true}),
+    ]);
+
+    final result = await repository().requestPasswordReset(
+      email: ' ada@example.com ',
+    );
+
+    expect(result, isA<Ok<void>>());
+    expect(api.requests.single.path, '/auth/forgot-password');
+    expect(api.requests.single.data, {'email': 'ada@example.com'});
+    expect(api.requests.single.extra[AuthInterceptor.publicKey], isTrue);
+  });
+
+  test('change password: exact body, signed in, 401 not retried', () async {
+    api = FakeHttpAdapter([
+      json(201, {'success': true}),
+    ]);
+
+    await repository().changePassword(
+      currentPassword: 'old password',
+      newPassword: 'new password',
+    );
+
+    final request = api.requests.single;
+    expect(request.path, '/auth/change-password');
+    expect(request.data, {
+      'currentPassword': 'old password',
+      'newPassword': 'new password',
+    });
+    expect(request.extra[AuthInterceptor.publicKey], isNull);
+    expect(request.extra[AuthInterceptor.no401RetryKey], isTrue);
+  });
 }

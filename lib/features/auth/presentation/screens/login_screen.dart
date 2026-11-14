@@ -13,6 +13,7 @@ import 'package:staka/features/auth/presentation/state/login_controller.dart';
 import 'package:staka/features/auth/presentation/widgets/auth_page_heading.dart';
 import 'package:staka/features/auth/presentation/widgets/auth_switch_link.dart';
 import 'package:staka/features/auth/presentation/widgets/login_form.dart';
+import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// Sign in. Success needs no handling here: the session changes and the
@@ -24,18 +25,32 @@ class LoginScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final form = ref.watch(loginControllerProvider);
-    final sessionEnded = ref.watch(
+    final signedOutBy = ref.watch(
       sessionControllerProvider.select(
-        (session) => session is SignedOut && session.sessionExpired,
+        (session) => session is SignedOut ? session.reason : null,
       ),
     );
 
     final alert = switch (form) {
-      AuthFormFailed(failure: UnauthorizedFailure()) =>
-        l10n.loginWrongCredentials,
-      AuthFormFailed(:final failure) => messageForFailure(failure, l10n),
-      _ when sessionEnded => l10n.errorSessionEnded,
-      _ => null,
+      AuthFormFailed(failure: UnauthorizedFailure()) => (
+        message: l10n.loginWrongCredentials,
+        tone: AlertTone.error,
+      ),
+      AuthFormFailed(:final failure) => (
+        message: messageForFailure(failure, l10n),
+        tone: AlertTone.error,
+      ),
+      _ => switch (signedOutBy) {
+        SignedOutReason.sessionExpired => (
+          message: l10n.errorSessionEnded,
+          tone: AlertTone.error,
+        ),
+        SignedOutReason.passwordChanged => (
+          message: l10n.passwordChangedSignIn,
+          tone: AlertTone.success,
+        ),
+        null => null,
+      },
     };
 
     return AppScaffold(
@@ -45,7 +60,7 @@ class LoginScreen extends ConsumerWidget {
         children: [
           AuthPageHeading(title: l10n.loginTitle, lede: l10n.loginLede),
           LoginForm(
-            alertMessage: alert,
+            alert: alert,
             isSubmitting: form is AuthFormSubmitting,
             onSubmitted: (email, password) => ref
                 .read(loginControllerProvider.notifier)

@@ -41,7 +41,8 @@ void main() {
 
     await tester.tap(find.text('Account'));
     await tester.pumpAndSettle();
-    expect(find.text('/account'), findsOneWidget);
+    expect(find.text('Ada Lovelace'), findsOneWidget);
+    expect(find.text('Change password'), findsOneWidget);
   });
 
   testWidgets('admins also get the Admin tab', (tester) async {

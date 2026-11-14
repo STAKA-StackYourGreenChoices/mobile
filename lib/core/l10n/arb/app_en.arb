@@ -212,5 +212,90 @@
   "registerEmailTaken": "An account already uses this email. Sign in instead.",
   "@registerEmailTaken": {
     "description": "Register 409, shown on the email field. Same as the website."
+  },
+  "forgotTitle": "Reset your password",
+  "@forgotTitle": {
+    "description": "Forgot-password heading. Same as the website."
+  },
+  "forgotLede": "Enter the email you signed up with and we'll send you a link to choose a new password.",
+  "@forgotLede": {
+    "description": "Under the forgot-password heading. Same as the website."
+  },
+  "sendResetLink": "Send reset link",
+  "@sendResetLink": {
+    "description": "Forgot-password submit. Same as the website."
+  },
+  "sendAnotherLink": "Send another link",
+  "@sendAnotherLink": {
+    "description": "Forgot-password submit after a link was sent. Same as the website."
+  },
+  "sendingLink": "Sending link…",
+  "@sendingLink": {
+    "description": "Forgot-password button while waiting. Same as the website."
+  },
+  "resetLinkSent": "If {email} has a STAKA account, a reset link is on its way. It works once and expires in 1 hour.",
+  "@resetLinkSent": {
+    "description": "Forgot-password success. Same as the website.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "resetLinkOpensWebsite": "The link opens the STAKA website: choose your new password there, then sign in here.",
+  "@resetLinkOpensWebsite": {
+    "description": "Mobile-only addition after the reset success message: the link opens the website (decision 7)."
+  },
+  "rememberedIt": "Remembered it?",
+  "@rememberedIt": {
+    "description": "Before 'Back to sign in'. Same as the website."
+  },
+  "backToSignIn": "Back to sign in",
+  "@backToSignIn": {
+    "description": "Link back to sign-in. Same as the website."
+  },
+  "signingOut": "Signing out…",
+  "@signingOut": {
+    "description": "Sign-out button while waiting."
+  },
+  "changePassword": "Change password",
+  "@changePassword": {
+    "description": "Account row, screen heading and submit button (decision 14; not on the website)."
+  },
+  "changePasswordLede": "You'll stay signed in on this phone. Other devices will need to sign in again.",
+  "@changePasswordLede": {
+    "description": "Under the change-password heading. The API revokes every session on change."
+  },
+  "fieldCurrentPassword": "Current password",
+  "@fieldCurrentPassword": {
+    "description": "Change-password field label."
+  },
+  "fieldNewPassword": "New password",
+  "@fieldNewPassword": {
+    "description": "Change-password field label."
+  },
+  "fieldConfirmPassword": "Confirm new password",
+  "@fieldConfirmPassword": {
+    "description": "Change-password confirmation label."
+  },
+  "validationCurrentPasswordRequired": "Enter your current password",
+  "@validationCurrentPasswordRequired": {
+    "description": "Empty current password."
+  },
+  "changingPassword": "Changing password…",
+  "@changingPassword": {
+    "description": "Change-password button while waiting."
+  },
+  "currentPasswordWrong": "That isn't your current password. Check it and try again.",
+  "@currentPasswordWrong": {
+    "description": "Change-password 401, shown on the current-password field."
+  },
+  "passwordChanged": "Password changed. Other devices will need to sign in again.",
+  "@passwordChanged": {
+    "description": "Snackbar after a successful change."
+  },
+  "passwordChangedSignIn": "Password changed. Sign in with your new password.",
+  "@passwordChangedSignIn": {
+    "description": "Sign-in alert when re-signing in after a change failed. Website's reset-password success copy."
   }
 }

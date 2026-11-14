@@ -8,20 +8,23 @@ part of 'router.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// The app's single router. Every session change re-runs [redirectFor], so
-/// signing in, signing out or an expired session moves the user at once.
+/// The app's single router. A session change that matters for navigation
+/// re-runs [redirectFor], so signing in, signing out or an expired session
+/// moves the user at once.
 
 @ProviderFor(router)
 final routerProvider = RouterProvider._();
 
-/// The app's single router. Every session change re-runs [redirectFor], so
-/// signing in, signing out or an expired session moves the user at once.
+/// The app's single router. A session change that matters for navigation
+/// re-runs [redirectFor], so signing in, signing out or an expired session
+/// moves the user at once.
 
 final class RouterProvider
     extends $FunctionalProvider<GoRouter, GoRouter, GoRouter>
     with $Provider<GoRouter> {
-  /// The app's single router. Every session change re-runs [redirectFor], so
-  /// signing in, signing out or an expired session moves the user at once.
+  /// The app's single router. A session change that matters for navigation
+  /// re-runs [redirectFor], so signing in, signing out or an expired session
+  /// moves the user at once.
   RouterProvider._()
     : super(
         from: null,
@@ -55,4 +58,4 @@ final class RouterProvider
   }
 }
 
-String _$routerHash() => r'4ccc20f85644027eeaaaae46ffee4463b32b97a6';
+String _$routerHash() => r'29d7c27aa3f1860b561cec313c681e0106f64a82';

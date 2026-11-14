@@ -38,12 +38,37 @@ Future<InMemoryTokenStore> pumpApp(
   return store;
 }
 
-/// Answers login/register from a script and records what it was asked.
+/// Answers from scripts and records what it was asked: `results` for
+/// login/register, `requests` for reset-link and change-password.
 class FakeAuthRepository implements AuthRepository {
-  new(List<Result<AuthSession>> results) : _results = [...results];
+  new(
+    List<Result<AuthSession>> results, {
+    List<Result<void>> requests = const [],
+  }) : _results = [...results],
+       _requests = [...requests];
 
   final List<Result<AuthSession>> _results;
+  final List<Result<void>> _requests;
   final List<Map<String, String>> calls = [];
+
+  @override
+  Future<Result<void>> requestPasswordReset({required String email}) async {
+    calls.add({'call': 'reset', 'email': email});
+    return _requests.removeAt(0);
+  }
+
+  @override
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    calls.add({
+      'call': 'change',
+      'current': currentPassword,
+      'new': newPassword,
+    });
+    return _requests.removeAt(0);
+  }
 
   @override
   Future<Result<AuthSession>> login({

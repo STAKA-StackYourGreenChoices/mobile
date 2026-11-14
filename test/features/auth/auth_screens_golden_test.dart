@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/auth/session_repository.dart';
+import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
+import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 
@@ -28,6 +30,8 @@ void main() {
   final screens = {
     'login': const LoginScreen(),
     'register': const RegisterScreen(),
+    'forgot_password': const ForgotPasswordScreen(),
+    'change_password': const ChangePasswordScreen(),
   };
 
   for (final MapEntry(key: name, value: screen) in screens.entries) {
