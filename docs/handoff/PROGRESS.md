@@ -17,7 +17,8 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 
 ## Phase 3 — Implementation (order to be confirmed in Phase 2)
 - [x] Slice 1 `chore/project-setup`: ids/name, pubspec, very_good_analysis, `core/design`, fonts, l10n, env config, CI, boot screen + tests (router shell = slice 6)
-- [ ] Core: dio client, auth interceptor + single-flight refresh, Failure/Result, error mapper, secure storage
+- [x] Slice 2 `feat/core-network`: Failure/Result, error parser + mapper, dio client, request-id/log/retry interceptors, 18 unit tests
+- [ ] Slice 3 `feat/core-session`: secure token storage, session controller, auth interceptor + single-flight refresh
 - [ ] Shared widgets (guide §7.2 waves)
 - [ ] Auth: login, register, forgot, reset, verify email, logout, session restore, route guards
 - [ ] Wardrobe (+ verify-email banner)
@@ -44,6 +45,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-14 — Slice 2 done: network core + 20 passing tests. Not yet exercised against the running API (first real call comes with sign-in, slice 7).
 - 2026-11-14 — Slice 1 done: scaffold regenerated for Flutter 3.50, migrated to material_ui/cupertino_ui, analyze clean, 2 tests pass. `BootScreen` is temporary until slice 6.
 - 2026-11-14 — P2 answers recorded, plan approved; waiting on user's `flutter upgrade`.
 - 2026-11-14 — Answers recorded; root CLAUDE.md added; Phase 2 plan written; found Flutter 3.35.2 too old for current packages (P2-1).

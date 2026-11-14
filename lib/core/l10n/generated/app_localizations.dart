@@ -105,6 +105,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your clothes, with their footprint attached.'**
   String get appTagline;
+
+  /// Shown when the API can't be reached (offline, timeout). Adapted from the website's 503 copy.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA\'s server isn\'t reachable right now. Check your connection, then try again.'**
+  String get errorNetwork;
+
+  /// Fallback error when nothing more specific is known. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong on our side. Try again in a moment.'**
+  String get errorGeneric;
+
+  /// 401 without an API message. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has ended. Sign in again.'**
+  String get errorSessionEnded;
+
+  /// 403 without an API message. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account doesn\'t have access to this.'**
+  String get errorForbidden;
 }
 
 class _AppLocalizationsDelegate

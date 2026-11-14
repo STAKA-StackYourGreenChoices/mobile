@@ -14,4 +14,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appTagline => 'Your clothes, with their footprint attached.';
+
+  @override
+  String get errorNetwork =>
+      'STAKA\'s server isn\'t reachable right now. Check your connection, then try again.';
+
+  @override
+  String get errorGeneric =>
+      'Something went wrong on our side. Try again in a moment.';
+
+  @override
+  String get errorSessionEnded => 'Your session has ended. Sign in again.';
+
+  @override
+  String get errorForbidden => 'Your account doesn\'t have access to this.';
 }

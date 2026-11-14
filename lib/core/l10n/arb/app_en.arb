@@ -7,5 +7,21 @@
   "appTagline": "Your clothes, with their footprint attached.",
   "@appTagline": {
     "description": "One-line description of what STAKA does, from the website's home page."
+  },
+  "errorNetwork": "STAKA's server isn't reachable right now. Check your connection, then try again.",
+  "@errorNetwork": {
+    "description": "Shown when the API can't be reached (offline, timeout). Adapted from the website's 503 copy."
+  },
+  "errorGeneric": "Something went wrong on our side. Try again in a moment.",
+  "@errorGeneric": {
+    "description": "Fallback error when nothing more specific is known. Same as the website."
+  },
+  "errorSessionEnded": "Your session has ended. Sign in again.",
+  "@errorSessionEnded": {
+    "description": "401 without an API message. Same as the website."
+  },
+  "errorForbidden": "Your account doesn't have access to this.",
+  "@errorForbidden": {
+    "description": "403 without an API message. Same as the website."
   }
 }

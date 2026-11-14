@@ -15,10 +15,17 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **3 — Implementation. Slice 1 `chore/project-setup` done** |
-| Next action | Slice 2 `feat/core-network` (branch from `chore/project-setup`) per `PHASE2_PLAN.md` §9 |
+| Current phase | **3 — Implementation. Slices 1–2 done** |
+| Next action | Slice 3 `feat/core-session` (branch from `feat/core-network`): token storage, session controller, auth interceptor with single-flight refresh, tests. Add `flutter_secure_storage` + `mocktail` then |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `flutter doctor` still warns about unaccepted Android licences (user's call) |
-| Branches | `docs/mobile-handoff` → `chore/project-setup` (stacked, all pushed, nothing merged) |
+| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` (stacked, all pushed, nothing merged) |
+
+## 2a. Code conventions already in place (reuse, don't reinvent)
+
+- Errors: `core/error/failure.dart` (sealed `Failure`, `ApiFailure` subtypes by status), `result.dart` (`Ok`/`Err`, `fold`), `error_mapper.dart` (`messageForFailure(failure, l10n)`; API message wins, like the web).
+- Network: `dioProvider` in `core/network/dio_client.dart`; wrap every datasource call in `guardApi(() => ...)` from `guard_api.dart`. Interceptors in `core/network/interceptors/`. Logging only via `AppLogger.debug`.
+- Generated files (`*.g.dart`, l10n) are committed. After changing providers run build_runner; after ARB edits run `flutter gen-l10n`.
+- Tests: `test/helpers/fake_http_adapter.dart` scripts Dio replies (`json(status, body)`, `connectionError()`). No `Future.delayed` in tests: inject waits.
 
 ## 2b. Commands
 
