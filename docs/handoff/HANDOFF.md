@@ -15,11 +15,11 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **3 — Implementation. Slices 1–4 done** |
-| Next action | Slice 5 `feat/shared-inputs` (branch from `feat/shared-foundations`): AppTextField (label, hint, error, prefix/suffix, password toggle), AppSnackbar, form helpers matching the web's zod rules |
+| Current phase | **3 — Implementation. Slices 1–5 done** |
+| Next action | Slice 6 `feat/app-shell-router` (branch from `feat/shared-inputs`): add `go_router`; `app/router.dart` + `route_names.dart`, redirect from `sessionControllerProvider`, bottom-nav shell (Wardrobe · Scan · Admin for admins · Account), Welcome screen; replace `BootScreen`; launch/unreachable screens |
 | Local API | Not running on this PC as of slice 3; nothing tested against the real backend yet. Ask the user to start it (infra Postgres + `api` dev server) before slice 7 |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `flutter doctor` still warns about unaccepted Android licences (user's call) |
-| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` (stacked, all pushed, nothing merged) |
+| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` (stacked, all pushed, nothing merged) |
 
 ## 2a. Code conventions already in place (reuse, don't reinvent)
 
@@ -28,7 +28,7 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 - Session: `sessionControllerProvider` (`core/auth/session_controller.dart`) → `SessionState` = `SessionRestoring | SignedIn(user) | SignedOut(sessionExpired) | SessionUnreachable`. Login/register call `.signIn(tokens:, user:)` with `AuthTokens.fromResponse(AuthResponseDto)`; account calls `.signOut()`; app resume calls `.refreshUser()`.
 - Auth: `AuthInterceptor` adds Bearer; endpoints without a session pass `options: publicRequest()` (login, register, forgot/reset password, logout). Refresh is single-flight in `TokenRefresher`; never call `/auth/refresh` anywhere else.
 - Shared models: `core/models/` (freezed), DTOs + mappers in `core/api_models/` (json_serializable, `createToJson: false` unless sending).
-- Shared widgets (`lib/shared/widgets/`): `AppScaffold` (title, actions, `isScrollable: false` for list screens), `AppButton` (primary/secondary/ghost/destructive, `isLoading` + `loadingLabel`, `isExpanded`), `AppLoader`, `AppEmptyState`, `AppErrorState(failure, onRetryPressed)`. `context.colors` / `context.text` come from `core/design/app_typography.dart`.
+- Shared widgets (`lib/shared/widgets/`): `AppScaffold` (title, actions, `isScrollable: false` for list screens), `AppButton` (primary/secondary/ghost/destructive, `isLoading` + `loadingLabel`, `isExpanded`), `AppLoader`, `AppEmptyState`, `AppErrorState(failure, onRetryPressed)`, `AppTextField` (label above; `errorText` = server error, wins over `validator`; `isPassword` adds show/hide), `AppFormAlert(message, tone)` above forms, `AppSnackbar.show(context, message:, tone:)`. Form rules: `Validators(context.l10n)` in `core/forms/validators.dart` (web's zod messages). `context.colors` / `context.text` come from `core/design/app_typography.dart`.
 - Goldens: tag `golden`, run `flutter test --tags golden` (`--update-goldens` only with the user's OK, guide §14). Baselines are Windows-rendered; CI runs `--exclude-tags golden`. Helpers: `test/helpers/pump_app.dart` (`pumpThemed`, `usePhoneScreen`), `golden.dart` (`loadAppFonts`).
 - Generated files (`*.g.dart`, `*.freezed.dart`, l10n) are committed. After changing providers run build_runner; after ARB edits run `flutter gen-l10n`.
 - Tests: `test/helpers/fake_http_adapter.dart` scripts Dio replies (`json(status, body)`, `connectionError()`). No `Future.delayed` in tests: inject waits.

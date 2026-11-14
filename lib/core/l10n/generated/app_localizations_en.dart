@@ -40,4 +40,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorOfflineTitle => 'No connection';
+
+  @override
+  String get validationEmail => 'Enter an email address like name@example.com';
+
+  @override
+  String get validationPasswordRequired => 'Enter your password';
+
+  @override
+  String get validationPasswordShort => 'Use at least 8 characters';
+
+  @override
+  String get validationPasswordLong => 'Use 128 characters or fewer';
+
+  @override
+  String get validationNameRequired => 'Enter your name';
+
+  @override
+  String get validationPasswordsDiffer => 'The two passwords don\'t match';
+
+  @override
+  String validationTooLong(int max) {
+    return 'Use $max characters or fewer';
+  }
+
+  @override
+  String get showPassword => 'Show password';
+
+  @override
+  String get hidePassword => 'Hide password';
 }

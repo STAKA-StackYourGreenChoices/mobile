@@ -153,6 +153,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No connection'**
   String get errorOfflineTitle;
+
+  /// Invalid email. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an email address like name@example.com'**
+  String get validationEmail;
+
+  /// Empty password on sign-in. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get validationPasswordRequired;
+
+  /// New password under 8 characters. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Use at least 8 characters'**
+  String get validationPasswordShort;
+
+  /// New password over 128 characters. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 128 characters or fewer'**
+  String get validationPasswordLong;
+
+  /// Empty name on registration. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get validationNameRequired;
+
+  /// Confirmation differs from the new password. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'The two passwords don\'t match'**
+  String get validationPasswordsDiffer;
+
+  /// Text over the length limit. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Use {max} characters or fewer'**
+  String validationTooLong(int max);
+
+  /// Tooltip and screen-reader label of the eye button in password fields.
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get showPassword;
+
+  /// Tooltip and screen-reader label when the password is visible.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get hidePassword;
 }
 
 class _AppLocalizationsDelegate

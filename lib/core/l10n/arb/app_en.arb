@@ -39,5 +39,46 @@
   "errorOfflineTitle": "No connection",
   "@errorOfflineTitle": {
     "description": "Heading when the API can't be reached."
+  },
+  "validationEmail": "Enter an email address like name@example.com",
+  "@validationEmail": {
+    "description": "Invalid email. Same as the website."
+  },
+  "validationPasswordRequired": "Enter your password",
+  "@validationPasswordRequired": {
+    "description": "Empty password on sign-in. Same as the website."
+  },
+  "validationPasswordShort": "Use at least 8 characters",
+  "@validationPasswordShort": {
+    "description": "New password under 8 characters. Same as the website."
+  },
+  "validationPasswordLong": "Use 128 characters or fewer",
+  "@validationPasswordLong": {
+    "description": "New password over 128 characters. Same as the website."
+  },
+  "validationNameRequired": "Enter your name",
+  "@validationNameRequired": {
+    "description": "Empty name on registration. Same as the website."
+  },
+  "validationPasswordsDiffer": "The two passwords don't match",
+  "@validationPasswordsDiffer": {
+    "description": "Confirmation differs from the new password. Same as the website."
+  },
+  "validationTooLong": "Use {max} characters or fewer",
+  "@validationTooLong": {
+    "description": "Text over the length limit. Same as the website.",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "showPassword": "Show password",
+  "@showPassword": {
+    "description": "Tooltip and screen-reader label of the eye button in password fields."
+  },
+  "hidePassword": "Hide password",
+  "@hidePassword": {
+    "description": "Tooltip and screen-reader label when the password is visible."
   }
 }
