@@ -12,13 +12,18 @@ void main() {
   setUpAll(loadAppFonts);
 
   for (final brightness in Brightness.values) {
-    testWidgets('welcome screen, ${brightness.name}', (tester) async {
-      usePhoneScreen(tester, height: 1180);
-      await pumpThemed(tester, const WelcomeScreen(), brightness: brightness);
-      await expectLater(
-        find.byType(MaterialApp),
-        matchesGoldenFile('goldens/welcome_${brightness.name}.png'),
-      );
-    });
+    testWidgets(
+      'welcome screen, ${brightness.name}',
+      (tester) => withRealShadows(() async {
+        usePhoneScreen(tester, height: 1640);
+        await pumpThemed(tester, const WelcomeScreen(), brightness: brightness);
+        // Let the tag finish its one swing.
+        await tester.pumpAndSettle();
+        await expectLater(
+          find.byType(MaterialApp),
+          matchesGoldenFile('goldens/welcome_${brightness.name}.png'),
+        );
+      }),
+    );
   }
 }

@@ -37,4 +37,6 @@ _None._
 | S1 | Fonts | Static TTFs from the official Google Fonts API (fonts.gstatic.com), same files Google Fonts serves; OFL texts from github.com/google/fonts. Weights: Jakarta 400/600/700/800, Manrope 600/800; `tnum` present |
 | S1 | Dart package name | `staka` (imports are `package:staka/...`) |
 | S7 | API `/health` 401 | API bug (HealthController lacks `@Public()`; breaks the API Dockerfile healthcheck). User declined fixing it for now. Not needed by the app |
+| S9 | EAN-13 drawing | Not built: the website draws barcodes only on its marketing landing page, which the app replaces (decision 6). Tags show "Barcode 890…" as text, like the website's tags. Ask before adding |
+| S9 | Tag swing | 1.4 s (website keyframes), outside the motion tokens on purpose as the app's one signature moment (guide §6.3) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

@@ -297,5 +297,112 @@
   "passwordChangedSignIn": "Password changed. Sign in with your new password.",
   "@passwordChangedSignIn": {
     "description": "Sign-in alert when re-signing in after a change failed. Website's reset-password success copy."
+  },
+  "tagSemantics": "Digital tag for {product} by {brand}",
+  "@tagSemantics": {
+    "description": "Screen-reader label of a hang tag. Same as the website's hang tag.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "noPhotoYet": "No photo yet",
+  "@noPhotoYet": {
+    "description": "Tag photo area without a photo. Same as the website's hang tag."
+  },
+  "imageUnavailable": "Image unavailable",
+  "@imageUnavailable": {
+    "description": "A product photo failed to load (guide §6.4)."
+  },
+  "tagFootprint": "Footprint",
+  "@tagFootprint": {
+    "description": "Carbon figure label on a tag. Same as the website's hang tag."
+  },
+  "tagRecyclable": "Recyclable",
+  "@tagRecyclable": {
+    "description": "Recyclability figure label on a tag. Same as the website's hang tag."
+  },
+  "verifiedBy": "Verified by {certifier}",
+  "@verifiedBy": {
+    "description": "Figures checked by a named certifier. Same as the website's hang tag.",
+    "placeholders": {
+      "certifier": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByThirdParty": "Verified by a third party",
+  "@verifiedByThirdParty": {
+    "description": "Verified figures without a certifier name. Same as the website's hang tag."
+  },
+  "statedByBrand": "Figures stated by the brand",
+  "@statedByBrand": {
+    "description": "Unverified figures. Same as the website's hang tag."
+  },
+  "noFiguresYet": "No sustainability figures yet",
+  "@noFiguresYet": {
+    "description": "Product without figures. Same as the website's hang tag."
+  },
+  "keptBy": "Kept by {name}",
+  "@keptBy": {
+    "description": "Owner line on a tag. Same as the website's hang tag.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedOwnerSemantics": "verified owner",
+  "@verifiedOwnerSemantics": {
+    "description": "Screen-reader suffix after 'Kept by …' when ownership is proven. Same as the website's hang tag."
+  },
+  "barcodeNumber": "Barcode {number}",
+  "@barcodeNumber": {
+    "description": "GTIN line on a tag. Same as the website's hang tag.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "unitGramsCo2e": "g CO₂e",
+  "@unitGramsCo2e": {
+    "description": "Unit after a carbon figure under 1 kg. Keep the subscript ₂."
+  },
+  "unitKgCo2e": "kg CO₂e",
+  "@unitKgCo2e": {
+    "description": "Unit after a carbon figure of 1 kg or more. Keep the subscript ₂."
+  },
+  "ownershipVerified": "Verified owner",
+  "@ownershipVerified": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipPending": "Receipt under review",
+  "@ownershipPending": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipRejected": "Receipt turned down",
+  "@ownershipRejected": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipBlocked": "Can't be verified",
+  "@ownershipBlocked": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipUnverified": "Not verified yet",
+  "@ownershipUnverified": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "sampleTagProduct": "Organic Cotton Tee",
+  "@sampleTagProduct": {
+    "description": "Welcome example tag: a seeded product's name. Proper noun, do not translate."
+  },
+  "sampleTagBrand": "Terra Threads",
+  "@sampleTagBrand": {
+    "description": "Welcome example tag: a seeded brand. Proper noun, do not translate."
   }
 }

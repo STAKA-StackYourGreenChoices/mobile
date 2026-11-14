@@ -525,6 +525,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password changed. Sign in with your new password.'**
   String get passwordChangedSignIn;
+
+  /// Screen-reader label of a hang tag. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital tag for {product} by {brand}'**
+  String tagSemantics(String product, String brand);
+
+  /// Tag photo area without a photo. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'No photo yet'**
+  String get noPhotoYet;
+
+  /// A product photo failed to load (guide §6.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Image unavailable'**
+  String get imageUnavailable;
+
+  /// Carbon figure label on a tag. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Footprint'**
+  String get tagFootprint;
+
+  /// Recyclability figure label on a tag. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Recyclable'**
+  String get tagRecyclable;
+
+  /// Figures checked by a named certifier. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified by {certifier}'**
+  String verifiedBy(String certifier);
+
+  /// Verified figures without a certifier name. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified by a third party'**
+  String get verifiedByThirdParty;
+
+  /// Unverified figures. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Figures stated by the brand'**
+  String get statedByBrand;
+
+  /// Product without figures. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'No sustainability figures yet'**
+  String get noFiguresYet;
+
+  /// Owner line on a tag. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Kept by {name}'**
+  String keptBy(String name);
+
+  /// Screen-reader suffix after 'Kept by …' when ownership is proven. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'verified owner'**
+  String get verifiedOwnerSemantics;
+
+  /// GTIN line on a tag. Same as the website's hang tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode {number}'**
+  String barcodeNumber(String number);
+
+  /// Unit after a carbon figure under 1 kg. Keep the subscript ₂.
+  ///
+  /// In en, this message translates to:
+  /// **'g CO₂e'**
+  String get unitGramsCo2e;
+
+  /// Unit after a carbon figure of 1 kg or more. Keep the subscript ₂.
+  ///
+  /// In en, this message translates to:
+  /// **'kg CO₂e'**
+  String get unitKgCo2e;
+
+  /// Ownership chip. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified owner'**
+  String get ownershipVerified;
+
+  /// Ownership chip. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt under review'**
+  String get ownershipPending;
+
+  /// Ownership chip. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt turned down'**
+  String get ownershipRejected;
+
+  /// Ownership chip. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t be verified'**
+  String get ownershipBlocked;
+
+  /// Ownership chip. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Not verified yet'**
+  String get ownershipUnverified;
+
+  /// Welcome example tag: a seeded product's name. Proper noun, do not translate.
+  ///
+  /// In en, this message translates to:
+  /// **'Organic Cotton Tee'**
+  String get sampleTagProduct;
+
+  /// Welcome example tag: a seeded brand. Proper noun, do not translate.
+  ///
+  /// In en, this message translates to:
+  /// **'Terra Threads'**
+  String get sampleTagBrand;
 }
 
 class _AppLocalizationsDelegate

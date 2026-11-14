@@ -242,4 +242,75 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordChangedSignIn =>
       'Password changed. Sign in with your new password.';
+
+  @override
+  String tagSemantics(String product, String brand) {
+    return 'Digital tag for $product by $brand';
+  }
+
+  @override
+  String get noPhotoYet => 'No photo yet';
+
+  @override
+  String get imageUnavailable => 'Image unavailable';
+
+  @override
+  String get tagFootprint => 'Footprint';
+
+  @override
+  String get tagRecyclable => 'Recyclable';
+
+  @override
+  String verifiedBy(String certifier) {
+    return 'Verified by $certifier';
+  }
+
+  @override
+  String get verifiedByThirdParty => 'Verified by a third party';
+
+  @override
+  String get statedByBrand => 'Figures stated by the brand';
+
+  @override
+  String get noFiguresYet => 'No sustainability figures yet';
+
+  @override
+  String keptBy(String name) {
+    return 'Kept by $name';
+  }
+
+  @override
+  String get verifiedOwnerSemantics => 'verified owner';
+
+  @override
+  String barcodeNumber(String number) {
+    return 'Barcode $number';
+  }
+
+  @override
+  String get unitGramsCo2e => 'g CO₂e';
+
+  @override
+  String get unitKgCo2e => 'kg CO₂e';
+
+  @override
+  String get ownershipVerified => 'Verified owner';
+
+  @override
+  String get ownershipPending => 'Receipt under review';
+
+  @override
+  String get ownershipRejected => 'Receipt turned down';
+
+  @override
+  String get ownershipBlocked => 'Can\'t be verified';
+
+  @override
+  String get ownershipUnverified => 'Not verified yet';
+
+  @override
+  String get sampleTagProduct => 'Organic Cotton Tee';
+
+  @override
+  String get sampleTagBrand => 'Terra Threads';
 }

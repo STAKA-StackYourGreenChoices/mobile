@@ -24,8 +24,8 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Slice 6 `feat/app-shell-router`: go_router, session guards, bottom-nav shell (Admin tab for admins), Welcome, launch + unreachable screens, resume → refreshUser
 - [x] Slice 7 `feat/auth-sign-in`: Login + Register (feature layers, web copy/validation), `SignedIn.isNewAccount`, 11 tests + 4 goldens, **live test passes against the real API** (register, 409, 401, login, /auth/me, refresh rotation, logout revoke)
 - [x] Slice 8 `feat/auth-password`: Forgot password (web copy + 'link opens the website' note), Account tab (name, email, change password, sign out), Change password (re-signs this phone in; fallback sign-in alert), 15 tests + 6 goldens, live tests pass. Fixed router refresh racing `pop()`
+- [x] Slice 9 `feat/shared-hang-tag`: HangTag (shape, hole, stitching, shadow, string, one swing / fade under reduce-motion), TagImage, OwnershipChip, carbon/GTIN formatters, Welcome hero tag (bundled seeded-catalog SVG). EAN-13 drawing skipped: only the website's marketing page uses it. 10 tests + 4 goldens; fixed 200%-text overflow in the photo placeholder and the tag's merged screen-reader label
 - [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): wardrobe (10) · scan (11) · adminHome (15+)
-- [ ] Welcome hero gets the hang tag in slice 9
 - [ ] Follow-up: Linux golden baselines for CI (needs Docker or a CI job)
 - [ ] Auth: login, register, forgot, reset, verify email, logout, session restore, route guards
 - [ ] Wardrobe (+ verify-email banner)
@@ -52,6 +52,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-14 — Slice 9 done: 111 tests + 20 goldens pass. Real shadows in tag goldens via withRealShadows.
 - 2026-11-14 — Slice 8 done: 101 tests + 18 goldens + 3 live tests pass. Tests caught the router redrawing an old screen after pop (refresh on every session change); fixed with routingKeyOf.
 - 2026-11-14 — Slice 7 done: 87 tests + 12 goldens pass; first live run against the user's local API passes. Field hints now muted (bodySmall), inputs golden re-baselined for that.
 - 2026-11-14 — Slice 6 done: 76 tests + 8 goldens pass; first clickable navigation. Tabs not yet built show a temporary PendingScreen (tracked above).

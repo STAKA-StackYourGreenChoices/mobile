@@ -15,11 +15,11 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **3 — Implementation. Slices 1–8 done** |
-| Next action | Slice 9 `feat/shared-hang-tag` (branch from `feat/auth-password`): HangTag (web `components/hang-tag.tsx`: chamfered corners, punched hole, stitch line, the only shadow, one swing), Ean13Barcode (port `lib/ean13.ts`), OwnershipChip (`components/ownership-chip.tsx`) + goldens; add the hang tag to the Welcome hero. Needs Product/Brand/SustainabilityInfo/Ownership models in `core/models` first (see web `lib/types.ts`) |
+| Current phase | **3 — Implementation. Slices 1–9 done** |
+| Next action | Slice 10 `feat/wardrobe-list` (branch from `feat/shared-hang-tag`): core models Brand/Product/Ownership/DigitalCard/ShareLink + DTOs/mappers in `core/api_models` (web `lib/types.ts`; resolve `/catalog-images/*` image URLs against `Env.webAppUrl`), wardrobe repository (`GET /digital-cards/mine`, `GET /auth/me` via session, `POST /auth/resend-verification`), Wardrobe screen: welcome header (`SignedIn.isNewAccount`), verify-email banner, Verified / Waiting for proof grids of `HangTag` sm + `OwnershipChip`, empty state. Replace `_pending(AppRoute.wardrobe)` |
 | Local API | Runs on this PC (user starts it): Docker Postgres `startup-dev-postgres-1` + `pnpm start:dev` in `api/`. The Windows service `postgresql-x64-16` also uses :5432 and must be stopped or Prisma hits it (P1000). `/health` returns 401 (API bug: no `@Public()`; user declined fixing for now). Live check: `flutter test test/live --dart-define=LIVE_API_URL=http://localhost:7070` |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `flutter doctor` still warns about unaccepted Android licences (user's call) |
-| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` → `feat/auth-sign-in` → `feat/auth-password` (stacked, all pushed, nothing merged) |
+| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` → `feat/auth-sign-in` → `feat/auth-password` → `feat/shared-hang-tag` (stacked, all pushed, nothing merged) |
 
 ## 2a. Code conventions already in place (reuse, don't reinvent)
 
@@ -36,7 +36,8 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 - Screens inside a tab: add an `AppRoute` with the full path and register it with `_child(...)` under the tab's route.
 - Navigation: from welcome use `pushNamed` (Android back returns); between sibling auth screens `pushReplacementNamed`.
 - Whole-app tests: `test/helpers/pump_full_app.dart` `pumpApp(tester, tokens:, replies:, auth:)` + `FakeAuthRepository`. Live API tests in `test/live/` (tag `live`, skipped without `LIVE_API_URL`; `LiveClient` in `test/live/live_client.dart` = real stack; each run registers throwaway `mobile-live-*@example.com` users). Tap targets under the bottom bar: `tester.ensureVisible` first.
-- Goldens: tag `golden`, run `flutter test --tags golden` (`--update-goldens` only with the user's OK, guide §14). Baselines are Windows-rendered; CI runs `--exclude-tags golden`. Helpers: `test/helpers/pump_app.dart` (`pumpThemed`, `usePhoneScreen`), `golden.dart` (`loadAppFonts`).
+- Tag visuals (`lib/shared/widgets/data_display/`): `HangTag(productName, brandName, sustainability, image: TagImage(url), gtin, ownerName, isOwnerVerified, size: sm|md|lg, hasString, hasSwing, hasPhotoArea)`, `TagImage(url)` (svg or raster, cached, placeholder/error), `OwnershipChip(status)`. Formatters in `lib/shared/formatters/` (`carbonParts`, `formatCarbon`, `displayGtin`). `SustainabilityInfo` + `OwnershipStatus` in `core/models`.
+- Goldens: tag `golden`, run `flutter test --tags golden` (`--update-goldens` only with the user's OK, guide §14). Baselines are Windows-rendered; CI runs `--exclude-tags golden`. Helpers: `test/helpers/pump_app.dart` (`pumpThemed`, `usePhoneScreen`), `golden.dart` (`loadAppFonts`, `withRealShadows` — tests draw shadows as solid outlines otherwise). `pumpAndSettle` before snapshotting anything with a swinging tag.
 - Generated files (`*.g.dart`, `*.freezed.dart`, l10n) are committed. After changing providers run build_runner; after ARB edits run `flutter gen-l10n`.
 - Tests: `test/helpers/fake_http_adapter.dart` scripts Dio replies (`json(status, body)`, `connectionError()`). No `Future.delayed` in tests: inject waits.
 

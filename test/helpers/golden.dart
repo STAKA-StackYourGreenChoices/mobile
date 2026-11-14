@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/rendering.dart' show debugDisableShadows;
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -23,3 +24,15 @@ Future<void> loadAppFonts() async {
 /// differs between Windows, macOS and Linux, so these run with
 /// `flutter test --tags golden`, not in CI (see dart_test.yaml).
 const goldenTag = 'golden';
+
+/// Tests draw shadows as solid outlines by default. The hang tag's shadow
+/// is part of its look, so its goldens render real ones. Restored before
+/// the test ends, as flutter_test checks debug flags right after the body.
+Future<void> withRealShadows(Future<void> Function() body) async {
+  debugDisableShadows = false;
+  try {
+    await body();
+  } finally {
+    debugDisableShadows = true;
+  }
+}
