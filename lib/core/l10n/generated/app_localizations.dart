@@ -129,6 +129,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your account doesn\'t have access to this.'**
   String get errorForbidden;
+
+  /// Screen-reader label for spinners.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// Retry button after a failed load. Same wording as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// Heading above an error message when a screen or section fails to load.
+  ///
+  /// In en, this message translates to:
+  /// **'This didn\'t load'**
+  String get errorTitle;
+
+  /// Heading when the API can't be reached.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection'**
+  String get errorOfflineTitle;
 }
 
 class _AppLocalizationsDelegate

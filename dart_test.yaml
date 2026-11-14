@@ -1,0 +1,5 @@
+tags:
+  # Pixel baselines, rendered on the developer's machine. Run with
+  # `flutter test --tags golden`; CI excludes them because font rasterising
+  # differs per OS (Linux baselines need Docker, not set up yet).
+  golden:

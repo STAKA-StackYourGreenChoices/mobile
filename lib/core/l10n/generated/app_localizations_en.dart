@@ -28,4 +28,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorForbidden => 'Your account doesn\'t have access to this.';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get errorTitle => 'This didn\'t load';
+
+  @override
+  String get errorOfflineTitle => 'No connection';
 }

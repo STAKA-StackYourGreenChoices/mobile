@@ -23,5 +23,21 @@
   "errorForbidden": "Your account doesn't have access to this.",
   "@errorForbidden": {
     "description": "403 without an API message. Same as the website."
+  },
+  "loading": "Loading",
+  "@loading": {
+    "description": "Screen-reader label for spinners."
+  },
+  "tryAgain": "Try again",
+  "@tryAgain": {
+    "description": "Retry button after a failed load. Same wording as the website."
+  },
+  "errorTitle": "This didn't load",
+  "@errorTitle": {
+    "description": "Heading above an error message when a screen or section fails to load."
+  },
+  "errorOfflineTitle": "No connection",
+  "@errorOfflineTitle": {
+    "description": "Heading when the API can't be reached."
   }
 }
