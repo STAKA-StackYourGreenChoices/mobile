@@ -31,4 +31,9 @@ _None._
 | P2-2 | Design tokens | Drop tier colours + wallet gradient from the `lib/core/design` copy. `files/` untouched |
 | P2-3 | PRs | Only push branches (stacked, one per slice). User opens/merges PRs. Do not run `gh pr create` |
 | P2-4 | CI | Add GitHub Actions in `mobile/` (format, analyze, test) in slice 1 |
+| S1 | Flutter 3.50 split | `package:flutter/material.dart` is deprecated in 3.50 → use **`material_ui`** and **`cupertino_ui`** (official, publisher flutter.dev). Import those, never `flutter/material.dart`. `GlobalWidgetsLocalizations` still comes from `flutter_localizations` (`show` only that) |
+| S1 | Dart 3.14 syntax | Constructors are written `const new(...)` / `factory standard()` (lint `unnecessary_type_name_in_constructor`). `dart fix --apply` does it |
+| S1 | Platform folders | `android/` + `ios/` regenerated from the Flutter 3.50 template (old ones needed Gradle 8.12; 3.50 needs ≥ 9.3.1). Desktop/web runners removed |
+| S1 | Fonts | Static TTFs from the official Google Fonts API (fonts.gstatic.com), same files Google Fonts serves; OFL texts from github.com/google/fonts. Weights: Jakarta 400/600/700/800, Manrope 600/800; `tnum` present |
+| S1 | Dart package name | `staka` (imports are `package:staka/...`) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

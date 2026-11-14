@@ -13,10 +13,10 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Screen mapping table (web route → Flutter screen → APIs)
 - [x] Build order (19 slices)
 - [x] User approved plan + answered P2-1..P2-4
-- [ ] User upgraded Flutter (blocks Phase 3)
+- [x] User upgraded Flutter (3.50.0 / Dart 3.14.0)
 
 ## Phase 3 — Implementation (order to be confirmed in Phase 2)
-- [ ] Foundation: pubspec, lints, `core/design` (from `files/`), fonts, l10n, env config, router shell
+- [x] Slice 1 `chore/project-setup`: ids/name, pubspec, very_good_analysis, `core/design`, fonts, l10n, env config, CI, boot screen + tests (router shell = slice 6)
 - [ ] Core: dio client, auth interceptor + single-flight refresh, Failure/Result, error mapper, secure storage
 - [ ] Shared widgets (guide §7.2 waves)
 - [ ] Auth: login, register, forgot, reset, verify email, logout, session restore, route guards
@@ -44,6 +44,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-14 — Slice 1 done: scaffold regenerated for Flutter 3.50, migrated to material_ui/cupertino_ui, analyze clean, 2 tests pass. `BootScreen` is temporary until slice 6.
 - 2026-11-14 — P2 answers recorded, plan approved; waiting on user's `flutter upgrade`.
 - 2026-11-14 — Answers recorded; root CLAUDE.md added; Phase 2 plan written; found Flutter 3.35.2 too old for current packages (P2-1).
 - 2026-11-14 — Phase 1 analysis done; handoff docs created; 16 questions sent to user. No code yet.

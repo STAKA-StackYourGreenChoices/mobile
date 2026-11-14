@@ -15,9 +15,19 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **2 — Plan approved. Waiting for the user to run `flutter upgrade`** |
-| Next action | When user says upgrade is done: check `flutter --version` (Dart ≥ 3.13), then Phase 3 slice 1 `chore/project-setup` per `PHASE2_PLAN.md` §9, branched from `docs/mobile-handoff` |
-| Code written so far | None. Docs + `mobile/CLAUDE.md` + root `CLAUDE.md` |
+| Current phase | **3 — Implementation. Slice 1 `chore/project-setup` done** |
+| Next action | Slice 2 `feat/core-network` (branch from `chore/project-setup`) per `PHASE2_PLAN.md` §9 |
+| Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `flutter doctor` still warns about unaccepted Android licences (user's call) |
+| Branches | `docs/mobile-handoff` → `chore/project-setup` (stacked, all pushed, nothing merged) |
+
+## 2b. Commands
+
+```bash
+cp env/example.json env/dev.json          # once; edit URLs for a physical phone
+flutter run --dart-define-from-file=env/dev.json
+dart format lib test && flutter analyze --fatal-infos && flutter test   # before every commit
+dart run build_runner build -d            # once freezed/riverpod_generator are added
+```
 | Last updated | 2026-11-14 |
 
 Full checklist and session log: `PROGRESS.md`.

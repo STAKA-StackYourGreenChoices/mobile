@@ -8,3 +8,7 @@ ios/Pods/
 
 # ImpactLens index cache
 .impactlens/
+
+# Local environment files (copy env/example.json to env/dev.json)
+env/*.json
+!env/example.json

@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appName": "STAKA",
+  "@appName": {
+    "description": "Product name. Never translated."
+  },
+  "appTagline": "Your clothes, with their footprint attached.",
+  "@appTagline": {
+    "description": "One-line description of what STAKA does, from the website's home page."
+  }
+}
