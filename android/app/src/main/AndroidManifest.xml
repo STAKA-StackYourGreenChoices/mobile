@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The app talks to the STAKA API. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="mobile"
+        android:label="STAKA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
