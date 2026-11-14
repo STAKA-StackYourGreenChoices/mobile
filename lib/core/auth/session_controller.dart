@@ -32,10 +32,15 @@ class SessionController extends _$SessionController {
     await _loadUser(whenUnreachable: const SessionUnreachable());
   }
 
-  /// Called by login and register with the API's response.
-  Future<void> signIn({required AuthTokens tokens, required User user}) async {
+  /// Called by login and register (with [isNewAccount]) with the API's
+  /// response.
+  Future<void> signIn({
+    required AuthTokens tokens,
+    required User user,
+    bool isNewAccount = false,
+  }) async {
     await _repository.saveTokens(tokens);
-    state = SignedIn(user);
+    state = SignedIn(user, isNewAccount: isNewAccount);
   }
 
   /// Re-reads the user, e.g. on app resume after confirming the email on
@@ -43,7 +48,10 @@ class SessionController extends _$SessionController {
   Future<void> refreshUser() async {
     final current = state;
     if (current is! SignedIn) return;
-    await _loadUser(whenUnreachable: current);
+    await _loadUser(
+      whenUnreachable: current,
+      isNewAccount: current.isNewAccount,
+    );
   }
 
   Future<void> signOut() async {
@@ -54,10 +62,13 @@ class SessionController extends _$SessionController {
   /// The API refused the refresh token: tokens are already cleared.
   void onSessionExpired() => state = const SignedOut(sessionExpired: true);
 
-  Future<void> _loadUser({required SessionState whenUnreachable}) async {
+  Future<void> _loadUser({
+    required SessionState whenUnreachable,
+    bool isNewAccount = false,
+  }) async {
     final result = await _repository.currentUser();
     state = await result.fold(
-      onSuccess: (user) async => SignedIn(user),
+      onSuccess: (user) async => SignedIn(user, isNewAccount: isNewAccount),
       onFailure: (failure) async => switch (failure) {
         UnauthorizedFailure() ||
         ForbiddenFailure() ||

@@ -11,9 +11,13 @@ final class SessionRestoring extends SessionState {
 }
 
 final class SignedIn extends SessionState {
-  const new(this.user);
+  const new(this.user, {this.isNewAccount = false});
 
   final User user;
+
+  /// True right after registering, so the wardrobe can greet them and say
+  /// a confirmation email was sent (the website's `/wardrobe?welcome=1`).
+  final bool isNewAccount;
 }
 
 final class SignedOut extends SessionState {

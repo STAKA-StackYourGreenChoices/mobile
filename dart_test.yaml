@@ -3,3 +3,6 @@ tags:
   # `flutter test --tags golden`; CI excludes them because font rasterising
   # differs per OS (Linux baselines need Docker, not set up yet).
   golden:
+  # Real-API checks. Skipped unless run with
+  # `--dart-define=LIVE_API_URL=http://localhost:7070`.
+  live:
