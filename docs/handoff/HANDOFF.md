@@ -15,8 +15,8 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **2 — Architecture plan proposed (`PHASE2_PLAN.md`), waiting for approval + answers P2-1..P2-4** |
-| Next action | On approval: start Phase 3 slice 1 (`chore/project-setup`) per `PHASE2_PLAN.md` §9 |
+| Current phase | **2 — Plan approved. Waiting for the user to run `flutter upgrade`** |
+| Next action | When user says upgrade is done: check `flutter --version` (Dart ≥ 3.13), then Phase 3 slice 1 `chore/project-setup` per `PHASE2_PLAN.md` §9, branched from `docs/mobile-handoff` |
 | Code written so far | None. Docs + `mobile/CLAUDE.md` + root `CLAUDE.md` |
 | Last updated | 2026-11-14 |
 

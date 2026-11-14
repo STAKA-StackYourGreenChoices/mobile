@@ -27,4 +27,8 @@ _None._
 | 14 | Extras | Add **change password** (existing `POST /auth/change-password`). No profile edit |
 | 15 | Git | Create branches in `mobile/`, commit per slice (Conventional Commits), **push** to origin |
 | 16 | Root pointer | Added `D:\Additional Project\CLAUDE.md` → this handoff folder |
+| P2-1 | Flutter SDK | **User runs `flutter upgrade` themself** and says when done. Do not start slice 1 before that; then confirm `flutter --version` shows Dart ≥ 3.13 |
+| P2-2 | Design tokens | Drop tier colours + wallet gradient from the `lib/core/design` copy. `files/` untouched |
+| P2-3 | PRs | Only push branches (stacked, one per slice). User opens/merges PRs. Do not run `gh pr create` |
+| P2-4 | CI | Add GitHub Actions in `mobile/` (format, analyze, test) in slice 1 |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

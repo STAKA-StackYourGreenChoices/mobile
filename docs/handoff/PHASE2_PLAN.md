@@ -1,6 +1,6 @@
 # Phase 2 — Architecture & plan
 
-Status: **proposed 2026-11-14, waiting for approval.** Follows `files/FRONTEND_GUIDE.md`
+Status: **approved 2026-11-14.** §11 answers are in `DECISIONS.md` (P2-1..P2-4). Follows `files/FRONTEND_GUIDE.md`
 except where `DECISIONS.md` overrides it. Questions marked **P2-n** are listed in §11.
 
 ## 1. Folder structure (feature-first, guide §3)
