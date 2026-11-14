@@ -28,6 +28,8 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.onDanger,
     required this.dangerText,
     required this.warning,
+    required this.mediaBackdrop,
+    required this.onMediaBackdrop,
   });
 
   // ---------------------------------------------------------------- raw ramp
@@ -68,6 +70,8 @@ class AppColors extends ThemeExtension<AppColors> {
     onDanger: Color(0xFFFFFFFF), //  5.08 on danger
     dangerText: Color(0xFF8C3335), //  6.52 on cream — use for danger TEXT
     warning: Color(0xFFA03D3F), //  5.32 on cream
+    mediaBackdrop: forest900,
+    onMediaBackdrop: cream, // 11.88 on forest900
   );
 
   // ------------------------------------------------------------------- dark
@@ -90,6 +94,9 @@ class AppColors extends ThemeExtension<AppColors> {
     onDanger: Color(0xFF0F1611),
     dangerText: Color(0xFFE86B6D),
     warning: Color(0xFFE0A05C),
+    // surfaceRaised: dark, yet visibly distinct from the page behind it.
+    mediaBackdrop: Color(0xFF1C271F),
+    onMediaBackdrop: cream, // 12.67
   );
 
   final Color surfaceBase;
@@ -111,6 +118,10 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color dangerText;
   final Color warning;
 
+  /// Behind a camera feed or photo viewer: dark in both themes.
+  final Color mediaBackdrop;
+  final Color onMediaBackdrop;
+
   @override
   AppColors copyWith({
     Color? surfaceBase,
@@ -131,6 +142,8 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? onDanger,
     Color? dangerText,
     Color? warning,
+    Color? mediaBackdrop,
+    Color? onMediaBackdrop,
   }) {
     return AppColors(
       surfaceBase: surfaceBase ?? this.surfaceBase,
@@ -151,6 +164,8 @@ class AppColors extends ThemeExtension<AppColors> {
       onDanger: onDanger ?? this.onDanger,
       dangerText: dangerText ?? this.dangerText,
       warning: warning ?? this.warning,
+      mediaBackdrop: mediaBackdrop ?? this.mediaBackdrop,
+      onMediaBackdrop: onMediaBackdrop ?? this.onMediaBackdrop,
     );
   }
 
@@ -177,6 +192,8 @@ class AppColors extends ThemeExtension<AppColors> {
       onDanger: c(onDanger, other.onDanger),
       dangerText: c(dangerText, other.dangerText),
       warning: c(warning, other.warning),
+      mediaBackdrop: c(mediaBackdrop, other.mediaBackdrop),
+      onMediaBackdrop: c(onMediaBackdrop, other.onMediaBackdrop),
     );
   }
 }

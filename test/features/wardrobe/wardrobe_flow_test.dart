@@ -31,7 +31,7 @@ void main() {
 
     await tester.tap(find.text('Scan your first piece'));
     await tester.pumpAndSettle();
-    expect(find.text('/scan'), findsOneWidget);
+    expect(find.text('Scan a product'), findsOneWidget);
   });
 
   testWidgets('tags split into verified and waiting, like the website', (

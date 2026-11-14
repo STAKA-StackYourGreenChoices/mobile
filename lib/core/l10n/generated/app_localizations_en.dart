@@ -387,4 +387,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emailAlreadyConfirmed => 'Your email is already confirmed.';
+
+  @override
+  String get scanTitle => 'Scan a product';
+
+  @override
+  String get scanLede =>
+      'Hold the barcode on the clothing label inside the frame. QR codes on tags work too.';
+
+  @override
+  String get cameraRegion => 'Camera';
+
+  @override
+  String get cameraStarting => 'Starting the camera…';
+
+  @override
+  String get cameraLooking => 'Looking for a barcode…';
+
+  @override
+  String cameraFound(String gtin) {
+    return 'Found $gtin. Opening the product…';
+  }
+
+  @override
+  String get cameraOff => 'Camera is off.';
+
+  @override
+  String get turnCameraOn => 'Turn camera on';
+
+  @override
+  String get turnCameraOff => 'Turn camera off';
+
+  @override
+  String get cameraBlocked =>
+      'Camera access is blocked. Allow it for STAKA in your phone\'s Settings, then try again. Or type the number.';
+
+  @override
+  String cameraUnavailable(String reason) {
+    return '$reason Type the barcode number instead.';
+  }
+
+  @override
+  String get cameraNoCamera => 'No camera was found on this device.';
+
+  @override
+  String get cameraCouldNotStart => 'The camera couldn\'t start.';
+
+  @override
+  String get typeNumberTitle => 'Type the number instead';
+
+  @override
+  String get barcodeNumberLabel => 'Barcode number';
+
+  @override
+  String get barcodeNumberHint => 'e.g. 8901234500019';
+
+  @override
+  String get barcodeNumberHelp => 'The digits printed under the bars.';
+
+  @override
+  String get lookUpProduct => 'Look up product';
+
+  @override
+  String get scanEmpty => 'Enter the number under the barcode.';
+
+  @override
+  String scanWrongLength(int count) {
+    return 'That\'s $count digits. Barcode numbers have 8, 12, 13 or 14.';
+  }
+
+  @override
+  String get scanWebsite =>
+      'This QR code links to a website, not a product STAKA knows.';
+
+  @override
+  String get scanNotBarcode => 'This code isn\'t a product barcode.';
 }

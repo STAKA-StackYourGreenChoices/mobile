@@ -39,4 +39,6 @@ _None._
 | S7 | API `/health` 401 | API bug (HealthController lacks `@Public()`; breaks the API Dockerfile healthcheck). User declined fixing it for now. Not needed by the app |
 | S9 | EAN-13 drawing | Not built: the website draws barcodes only on its marketing landing page, which the app replaces (decision 6). Tags show "Barcode 890…" as text, like the website's tags. Ask before adding |
 | S9 | Tag swing | 1.4 s (website keyframes), outside the motion tokens on purpose as the app's one signature moment (guide §6.3) |
+| S11 | Colour tokens | Added `mediaBackdrop` (light `forest900`, dark `#1C271F`) + `onMediaBackdrop` (cream; 11.88 / 12.67) to the app copy of app_colors for the camera viewfinder; the original tokens had no dark-in-both-themes surface |
+| S11 | Camera blocked copy | Website says "browser's site settings"; app says "Allow it for STAKA in your phone's Settings". No "open Settings" button (would need an extra package) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

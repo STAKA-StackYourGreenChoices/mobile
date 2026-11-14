@@ -18,7 +18,8 @@ enum AppRoute {
   adminHome('/admin'),
 
   // Inside a tab (keep the bottom bar).
-  changePassword('/account/change-password');
+  changePassword('/account/change-password'),
+  product('/scan/product/:gtin');
 
   new(this.path);
 

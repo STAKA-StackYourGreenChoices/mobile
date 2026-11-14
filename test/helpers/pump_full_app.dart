@@ -9,11 +9,13 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
+import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 
 import 'auth_fakes.dart';
 import 'fake_http_adapter.dart';
+import 'scan_fakes.dart';
 import 'wardrobe_fakes.dart';
 
 /// Pumps the whole app with a fake API for the session (`replies`), an
@@ -42,6 +44,10 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         wardrobeRepositoryProvider.overrideWithValue(
           wardrobe ?? FakeWardrobeRepository(),
+        ),
+        // The real camera needs a device.
+        scanCameraProvider.overrideWithValue(
+          ({required onGtinFound}) => FakeScanCamera(onGtinFound: onGtinFound),
         ),
         if (auth != null) authRepositoryProvider.overrideWithValue(auth),
       ],

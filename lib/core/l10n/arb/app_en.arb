@@ -503,5 +503,108 @@
   "emailAlreadyConfirmed": "Your email is already confirmed.",
   "@emailAlreadyConfirmed": {
     "description": "Resend when already confirmed. Same as the website's /wardrobe."
+  },
+  "scanTitle": "Scan a product",
+  "@scanTitle": {
+    "description": "Scan heading. Same as the website's /scan."
+  },
+  "scanLede": "Hold the barcode on the clothing label inside the frame. QR codes on tags work too.",
+  "@scanLede": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraRegion": "Camera",
+  "@cameraRegion": {
+    "description": "Screen-reader label of the camera area. Same as the website's /scan."
+  },
+  "cameraStarting": "Starting the camera…",
+  "@cameraStarting": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraLooking": "Looking for a barcode…",
+  "@cameraLooking": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraFound": "Found {gtin}. Opening the product…",
+  "@cameraFound": {
+    "description": "Same as the website's /scan.",
+    "placeholders": {
+      "gtin": {
+        "type": "String"
+      }
+    }
+  },
+  "cameraOff": "Camera is off.",
+  "@cameraOff": {
+    "description": "Same as the website's /scan."
+  },
+  "turnCameraOn": "Turn camera on",
+  "@turnCameraOn": {
+    "description": "Same as the website's /scan."
+  },
+  "turnCameraOff": "Turn camera off",
+  "@turnCameraOff": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraBlocked": "Camera access is blocked. Allow it for STAKA in your phone's Settings, then try again. Or type the number.",
+  "@cameraBlocked": {
+    "description": "Camera permission refused. Website copy, adapted: phone Settings instead of browser site settings."
+  },
+  "cameraUnavailable": "{reason} Type the barcode number instead.",
+  "@cameraUnavailable": {
+    "description": "Same as the website's /scan.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "cameraNoCamera": "No camera was found on this device.",
+  "@cameraNoCamera": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraCouldNotStart": "The camera couldn't start.",
+  "@cameraCouldNotStart": {
+    "description": "Same as the website's /scan."
+  },
+  "typeNumberTitle": "Type the number instead",
+  "@typeNumberTitle": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberLabel": "Barcode number",
+  "@barcodeNumberLabel": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberHint": "e.g. 8901234500019",
+  "@barcodeNumberHint": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberHelp": "The digits printed under the bars.",
+  "@barcodeNumberHelp": {
+    "description": "Same as the website's /scan."
+  },
+  "lookUpProduct": "Look up product",
+  "@lookUpProduct": {
+    "description": "Same as the website's /scan."
+  },
+  "scanEmpty": "Enter the number under the barcode.",
+  "@scanEmpty": {
+    "description": "web lib/scan.ts"
+  },
+  "scanWrongLength": "That's {count} digits. Barcode numbers have 8, 12, 13 or 14.",
+  "@scanWrongLength": {
+    "description": "web lib/scan.ts",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanWebsite": "This QR code links to a website, not a product STAKA knows.",
+  "@scanWebsite": {
+    "description": "web lib/scan.ts"
+  },
+  "scanNotBarcode": "This code isn't a product barcode.",
+  "@scanNotBarcode": {
+    "description": "web lib/scan.ts"
   }
 }

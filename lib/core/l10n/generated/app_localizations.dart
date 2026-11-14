@@ -765,6 +765,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your email is already confirmed.'**
   String get emailAlreadyConfirmed;
+
+  /// Scan heading. Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a product'**
+  String get scanTitle;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the barcode on the clothing label inside the frame. QR codes on tags work too.'**
+  String get scanLede;
+
+  /// Screen-reader label of the camera area. Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get cameraRegion;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting the camera…'**
+  String get cameraStarting;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for a barcode…'**
+  String get cameraLooking;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Found {gtin}. Opening the product…'**
+  String cameraFound(String gtin);
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera is off.'**
+  String get cameraOff;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn camera on'**
+  String get turnCameraOn;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn camera off'**
+  String get turnCameraOff;
+
+  /// Camera permission refused. Website copy, adapted: phone Settings instead of browser site settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera access is blocked. Allow it for STAKA in your phone\'s Settings, then try again. Or type the number.'**
+  String get cameraBlocked;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'{reason} Type the barcode number instead.'**
+  String cameraUnavailable(String reason);
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'No camera was found on this device.'**
+  String get cameraNoCamera;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera couldn\'t start.'**
+  String get cameraCouldNotStart;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the number instead'**
+  String get typeNumberTitle;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode number'**
+  String get barcodeNumberLabel;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 8901234500019'**
+  String get barcodeNumberHint;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'The digits printed under the bars.'**
+  String get barcodeNumberHelp;
+
+  /// Same as the website's /scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up product'**
+  String get lookUpProduct;
+
+  /// web lib/scan.ts
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the number under the barcode.'**
+  String get scanEmpty;
+
+  /// web lib/scan.ts
+  ///
+  /// In en, this message translates to:
+  /// **'That\'s {count} digits. Barcode numbers have 8, 12, 13 or 14.'**
+  String scanWrongLength(int count);
+
+  /// web lib/scan.ts
+  ///
+  /// In en, this message translates to:
+  /// **'This QR code links to a website, not a product STAKA knows.'**
+  String get scanWebsite;
+
+  /// web lib/scan.ts
+  ///
+  /// In en, this message translates to:
+  /// **'This code isn\'t a product barcode.'**
+  String get scanNotBarcode;
 }
 
 class _AppLocalizationsDelegate

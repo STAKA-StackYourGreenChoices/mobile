@@ -11,6 +11,7 @@ import 'package:staka/features/auth/presentation/screens/forgot_password_screen.
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 
 GoRoute _route(
@@ -26,12 +27,18 @@ GoRoute _route(
 
 /// A screen inside a tab: its path is relative to the tab's route, so
 /// `AppRoute.changePassword.path` ('/account/change-password') becomes
-/// 'change-password' under '/account'.
-GoRoute _child(AppRoute route, GoRouterWidgetBuilder builder) => GoRoute(
-  path: route.path.split('/').last,
-  name: route.name,
-  builder: builder,
-);
+/// 'change-password' under `AppRoute.account`.
+GoRoute _child(AppRoute parent, AppRoute route, GoRouterWidgetBuilder builder) {
+  assert(
+    route.path.startsWith('${parent.path}/'),
+    '${route.name} under ${parent.name}',
+  );
+  return GoRoute(
+    path: route.path.substring(parent.path.length + 1),
+    name: route.name,
+    builder: builder,
+  );
+}
 
 /// Stand-in for a destination whose screen lands in a later slice
 /// (PHASE2_PLAN.md §9). PROGRESS.md tracks them; none may remain at Phase 5.
@@ -51,7 +58,22 @@ final appRouteTable = <RouteBase>[
       StatefulShellBranch(
         routes: [_route(AppRoute.wardrobe, (_, _) => const WardrobeScreen())],
       ),
-      StatefulShellBranch(routes: [_pending(AppRoute.scan)]),
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.scan,
+            (_, _) => const ScanScreen(),
+            children: [
+              // Slice 12 replaces this with the product screen.
+              _child(
+                AppRoute.scan,
+                AppRoute.product,
+                (_, _) => const PendingScreen(route: AppRoute.product),
+              ),
+            ],
+          ),
+        ],
+      ),
       StatefulShellBranch(routes: [_pending(AppRoute.adminHome)]),
       StatefulShellBranch(
         routes: [
@@ -60,6 +82,7 @@ final appRouteTable = <RouteBase>[
             (_, _) => const AccountScreen(),
             children: [
               _child(
+                AppRoute.account,
                 AppRoute.changePassword,
                 (_, _) => const ChangePasswordScreen(),
               ),
