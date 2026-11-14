@@ -303,6 +303,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This screen is being built'**
   String get pendingScreenTitle;
+
+  /// Sign-in heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to STAKA'**
+  String get loginTitle;
+
+  /// Under the sign-in heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick up where you left off with your tags.'**
+  String get loginLede;
+
+  /// Email field label. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get fieldEmail;
+
+  /// Password field label. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get fieldPassword;
+
+  /// Link under the sign-in password. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot your password?'**
+  String get forgotPassword;
+
+  /// Sign-in button while waiting. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in…'**
+  String get signingIn;
+
+  /// Before the 'Create an account' link on sign-in. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'New to STAKA?'**
+  String get newToStaka;
+
+  /// Sign-in 401. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'That email and password don\'t match an account. Check them and try again.'**
+  String get loginWrongCredentials;
+
+  /// Register heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your STAKA account'**
+  String get registerTitle;
+
+  /// Under the register heading. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a digital tag for every piece you own.'**
+  String get registerLede;
+
+  /// Register name label. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get fieldYourName;
+
+  /// Hint under the name field. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown on tags you share.'**
+  String get nameHint;
+
+  /// Hint under a new password. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 8 characters.'**
+  String get passwordHint;
+
+  /// Register submit button. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccountSubmit;
+
+  /// Register button while waiting. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating account…'**
+  String get creatingAccount;
+
+  /// Before the 'Sign in' link on register. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// Register 409, shown on the email field. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'An account already uses this email. Sign in instead.'**
+  String get registerEmailTaken;
 }
 
 class _AppLocalizationsDelegate

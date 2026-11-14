@@ -15,11 +15,11 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **3 — Implementation. Slices 1–6 done** |
-| Next action | Slice 7 `feat/auth-sign-in` (branch from `feat/app-shell-router`): Login + Register (features/auth: domain → data → state → screens), replace their `_pending` routes. Needs the local API running for a live check — ask the user first |
-| Local API | Not running on this PC as of slice 3; nothing tested against the real backend yet. Ask the user to start it (infra Postgres + `api` dev server) before slice 7 |
+| Current phase | **3 — Implementation. Slices 1–7 done** |
+| Next action | Slice 8 `feat/auth-password` (branch from `feat/auth-sign-in`): Forgot password (`POST /auth/forgot-password`, web success copy), Account tab (name, email, change password link, sign out), Change password (`POST /auth/change-password`, decision 14). Replace `_pending` for forgotPassword + account |
+| Local API | Runs on this PC (user starts it): Docker Postgres `startup-dev-postgres-1` + `pnpm start:dev` in `api/`. The Windows service `postgresql-x64-16` also uses :5432 and must be stopped or Prisma hits it (P1000). `/health` returns 401 (API bug: no `@Public()`; user declined fixing for now). Live check: `flutter test test/live --dart-define=LIVE_API_URL=http://localhost:7070` |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `flutter doctor` still warns about unaccepted Android licences (user's call) |
-| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` (stacked, all pushed, nothing merged) |
+| Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` → `feat/auth-sign-in` (stacked, all pushed, nothing merged) |
 
 ## 2a. Code conventions already in place (reuse, don't reinvent)
 
@@ -30,7 +30,9 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 - Shared models: `core/models/` (freezed), DTOs + mappers in `core/api_models/` (json_serializable, `createToJson: false` unless sending).
 - Shared widgets (`lib/shared/widgets/`): `AppScaffold` (title, actions, `isScrollable: false` for list screens), `AppButton` (primary/secondary/ghost/destructive, `isLoading` + `loadingLabel`, `isExpanded`), `AppLoader`, `AppEmptyState`, `AppErrorState(failure, onRetryPressed)`, `AppTextField` (label above; `errorText` = server error, wins over `validator`; `isPassword` adds show/hide), `AppFormAlert(message, tone)` above forms, `AppSnackbar.show(context, message:, tone:)`. Form rules: `Validators(context.l10n)` in `core/forms/validators.dart` (web's zod messages). `context.colors` / `context.text` come from `core/design/app_typography.dart`.
 - Routing: names/paths in `app/routes.dart` (`AppRoute` enum; navigate with `context.goNamed(AppRoute.x.name)`), guards in `app/router/session_redirect.dart` (pure, unit-tested), table in `app/router/app_route_table.dart`. A new screen = add an `AppRoute` value if needed + replace its `_pending(...)` entry. Sub-routes of a tab go inside that tab's `StatefulShellBranch`. Tabs: `app/shell/shell_tab.dart`.
-- Whole-app tests: `test/app/app_test.dart` `pumpApp(tester, tokens:, replies:)` overrides `sessionRepositoryProvider` with a fake API.
+- Feature pattern (copy `features/auth/`): `domain/models` + `domain/repositories` (interface) → `data/datasources` (Dio, `publicRequest()` if no session) + `data/mappers` + `data/repositories/*_impl.dart` (provider + `guardApi`) → `presentation/state` (sealed form/UI state + `@riverpod` controller, `ref.mounted` after awaits) → dumb `widgets` (props + callbacks; own only text controllers) → `screens` (ConsumerWidget maps state/Failure to copy) → route in `app_route_table.dart`.
+- Navigation: from welcome use `pushNamed` (Android back returns); between sibling auth screens `pushReplacementNamed`.
+- Whole-app tests: `test/helpers/pump_full_app.dart` `pumpApp(tester, tokens:, replies:, auth:)` + `FakeAuthRepository`. Live API tests in `test/live/` (tag `live`, skipped without `LIVE_API_URL`; each run registers a throwaway `mobile-live-*@example.com` user).
 - Goldens: tag `golden`, run `flutter test --tags golden` (`--update-goldens` only with the user's OK, guide §14). Baselines are Windows-rendered; CI runs `--exclude-tags golden`. Helpers: `test/helpers/pump_app.dart` (`pumpThemed`, `usePhoneScreen`), `golden.dart` (`loadAppFonts`).
 - Generated files (`*.g.dart`, `*.freezed.dart`, l10n) are committed. After changing providers run build_runner; after ARB edits run `flutter gen-l10n`.
 - Tests: `test/helpers/fake_http_adapter.dart` scripts Dio replies (`json(status, body)`, `connectionError()`). No `Future.delayed` in tests: inject waits.

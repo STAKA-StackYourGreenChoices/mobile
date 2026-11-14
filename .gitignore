@@ -12,3 +12,6 @@ ios/Pods/
 # Local environment files (copy env/example.json to env/dev.json)
 env/*.json
 !env/example.json
+
+# Golden-test diff output
+**/failures/

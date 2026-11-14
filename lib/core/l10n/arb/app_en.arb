@@ -144,5 +144,73 @@
   "pendingScreenTitle": "This screen is being built",
   "@pendingScreenTitle": {
     "description": "TEMPORARY development stand-in. Remove with PendingScreen before Phase 5."
+  },
+  "loginTitle": "Sign in to STAKA",
+  "@loginTitle": {
+    "description": "Sign-in heading. Same as the website."
+  },
+  "loginLede": "Pick up where you left off with your tags.",
+  "@loginLede": {
+    "description": "Under the sign-in heading. Same as the website."
+  },
+  "fieldEmail": "Email",
+  "@fieldEmail": {
+    "description": "Email field label. Same as the website."
+  },
+  "fieldPassword": "Password",
+  "@fieldPassword": {
+    "description": "Password field label. Same as the website."
+  },
+  "forgotPassword": "Forgot your password?",
+  "@forgotPassword": {
+    "description": "Link under the sign-in password. Same as the website."
+  },
+  "signingIn": "Signing in…",
+  "@signingIn": {
+    "description": "Sign-in button while waiting. Same as the website."
+  },
+  "newToStaka": "New to STAKA?",
+  "@newToStaka": {
+    "description": "Before the 'Create an account' link on sign-in. Same as the website."
+  },
+  "loginWrongCredentials": "That email and password don't match an account. Check them and try again.",
+  "@loginWrongCredentials": {
+    "description": "Sign-in 401. Same as the website."
+  },
+  "registerTitle": "Create your STAKA account",
+  "@registerTitle": {
+    "description": "Register heading. Same as the website."
+  },
+  "registerLede": "Start a digital tag for every piece you own.",
+  "@registerLede": {
+    "description": "Under the register heading. Same as the website."
+  },
+  "fieldYourName": "Your name",
+  "@fieldYourName": {
+    "description": "Register name label. Same as the website."
+  },
+  "nameHint": "Shown on tags you share.",
+  "@nameHint": {
+    "description": "Hint under the name field. Same as the website."
+  },
+  "passwordHint": "At least 8 characters.",
+  "@passwordHint": {
+    "description": "Hint under a new password. Same as the website."
+  },
+  "createAccountSubmit": "Create account",
+  "@createAccountSubmit": {
+    "description": "Register submit button. Same as the website."
+  },
+  "creatingAccount": "Creating account…",
+  "@creatingAccount": {
+    "description": "Register button while waiting. Same as the website."
+  },
+  "alreadyHaveAccount": "Already have an account?",
+  "@alreadyHaveAccount": {
+    "description": "Before the 'Sign in' link on register. Same as the website."
+  },
+  "registerEmailTaken": "An account already uses this email. Sign in instead.",
+  "@registerEmailTaken": {
+    "description": "Register 409, shown on the email field. Same as the website."
   }
 }

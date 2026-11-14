@@ -47,7 +47,7 @@ final class SessionControllerProvider
   }
 }
 
-String _$sessionControllerHash() => r'd20e2fa2a3d2bcc82070094719acfe50c06eb586';
+String _$sessionControllerHash() => r'd6368fb85a0fb26a6455930b7367da25d1385d02';
 
 /// Owns the signed-in state for the whole app. Restores the session on
 /// launch; sign-in screens hand it new tokens; any screen can sign out.

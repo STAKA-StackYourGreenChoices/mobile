@@ -14,6 +14,7 @@ class AppScaffold extends StatelessWidget {
     this.title,
     this.actions,
     this.isScrollable = true,
+    this.showAppBar = false,
     super.key,
   });
 
@@ -22,13 +23,22 @@ class AppScaffold extends StatelessWidget {
   final List<Widget>? actions;
   final bool isScrollable;
 
+  /// An app bar (with its back arrow) even without a [title], for screens
+  /// that put their heading in the body, like sign-in.
+  final bool showAppBar;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: switch (title) {
-        final title? => AppBar(title: Text(title), actions: actions),
-        null => null,
-      },
+      appBar: title != null || showAppBar
+          ? AppBar(
+              title: switch (title) {
+                final title? => Text(title),
+                null => null,
+              },
+              actions: actions,
+            )
+          : null,
       body: SafeArea(
         child: Align(
           alignment: Alignment.topCenter,

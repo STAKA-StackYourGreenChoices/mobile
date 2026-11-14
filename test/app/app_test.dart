@@ -1,34 +1,10 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:staka/app/app.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
-import 'package:staka/core/auth/session_repository.dart';
 
 import '../helpers/auth_fakes.dart';
 import '../helpers/fake_http_adapter.dart';
-
-/// Pumps the whole app with a fake API and an in-memory token store.
-Future<void> pumpApp(
-  WidgetTester tester, {
-  AuthTokens? tokens,
-  List<FakeReply> replies = const [],
-}) async {
-  final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
-    ..httpClientAdapter = FakeHttpAdapter(replies);
-  await tester.pumpWidget(
-    ProviderScope(
-      overrides: [
-        sessionRepositoryProvider.overrideWithValue(
-          SessionRepository(dio, InMemoryTokenStore(tokens)),
-        ),
-      ],
-      child: const App(),
-    ),
-  );
-  await tester.pumpAndSettle();
-}
+import '../helpers/pump_full_app.dart';
 
 const _tokens = AuthTokens(accessToken: 'a', refreshToken: 'r');
 
@@ -51,7 +27,7 @@ void main() {
 
     await tester.tap(find.text('Create an account'));
     await tester.pumpAndSettle();
-    expect(find.text('/register'), findsOneWidget);
+    expect(find.text('Create your STAKA account'), findsOneWidget);
   });
 
   testWidgets('a saved shopper session opens the wardrobe tab, no Admin', (

@@ -36,4 +36,5 @@ _None._
 | S1 | Platform folders | `android/` + `ios/` regenerated from the Flutter 3.50 template (old ones needed Gradle 8.12; 3.50 needs ≥ 9.3.1). Desktop/web runners removed |
 | S1 | Fonts | Static TTFs from the official Google Fonts API (fonts.gstatic.com), same files Google Fonts serves; OFL texts from github.com/google/fonts. Weights: Jakarta 400/600/700/800, Manrope 600/800; `tnum` present |
 | S1 | Dart package name | `staka` (imports are `package:staka/...`) |
+| S7 | API `/health` 401 | API bug (HealthController lacks `@Public()`; breaks the API Dockerfile healthcheck). User declined fixing it for now. Not needed by the app |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

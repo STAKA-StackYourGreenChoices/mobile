@@ -121,4 +121,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pendingScreenTitle => 'This screen is being built';
+
+  @override
+  String get loginTitle => 'Sign in to STAKA';
+
+  @override
+  String get loginLede => 'Pick up where you left off with your tags.';
+
+  @override
+  String get fieldEmail => 'Email';
+
+  @override
+  String get fieldPassword => 'Password';
+
+  @override
+  String get forgotPassword => 'Forgot your password?';
+
+  @override
+  String get signingIn => 'Signing in…';
+
+  @override
+  String get newToStaka => 'New to STAKA?';
+
+  @override
+  String get loginWrongCredentials =>
+      'That email and password don\'t match an account. Check them and try again.';
+
+  @override
+  String get registerTitle => 'Create your STAKA account';
+
+  @override
+  String get registerLede => 'Start a digital tag for every piece you own.';
+
+  @override
+  String get fieldYourName => 'Your name';
+
+  @override
+  String get nameHint => 'Shown on tags you share.';
+
+  @override
+  String get passwordHint => 'At least 8 characters.';
+
+  @override
+  String get createAccountSubmit => 'Create account';
+
+  @override
+  String get creatingAccount => 'Creating account…';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get registerEmailTaken =>
+      'An account already uses this email. Sign in instead.';
 }

@@ -80,6 +80,8 @@ class _AppTextFieldState extends State<AppTextField> {
             decoration: InputDecoration(
               hintText: widget.hint,
               helperText: widget.helperText,
+              // Muted like the website's field hints (bodySmall = inkMuted).
+              helperStyle: context.text.bodySmall,
               helperMaxLines: 3,
               errorMaxLines: 3,
               suffixIcon: widget.isPassword

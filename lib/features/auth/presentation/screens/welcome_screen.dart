@@ -35,14 +35,14 @@ class WelcomeScreen extends StatelessWidget {
           AppButton(
             label: l10n.createAccount,
             isExpanded: true,
-            onPressed: () => context.goNamed(AppRoute.register.name),
+            onPressed: () => context.pushNamed(AppRoute.register.name),
           ),
           const SizedBox(height: AppSpacing.sm),
           AppButton(
             label: l10n.signIn,
             variant: AppButtonVariant.secondary,
             isExpanded: true,
-            onPressed: () => context.goNamed(AppRoute.login.name),
+            onPressed: () => context.pushNamed(AppRoute.login.name),
           ),
           const SizedBox(height: AppSpacing.xxl),
           const WelcomeSteps(),

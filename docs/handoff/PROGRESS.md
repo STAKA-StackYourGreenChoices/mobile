@@ -22,7 +22,8 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Slice 4 `feat/shared-foundations`: AppScaffold, AppButton, AppLoader, AppEmptyState, AppErrorState (+ FeedbackMessage), 11 widget tests, 4 goldens (light/dark)
 - [x] Slice 5 `feat/shared-inputs`: AppTextField + password toggle, AppFormAlert, AppSnackbar, Validators (web messages), 12 tests, 2 goldens
 - [x] Slice 6 `feat/app-shell-router`: go_router, session guards, bottom-nav shell (Admin tab for admins), Welcome, launch + unreachable screens, resume → refreshUser
-- [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): login, register (slice 7) · forgotPassword, account (slice 8) · wardrobe (10) · scan (11) · adminHome (15+)
+- [x] Slice 7 `feat/auth-sign-in`: Login + Register (feature layers, web copy/validation), `SignedIn.isNewAccount`, 11 tests + 4 goldens, **live test passes against the real API** (register, 409, 401, login, /auth/me, refresh rotation, logout revoke)
+- [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): forgotPassword, account (slice 8) · wardrobe (10) · scan (11) · adminHome (15+)
 - [ ] Welcome hero gets the hang tag in slice 9
 - [ ] Follow-up: Linux golden baselines for CI (needs Docker or a CI job)
 - [ ] Auth: login, register, forgot, reset, verify email, logout, session restore, route guards
@@ -50,6 +51,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-14 — Slice 7 done: 87 tests + 12 goldens pass; first live run against the user's local API passes. Field hints now muted (bodySmall), inputs golden re-baselined for that.
 - 2026-11-14 — Slice 6 done: 76 tests + 8 goldens pass; first clickable navigation. Tabs not yet built show a temporary PendingScreen (tracked above).
 - 2026-11-14 — Slice 5 done: 65 tests + 6 goldens pass. Noted: theme has no `disabledBorder`, so disabled fields use Material's darker default (left as is; user's theme).
 - 2026-11-14 — Slice 4 done: 53 tests + 4 goldens pass. Loading buttons keep their colour (only ignore taps). Goldens excluded from CI (Windows baselines).
