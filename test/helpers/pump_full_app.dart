@@ -5,20 +5,27 @@ import 'package:staka/app/app.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
+import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
+import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 
 import 'auth_fakes.dart';
 import 'fake_http_adapter.dart';
+import 'wardrobe_fakes.dart';
 
 /// Pumps the whole app with a fake API for the session (`replies`), an
-/// in-memory token store, and optionally a scripted [AuthRepository].
+/// in-memory token store, and scripted feature repositories. The app's own
+/// API client fails the test on any request nobody scripted, so nothing
+/// silently reaches the network.
 Future<InMemoryTokenStore> pumpApp(
   WidgetTester tester, {
   AuthTokens? tokens,
   List<FakeReply> replies = const [],
   AuthRepository? auth,
+  WardrobeRepository? wardrobe,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -28,6 +35,13 @@ Future<InMemoryTokenStore> pumpApp(
       overrides: [
         sessionRepositoryProvider.overrideWithValue(
           SessionRepository(dio, store),
+        ),
+        dioProvider.overrideWithValue(
+          Dio(BaseOptions(baseUrl: 'http://unscripted.test'))
+            ..httpClientAdapter = FakeHttpAdapter([]),
+        ),
+        wardrobeRepositoryProvider.overrideWithValue(
+          wardrobe ?? FakeWardrobeRepository(),
         ),
         if (auth != null) authRepositoryProvider.overrideWithValue(auth),
       ],

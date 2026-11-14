@@ -651,6 +651,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terra Threads'**
   String get sampleTagBrand;
+
+  /// Wardrobe heading. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'My wardrobe'**
+  String get wardrobeTitle;
+
+  /// Wardrobe heading right after registering. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome, {name}'**
+  String welcomeName(String name);
+
+  /// Wardrobe intro when empty. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the barcode on a garment\'s label to keep its footprint on a digital tag.'**
+  String get wardrobeEmptyDescription;
+
+  /// Wardrobe intro with tags. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 piece} other{{count} pieces}}, {verified} verified.'**
+  String wardrobeCount(int count, int verified);
+
+  /// Wardrobe action. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a product'**
+  String get scanAProduct;
+
+  /// Empty wardrobe heading. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wardrobe is empty'**
+  String get wardrobeEmptyTitle;
+
+  /// Empty wardrobe text. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Point your camera at the barcode on a clothing label, or type the number under it. Each piece you add gets its own tag.'**
+  String get wardrobeEmptyBody;
+
+  /// Empty wardrobe action. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan your first piece'**
+  String get scanFirstPiece;
+
+  /// Wardrobe group of proven pieces. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get sectionVerified;
+
+  /// Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Pieces you\'ve proven you own.'**
+  String get sectionVerifiedBody;
+
+  /// Wardrobe group of unproven pieces. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for proof'**
+  String get sectionWaiting;
+
+  /// Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a tag to match it to an order or upload a receipt.'**
+  String get sectionWaitingBody;
+
+  /// Screen-reader label of the verify-email banner. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your email'**
+  String get confirmYourEmail;
+
+  /// Banner right after registering. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent a confirmation link to {email}. Open it to confirm your email.'**
+  String verifyEmailJustJoined(String email);
+
+  /// Banner later on. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a confirmation link to {email}. Open it to confirm your email.'**
+  String verifyEmailReminder(String email);
+
+  /// Banner button. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a new link'**
+  String get sendNewLink;
+
+  /// Banner button while waiting. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get sending;
+
+  /// After a resend. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent a new confirmation link.'**
+  String get verificationResent;
+
+  /// Resend when already confirmed. Same as the website's /wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Your email is already confirmed.'**
+  String get emailAlreadyConfirmed;
 }
 
 class _AppLocalizationsDelegate

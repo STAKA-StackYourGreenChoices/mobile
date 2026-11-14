@@ -313,4 +313,78 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sampleTagBrand => 'Terra Threads';
+
+  @override
+  String get wardrobeTitle => 'My wardrobe';
+
+  @override
+  String welcomeName(String name) {
+    return 'Welcome, $name';
+  }
+
+  @override
+  String get wardrobeEmptyDescription =>
+      'Scan the barcode on a garment\'s label to keep its footprint on a digital tag.';
+
+  @override
+  String wardrobeCount(int count, int verified) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pieces',
+      one: '1 piece',
+    );
+    return '$_temp0, $verified verified.';
+  }
+
+  @override
+  String get scanAProduct => 'Scan a product';
+
+  @override
+  String get wardrobeEmptyTitle => 'Your wardrobe is empty';
+
+  @override
+  String get wardrobeEmptyBody =>
+      'Point your camera at the barcode on a clothing label, or type the number under it. Each piece you add gets its own tag.';
+
+  @override
+  String get scanFirstPiece => 'Scan your first piece';
+
+  @override
+  String get sectionVerified => 'Verified';
+
+  @override
+  String get sectionVerifiedBody => 'Pieces you\'ve proven you own.';
+
+  @override
+  String get sectionWaiting => 'Waiting for proof';
+
+  @override
+  String get sectionWaitingBody =>
+      'Open a tag to match it to an order or upload a receipt.';
+
+  @override
+  String get confirmYourEmail => 'Confirm your email';
+
+  @override
+  String verifyEmailJustJoined(String email) {
+    return 'We\'ve sent a confirmation link to $email. Open it to confirm your email.';
+  }
+
+  @override
+  String verifyEmailReminder(String email) {
+    return 'We sent a confirmation link to $email. Open it to confirm your email.';
+  }
+
+  @override
+  String get sendNewLink => 'Send a new link';
+
+  @override
+  String get sending => 'Sending…';
+
+  @override
+  String get verificationResent => 'We\'ve sent a new confirmation link.';
+
+  @override
+  String get emailAlreadyConfirmed => 'Your email is already confirmed.';
 }

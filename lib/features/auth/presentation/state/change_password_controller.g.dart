@@ -13,7 +13,7 @@ part of 'change_password_controller.dart';
 final changePasswordControllerProvider = ChangePasswordControllerProvider._();
 
 final class ChangePasswordControllerProvider
-    extends $NotifierProvider<ChangePasswordController, RequestState> {
+    extends $NotifierProvider<ChangePasswordController, RequestState<void>> {
   ChangePasswordControllerProvider._()
     : super(
         from: null,
@@ -33,28 +33,29 @@ final class ChangePasswordControllerProvider
   ChangePasswordController create() => ChangePasswordController();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(RequestState value) {
+  Override overrideWithValue(RequestState<void> value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<RequestState>(value),
+      providerOverride: $SyncValueProvider<RequestState<void>>(value),
     );
   }
 }
 
 String _$changePasswordControllerHash() =>
-    r'b2ead4c417e938ee36b8094e8fc050e91bd03d28';
+    r'5abb1600b87c4e438f386766e456a5b92a6f6e6c';
 
-abstract class _$ChangePasswordController extends $Notifier<RequestState> {
-  RequestState build();
+abstract class _$ChangePasswordController
+    extends $Notifier<RequestState<void>> {
+  RequestState<void> build();
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
-    final ref = this.ref as $Ref<RequestState, RequestState>;
+    final ref = this.ref as $Ref<RequestState<void>, RequestState<void>>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<RequestState, RequestState>,
-              RequestState,
+              AnyNotifier<RequestState<void>, RequestState<void>>,
+              RequestState<void>,
               Object?,
               Object?
             >;

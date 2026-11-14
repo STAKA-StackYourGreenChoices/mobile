@@ -404,5 +404,104 @@
   "sampleTagBrand": "Terra Threads",
   "@sampleTagBrand": {
     "description": "Welcome example tag: a seeded brand. Proper noun, do not translate."
+  },
+  "wardrobeTitle": "My wardrobe",
+  "@wardrobeTitle": {
+    "description": "Wardrobe heading. Same as the website's /wardrobe."
+  },
+  "welcomeName": "Welcome, {name}",
+  "@welcomeName": {
+    "description": "Wardrobe heading right after registering. Same as the website's /wardrobe.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wardrobeEmptyDescription": "Scan the barcode on a garment's label to keep its footprint on a digital tag.",
+  "@wardrobeEmptyDescription": {
+    "description": "Wardrobe intro when empty. Same as the website's /wardrobe."
+  },
+  "wardrobeCount": "{count, plural, =1{1 piece} other{{count} pieces}}, {verified} verified.",
+  "@wardrobeCount": {
+    "description": "Wardrobe intro with tags. Same as the website's /wardrobe.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "verified": {
+        "type": "int"
+      }
+    }
+  },
+  "scanAProduct": "Scan a product",
+  "@scanAProduct": {
+    "description": "Wardrobe action. Same as the website's /wardrobe."
+  },
+  "wardrobeEmptyTitle": "Your wardrobe is empty",
+  "@wardrobeEmptyTitle": {
+    "description": "Empty wardrobe heading. Same as the website's /wardrobe."
+  },
+  "wardrobeEmptyBody": "Point your camera at the barcode on a clothing label, or type the number under it. Each piece you add gets its own tag.",
+  "@wardrobeEmptyBody": {
+    "description": "Empty wardrobe text. Same as the website's /wardrobe."
+  },
+  "scanFirstPiece": "Scan your first piece",
+  "@scanFirstPiece": {
+    "description": "Empty wardrobe action. Same as the website's /wardrobe."
+  },
+  "sectionVerified": "Verified",
+  "@sectionVerified": {
+    "description": "Wardrobe group of proven pieces. Same as the website's /wardrobe."
+  },
+  "sectionVerifiedBody": "Pieces you've proven you own.",
+  "@sectionVerifiedBody": {
+    "description": "Same as the website's /wardrobe."
+  },
+  "sectionWaiting": "Waiting for proof",
+  "@sectionWaiting": {
+    "description": "Wardrobe group of unproven pieces. Same as the website's /wardrobe."
+  },
+  "sectionWaitingBody": "Open a tag to match it to an order or upload a receipt.",
+  "@sectionWaitingBody": {
+    "description": "Same as the website's /wardrobe."
+  },
+  "confirmYourEmail": "Confirm your email",
+  "@confirmYourEmail": {
+    "description": "Screen-reader label of the verify-email banner. Same as the website's /wardrobe."
+  },
+  "verifyEmailJustJoined": "We've sent a confirmation link to {email}. Open it to confirm your email.",
+  "@verifyEmailJustJoined": {
+    "description": "Banner right after registering. Same as the website's /wardrobe.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailReminder": "We sent a confirmation link to {email}. Open it to confirm your email.",
+  "@verifyEmailReminder": {
+    "description": "Banner later on. Same as the website's /wardrobe.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "sendNewLink": "Send a new link",
+  "@sendNewLink": {
+    "description": "Banner button. Same as the website's /wardrobe."
+  },
+  "sending": "Sending…",
+  "@sending": {
+    "description": "Banner button while waiting. Same as the website's /wardrobe."
+  },
+  "verificationResent": "We've sent a new confirmation link.",
+  "@verificationResent": {
+    "description": "After a resend. Same as the website's /wardrobe."
+  },
+  "emailAlreadyConfirmed": "Your email is already confirmed.",
+  "@emailAlreadyConfirmed": {
+    "description": "Resend when already confirmed. Same as the website's /wardrobe."
   }
 }

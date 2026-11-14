@@ -11,6 +11,7 @@ import 'package:staka/features/auth/presentation/screens/forgot_password_screen.
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 
 GoRoute _route(
   AppRoute route,
@@ -47,7 +48,9 @@ final appRouteTable = <RouteBase>[
   StatefulShellRoute.indexedStack(
     builder: (_, _, shell) => AppNavigationShell(shell: shell),
     branches: [
-      StatefulShellBranch(routes: [_pending(AppRoute.wardrobe)]),
+      StatefulShellBranch(
+        routes: [_route(AppRoute.wardrobe, (_, _) => const WardrobeScreen())],
+      ),
       StatefulShellBranch(routes: [_pending(AppRoute.scan)]),
       StatefulShellBranch(routes: [_pending(AppRoute.adminHome)]),
       StatefulShellBranch(

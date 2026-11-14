@@ -1,11 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/l10n/l10n.dart';
+import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/auth/presentation/state/forgot_password_controller.dart';
-import 'package:staka/features/auth/presentation/state/request_state.dart';
 import 'package:staka/features/auth/presentation/widgets/auth_page_heading.dart';
 import 'package:staka/features/auth/presentation/widgets/auth_switch_link.dart';
 import 'package:staka/features/auth/presentation/widgets/forgot_password_form.dart';
@@ -23,7 +22,7 @@ class ForgotPasswordScreen extends ConsumerWidget {
     final request = ref.watch(forgotPasswordControllerProvider);
 
     final alert = switch (request) {
-      RequestDone(:final email?) => (
+      RequestDone(value: final email) => (
         message: '${l10n.resetLinkSent(email)} ${l10n.resetLinkOpensWebsite}',
         tone: AlertTone.success,
       ),

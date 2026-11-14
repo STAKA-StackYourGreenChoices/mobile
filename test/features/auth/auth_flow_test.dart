@@ -42,7 +42,7 @@ void main() {
     await tester.tap(find.widgetWithText(FilledButton, 'Sign in'));
     await tester.pumpAndSettle();
 
-    expect(find.text('/wardrobe'), findsOneWidget);
+    expect(find.text('My wardrobe'), findsOneWidget);
     expect(store.tokens, _session.tokens);
     expect(auth.calls.single, {
       'email': 'ada@example.com',
@@ -156,6 +156,6 @@ void main() {
     await tester.tap(find.widgetWithText(FilledButton, 'Create account'));
     await tester.pumpAndSettle();
 
-    expect(find.text('/wardrobe'), findsOneWidget);
+    expect(find.text('Welcome, Ada'), findsOneWidget);
   });
 }

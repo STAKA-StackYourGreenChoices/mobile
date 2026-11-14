@@ -1,17 +1,16 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/auth/session_controller.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:staka/features/auth/presentation/state/request_state.dart';
 
 part 'change_password_controller.g.dart';
 
 @riverpod
 class ChangePasswordController extends _$ChangePasswordController {
   @override
-  RequestState build() => const RequestIdle();
+  RequestState<void> build() => const RequestIdle();
 
   /// Changing the password makes the API revoke every session, this phone's
   /// included. So this phone signs straight back in with the new password;
@@ -45,7 +44,7 @@ class ChangePasswordController extends _$ChangePasswordController {
     switch (await repository.login(email: user.email, password: newPassword)) {
       case Ok(:final value):
         await session.signIn(tokens: value.tokens, user: value.user);
-        if (ref.mounted) state = const RequestDone();
+        if (ref.mounted) state = const RequestDone(null);
       case Err():
         await session.signOutAfterPasswordChange();
     }

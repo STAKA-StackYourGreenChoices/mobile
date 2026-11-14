@@ -36,7 +36,7 @@ void main() {
     await pumpApp(tester, tokens: _tokens, replies: [json(200, userJson())]);
 
     expect(find.byType(NavigationBar), findsOneWidget);
-    expect(find.text('/wardrobe'), findsOneWidget);
+    expect(find.text('My wardrobe'), findsOneWidget);
     expect(find.text('Admin'), findsNothing);
 
     await tester.tap(find.text('Account'));
@@ -67,7 +67,7 @@ void main() {
     expect(find.text('No connection'), findsOneWidget);
     await tester.tap(find.text('Try again'));
     await tester.pumpAndSettle();
-    expect(find.text('/wardrobe'), findsOneWidget);
+    expect(find.text('My wardrobe'), findsOneWidget);
   });
 
   testWidgets('API down at launch: sign out gets you unstuck', (tester) async {

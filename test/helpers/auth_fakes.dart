@@ -29,12 +29,15 @@ String fakeJwt({required DateTime exp, String marker = 'a'}) {
 
 final farFuture = DateTime.utc(2099);
 
-Map<String, Object?> userJson({String role = 'USER'}) => {
+Map<String, Object?> userJson({
+  String role = 'USER',
+  bool emailVerified = true,
+}) => {
   'id': 'u1',
   'email': 'ada@example.com',
   'name': 'Ada Lovelace',
   'role': role,
-  'emailVerified': true,
+  'emailVerified': emailVerified,
   'phone': null,
   'status': 'ACTIVE',
 };
