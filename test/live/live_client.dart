@@ -12,6 +12,8 @@ import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart'
 import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/products/data/datasources/product_remote_data_source.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
+import 'package:staka/features/tags/data/datasources/tag_remote_data_source.dart';
+import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/wardrobe/data/datasources/wardrobe_remote_data_source.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 
@@ -45,6 +47,7 @@ class LiveClient {
       ProductRemoteDataSource(dio),
       CardsApi(dio),
     );
+    tags = TagRepositoryImpl(TagRemoteDataSource(dio));
     session = SessionRepository(dio, store);
   }
 
@@ -54,6 +57,7 @@ class LiveClient {
   late final AuthRepositoryImpl auth;
   late final WardrobeRepositoryImpl wardrobe;
   late final ProductRepositoryImpl products;
+  late final TagRepositoryImpl tags;
   late final SessionRepository session;
   int rejections = 0;
 

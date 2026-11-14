@@ -1023,6 +1023,240 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Scan again'**
   String get scanAgain;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} is in your wardrobe.'**
+  String addedBanner(String product);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to your wardrobe on {date}.'**
+  String addedOn(String date);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan another piece'**
+  String get scanAnotherPiece;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Product details'**
+  String get productDetails;
+
+  /// The tag doesn't exist or isn't this shopper's (API 404). The website shows its 404 page.
+  ///
+  /// In en, this message translates to:
+  /// **'This tag isn\'t in your wardrobe'**
+  String get tagMissingTitle;
+
+  /// Under tagMissingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been removed, or the link was copied wrong.'**
+  String get tagMissingBody;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'{left, plural, =1{1 upload left.} other{{left} of 5 uploads left.}}'**
+  String uploadsLeft(int left);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re the verified owner'**
+  String get ownershipVerifiedTitle;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'We matched this piece to a paid order on your account on {date}. It counts toward your wardrobe.'**
+  String verifiedByOrderOn(String date);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'We matched this piece to a paid order on your account. It counts toward your wardrobe.'**
+  String get verifiedByOrder;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin approved your receipt on {date}. It counts toward your wardrobe.'**
+  String verifiedByReceiptOn(String date);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin approved your receipt. It counts toward your wardrobe.'**
+  String get verifiedByReceipt;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent {date}. An admin will check it, and the result shows up here. {uploadsLeft}'**
+  String pendingBody(String date, String uploadsLeft);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin will check it, and the result shows up here. {uploadsLeft}'**
+  String pendingBodyUndated(String uploadsLeft);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'This piece can\'t be verified'**
+  String get blockedTitle;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'All 5 receipt uploads for it were used. You can still keep its tag.'**
+  String get blockedBody;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'All 5 receipt uploads for it were used. The last one was turned down: {reason}. You can still keep its tag.'**
+  String blockedBodyWithReason(String reason);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Prove you own it'**
+  String get proveTitle;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified pieces count toward your wardrobe. Use whichever way works for you.'**
+  String get proveLede;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Your last receipt was turned down: {reason}. {uploadsLeft}'**
+  String lastReceiptRejected(String reason, String uploadsLeft);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'no reason given'**
+  String get noReasonGiven;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Bought it through STAKA\'s partner shop?'**
+  String get orderTitle;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll look for it in the paid orders on your account.'**
+  String get orderBody;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in my orders'**
+  String get findInOrders;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking orders…'**
+  String get checkingOrders;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified: we found it in your orders.'**
+  String get orderMatched;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'No paid order on your account includes this piece. Upload a receipt instead.'**
+  String get orderNotFound;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload a receipt'**
+  String get receiptTitle;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'A clear photo or PDF showing the shop, the date and this piece. An admin checks it. {uploadsLeft}'**
+  String receiptBody(String uploadsLeft);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a photo or PDF'**
+  String get choosePhotoOrPdf;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} MB. Tap to change.'**
+  String fileSizeTapToChange(String size);
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is over 5 MB. Take a smaller photo or crop it.'**
+  String get fileTooLarge;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Send for review'**
+  String get sendForReview;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending receipt…'**
+  String get sendingReceipt;
+
+  /// Same as the website's tag page.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt sent. We\'ll check it soon.'**
+  String get receiptSent;
+
+  /// Receipt source: the camera. Mobile only (the website has one file input).
+  ///
+  /// In en, this message translates to:
+  /// **'Take a photo'**
+  String get takePhoto;
+
+  /// Receipt source: the photo library.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from your photos'**
+  String get choosePhoto;
+
+  /// Receipt source: a PDF file.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a PDF'**
+  String get choosePdf;
+
+  /// Screen-reader label of a tag in the wardrobe. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} by {brand}, open tag'**
+  String openTagLabel(String product, String brand);
 }
 
 class _AppLocalizationsDelegate

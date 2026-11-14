@@ -18,6 +18,7 @@ class WardrobeScrollView extends StatelessWidget {
     required this.title,
     required this.onRefresh,
     required this.onScanPressed,
+    required this.onTagPressed,
     this.banner,
     super.key,
   });
@@ -27,6 +28,7 @@ class WardrobeScrollView extends StatelessWidget {
   final String title;
   final Future<void> Function() onRefresh;
   final VoidCallback onScanPressed;
+  final ValueChanged<DigitalCard> onTagPressed;
   final Widget? banner;
 
   @override
@@ -97,8 +99,11 @@ class WardrobeScrollView extends StatelessWidget {
       SliverToBoxAdapter(child: header),
       SliverList.builder(
         itemCount: cards.length,
-        itemBuilder: (_, index) =>
-            WardrobeTagItem(key: ValueKey(cards[index].id), card: cards[index]),
+        itemBuilder: (_, index) => WardrobeTagItem(
+          key: ValueKey(cards[index].id),
+          card: cards[index],
+          onPressed: () => onTagPressed(cards[index]),
+        ),
       ),
     ],
   ];

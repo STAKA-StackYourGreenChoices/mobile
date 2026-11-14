@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>STAKA uses the camera to read the barcode or QR code on a clothing label.</string>
+	<string>STAKA uses the camera to read the barcode on a clothing label, and to photograph a receipt when you prove you own a piece.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>STAKA lets you pick a photo of a receipt to prove you own a piece.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<!-- Development: lets the app reach an API on the local network over

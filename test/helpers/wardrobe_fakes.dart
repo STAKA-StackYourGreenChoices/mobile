@@ -39,6 +39,7 @@ DigitalCard cardFor({
   required String name,
   OwnershipStatus status = OwnershipStatus.unverified,
   bool hasFigures = true,
+  Ownership? ownership,
 }) => DigitalCard(
   id: id,
   createdAt: _date,
@@ -60,9 +61,7 @@ DigitalCard cardFor({
           )
         : null,
   ),
-  ownership: Ownership(
-    status: status,
-    receiptAttemptsUsed: 0,
-    receiptAttemptsLeft: 5,
-  ),
+  ownership:
+      ownership ??
+      Ownership(status: status, receiptAttemptsUsed: 0, receiptAttemptsLeft: 5),
 );

@@ -60,6 +60,10 @@ class WardrobeScreen extends ConsumerWidget {
               : l10n.wardrobeTitle,
           onRefresh: controller.refresh,
           onScanPressed: () => context.goNamed(AppRoute.scan.name),
+          onTagPressed: (card) => context.pushNamed(
+            AppRoute.tag.name,
+            pathParameters: {'id': card.id},
+          ),
           banner: session.user.emailVerified
               ? null
               : _VerifyEmailSection(

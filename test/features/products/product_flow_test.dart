@@ -11,6 +11,7 @@ import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/pump_full_app.dart';
+import '../../helpers/tag_fakes.dart';
 import '../../helpers/wardrobe_fakes.dart';
 
 const _gtin = '8901234500019';
@@ -18,8 +19,9 @@ const _gtin = '8901234500019';
 /// Signs in, opens Scan and types [_gtin], landing on the product page.
 Future<FakeWardrobeRepository> _openProduct(
   WidgetTester tester,
-  FakeProductRepository products,
-) async {
+  FakeProductRepository products, {
+  FakeTagRepository? tags,
+}) async {
   usePhoneScreen(tester, height: 2200);
   final wardrobe = FakeWardrobeRepository();
   await pumpApp(
@@ -28,6 +30,7 @@ Future<FakeWardrobeRepository> _openProduct(
     replies: [json(200, userJson())],
     products: products,
     wardrobe: wardrobe,
+    tags: tags,
   );
   await tester.tap(find.text('Scan'));
   await tester.pumpAndSettle();
@@ -113,14 +116,22 @@ void main() {
       lookups: {_gtin: Ok(ProductFound(productNamed('Organic Cotton Tee')))},
       adds: [Ok(cardFor(id: '9', name: 'Organic Cotton Tee'))],
     );
-    final wardrobe = await _openProduct(tester, products);
+    final newTag = cardFor(id: '9', name: 'Organic Cotton Tee');
+    final wardrobe = await _openProduct(
+      tester,
+      products,
+      tags: FakeTagRepository(cards: [newTag]),
+    );
     final fetchesBefore = wardrobe.fetches;
 
     await tester.tap(find.text('Add to my wardrobe'));
     await tester.pumpAndSettle();
 
     expect(products.added, [_gtin]);
-    expect(find.text('/wardrobe/tag/:id'), findsOneWidget);
+    expect(
+      find.text('Organic Cotton Tee is in your wardrobe.'),
+      findsOneWidget,
+    );
     expect(wardrobe.fetches, greaterThan(fetchesBefore));
   });
 
@@ -151,13 +162,17 @@ void main() {
       _with(
         ProductFound(productNamed('Organic Cotton Tee'), ownedCardId: 'c1'),
       ),
+      tags: FakeTagRepository(
+        cards: [cardFor(id: 'c1', name: 'Organic Cotton Tee')],
+      ),
     );
 
     expect(find.text('In your wardrobe'), findsOneWidget);
     expect(find.text('Add to my wardrobe'), findsNothing);
     await tester.tap(find.text('View your tag'));
     await tester.pumpAndSettle();
-    expect(find.text('/wardrobe/tag/:id'), findsOneWidget);
+    expect(find.text('Prove you own it'), findsOneWidget);
+    expect(find.textContaining('is in your wardrobe.'), findsNothing);
   });
 
   testWidgets("misread barcode: the API's reason, and Scan again", (

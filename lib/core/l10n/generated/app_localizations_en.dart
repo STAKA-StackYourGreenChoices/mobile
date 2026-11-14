@@ -542,4 +542,159 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scanAgain => 'Scan again';
+
+  @override
+  String addedBanner(String product) {
+    return '$product is in your wardrobe.';
+  }
+
+  @override
+  String addedOn(String date) {
+    return 'Added to your wardrobe on $date.';
+  }
+
+  @override
+  String get scanAnotherPiece => 'Scan another piece';
+
+  @override
+  String get productDetails => 'Product details';
+
+  @override
+  String get tagMissingTitle => 'This tag isn\'t in your wardrobe';
+
+  @override
+  String get tagMissingBody =>
+      'It may have been removed, or the link was copied wrong.';
+
+  @override
+  String uploadsLeft(int left) {
+    String _temp0 = intl.Intl.pluralLogic(
+      left,
+      locale: localeName,
+      other: '$left of 5 uploads left.',
+      one: '1 upload left.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ownershipVerifiedTitle => 'You\'re the verified owner';
+
+  @override
+  String verifiedByOrderOn(String date) {
+    return 'We matched this piece to a paid order on your account on $date. It counts toward your wardrobe.';
+  }
+
+  @override
+  String get verifiedByOrder =>
+      'We matched this piece to a paid order on your account. It counts toward your wardrobe.';
+
+  @override
+  String verifiedByReceiptOn(String date) {
+    return 'An admin approved your receipt on $date. It counts toward your wardrobe.';
+  }
+
+  @override
+  String get verifiedByReceipt =>
+      'An admin approved your receipt. It counts toward your wardrobe.';
+
+  @override
+  String pendingBody(String date, String uploadsLeft) {
+    return 'Sent $date. An admin will check it, and the result shows up here. $uploadsLeft';
+  }
+
+  @override
+  String pendingBodyUndated(String uploadsLeft) {
+    return 'An admin will check it, and the result shows up here. $uploadsLeft';
+  }
+
+  @override
+  String get blockedTitle => 'This piece can\'t be verified';
+
+  @override
+  String get blockedBody =>
+      'All 5 receipt uploads for it were used. You can still keep its tag.';
+
+  @override
+  String blockedBodyWithReason(String reason) {
+    return 'All 5 receipt uploads for it were used. The last one was turned down: $reason. You can still keep its tag.';
+  }
+
+  @override
+  String get proveTitle => 'Prove you own it';
+
+  @override
+  String get proveLede =>
+      'Verified pieces count toward your wardrobe. Use whichever way works for you.';
+
+  @override
+  String lastReceiptRejected(String reason, String uploadsLeft) {
+    return 'Your last receipt was turned down: $reason. $uploadsLeft';
+  }
+
+  @override
+  String get noReasonGiven => 'no reason given';
+
+  @override
+  String get orderTitle => 'Bought it through STAKA\'s partner shop?';
+
+  @override
+  String get orderBody =>
+      'We\'ll look for it in the paid orders on your account.';
+
+  @override
+  String get findInOrders => 'Find it in my orders';
+
+  @override
+  String get checkingOrders => 'Checking orders…';
+
+  @override
+  String get orderMatched => 'Verified: we found it in your orders.';
+
+  @override
+  String get orderNotFound =>
+      'No paid order on your account includes this piece. Upload a receipt instead.';
+
+  @override
+  String get receiptTitle => 'Upload a receipt';
+
+  @override
+  String receiptBody(String uploadsLeft) {
+    return 'A clear photo or PDF showing the shop, the date and this piece. An admin checks it. $uploadsLeft';
+  }
+
+  @override
+  String get choosePhotoOrPdf => 'Choose a photo or PDF';
+
+  @override
+  String fileSizeTapToChange(String size) {
+    return '$size MB. Tap to change.';
+  }
+
+  @override
+  String get fileTooLarge =>
+      'The file is over 5 MB. Take a smaller photo or crop it.';
+
+  @override
+  String get sendForReview => 'Send for review';
+
+  @override
+  String get sendingReceipt => 'Sending receipt…';
+
+  @override
+  String get receiptSent => 'Receipt sent. We\'ll check it soon.';
+
+  @override
+  String get takePhoto => 'Take a photo';
+
+  @override
+  String get choosePhoto => 'Choose from your photos';
+
+  @override
+  String get choosePdf => 'Choose a PDF';
+
+  @override
+  String openTagLabel(String product, String brand) {
+    return '$product by $brand, open tag';
+  }
 }

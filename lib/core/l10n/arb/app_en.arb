@@ -725,5 +725,230 @@
   "scanAgain": "Scan again",
   "@scanAgain": {
     "description": "Same as the website's product page."
+  },
+  "addedBanner": "{product} is in your wardrobe.",
+  "@addedBanner": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "addedOn": "Added to your wardrobe on {date}.",
+  "@addedOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "scanAnotherPiece": "Scan another piece",
+  "@scanAnotherPiece": {
+    "description": "Same as the website's tag page."
+  },
+  "productDetails": "Product details",
+  "@productDetails": {
+    "description": "Same as the website's tag page."
+  },
+  "tagMissingTitle": "This tag isn't in your wardrobe",
+  "@tagMissingTitle": {
+    "description": "The tag doesn't exist or isn't this shopper's (API 404). The website shows its 404 page."
+  },
+  "tagMissingBody": "It may have been removed, or the link was copied wrong.",
+  "@tagMissingBody": {
+    "description": "Under tagMissingTitle."
+  },
+  "uploadsLeft": "{left, plural, =1{1 upload left.} other{{left} of 5 uploads left.}}",
+  "@uploadsLeft": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "left": {
+        "type": "int"
+      }
+    }
+  },
+  "ownershipVerifiedTitle": "You're the verified owner",
+  "@ownershipVerifiedTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "verifiedByOrderOn": "We matched this piece to a paid order on your account on {date}. It counts toward your wardrobe.",
+  "@verifiedByOrderOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByOrder": "We matched this piece to a paid order on your account. It counts toward your wardrobe.",
+  "@verifiedByOrder": {
+    "description": "Same as the website's tag page."
+  },
+  "verifiedByReceiptOn": "An admin approved your receipt on {date}. It counts toward your wardrobe.",
+  "@verifiedByReceiptOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByReceipt": "An admin approved your receipt. It counts toward your wardrobe.",
+  "@verifiedByReceipt": {
+    "description": "Same as the website's tag page."
+  },
+  "pendingBody": "Sent {date}. An admin will check it, and the result shows up here. {uploadsLeft}",
+  "@pendingBody": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingBodyUndated": "An admin will check it, and the result shows up here. {uploadsLeft}",
+  "@pendingBodyUndated": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedTitle": "This piece can't be verified",
+  "@blockedTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "blockedBody": "All 5 receipt uploads for it were used. You can still keep its tag.",
+  "@blockedBody": {
+    "description": "Same as the website's tag page."
+  },
+  "blockedBodyWithReason": "All 5 receipt uploads for it were used. The last one was turned down: {reason}. You can still keep its tag.",
+  "@blockedBodyWithReason": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "proveTitle": "Prove you own it",
+  "@proveTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "proveLede": "Verified pieces count toward your wardrobe. Use whichever way works for you.",
+  "@proveLede": {
+    "description": "Same as the website's tag page."
+  },
+  "lastReceiptRejected": "Your last receipt was turned down: {reason}. {uploadsLeft}",
+  "@lastReceiptRejected": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "noReasonGiven": "no reason given",
+  "@noReasonGiven": {
+    "description": "Same as the website's tag page."
+  },
+  "orderTitle": "Bought it through STAKA's partner shop?",
+  "@orderTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "orderBody": "We'll look for it in the paid orders on your account.",
+  "@orderBody": {
+    "description": "Same as the website's tag page."
+  },
+  "findInOrders": "Find it in my orders",
+  "@findInOrders": {
+    "description": "Same as the website's tag page."
+  },
+  "checkingOrders": "Checking orders…",
+  "@checkingOrders": {
+    "description": "Same as the website's tag page."
+  },
+  "orderMatched": "Verified: we found it in your orders.",
+  "@orderMatched": {
+    "description": "Same as the website's tag page."
+  },
+  "orderNotFound": "No paid order on your account includes this piece. Upload a receipt instead.",
+  "@orderNotFound": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptTitle": "Upload a receipt",
+  "@receiptTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptBody": "A clear photo or PDF showing the shop, the date and this piece. An admin checks it. {uploadsLeft}",
+  "@receiptBody": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "choosePhotoOrPdf": "Choose a photo or PDF",
+  "@choosePhotoOrPdf": {
+    "description": "Same as the website's tag page."
+  },
+  "fileSizeTapToChange": "{size} MB. Tap to change.",
+  "@fileSizeTapToChange": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "fileTooLarge": "The file is over 5 MB. Take a smaller photo or crop it.",
+  "@fileTooLarge": {
+    "description": "Same as the website's tag page."
+  },
+  "sendForReview": "Send for review",
+  "@sendForReview": {
+    "description": "Same as the website's tag page."
+  },
+  "sendingReceipt": "Sending receipt…",
+  "@sendingReceipt": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptSent": "Receipt sent. We'll check it soon.",
+  "@receiptSent": {
+    "description": "Same as the website's tag page."
+  },
+  "takePhoto": "Take a photo",
+  "@takePhoto": {
+    "description": "Receipt source: the camera. Mobile only (the website has one file input)."
+  },
+  "choosePhoto": "Choose from your photos",
+  "@choosePhoto": {
+    "description": "Receipt source: the photo library."
+  },
+  "choosePdf": "Choose a PDF",
+  "@choosePdf": {
+    "description": "Receipt source: a PDF file."
+  },
+  "openTagLabel": "{product} by {brand}, open tag",
+  "@openTagLabel": {
+    "description": "Screen-reader label of a tag in the wardrobe. Same as the website.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
   }
 }
