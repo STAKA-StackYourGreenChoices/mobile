@@ -207,6 +207,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hide password'**
   String get hidePassword;
+
+  /// Welcome screen intro. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the barcode on a clothing label to see the piece\'s carbon footprint and recyclability, prove you bought it, and keep its tag in one wardrobe.'**
+  String get welcomeLede;
+
+  /// Primary action for signed-out people. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get createAccount;
+
+  /// Sign-in action and screen title. Same as the website.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signIn;
+
+  /// Ends the session. Same as the website's account menu.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// Heading of the three steps on the welcome screen. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get howItWorks;
+
+  /// Step 1 title. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the label'**
+  String get stepScanTitle;
+
+  /// Step 1. Website copy without its 'No app to install' line.
+  ///
+  /// In en, this message translates to:
+  /// **'Point your phone\'s camera at the barcode on a clothing label, or type the number under it.'**
+  String get stepScanBody;
+
+  /// Step 2 title. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'See its footprint'**
+  String get stepFootprintTitle;
+
+  /// Step 2. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'The piece\'s tag shows its carbon footprint, how much of it can be recycled, and who checked those figures.'**
+  String get stepFootprintBody;
+
+  /// Step 3 title. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'Prove you own it'**
+  String get stepProveTitle;
+
+  /// Step 3. From the website's home page.
+  ///
+  /// In en, this message translates to:
+  /// **'Match it to a paid order, or upload a receipt for the STAKA team to check. Proven pieces join your wardrobe.'**
+  String get stepProveBody;
+
+  /// Bottom bar tab. Same as the website nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Wardrobe'**
+  String get navWardrobe;
+
+  /// Bottom bar tab. Same as the website nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan'**
+  String get navScan;
+
+  /// Bottom bar tab for admins: products, brands, import, claims.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get navAdmin;
+
+  /// Bottom bar tab: the user's account and sign out.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get navAccount;
+
+  /// TEMPORARY development stand-in. Remove with PendingScreen before Phase 5.
+  ///
+  /// In en, this message translates to:
+  /// **'This screen is being built'**
+  String get pendingScreenTitle;
 }
 
 class _AppLocalizationsDelegate

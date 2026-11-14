@@ -69,4 +69,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hidePassword => 'Hide password';
+
+  @override
+  String get welcomeLede =>
+      'Scan the barcode on a clothing label to see the piece\'s carbon footprint and recyclability, prove you bought it, and keep its tag in one wardrobe.';
+
+  @override
+  String get createAccount => 'Create an account';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get howItWorks => 'How it works';
+
+  @override
+  String get stepScanTitle => 'Scan the label';
+
+  @override
+  String get stepScanBody =>
+      'Point your phone\'s camera at the barcode on a clothing label, or type the number under it.';
+
+  @override
+  String get stepFootprintTitle => 'See its footprint';
+
+  @override
+  String get stepFootprintBody =>
+      'The piece\'s tag shows its carbon footprint, how much of it can be recycled, and who checked those figures.';
+
+  @override
+  String get stepProveTitle => 'Prove you own it';
+
+  @override
+  String get stepProveBody =>
+      'Match it to a paid order, or upload a receipt for the STAKA team to check. Proven pieces join your wardrobe.';
+
+  @override
+  String get navWardrobe => 'Wardrobe';
+
+  @override
+  String get navScan => 'Scan';
+
+  @override
+  String get navAdmin => 'Admin';
+
+  @override
+  String get navAccount => 'Account';
+
+  @override
+  String get pendingScreenTitle => 'This screen is being built';
 }

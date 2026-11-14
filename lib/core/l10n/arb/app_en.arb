@@ -80,5 +80,69 @@
   "hidePassword": "Hide password",
   "@hidePassword": {
     "description": "Tooltip and screen-reader label when the password is visible."
+  },
+  "welcomeLede": "Scan the barcode on a clothing label to see the piece's carbon footprint and recyclability, prove you bought it, and keep its tag in one wardrobe.",
+  "@welcomeLede": {
+    "description": "Welcome screen intro. From the website's home page."
+  },
+  "createAccount": "Create an account",
+  "@createAccount": {
+    "description": "Primary action for signed-out people. From the website's home page."
+  },
+  "signIn": "Sign in",
+  "@signIn": {
+    "description": "Sign-in action and screen title. Same as the website."
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "Ends the session. Same as the website's account menu."
+  },
+  "howItWorks": "How it works",
+  "@howItWorks": {
+    "description": "Heading of the three steps on the welcome screen. From the website's home page."
+  },
+  "stepScanTitle": "Scan the label",
+  "@stepScanTitle": {
+    "description": "Step 1 title. From the website's home page."
+  },
+  "stepScanBody": "Point your phone's camera at the barcode on a clothing label, or type the number under it.",
+  "@stepScanBody": {
+    "description": "Step 1. Website copy without its 'No app to install' line."
+  },
+  "stepFootprintTitle": "See its footprint",
+  "@stepFootprintTitle": {
+    "description": "Step 2 title. From the website's home page."
+  },
+  "stepFootprintBody": "The piece's tag shows its carbon footprint, how much of it can be recycled, and who checked those figures.",
+  "@stepFootprintBody": {
+    "description": "Step 2. From the website's home page."
+  },
+  "stepProveTitle": "Prove you own it",
+  "@stepProveTitle": {
+    "description": "Step 3 title. From the website's home page."
+  },
+  "stepProveBody": "Match it to a paid order, or upload a receipt for the STAKA team to check. Proven pieces join your wardrobe.",
+  "@stepProveBody": {
+    "description": "Step 3. From the website's home page."
+  },
+  "navWardrobe": "Wardrobe",
+  "@navWardrobe": {
+    "description": "Bottom bar tab. Same as the website nav."
+  },
+  "navScan": "Scan",
+  "@navScan": {
+    "description": "Bottom bar tab. Same as the website nav."
+  },
+  "navAdmin": "Admin",
+  "@navAdmin": {
+    "description": "Bottom bar tab for admins: products, brands, import, claims."
+  },
+  "navAccount": "Account",
+  "@navAccount": {
+    "description": "Bottom bar tab: the user's account and sign out."
+  },
+  "pendingScreenTitle": "This screen is being built",
+  "@pendingScreenTitle": {
+    "description": "TEMPORARY development stand-in. Remove with PendingScreen before Phase 5."
   }
 }

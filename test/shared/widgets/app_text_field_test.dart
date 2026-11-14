@@ -26,7 +26,7 @@ void main() {
 
     expect(
       tester.getSemantics(find.bySemanticsLabel('Email')),
-      containsSemantics(label: 'Email', isTextField: true),
+      isSemantics(label: 'Email', isTextField: true),
     );
     handle.dispose();
   });
