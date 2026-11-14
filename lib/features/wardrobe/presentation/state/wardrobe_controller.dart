@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:staka/core/auth/session_controller.dart';
+import 'package:staka/core/cards/cards_revision.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/presentation/state/wardrobe_state.dart';
@@ -13,6 +14,8 @@ part 'wardrobe_controller.g.dart';
 class WardrobeController extends _$WardrobeController {
   @override
   WardrobeState build() {
+    // A tag was added or changed on another screen: reload quietly.
+    ref.listen(cardsRevisionProvider, (_, _) => unawaited(_reload()));
     unawaited(Future.microtask(_load));
     return const WardrobeLoading();
   }
@@ -25,10 +28,12 @@ class WardrobeController extends _$WardrobeController {
 
   /// Pull to refresh: also re-reads the user, so a confirmed email clears
   /// the banner. Tags already shown stay if the refresh fails.
-  Future<void> refresh() async {
+  Future<void> refresh() => _reload(alsoUser: true);
+
+  Future<void> _reload({bool alsoUser = false}) async {
     final session = ref.read(sessionControllerProvider.notifier);
     final result = await ref.read(wardrobeRepositoryProvider).fetchMyCards();
-    await session.refreshUser();
+    if (alsoUser) await session.refreshUser();
     if (!ref.mounted) return;
     state = switch ((result, state)) {
       (Ok(:final value), _) => WardrobeState.fromCards(value),

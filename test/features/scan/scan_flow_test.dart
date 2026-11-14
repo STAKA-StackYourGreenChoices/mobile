@@ -1,18 +1,30 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
+import 'package:staka/core/error/result.dart';
+import 'package:staka/features/products/domain/models/product_lookup.dart';
 
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
+import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/pump_full_app.dart';
 
 const _tokens = AuthTokens(accessToken: 'a', refreshToken: 'r');
-const _productStub = '/scan/product/:gtin';
-
 Future<void> _openScan(WidgetTester tester) async {
   usePhoneScreen(tester, height: 1400);
-  await pumpApp(tester, tokens: _tokens, replies: [json(200, userJson())]);
+  await pumpApp(
+    tester,
+    tokens: _tokens,
+    replies: [json(200, userJson())],
+    products: FakeProductRepository(
+      lookups: {
+        // What the camera fake reads, and what the typed tests enter.
+        for (final gtin in ['08901234500019', '8901234500019'])
+          gtin: Ok(ProductFound(productNamed('Organic Cotton Tee'))),
+      },
+    ),
+  );
   await tester.tap(find.text('Scan'));
   await tester.pumpAndSettle();
 }
@@ -38,7 +50,7 @@ void main() {
     await tester.tap(find.text('Simulate scan'));
     await tester.pumpAndSettle();
 
-    expect(find.text(_productStub), findsOneWidget);
+    expect(find.text('Add to my wardrobe'), findsOneWidget);
   });
 
   testWidgets('typed numbers: the same rules and messages as the website', (
@@ -62,7 +74,7 @@ void main() {
     );
 
     await _type(tester, '890 1234 500019');
-    expect(find.text(_productStub), findsOneWidget);
+    expect(find.text('Add to my wardrobe'), findsOneWidget);
   });
 
   testWidgets('back from the product returns to Scan, bottom bar kept', (

@@ -42,7 +42,7 @@ final class WardrobeControllerProvider
 }
 
 String _$wardrobeControllerHash() =>
-    r'32452c08bef59f7e99473782c6f2dbe09acc0c4d';
+    r'0aa5544bf397e18e51b65d4673fa4f75f747dc8a';
 
 abstract class _$WardrobeController extends $Notifier<WardrobeState> {
   WardrobeState build();

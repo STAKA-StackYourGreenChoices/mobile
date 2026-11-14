@@ -462,4 +462,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scanNotBarcode => 'This code isn\'t a product barcode.';
+
+  @override
+  String get productInWardrobe => 'In your wardrobe';
+
+  @override
+  String get viewYourTag => 'View your tag';
+
+  @override
+  String get addToMyWardrobe => 'Add to my wardrobe';
+
+  @override
+  String get adding => 'Adding…';
+
+  @override
+  String get figuresTitle => 'What the figures mean';
+
+  @override
+  String figureCarbon(String value) {
+    return 'Carbon footprint: $value';
+  }
+
+  @override
+  String get figureCarbonBody =>
+      'Estimated greenhouse gases from making this piece, expressed as the same warming effect in carbon dioxide.';
+
+  @override
+  String figureRecyclable(int percent) {
+    return 'Recyclable: $percent%';
+  }
+
+  @override
+  String get figureRecyclableBody =>
+      'The share of the piece, by weight, that can be recycled at end of life.';
+
+  @override
+  String get independentlyVerified => 'Independently verified';
+
+  @override
+  String certifierChecked(String certifier) {
+    return '$certifier has checked these figures.';
+  }
+
+  @override
+  String get thirdPartyChecked => 'A third party has checked these figures.';
+
+  @override
+  String get statedByBrandTitle => 'Stated by the brand';
+
+  @override
+  String get noOneChecked =>
+      'No one outside the brand has checked these figures yet.';
+
+  @override
+  String brandNoFigures(String brand) {
+    return '$brand hasn\'t shared figures for this piece yet.';
+  }
+
+  @override
+  String aboutBrand(String brand) {
+    return 'About $brand';
+  }
+
+  @override
+  String get barcodeInvalidTitle => 'That barcode didn\'t read correctly';
+
+  @override
+  String barcodeInvalidBody(String message) {
+    return '$message. Scan it again, or check the digits if you typed them.';
+  }
+
+  @override
+  String get productUnknownTitle => 'This product isn\'t on STAKA yet';
+
+  @override
+  String productUnknownBody(String gtin) {
+    return 'No brand has added barcode $gtin yet. Only products from partner brands have tags for now.';
+  }
+
+  @override
+  String get scanAgain => 'Scan again';
 }

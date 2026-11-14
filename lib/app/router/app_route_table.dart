@@ -11,6 +11,7 @@ import 'package:staka/features/auth/presentation/screens/forgot_password_screen.
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/products/presentation/screens/product_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 
@@ -56,7 +57,20 @@ final appRouteTable = <RouteBase>[
     builder: (_, _, shell) => AppNavigationShell(shell: shell),
     branches: [
       StatefulShellBranch(
-        routes: [_route(AppRoute.wardrobe, (_, _) => const WardrobeScreen())],
+        routes: [
+          _route(
+            AppRoute.wardrobe,
+            (_, _) => const WardrobeScreen(),
+            children: [
+              // Slice 13 replaces this with the tag screen.
+              _child(
+                AppRoute.wardrobe,
+                AppRoute.tag,
+                (_, _) => const PendingScreen(route: AppRoute.tag),
+              ),
+            ],
+          ),
+        ],
       ),
       StatefulShellBranch(
         routes: [
@@ -64,11 +78,11 @@ final appRouteTable = <RouteBase>[
             AppRoute.scan,
             (_, _) => const ScanScreen(),
             children: [
-              // Slice 12 replaces this with the product screen.
               _child(
                 AppRoute.scan,
                 AppRoute.product,
-                (_, _) => const PendingScreen(route: AppRoute.product),
+                (_, state) =>
+                    ProductScreen(gtin: state.pathParameters['gtin'] ?? ''),
               ),
             ],
           ),

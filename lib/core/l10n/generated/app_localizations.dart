@@ -897,6 +897,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This code isn\'t a product barcode.'**
   String get scanNotBarcode;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'In your wardrobe'**
+  String get productInWardrobe;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'View your tag'**
+  String get viewYourTag;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to my wardrobe'**
+  String get addToMyWardrobe;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Adding…'**
+  String get adding;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'What the figures mean'**
+  String get figuresTitle;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbon footprint: {value}'**
+  String figureCarbon(String value);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated greenhouse gases from making this piece, expressed as the same warming effect in carbon dioxide.'**
+  String get figureCarbonBody;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Recyclable: {percent}%'**
+  String figureRecyclable(int percent);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'The share of the piece, by weight, that can be recycled at end of life.'**
+  String get figureRecyclableBody;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Independently verified'**
+  String get independentlyVerified;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'{certifier} has checked these figures.'**
+  String certifierChecked(String certifier);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'A third party has checked these figures.'**
+  String get thirdPartyChecked;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Stated by the brand'**
+  String get statedByBrandTitle;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'No one outside the brand has checked these figures yet.'**
+  String get noOneChecked;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} hasn\'t shared figures for this piece yet.'**
+  String brandNoFigures(String brand);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'About {brand}'**
+  String aboutBrand(String brand);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'That barcode didn\'t read correctly'**
+  String get barcodeInvalidTitle;
+
+  /// Same as the website's product page. {message} is the API's reason.
+  ///
+  /// In en, this message translates to:
+  /// **'{message}. Scan it again, or check the digits if you typed them.'**
+  String barcodeInvalidBody(String message);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'This product isn\'t on STAKA yet'**
+  String get productUnknownTitle;
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'No brand has added barcode {gtin} yet. Only products from partner brands have tags for now.'**
+  String productUnknownBody(String gtin);
+
+  /// Same as the website's product page.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan again'**
+  String get scanAgain;
 }
 
 class _AppLocalizationsDelegate

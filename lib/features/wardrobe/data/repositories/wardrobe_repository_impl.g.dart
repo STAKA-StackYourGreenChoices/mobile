@@ -55,4 +55,4 @@ final class WardrobeRepositoryProvider
 }
 
 String _$wardrobeRepositoryHash() =>
-    r'6b4e671ddf0eb1381ff9139b3b35647c09ed707c';
+    r'dcba7f926c28df906508ad64145296fba094271c';

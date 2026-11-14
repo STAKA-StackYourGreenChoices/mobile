@@ -606,5 +606,124 @@
   "scanNotBarcode": "This code isn't a product barcode.",
   "@scanNotBarcode": {
     "description": "web lib/scan.ts"
+  },
+  "productInWardrobe": "In your wardrobe",
+  "@productInWardrobe": {
+    "description": "Same as the website's product page."
+  },
+  "viewYourTag": "View your tag",
+  "@viewYourTag": {
+    "description": "Same as the website's product page."
+  },
+  "addToMyWardrobe": "Add to my wardrobe",
+  "@addToMyWardrobe": {
+    "description": "Same as the website's product page."
+  },
+  "adding": "Adding…",
+  "@adding": {
+    "description": "Same as the website's product page."
+  },
+  "figuresTitle": "What the figures mean",
+  "@figuresTitle": {
+    "description": "Same as the website's product page."
+  },
+  "figureCarbon": "Carbon footprint: {value}",
+  "@figureCarbon": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "figureCarbonBody": "Estimated greenhouse gases from making this piece, expressed as the same warming effect in carbon dioxide.",
+  "@figureCarbonBody": {
+    "description": "Same as the website's product page."
+  },
+  "figureRecyclable": "Recyclable: {percent}%",
+  "@figureRecyclable": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "figureRecyclableBody": "The share of the piece, by weight, that can be recycled at end of life.",
+  "@figureRecyclableBody": {
+    "description": "Same as the website's product page."
+  },
+  "independentlyVerified": "Independently verified",
+  "@independentlyVerified": {
+    "description": "Same as the website's product page."
+  },
+  "certifierChecked": "{certifier} has checked these figures.",
+  "@certifierChecked": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "certifier": {
+        "type": "String"
+      }
+    }
+  },
+  "thirdPartyChecked": "A third party has checked these figures.",
+  "@thirdPartyChecked": {
+    "description": "Same as the website's product page."
+  },
+  "statedByBrandTitle": "Stated by the brand",
+  "@statedByBrandTitle": {
+    "description": "Same as the website's product page."
+  },
+  "noOneChecked": "No one outside the brand has checked these figures yet.",
+  "@noOneChecked": {
+    "description": "Same as the website's product page."
+  },
+  "brandNoFigures": "{brand} hasn't shared figures for this piece yet.",
+  "@brandNoFigures": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutBrand": "About {brand}",
+  "@aboutBrand": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "barcodeInvalidTitle": "That barcode didn't read correctly",
+  "@barcodeInvalidTitle": {
+    "description": "Same as the website's product page."
+  },
+  "barcodeInvalidBody": "{message}. Scan it again, or check the digits if you typed them.",
+  "@barcodeInvalidBody": {
+    "description": "Same as the website's product page. {message} is the API's reason.",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "productUnknownTitle": "This product isn't on STAKA yet",
+  "@productUnknownTitle": {
+    "description": "Same as the website's product page."
+  },
+  "productUnknownBody": "No brand has added barcode {gtin} yet. Only products from partner brands have tags for now.",
+  "@productUnknownBody": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "gtin": {
+        "type": "String"
+      }
+    }
+  },
+  "scanAgain": "Scan again",
+  "@scanAgain": {
+    "description": "Same as the website's product page."
   }
 }

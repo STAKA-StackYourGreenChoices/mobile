@@ -9,12 +9,15 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
+import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
+import 'package:staka/features/products/domain/repositories/product_repository.dart';
 import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 
 import 'auth_fakes.dart';
 import 'fake_http_adapter.dart';
+import 'product_fakes.dart';
 import 'scan_fakes.dart';
 import 'wardrobe_fakes.dart';
 
@@ -28,6 +31,7 @@ Future<InMemoryTokenStore> pumpApp(
   List<FakeReply> replies = const [],
   AuthRepository? auth,
   WardrobeRepository? wardrobe,
+  ProductRepository? products,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -44,6 +48,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         wardrobeRepositoryProvider.overrideWithValue(
           wardrobe ?? FakeWardrobeRepository(),
+        ),
+        productRepositoryProvider.overrideWithValue(
+          products ?? FakeProductRepository(),
         ),
         // The real camera needs a device.
         scanCameraProvider.overrideWithValue(

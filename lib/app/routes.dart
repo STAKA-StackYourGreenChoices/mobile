@@ -19,7 +19,8 @@ enum AppRoute {
 
   // Inside a tab (keep the bottom bar).
   changePassword('/account/change-password'),
-  product('/scan/product/:gtin');
+  product('/scan/product/:gtin'),
+  tag('/wardrobe/tag/:id');
 
   new(this.path);
 
