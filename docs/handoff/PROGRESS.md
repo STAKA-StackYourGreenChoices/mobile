@@ -56,9 +56,16 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Not done: iOS (needs a Mac), TalkBack, release build (Phase 6)
 
 ## Phase 6 — Release readiness
-- [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
+- [x] Scope cut by the user (2026-11-15): no Play / App Store publishing and no iOS for now
+- [x] App icon: website hang-tag mark, cream on forest800; legacy + round + adaptive + Android 13 themed (`tool/make_app_icons.py`)
+- [x] Splash: Android 12+ system splash and older launch_background, then the Flutter launch screen in the same green (`StakaMark`, tokens `splash`/`onSplash`, 2 goldens)
+- [x] Name STAKA, id com.staka.app confirmed (label, applicationId, namespace, Kotlin package, app title, iOS bundle id)
+- [x] README rewritten (setup, settings, running against local API, tests, builds, icons, architecture)
+- [x] Release APK builds (72.8 MB, debug-signed) and works on the phone against the local API over http
+- [ ] Next: talk with the user about hosting so the app works on a friend's phone
 
 ## Session log (newest first, one line each)
+- 2026-11-15 — Phase 6 (cut-down): icon, splash, name/id, README; 318 tests pass; release APK checked on the phone. Next: hosting talk.
 - 2026-11-15 — Phase 5 done on Android: device scripts + hand checks + edge cases; 2 bugs fixed; report `PHASE5_VERIFICATION.md`. Waiting for the go-ahead for Phase 6.
 - 2026-11-15 — Phase 4: auth attempt limits in api/ (55/55 e2e) + app 429 copy; 17/17 live tests pass 3× back to back. Phase 5 next.
 - 2026-11-15 — Phase 4: no approved backend changes, so none applied; contract audit clean; three optional changes listed for the user.

@@ -28,8 +28,9 @@ android {
 
     buildTypes {
         release {
-            // Release signing is set up in Phase 6 (release readiness).
-            // Until then release builds use the debug keys so `flutter run --release` works.
+            // Not going to the stores yet (decision P6, 2026-11-15), so release
+            // builds are signed with the debug keys. Add a real upload key here
+            // before publishing.
             signingConfig = signingConfigs.getByName("debug")
         }
     }

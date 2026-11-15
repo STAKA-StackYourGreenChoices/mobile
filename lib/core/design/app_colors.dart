@@ -30,6 +30,8 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.warning,
     required this.mediaBackdrop,
     required this.onMediaBackdrop,
+    required this.splash,
+    required this.onSplash,
   });
 
   // ---------------------------------------------------------------- raw ramp
@@ -72,6 +74,8 @@ class AppColors extends ThemeExtension<AppColors> {
     warning: Color(0xFFA03D3F), //  5.32 on cream
     mediaBackdrop: forest900,
     onMediaBackdrop: cream, // 11.88 on forest900
+    splash: forest800, // the Android splash colour (res/values/colors.xml)
+    onSplash: cream, // 9.12
   );
 
   // ------------------------------------------------------------------- dark
@@ -97,6 +101,8 @@ class AppColors extends ThemeExtension<AppColors> {
     // surfaceRaised: dark, yet visibly distinct from the page behind it.
     mediaBackdrop: Color(0xFF1C271F),
     onMediaBackdrop: cream, // 12.67
+    splash: forest800, // same in dark mode, like the Android splash
+    onSplash: cream,
   );
 
   final Color surfaceBase;
@@ -122,6 +128,10 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color mediaBackdrop;
   final Color onMediaBackdrop;
 
+  /// The launch screen: continues the Android splash (staka_forest).
+  final Color splash;
+  final Color onSplash;
+
   @override
   AppColors copyWith({
     Color? surfaceBase,
@@ -144,6 +154,8 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? warning,
     Color? mediaBackdrop,
     Color? onMediaBackdrop,
+    Color? splash,
+    Color? onSplash,
   }) {
     return AppColors(
       surfaceBase: surfaceBase ?? this.surfaceBase,
@@ -166,6 +178,8 @@ class AppColors extends ThemeExtension<AppColors> {
       warning: warning ?? this.warning,
       mediaBackdrop: mediaBackdrop ?? this.mediaBackdrop,
       onMediaBackdrop: onMediaBackdrop ?? this.onMediaBackdrop,
+      splash: splash ?? this.splash,
+      onSplash: onSplash ?? this.onSplash,
     );
   }
 
@@ -194,6 +208,8 @@ class AppColors extends ThemeExtension<AppColors> {
       warning: c(warning, other.warning),
       mediaBackdrop: c(mediaBackdrop, other.mediaBackdrop),
       onMediaBackdrop: c(onMediaBackdrop, other.onMediaBackdrop),
+      splash: c(splash, other.splash),
+      onSplash: c(onSplash, other.onSplash),
     );
   }
 }
