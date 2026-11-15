@@ -24,6 +24,8 @@ Future<BrandSummary?> showBrandFormSheet(
   final container = ProviderScope.containerOf(context);
   return showModalBottomSheet<BrandSummary>(
     context: context,
+    // Over the whole app, like dialogs: the tab bar is covered too.
+    useRootNavigator: true,
     isScrollControlled: true,
     builder: (_) => UncontrolledProviderScope(
       container: container,

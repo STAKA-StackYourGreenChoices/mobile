@@ -11,6 +11,8 @@ Future<ReceiptSource?> showReceiptSourceSheet(BuildContext context) {
   final l10n = context.l10n;
   return showModalBottomSheet<ReceiptSource>(
     context: context,
+    // Over the whole app, like dialogs: the tab bar is covered too.
+    useRootNavigator: true,
     builder: (context) => SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(bottom: AppSpacing.md),

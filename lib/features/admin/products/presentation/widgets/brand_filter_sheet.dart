@@ -22,6 +22,8 @@ Future<BrandPick?> showBrandFilterSheet(
   ];
   return showModalBottomSheet<BrandPick>(
     context: context,
+    // Over the whole app, like dialogs: the tab bar is covered too.
+    useRootNavigator: true,
     isScrollControlled: true,
     builder: (context) => SafeArea(
       child: ConstrainedBox(
