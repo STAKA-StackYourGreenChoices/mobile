@@ -697,4 +697,81 @@ class AppLocalizationsEn extends AppLocalizations {
   String openTagLabel(String product, String brand) {
     return '$product by $brand, open tag';
   }
+
+  @override
+  String get shareLockedTitle => 'Sharing unlocks once you\'re verified';
+
+  @override
+  String get shareLockedBody =>
+      'Only proven pieces can be shared, so every STAKA tag people see is backed by a real purchase.';
+
+  @override
+  String get shareTitle => 'Share this tag';
+
+  @override
+  String get shareBody =>
+      'Anyone with the link sees the tag, your first name and that you\'re the verified owner. Never your email.';
+
+  @override
+  String get createShareLink => 'Create share link';
+
+  @override
+  String get creatingLink => 'Creating link…';
+
+  @override
+  String get shareLinkLabel => 'Share link';
+
+  @override
+  String get copyLink => 'Copy link';
+
+  @override
+  String get linkCopied => 'Link copied';
+
+  @override
+  String get shareEllipsis => 'Share…';
+
+  @override
+  String get storyImage => 'Image for Instagram stories';
+
+  @override
+  String get preparingImage => 'Preparing image…';
+
+  @override
+  String get seeWhatOthersSee => 'See what others see';
+
+  @override
+  String get stopSharing => 'Stop sharing';
+
+  @override
+  String get stoppingSharing => 'Stopping…';
+
+  @override
+  String get stopSharingTitle => 'Stop sharing this tag?';
+
+  @override
+  String get stopSharingBody =>
+      'The link stops working for everyone, including posts that already use it. You can share again later with a new link.';
+
+  @override
+  String get keepSharing => 'Keep sharing';
+
+  @override
+  String get shareLinkReady => 'Share link ready';
+
+  @override
+  String get sharingTurnedOff =>
+      'Sharing turned off. The old link no longer works.';
+
+  @override
+  String get couldNotOpenLink => 'The link couldn\'t be opened.';
+
+  @override
+  String shareText(String product) {
+    return 'I own this $product, verified on STAKA.';
+  }
+
+  @override
+  String shareSubject(String product) {
+    return '$product on STAKA';
+  }
 }

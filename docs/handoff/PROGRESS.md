@@ -27,14 +27,14 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Slice 9 `feat/shared-hang-tag`: HangTag (shape, hole, stitching, shadow, string, one swing / fade under reduce-motion), TagImage, OwnershipChip, carbon/GTIN formatters, Welcome hero tag (bundled seeded-catalog SVG). EAN-13 drawing skipped: only the website's marketing page uses it. 10 tests + 4 goldens; fixed 200%-text overflow in the photo placeholder and the tag's merged screen-reader label
 - [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): adminHome (15+)
 - [ ] Follow-up: Linux golden baselines for CI (needs Docker or a CI job)
-- [ ] Auth: login, register, forgot, reset, verify email, logout, session restore, route guards
+- [x] Auth: login, register, forgot, logout, session restore, route guards (slices 3, 6–8); reset password + verify email happen on the website (decision 7)
 - [x] Slice 10 `feat/wardrobe-list`: core models + DTOs/mappers, Wardrobe tab (welcome header, verify-email banner + resend, Verified / Waiting for proof, empty state, pull-to-refresh, error + retry), RequestState moved to core. 11 tests + 4 goldens + 2 live tests
 - [x] Wardrobe refreshes after a tag is added elsewhere (`cardsRevisionProvider`); bump it after ownership/share changes too
 - [x] Slice 11 `feat/scan-barcode`: parseScan port, camera (mobile_scanner, EAN-13/8, UPC-A/E, QR; runs only while visible; blocked/unavailable/off states), typed-number form, product route stub, iOS camera text. 14 tests + 4 goldens. **Camera not yet tried on a real phone**
-- [ ] Product detail + add to wardrobe
-- [ ] Tag detail: ownership (order match, receipt upload)
-- [ ] Tag detail: sharing
-- [ ] Public shared tag
+- [x] Product detail + add to wardrobe (slice 12)
+- [x] Tag detail: ownership (slice 13)
+- [x] Slice 14 `feat/tags-sharing`: share panel (locked until verified; create link, copy, system share sheet, story image via share sheet, see what others see, stop sharing with confirm). 8 tests + 2 goldens. **Live sharing test written but not yet run (API was stopped)**
+- [x] Public shared tag: stays on the website by design (decision 8); "See what others see" opens it
 - [ ] Admin: products list/filter/delete
 - [ ] Admin: product create/edit + preview
 - [ ] Admin: brands
@@ -53,6 +53,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-15 — Slice 14 done: 167 tests + 38 goldens pass. Shopper side complete. Sharing live test pending the user restarting the API.
 - 2026-11-15 — Slice 13 done: 159 tests + 36 goldens + 9 live tests pass. Live test leaves one tiny PNG receipt in api/uploads per run.
 - 2026-11-15 — Slice 12 done: 149 tests + 32 goldens + 7 live tests pass. Tag screen is a stand-in until slice 13.
 - 2026-11-14 — Slice 11 done: 136 tests + 28 goldens pass. Added mediaBackdrop colour tokens; dark camera backdrop lifted so the viewfinder has an edge.

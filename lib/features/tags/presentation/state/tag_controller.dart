@@ -6,6 +6,7 @@ import 'package:staka/core/cards/cards_revision.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/ownership.dart';
+import 'package:staka/core/models/share_link.dart';
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/presentation/state/tag_state.dart';
 
@@ -30,6 +31,14 @@ class TagController extends _$TagController {
   void applyOwnership(Ownership ownership) {
     if (state case TagReady(:final card)) {
       state = TagReady(card.copyWith(ownership: ownership));
+    }
+    ref.read(cardsRevisionProvider.notifier).bump();
+  }
+
+  /// The public link was created ([share]) or turned off (null).
+  void applyShare(ShareLink? share) {
+    if (state case TagReady(:final card)) {
+      state = TagReady(card.copyWith(share: share));
     }
     ref.read(cardsRevisionProvider.notifier).bump();
   }

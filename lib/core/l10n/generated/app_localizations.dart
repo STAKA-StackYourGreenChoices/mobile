@@ -1257,6 +1257,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{product} by {brand}, open tag'**
   String openTagLabel(String product, String brand);
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing unlocks once you\'re verified'**
+  String get shareLockedTitle;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Only proven pieces can be shared, so every STAKA tag people see is backed by a real purchase.'**
+  String get shareLockedBody;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Share this tag'**
+  String get shareTitle;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Anyone with the link sees the tag, your first name and that you\'re the verified owner. Never your email.'**
+  String get shareBody;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Create share link'**
+  String get createShareLink;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating link…'**
+  String get creatingLink;
+
+  /// Screen-reader label of the link box. Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Share link'**
+  String get shareLinkLabel;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get copyLink;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get linkCopied;
+
+  /// Opens the phone's share sheet. Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Share…'**
+  String get shareEllipsis;
+
+  /// Same as the website's share panel. On the phone it opens the share sheet with the image.
+  ///
+  /// In en, this message translates to:
+  /// **'Image for Instagram stories'**
+  String get storyImage;
+
+  /// While the story image downloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing image…'**
+  String get preparingImage;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'See what others see'**
+  String get seeWhatOthersSee;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop sharing'**
+  String get stopSharing;
+
+  /// Stop sharing while waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopping…'**
+  String get stoppingSharing;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop sharing this tag?'**
+  String get stopSharingTitle;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'The link stops working for everyone, including posts that already use it. You can share again later with a new link.'**
+  String get stopSharingBody;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep sharing'**
+  String get keepSharing;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Share link ready'**
+  String get shareLinkReady;
+
+  /// Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing turned off. The old link no longer works.'**
+  String get sharingTurnedOff;
+
+  /// No app could open the public page.
+  ///
+  /// In en, this message translates to:
+  /// **'The link couldn\'t be opened.'**
+  String get couldNotOpenLink;
+
+  /// Text shared with the link. Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'I own this {product}, verified on STAKA.'**
+  String shareText(String product);
+
+  /// Share subject (e.g. email). Same as the website's share panel.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} on STAKA'**
+  String shareSubject(String product);
 }
 
 class _AppLocalizationsDelegate

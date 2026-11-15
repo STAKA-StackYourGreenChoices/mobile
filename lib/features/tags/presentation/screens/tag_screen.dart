@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -8,23 +10,30 @@ import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/state/request_state.dart';
+import 'package:staka/core/utils/public_tag_url.dart';
 import 'package:staka/features/tags/presentation/state/order_match_controller.dart';
 import 'package:staka/features/tags/presentation/state/receipt_controller.dart';
+import 'package:staka/features/tags/presentation/state/share_actions.dart';
+import 'package:staka/features/tags/presentation/state/share_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_state.dart';
 import 'package:staka/features/tags/presentation/widgets/order_match_option.dart';
 import 'package:staka/features/tags/presentation/widgets/ownership_panel.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_option.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_source_sheet.dart';
+import 'package:staka/features/tags/presentation/widgets/share_link_actions.dart';
+import 'package:staka/features/tags/presentation/widgets/share_locked.dart';
+import 'package:staka/features/tags/presentation/widgets/share_panel.dart';
 import 'package:staka/features/tags/presentation/widgets/tag_view.dart';
 import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
+import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 import 'package:staka/shared/widgets/feedback/app_snackbar.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// One of the shopper's tags (the website's `/tags/[id]`): the tag, and
-/// proving ownership by order or receipt. Sharing joins in the next slice.
+/// proving ownership by order or receipt, and sharing it once proven.
 class TagScreen extends ConsumerWidget {
   const new({required this.cardId, this.isJustAdded = false, super.key});
 
@@ -76,6 +85,9 @@ class TagScreen extends ConsumerWidget {
               _ReceiptOption(card: card),
             ],
           ),
+          sharePanel: card.ownership.isVerified
+              ? _ShareSection(card: card)
+              : const ShareLocked(),
           onScanAnotherPressed: () => context.goNamed(AppRoute.scan.name),
           onProductDetailsPressed: () => context.goNamed(
             AppRoute.product.name,
@@ -142,6 +154,89 @@ class _ReceiptOption extends ConsumerWidget {
         if (source != null) await controller.choose(source);
       },
       onSendPressed: controller.send,
+    );
+  }
+}
+
+/// Connects the share panel to its requests and to the phone's share sheet,
+/// clipboard and browser.
+class _ShareSection extends ConsumerWidget {
+  const new({required this.card});
+
+  final DigitalCard card;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final share = ref.watch(shareControllerProvider(card.id));
+    final controller = ref.read(shareControllerProvider(card.id).notifier);
+    final actions = ref.read(shareActionsProvider);
+    final product = card.product.name;
+
+    ref.listen(shareControllerProvider(card.id), (previous, next) {
+      if (next.outcome == previous?.outcome) return;
+      switch (next.outcome) {
+        case ShareOutcome.created:
+          AppSnackbar.show(context, message: l10n.shareLinkReady);
+        case ShareOutcome.stopped:
+          AppSnackbar.show(context, message: l10n.sharingTurnedOff);
+        case ShareOutcome.none:
+          break;
+      }
+    });
+
+    final slug = card.share?.slug;
+    final url = slug == null ? null : publicTagUrl(slug);
+    return SharePanel(
+      url: url,
+      busy: share.busy,
+      errorMessage: switch (share.failure) {
+        final failure? => messageForFailure(failure, l10n),
+        null => null,
+      },
+      onCreatePressed: controller.create,
+      linkActions: ShareLinkCallbacks(
+        onCopy: () async {
+          if (url == null) return;
+          await actions.copy(url);
+          if (context.mounted) {
+            AppSnackbar.show(context, message: l10n.linkCopied);
+          }
+        },
+        onShare: (origin) {
+          if (url == null) return;
+          unawaited(
+            actions.shareLink(
+              url: url,
+              text: l10n.shareText(product),
+              subject: l10n.shareSubject(product),
+              origin: origin,
+            ),
+          );
+        },
+        onStoryImage: (origin) {
+          if (slug == null) return;
+          unawaited(
+            controller.shareStoryImage(
+              slug: slug,
+              text: l10n.shareText(product),
+              origin: origin,
+            ),
+          );
+        },
+        onOpen: () async {
+          if (url == null) return;
+          final opened = await actions.open(url);
+          if (!opened && context.mounted) {
+            AppSnackbar.show(
+              context,
+              message: l10n.couldNotOpenLink,
+              tone: AlertTone.error,
+            );
+          }
+        },
+        onStop: controller.stop,
+      ),
     );
   }
 }

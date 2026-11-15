@@ -15,6 +15,10 @@ enum AppButtonVariant {
 
   /// Irreversible actions such as delete (filled, danger colour).
   destructive,
+
+  /// A low-key irreversible action that asks for confirmation first, such
+  /// as "Stop sharing" (text only, danger-text colour).
+  quietDestructive,
 }
 
 /// The app's only button. Sizes, radius and type come from the theme, so
@@ -74,6 +78,11 @@ class AppButton extends StatelessWidget {
           foregroundColor: colors.onDanger,
           textStyle: context.text.label,
         ),
+        child: content,
+      ),
+      AppButtonVariant.quietDestructive => TextButton(
+        onPressed: action,
+        style: TextButton.styleFrom(foregroundColor: colors.dangerText),
         child: content,
       ),
     };

@@ -950,5 +950,107 @@
         "type": "String"
       }
     }
+  },
+  "shareLockedTitle": "Sharing unlocks once you're verified",
+  "@shareLockedTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLockedBody": "Only proven pieces can be shared, so every STAKA tag people see is backed by a real purchase.",
+  "@shareLockedBody": {
+    "description": "Same as the website's share panel."
+  },
+  "shareTitle": "Share this tag",
+  "@shareTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "shareBody": "Anyone with the link sees the tag, your first name and that you're the verified owner. Never your email.",
+  "@shareBody": {
+    "description": "Same as the website's share panel."
+  },
+  "createShareLink": "Create share link",
+  "@createShareLink": {
+    "description": "Same as the website's share panel."
+  },
+  "creatingLink": "Creating link…",
+  "@creatingLink": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLinkLabel": "Share link",
+  "@shareLinkLabel": {
+    "description": "Screen-reader label of the link box. Same as the website's share panel."
+  },
+  "copyLink": "Copy link",
+  "@copyLink": {
+    "description": "Same as the website's share panel."
+  },
+  "linkCopied": "Link copied",
+  "@linkCopied": {
+    "description": "Same as the website's share panel."
+  },
+  "shareEllipsis": "Share…",
+  "@shareEllipsis": {
+    "description": "Opens the phone's share sheet. Same as the website's share panel."
+  },
+  "storyImage": "Image for Instagram stories",
+  "@storyImage": {
+    "description": "Same as the website's share panel. On the phone it opens the share sheet with the image."
+  },
+  "preparingImage": "Preparing image…",
+  "@preparingImage": {
+    "description": "While the story image downloads."
+  },
+  "seeWhatOthersSee": "See what others see",
+  "@seeWhatOthersSee": {
+    "description": "Same as the website's share panel."
+  },
+  "stopSharing": "Stop sharing",
+  "@stopSharing": {
+    "description": "Same as the website's share panel."
+  },
+  "stoppingSharing": "Stopping…",
+  "@stoppingSharing": {
+    "description": "Stop sharing while waiting."
+  },
+  "stopSharingTitle": "Stop sharing this tag?",
+  "@stopSharingTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "stopSharingBody": "The link stops working for everyone, including posts that already use it. You can share again later with a new link.",
+  "@stopSharingBody": {
+    "description": "Same as the website's share panel."
+  },
+  "keepSharing": "Keep sharing",
+  "@keepSharing": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLinkReady": "Share link ready",
+  "@shareLinkReady": {
+    "description": "Same as the website's share panel."
+  },
+  "sharingTurnedOff": "Sharing turned off. The old link no longer works.",
+  "@sharingTurnedOff": {
+    "description": "Same as the website's share panel."
+  },
+  "couldNotOpenLink": "The link couldn't be opened.",
+  "@couldNotOpenLink": {
+    "description": "No app could open the public page."
+  },
+  "shareText": "I own this {product}, verified on STAKA.",
+  "@shareText": {
+    "description": "Text shared with the link. Same as the website's share panel.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "shareSubject": "{product} on STAKA",
+  "@shareSubject": {
+    "description": "Share subject (e.g. email). Same as the website's share panel.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
   }
 }

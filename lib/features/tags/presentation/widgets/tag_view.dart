@@ -10,11 +10,12 @@ import 'package:staka/shared/widgets/data_display/hang_tag/hang_tag.dart';
 import 'package:staka/shared/widgets/data_display/tag_image.dart';
 
 /// The tag page: the shopper's tag (swinging if just added), what it is,
-/// the [ownershipPanel], and where to go next — the website's `/tags/[id]`.
+/// the [ownershipPanel] and [sharePanel], and where to go next — the website's `/tags/[id]`.
 class TagView extends StatelessWidget {
   const new({
     required this.card,
     required this.ownershipPanel,
+    required this.sharePanel,
     required this.onScanAnotherPressed,
     required this.onProductDetailsPressed,
     this.isJustAdded = false,
@@ -23,6 +24,7 @@ class TagView extends StatelessWidget {
 
   final DigitalCard card;
   final Widget ownershipPanel;
+  final Widget sharePanel;
   final bool isJustAdded;
   final VoidCallback onScanAnotherPressed;
   final VoidCallback onProductDetailsPressed;
@@ -54,6 +56,7 @@ class TagView extends StatelessWidget {
         ),
         TagSummary(card: card),
         ownershipPanel,
+        sharePanel,
         const Divider(),
         Wrap(
           spacing: AppSpacing.sm,

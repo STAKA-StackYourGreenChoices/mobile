@@ -15,6 +15,7 @@ import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 import 'package:staka/features/tags/presentation/state/receipt_picker.dart';
+import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 
@@ -38,6 +39,7 @@ Future<InMemoryTokenStore> pumpApp(
   ProductRepository? products,
   TagRepository? tags,
   ReceiptPicker? receiptPicker,
+  ShareActions? shareActions,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -61,6 +63,9 @@ Future<InMemoryTokenStore> pumpApp(
         tagRepositoryProvider.overrideWithValue(tags ?? FakeTagRepository()),
         receiptPickerProvider.overrideWithValue(
           receiptPicker ?? FakeReceiptPicker(),
+        ),
+        shareActionsProvider.overrideWithValue(
+          shareActions ?? FakeShareActions(),
         ),
         // The real camera needs a device.
         scanCameraProvider.overrideWithValue(
