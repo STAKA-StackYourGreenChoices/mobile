@@ -26,6 +26,21 @@ Dio dio(Ref ref) {
   return dio;
 }
 
+/// A plain client for the STAKA website's public files (the story image):
+/// no session, no API base address. Kept alive like the API client, so a
+/// short-lived repository can't close it while a download is starting.
+@Riverpod(keepAlive: true)
+Dio webDio(Ref ref) {
+  final dio = Dio(
+    BaseOptions(
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 20),
+    ),
+  );
+  ref.onDispose(dio.close);
+  return dio;
+}
+
 /// Refreshes over its own client: no auth interceptor, so a failed refresh
 /// can never trigger another refresh. A rejected refresh token signs out.
 @Riverpod(keepAlive: true)
