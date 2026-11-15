@@ -8,9 +8,9 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 
-/// Under the rows: a spinner while the next page loads, or why it failed
-/// and a way to try again. Only space once the next page is on its way.
-class ProductListFooter extends StatelessWidget {
+/// Under a list that loads as you scroll (products, claims): a spinner
+/// while the next page loads, or why it failed and a way to try again.
+class LoadMoreFooter extends StatelessWidget {
   const new({
     required this.isLoading,
     required this.failure,

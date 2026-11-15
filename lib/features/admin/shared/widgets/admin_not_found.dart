@@ -5,12 +5,13 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/feedback_message.dart';
 
-/// No product has this id: the website's 404 line, and the way back its
-/// back link offers ("Products").
-class ProductNotFound extends StatelessWidget {
-  const new({required this.onProductsPressed, super.key});
+/// No product or claim has this id: the website's 404 line, and the way
+/// back its back link offers ("Products", "Claims").
+class AdminNotFound extends StatelessWidget {
+  const new({required this.backLabel, required this.onBackPressed, super.key});
 
-  final VoidCallback onProductsPressed;
+  final String backLabel;
+  final VoidCallback onBackPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,10 @@ class ProductNotFound extends StatelessWidget {
       iconColor: context.colors.inkMuted,
       message: l10n.pageNotFound,
       action: AppButton(
-        label: l10n.adminProducts,
+        label: backLabel,
         icon: Icons.arrow_back_rounded,
         variant: AppButtonVariant.secondary,
-        onPressed: onProductsPressed,
+        onPressed: onBackPressed,
       ),
     );
   }

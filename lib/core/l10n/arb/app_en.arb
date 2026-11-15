@@ -141,10 +141,6 @@
   "@navAccount": {
     "description": "Bottom bar tab: the user's account and sign out."
   },
-  "pendingScreenTitle": "This screen is being built",
-  "@pendingScreenTitle": {
-    "description": "TEMPORARY development stand-in. Remove with PendingScreen before Phase 5."
-  },
   "loginTitle": "Sign in to STAKA",
   "@loginTitle": {
     "description": "Sign-in heading. Same as the website."
@@ -1864,5 +1860,338 @@
   "importAnotherFile": "Import another file",
   "@importAnotherFile": {
     "description": "Same as the website's import flow."
+  },
+  "claimsTitle": "Ownership claims",
+  "@claimsTitle": {
+    "description": "Same as the website's claims page header."
+  },
+  "claimStatusLabel": "Claim status",
+  "@claimStatusLabel": {
+    "description": "Same as the website's claims page. Screen-reader label of the tabs."
+  },
+  "tabToReview": "To review",
+  "@tabToReview": {
+    "description": "Same as the website's claims page."
+  },
+  "tabApproved": "Approved",
+  "@tabApproved": {
+    "description": "Same as the website's claims page."
+  },
+  "tabRejected": "Rejected",
+  "@tabRejected": {
+    "description": "Same as the website's claims page."
+  },
+  "nothingToReview": "Nothing to review",
+  "@nothingToReview": {
+    "description": "Same as the website's claims page."
+  },
+  "nothingToReviewBody": "Receipts shoppers upload appear here, oldest first.",
+  "@nothingToReviewBody": {
+    "description": "Same as the website's claims page."
+  },
+  "noApprovedClaims": "No approved claims yet",
+  "@noApprovedClaims": {
+    "description": "Same as the website's claims page."
+  },
+  "noRejectedClaims": "No rejected claims yet",
+  "@noRejectedClaims": {
+    "description": "Same as the website's claims page."
+  },
+  "decidedClaimsBody": "Decisions you make will be listed here.",
+  "@decidedClaimsBody": {
+    "description": "Same as the website's claims page."
+  },
+  "claimUserLine": "{name} ({email})",
+  "@claimUserLine": {
+    "description": "Same as the website's claims page.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "methodOrderMatch": "Order match",
+  "@methodOrderMatch": {
+    "description": "Same as the website's claims page."
+  },
+  "receiptAttemptOf": "Receipt {attempt} of 5",
+  "@receiptAttemptOf": {
+    "description": "Same as the website's claims page. {attempt} is the upload number, or ? when unknown.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      }
+    }
+  },
+  "showingClaims": "{total, plural, =1{Showing 1–{last} of {total} claim} other{Showing 1–{last} of {total} claims}}",
+  "@showingClaims": {
+    "description": "Count above the claims list (the app loads more as you scroll).",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "last": {
+        "type": "int"
+      }
+    }
+  },
+  "claimTitle": "{name}: {product}",
+  "@claimTitle": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "claimOrderMatched": "Matched automatically to a paid order on {date}.",
+  "@claimOrderMatched": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "claimReceiptSent": "Receipt {attempt} of 5, sent {date}.",
+  "@claimReceiptSent": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "openPdfReceipt": "Open the PDF receipt",
+  "@openPdfReceipt": {
+    "description": "Same as the website's claim review page. Website: 'in a new tab'; the app opens it in its own viewer."
+  },
+  "tapReceiptFullSize": "Tap the image to open it full size.",
+  "@tapReceiptFullSize": {
+    "description": "Same as the website's claim review page. Website says 'Select'."
+  },
+  "receiptImageLabel": "Receipt uploaded by {name}",
+  "@receiptImageLabel": {
+    "description": "Same as the website's claim review page. Screen-reader label of the receipt image.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noReceiptOrder": "No receipt: this claim was verified from order {order}.",
+  "@noReceiptOrder": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "order": {
+        "type": "String"
+      }
+    }
+  },
+  "orderOnRecord": "on record",
+  "@orderOnRecord": {
+    "description": "Same as the website's claim review page. Used in noReceiptOrder when the order id is unknown."
+  },
+  "receiptUnavailable": "This receipt isn't available.",
+  "@receiptUnavailable": {
+    "description": "Same as the website's receipt route."
+  },
+  "receiptViewerTitle": "Receipt",
+  "@receiptViewerTitle": {
+    "description": "App bar title of the full-screen receipt viewer."
+  },
+  "yourDecision": "Your decision",
+  "@yourDecision": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "approve": "Approve",
+  "@approve": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "approving": "Approving…",
+  "@approving": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reject": "Reject",
+  "@reject": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectReasonLabel": "Reason the shopper will see",
+  "@rejectReasonLabel": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "commonReasonsLabel": "Common reasons",
+  "@commonReasonsLabel": {
+    "description": "Same as the website's claim decision panel. Screen-reader label of the reason chips."
+  },
+  "reasonBlurry": "The receipt is too blurry to read",
+  "@reasonBlurry": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonProductMissing": "This product isn't on the receipt",
+  "@reasonProductMissing": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonWrongShop": "The receipt is from a shop that doesn't sell this brand",
+  "@reasonWrongShop": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonCutOff": "Part of the receipt is cut off",
+  "@reasonCutOff": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "lastUpload": "This was their last upload: rejecting it means they can't verify this piece.",
+  "@lastUpload": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectUploadsLeft": "{count, plural, =1{They'll have 1 upload left.} other{They'll have {count} uploads left.}}",
+  "@rejectUploadsLeft": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectReceipt": "Reject receipt",
+  "@rejectReceipt": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejecting": "Rejecting…",
+  "@rejecting": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "claimApproved": "Approved. The shopper is now the verified owner.",
+  "@claimApproved": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "claimRejected": "Rejected. The shopper will see your reason.",
+  "@claimRejected": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "reasonTooShort": "Tell the shopper what was wrong so they can fix it",
+  "@reasonTooShort": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "reasonTooLong": "Keep the reason under 500 characters",
+  "@reasonTooLong": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "claimDecidedApproved": "Approved {date}",
+  "@claimDecidedApproved": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "claimDecidedRejected": "Rejected {date}",
+  "@claimDecidedRejected": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewedBy": " by {name}",
+  "@reviewedBy": {
+    "description": "Same as the website's claim decision panel. Keep the leading space.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonGiven": "Reason given: “{reason}”",
+  "@reasonGiven": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "whatToCheck": "What to check",
+  "@whatToCheck": {
+    "description": "Same as the website's claim review page."
+  },
+  "checkShop": "The shop or brand is {brand} or a stockist.",
+  "@checkShop": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "checkLine": "A line on the receipt matches {product} (SKU {sku}).",
+  "@checkLine": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "sku": {
+        "type": "String"
+      }
+    }
+  },
+  "checkReal": "It looks like a real, unedited receipt.",
+  "@checkReal": {
+    "description": "Same as the website's claim review page."
+  },
+  "shopperHeading": "Shopper",
+  "@shopperHeading": {
+    "description": "Same as the website's claim review page."
+  },
+  "allClaimsForPiece": "All claims for this piece",
+  "@allClaimsForPiece": {
+    "description": "Same as the website's claim review page."
+  },
+  "historyReceipt": "Receipt {attempt}",
+  "@historyReceipt": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      }
+    }
+  },
+  "thisOne": " (this one)",
+  "@thisOne": {
+    "description": "Same as the website's claim review page. Keep the leading space."
+  },
+  "waitingSince": "Waiting since {date}",
+  "@waitingSince": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "quotedText": "“{text}”",
+  "@quotedText": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
   }
 }

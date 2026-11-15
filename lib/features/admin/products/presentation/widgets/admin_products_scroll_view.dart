@@ -1,5 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
@@ -7,9 +6,9 @@ import 'package:staka/core/models/product.dart';
 import 'package:staka/features/admin/products/presentation/state/admin_products_state.dart';
 import 'package:staka/features/admin/products/presentation/widgets/admin_products_header.dart';
 import 'package:staka/features/admin/products/presentation/widgets/product_filters.dart';
-import 'package:staka/features/admin/products/presentation/widgets/product_list_footer.dart';
 import 'package:staka/features/admin/products/presentation/widgets/product_list_row.dart';
 import 'package:staka/features/admin/products/presentation/widgets/products_empty_state.dart';
+import 'package:staka/features/admin/shared/widgets/load_more_footer.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 
@@ -125,7 +124,7 @@ class AdminProductsScrollView extends StatelessWidget {
       ),
       _ProductRows(items: loaded.items, onProductPressed: onProductPressed),
       SliverToBoxAdapter(
-        child: ProductListFooter(
+        child: LoadMoreFooter(
           isLoading: loaded.isLoadingMore,
           failure: loaded.loadMoreFailure,
           onRetryPressed: onLoadMore,

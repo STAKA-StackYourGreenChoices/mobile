@@ -298,12 +298,6 @@ abstract class AppLocalizations {
   /// **'Account'**
   String get navAccount;
 
-  /// TEMPORARY development stand-in. Remove with PendingScreen before Phase 5.
-  ///
-  /// In en, this message translates to:
-  /// **'This screen is being built'**
-  String get pendingScreenTitle;
-
   /// Sign-in heading. Same as the website.
   ///
   /// In en, this message translates to:
@@ -2348,6 +2342,348 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Import another file'**
   String get importAnotherFile;
+
+  /// Same as the website's claims page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Ownership claims'**
+  String get claimsTitle;
+
+  /// Same as the website's claims page. Screen-reader label of the tabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim status'**
+  String get claimStatusLabel;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'To review'**
+  String get tabToReview;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get tabApproved;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get tabRejected;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to review'**
+  String get nothingToReview;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipts shoppers upload appear here, oldest first.'**
+  String get nothingToReviewBody;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'No approved claims yet'**
+  String get noApprovedClaims;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'No rejected claims yet'**
+  String get noRejectedClaims;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions you make will be listed here.'**
+  String get decidedClaimsBody;
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} ({email})'**
+  String claimUserLine(String name, String email);
+
+  /// Same as the website's claims page.
+  ///
+  /// In en, this message translates to:
+  /// **'Order match'**
+  String get methodOrderMatch;
+
+  /// Same as the website's claims page. {attempt} is the upload number, or ? when unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt {attempt} of 5'**
+  String receiptAttemptOf(String attempt);
+
+  /// Count above the claims list (the app loads more as you scroll).
+  ///
+  /// In en, this message translates to:
+  /// **'{total, plural, =1{Showing 1–{last} of {total} claim} other{Showing 1–{last} of {total} claims}}'**
+  String showingClaims(int total, int last);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: {product}'**
+  String claimTitle(String name, String product);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'Matched automatically to a paid order on {date}.'**
+  String claimOrderMatched(String date);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt {attempt} of 5, sent {date}.'**
+  String claimReceiptSent(String attempt, String date);
+
+  /// Same as the website's claim review page. Website: 'in a new tab'; the app opens it in its own viewer.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the PDF receipt'**
+  String get openPdfReceipt;
+
+  /// Same as the website's claim review page. Website says 'Select'.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the image to open it full size.'**
+  String get tapReceiptFullSize;
+
+  /// Same as the website's claim review page. Screen-reader label of the receipt image.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt uploaded by {name}'**
+  String receiptImageLabel(String name);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'No receipt: this claim was verified from order {order}.'**
+  String noReceiptOrder(String order);
+
+  /// Same as the website's claim review page. Used in noReceiptOrder when the order id is unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'on record'**
+  String get orderOnRecord;
+
+  /// Same as the website's receipt route.
+  ///
+  /// In en, this message translates to:
+  /// **'This receipt isn\'t available.'**
+  String get receiptUnavailable;
+
+  /// App bar title of the full-screen receipt viewer.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt'**
+  String get receiptViewerTitle;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your decision'**
+  String get yourDecision;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get approve;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Approving…'**
+  String get approving;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get reject;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason the shopper will see'**
+  String get rejectReasonLabel;
+
+  /// Same as the website's claim decision panel. Screen-reader label of the reason chips.
+  ///
+  /// In en, this message translates to:
+  /// **'Common reasons'**
+  String get commonReasonsLabel;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'The receipt is too blurry to read'**
+  String get reasonBlurry;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'This product isn\'t on the receipt'**
+  String get reasonProductMissing;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'The receipt is from a shop that doesn\'t sell this brand'**
+  String get reasonWrongShop;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Part of the receipt is cut off'**
+  String get reasonCutOff;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'This was their last upload: rejecting it means they can\'t verify this piece.'**
+  String get lastUpload;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{They\'ll have 1 upload left.} other{They\'ll have {count} uploads left.}}'**
+  String rejectUploadsLeft(int count);
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject receipt'**
+  String get rejectReceipt;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejecting…'**
+  String get rejecting;
+
+  /// Same as the website's claim actions (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Approved. The shopper is now the verified owner.'**
+  String get claimApproved;
+
+  /// Same as the website's claim actions (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected. The shopper will see your reason.'**
+  String get claimRejected;
+
+  /// Same as the website's claim actions (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Tell the shopper what was wrong so they can fix it'**
+  String get reasonTooShort;
+
+  /// Same as the website's claim actions (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the reason under 500 characters'**
+  String get reasonTooLong;
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved {date}'**
+  String claimDecidedApproved(String date);
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected {date}'**
+  String claimDecidedRejected(String date);
+
+  /// Same as the website's claim decision panel. Keep the leading space.
+  ///
+  /// In en, this message translates to:
+  /// **' by {name}'**
+  String reviewedBy(String name);
+
+  /// Same as the website's claim decision panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason given: “{reason}”'**
+  String reasonGiven(String reason);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'What to check'**
+  String get whatToCheck;
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'The shop or brand is {brand} or a stockist.'**
+  String checkShop(String brand);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'A line on the receipt matches {product} (SKU {sku}).'**
+  String checkLine(String product, String sku);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'It looks like a real, unedited receipt.'**
+  String get checkReal;
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopper'**
+  String get shopperHeading;
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'All claims for this piece'**
+  String get allClaimsForPiece;
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt {attempt}'**
+  String historyReceipt(String attempt);
+
+  /// Same as the website's claim review page. Keep the leading space.
+  ///
+  /// In en, this message translates to:
+  /// **' (this one)'**
+  String get thisOne;
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting since {date}'**
+  String waitingSince(String date);
+
+  /// Same as the website's claim review page.
+  ///
+  /// In en, this message translates to:
+  /// **'“{text}”'**
+  String quotedText(String text);
 }
 
 class _AppLocalizationsDelegate

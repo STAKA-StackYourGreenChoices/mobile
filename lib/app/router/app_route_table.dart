@@ -2,11 +2,13 @@ import 'package:flutter/foundation.dart' show ValueKey;
 import 'package:go_router/go_router.dart';
 import 'package:staka/app/launch/launch_screen.dart';
 import 'package:staka/app/launch/unreachable_screen.dart';
-import 'package:staka/app/pending/pending_screen.dart';
 import 'package:staka/app/routes.dart';
 import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
 import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/admin_claim_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/admin_claims_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/claim_receipt_screen.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/admin/import/presentation/screens/admin_import_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
@@ -52,11 +54,6 @@ GoRoute _child(
     routes: children,
   );
 }
-
-/// Stand-in for a destination whose screen lands in a later slice
-/// (PHASE2_PLAN.md §9). PROGRESS.md tracks them; none may remain at Phase 5.
-GoRoute _pending(AppRoute parent, AppRoute route) =>
-    _child(parent, route, (_, _) => PendingScreen(route: route));
 
 final appRouteTable = <RouteBase>[
   _route(AppRoute.launch, (_, _) => const LaunchScreen()),
@@ -143,7 +140,30 @@ final appRouteTable = <RouteBase>[
                 AppRoute.adminImport,
                 (_, _) => const AdminImportScreen(),
               ),
-              _pending(AppRoute.adminHome, AppRoute.adminClaims),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminClaims,
+                (_, _) => const AdminClaimsScreen(),
+                children: [
+                  _child(
+                    AppRoute.adminClaims,
+                    AppRoute.adminClaim,
+                    (_, state) => AdminClaimScreen(
+                      key: ValueKey(state.pathParameters['id']),
+                      claimId: state.pathParameters['id'] ?? '',
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.adminClaim,
+                        AppRoute.adminClaimReceipt,
+                        (_, state) => ClaimReceiptScreen(
+                          claimId: state.pathParameters['id'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ],

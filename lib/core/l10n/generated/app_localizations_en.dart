@@ -120,9 +120,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navAccount => 'Account';
 
   @override
-  String get pendingScreenTitle => 'This screen is being built';
-
-  @override
   String get loginTitle => 'Sign in to STAKA';
 
   @override
@@ -1410,4 +1407,228 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get importAnotherFile => 'Import another file';
+
+  @override
+  String get claimsTitle => 'Ownership claims';
+
+  @override
+  String get claimStatusLabel => 'Claim status';
+
+  @override
+  String get tabToReview => 'To review';
+
+  @override
+  String get tabApproved => 'Approved';
+
+  @override
+  String get tabRejected => 'Rejected';
+
+  @override
+  String get nothingToReview => 'Nothing to review';
+
+  @override
+  String get nothingToReviewBody =>
+      'Receipts shoppers upload appear here, oldest first.';
+
+  @override
+  String get noApprovedClaims => 'No approved claims yet';
+
+  @override
+  String get noRejectedClaims => 'No rejected claims yet';
+
+  @override
+  String get decidedClaimsBody => 'Decisions you make will be listed here.';
+
+  @override
+  String claimUserLine(String name, String email) {
+    return '$name ($email)';
+  }
+
+  @override
+  String get methodOrderMatch => 'Order match';
+
+  @override
+  String receiptAttemptOf(String attempt) {
+    return 'Receipt $attempt of 5';
+  }
+
+  @override
+  String showingClaims(int total, int last) {
+    String _temp0 = intl.Intl.pluralLogic(
+      total,
+      locale: localeName,
+      other: 'Showing 1–$last of $total claims',
+      one: 'Showing 1–$last of $total claim',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String claimTitle(String name, String product) {
+    return '$name: $product';
+  }
+
+  @override
+  String claimOrderMatched(String date) {
+    return 'Matched automatically to a paid order on $date.';
+  }
+
+  @override
+  String claimReceiptSent(String attempt, String date) {
+    return 'Receipt $attempt of 5, sent $date.';
+  }
+
+  @override
+  String get openPdfReceipt => 'Open the PDF receipt';
+
+  @override
+  String get tapReceiptFullSize => 'Tap the image to open it full size.';
+
+  @override
+  String receiptImageLabel(String name) {
+    return 'Receipt uploaded by $name';
+  }
+
+  @override
+  String noReceiptOrder(String order) {
+    return 'No receipt: this claim was verified from order $order.';
+  }
+
+  @override
+  String get orderOnRecord => 'on record';
+
+  @override
+  String get receiptUnavailable => 'This receipt isn\'t available.';
+
+  @override
+  String get receiptViewerTitle => 'Receipt';
+
+  @override
+  String get yourDecision => 'Your decision';
+
+  @override
+  String get approve => 'Approve';
+
+  @override
+  String get approving => 'Approving…';
+
+  @override
+  String get reject => 'Reject';
+
+  @override
+  String get rejectReasonLabel => 'Reason the shopper will see';
+
+  @override
+  String get commonReasonsLabel => 'Common reasons';
+
+  @override
+  String get reasonBlurry => 'The receipt is too blurry to read';
+
+  @override
+  String get reasonProductMissing => 'This product isn\'t on the receipt';
+
+  @override
+  String get reasonWrongShop =>
+      'The receipt is from a shop that doesn\'t sell this brand';
+
+  @override
+  String get reasonCutOff => 'Part of the receipt is cut off';
+
+  @override
+  String get lastUpload =>
+      'This was their last upload: rejecting it means they can\'t verify this piece.';
+
+  @override
+  String rejectUploadsLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'They\'ll have $count uploads left.',
+      one: 'They\'ll have 1 upload left.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get rejectReceipt => 'Reject receipt';
+
+  @override
+  String get rejecting => 'Rejecting…';
+
+  @override
+  String get claimApproved =>
+      'Approved. The shopper is now the verified owner.';
+
+  @override
+  String get claimRejected => 'Rejected. The shopper will see your reason.';
+
+  @override
+  String get reasonTooShort =>
+      'Tell the shopper what was wrong so they can fix it';
+
+  @override
+  String get reasonTooLong => 'Keep the reason under 500 characters';
+
+  @override
+  String claimDecidedApproved(String date) {
+    return 'Approved $date';
+  }
+
+  @override
+  String claimDecidedRejected(String date) {
+    return 'Rejected $date';
+  }
+
+  @override
+  String reviewedBy(String name) {
+    return ' by $name';
+  }
+
+  @override
+  String reasonGiven(String reason) {
+    return 'Reason given: “$reason”';
+  }
+
+  @override
+  String get whatToCheck => 'What to check';
+
+  @override
+  String checkShop(String brand) {
+    return 'The shop or brand is $brand or a stockist.';
+  }
+
+  @override
+  String checkLine(String product, String sku) {
+    return 'A line on the receipt matches $product (SKU $sku).';
+  }
+
+  @override
+  String get checkReal => 'It looks like a real, unedited receipt.';
+
+  @override
+  String get shopperHeading => 'Shopper';
+
+  @override
+  String get allClaimsForPiece => 'All claims for this piece';
+
+  @override
+  String historyReceipt(String attempt) {
+    return 'Receipt $attempt';
+  }
+
+  @override
+  String get thisOne => ' (this one)';
+
+  @override
+  String waitingSince(String date) {
+    return 'Waiting since $date';
+  }
+
+  @override
+  String quotedText(String text) {
+    return '“$text”';
+  }
 }

@@ -14,7 +14,7 @@ import 'package:staka/features/admin/products/presentation/state/product_save_co
 import 'package:staka/features/admin/products/presentation/widgets/delete_product_dialog.dart';
 import 'package:staka/features/admin/products/presentation/widgets/product_form.dart';
 import 'package:staka/features/admin/products/presentation/widgets/product_form_header.dart';
-import 'package:staka/features/admin/products/presentation/widgets/product_not_found.dart';
+import 'package:staka/features/admin/shared/widgets/admin_not_found.dart';
 import 'package:staka/shared/formatters/date_format.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
@@ -53,8 +53,9 @@ class AdminProductFormScreen extends ConsumerWidget {
       isScrollable: editor is EditorReady,
       body: switch (editor) {
         EditorLoading() => const AppLoader(),
-        EditorNotFound() => ProductNotFound(
-          onProductsPressed: () => context.goNamed(AppRoute.adminProducts.name),
+        EditorNotFound() => AdminNotFound(
+          backLabel: l10n.adminProducts,
+          onBackPressed: () => context.goNamed(AppRoute.adminProducts.name),
         ),
         EditorFailed(:final failure) => AppErrorState(
           failure: failure,

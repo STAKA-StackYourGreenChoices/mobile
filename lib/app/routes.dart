@@ -26,7 +26,9 @@ enum AppRoute {
   adminProductEdit('/admin/products/:id'),
   adminBrands('/admin/brands'),
   adminImport('/admin/import'),
-  adminClaims('/admin/claims');
+  adminClaims('/admin/claims'),
+  adminClaim('/admin/claims/:id'),
+  adminClaimReceipt('/admin/claims/:id/receipt');
 
   new(this.path);
 
