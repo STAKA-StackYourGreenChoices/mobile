@@ -6,11 +6,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/sustainability_info.dart';
+import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
+import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 
+import '../../helpers/admin_brand_fakes.dart';
 import '../../helpers/admin_product_fakes.dart';
 import '../../helpers/golden.dart';
 import '../../helpers/product_fakes.dart';
@@ -24,6 +27,11 @@ Widget _scoped(FakeAdminProductRepository repository, Widget screen) =>
 
 Widget _products(FakeAdminProductRepository repository) =>
     _scoped(repository, const AdminProductsScreen());
+
+Widget _brands(FakeAdminBrandRepository repository) => ProviderScope(
+  overrides: [adminBrandRepositoryProvider.overrideWithValue(repository)],
+  child: const AdminBrandsScreen(),
+);
 
 const _id = '11111111-2222-4333-8444-555555555555';
 
@@ -63,7 +71,22 @@ void main() {
     brands: Ok([brandSummary('b1', 'Terra Threads')]),
   );
 
+  final brandList = FakeAdminBrandRepository(
+    lists: [
+      Ok([
+        brandSummary(
+          'b1',
+          'Terra Threads',
+        ).copyWith(description: 'Organic cotton basics, made in Portugal.'),
+        brandSummary('b2', 'Nordic Loom').copyWith(productCount: 1),
+        brandSummary('b3', 'Field & Fold').copyWith(productCount: 0),
+      ]),
+    ],
+  );
+
   final cases = <String, (Widget Function(), double)>{
+    'brands': (() => _brands(brandList), 900),
+    'brands_empty': (() => _brands(FakeAdminBrandRepository()), 760),
     'hub': (() => const AdminHomeScreen(), 760),
     'products': (() => _products(list), 760),
     'products_empty': (() => _products(FakeAdminProductRepository()), 760),

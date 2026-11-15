@@ -72,7 +72,7 @@ class _DeleteProductDialog extends ConsumerWidget {
         ),
         AppButton(
           label: l10n.deleteProduct,
-          loadingLabel: l10n.deletingProduct,
+          loadingLabel: l10n.deleting,
           variant: AppButtonVariant.destructive,
           isLoading: isDeleting,
           onPressed: failure != null

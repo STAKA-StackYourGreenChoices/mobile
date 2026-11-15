@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/admin/products/domain/models/product_page.dart';
-import 'package:staka/features/admin/products/presentation/state/admin_catalog_revision.dart';
 import 'package:staka/features/admin/products/presentation/state/admin_products_state.dart';
+import 'package:staka/features/admin/shared/admin_catalog_revision.dart';
 
 part 'admin_products_controller.g.dart';
 
@@ -18,15 +17,15 @@ class AdminProductsController extends _$AdminProductsController {
   /// Bumped on every new search, so answers to an older one are dropped.
   int _generation = 0;
 
+  /// [brandId] starts the list filtered to one brand, like the website's
+  /// `/admin/products?brand=…` (the brands page links there).
   @override
-  AdminProductsState build() {
-    // A product was added, changed or deleted: back to the first page.
+  AdminProductsState build({String? brandId}) {
+    // A product or brand was added, changed or deleted: back to page one.
     ref.listen(adminCatalogRevisionProvider, (_, _) => unawaited(refresh()));
-    unawaited(Future.microtask(() => _reload(const ProductFilter())));
-    return const AdminProductsState(
-      filter: ProductFilter(),
-      body: ProductListLoading(),
-    );
+    final filter = ProductFilter(brandId: brandId);
+    unawaited(Future.microtask(() => _reload(filter)));
+    return AdminProductsState(filter: filter, body: const ProductListLoading());
   }
 
   Future<void> search(String text) => _reload(state.filter.withSearch(text));

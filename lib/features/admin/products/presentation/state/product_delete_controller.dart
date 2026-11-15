@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
-import 'package:staka/features/admin/products/presentation/state/admin_catalog_revision.dart';
+import 'package:staka/features/admin/shared/admin_catalog_revision.dart';
 
 part 'product_delete_controller.g.dart';
 

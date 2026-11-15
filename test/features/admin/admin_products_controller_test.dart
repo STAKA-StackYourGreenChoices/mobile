@@ -31,13 +31,13 @@ void main() {
       );
       addTearDown(container.dispose);
       final subscription = container.listen(
-        adminProductsControllerProvider,
+        adminProductsControllerProvider(),
         (_, _) {},
       );
       addTearDown(subscription.close);
       await Future<void>.delayed(Duration.zero);
       final controller = container.read(
-        adminProductsControllerProvider.notifier,
+        adminProductsControllerProvider().notifier,
       );
 
       final slow = controller.search('tee');
@@ -52,7 +52,7 @@ void main() {
       answers['']!.complete(Ok(pageOf(const [])));
       await slow;
 
-      final state = container.read(adminProductsControllerProvider);
+      final state = container.read(adminProductsControllerProvider());
       expect(state.filter.search, 'jeans');
       final body = state.body as ProductListLoaded;
       expect(body.items.single.name, 'Recycled Denim Jeans');

@@ -8,18 +8,18 @@ part of 'admin_catalog_revision.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Bumped whenever a product is added, changed or deleted, so the product
-/// list (kept under the form) reloads, like the website's `revalidatePath`.
+/// Bumped whenever a product or brand is added, changed or deleted, so the
+/// admin lists showing them reload, like the website's `revalidatePath`.
 
 @ProviderFor(AdminCatalogRevision)
 final adminCatalogRevisionProvider = AdminCatalogRevisionProvider._();
 
-/// Bumped whenever a product is added, changed or deleted, so the product
-/// list (kept under the form) reloads, like the website's `revalidatePath`.
+/// Bumped whenever a product or brand is added, changed or deleted, so the
+/// admin lists showing them reload, like the website's `revalidatePath`.
 final class AdminCatalogRevisionProvider
     extends $NotifierProvider<AdminCatalogRevision, int> {
-  /// Bumped whenever a product is added, changed or deleted, so the product
-  /// list (kept under the form) reloads, like the website's `revalidatePath`.
+  /// Bumped whenever a product or brand is added, changed or deleted, so the
+  /// admin lists showing them reload, like the website's `revalidatePath`.
   AdminCatalogRevisionProvider._()
     : super(
         from: null,
@@ -50,8 +50,8 @@ final class AdminCatalogRevisionProvider
 String _$adminCatalogRevisionHash() =>
     r'a02c165bea239c03276ad8df9c0c92ca0b693bd3';
 
-/// Bumped whenever a product is added, changed or deleted, so the product
-/// list (kept under the form) reloads, like the website's `revalidatePath`.
+/// Bumped whenever a product or brand is added, changed or deleted, so the
+/// admin lists showing them reload, like the website's `revalidatePath`.
 
 abstract class _$AdminCatalogRevision extends $Notifier<int> {
   int build();

@@ -8,6 +8,8 @@ import 'package:staka/core/catalog/brands_api.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
+import 'package:staka/features/admin/brands/data/datasources/brand_editor_remote_data_source.dart';
+import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/admin/products/data/datasources/admin_product_remote_data_source.dart';
 import 'package:staka/features/admin/products/data/datasources/product_editor_remote_data_source.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
@@ -70,6 +72,10 @@ class LiveClient {
       BrandsApi(dio),
       ProductEditorRemoteDataSource(dio),
     );
+    adminBrands = AdminBrandRepositoryImpl(
+      BrandsApi(dio),
+      BrandEditorRemoteDataSource(dio),
+    );
     session = SessionRepository(dio, store);
   }
 
@@ -83,6 +89,7 @@ class LiveClient {
   late final ProductRepositoryImpl products;
   late final TagRepositoryImpl tags;
   late final AdminProductRepositoryImpl adminProducts;
+  late final AdminBrandRepositoryImpl adminBrands;
   late final SessionRepository session;
   int rejections = 0;
 

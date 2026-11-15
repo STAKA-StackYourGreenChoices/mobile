@@ -7,6 +7,7 @@ import 'package:staka/app/pending/pending_screen.dart';
 import 'package:staka/app/routes.dart';
 import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
+import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
@@ -110,7 +111,10 @@ final appRouteTable = <RouteBase>[
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminProducts,
-                (_, _) => const AdminProductsScreen(),
+                (_, state) => AdminProductsScreen(
+                  key: ValueKey(state.uri.queryParameters['brand']),
+                  brandId: state.uri.queryParameters['brand'],
+                ),
                 children: [
                   // 'new' before ':id', or it would be read as an id.
                   _child(
@@ -129,7 +133,11 @@ final appRouteTable = <RouteBase>[
                   ),
                 ],
               ),
-              _pending(AppRoute.adminHome, AppRoute.adminBrands),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminBrands,
+                (_, _) => const AdminBrandsScreen(),
+              ),
               _pending(AppRoute.adminHome, AppRoute.adminImport),
               _pending(AppRoute.adminHome, AppRoute.adminClaims),
             ],

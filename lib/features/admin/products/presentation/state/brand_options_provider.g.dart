@@ -55,4 +55,4 @@ final class BrandOptionsProvider
   }
 }
 
-String _$brandOptionsHash() => r'b46bd5196cc5910099f049f216c53aaba227fff1';
+String _$brandOptionsHash() => r'd3926365f0dfe4937de33f586dc082ad42dc2df9';

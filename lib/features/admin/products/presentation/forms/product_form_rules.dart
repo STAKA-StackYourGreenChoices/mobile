@@ -32,19 +32,10 @@ class ProductFormRules {
     _common.maxLength(64),
   ]);
 
-  Validator get description => _labelledMax(_l10n.fieldDescription, 2000);
+  Validator get description =>
+      _common.labelledMaxLength(_l10n.fieldDescription, 2000);
 
-  /// Optional; when given, a full http(s) link.
-  Validator get imageUrl => (value) {
-    final text = (value ?? '').trim();
-    if (text.isEmpty) return null;
-    final uri = Uri.tryParse(text);
-    final isWebLink =
-        uri != null &&
-        (uri.scheme == 'https' || uri.scheme == 'http') &&
-        uri.host.isNotEmpty;
-    return isWebLink ? null : _l10n.validationUrl;
-  };
+  Validator get imageUrl => _common.optionalWebLink;
 
   /// Digits only (the field filters them), at least 0.
   Validator get carbon => _figure((_) => null);
@@ -59,7 +50,7 @@ class ProductFormRules {
     if (!hasFigures() || !isVerified()) return null;
     final text = (value ?? '').trim();
     if (text.isEmpty) return _l10n.validationCertifier;
-    return _labelledMax(_l10n.certifierLabel, 200)(text);
+    return _common.labelledMaxLength(_l10n.certifierLabel, 200)(text);
   };
 
   Validator _figure(String? Function(int number) range) => (value) {
@@ -68,9 +59,4 @@ class ProductFormRules {
     if (number == null) return _l10n.validationFigureRequired;
     return range(number);
   };
-
-  Validator _labelledMax(String label, int max) =>
-      (value) => (value ?? '').trim().length > max
-      ? _l10n.validationFieldTooLong(label, max)
-      : null;
 }

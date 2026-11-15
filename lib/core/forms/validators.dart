@@ -50,6 +50,26 @@ class Validators {
       ? _l10n.validationTooLong(max)
       : null;
 
+  /// At most [max] characters, naming the field: "Description must be 1000
+  /// characters or fewer" (the website's admin forms).
+  Validator labelledMaxLength(String label, int max) =>
+      (value) => (value ?? '').trim().length > max
+      ? _l10n.validationFieldTooLong(label, max)
+      : null;
+
+  /// Optional; when given, a full http(s) link (zod's `z.url` with the
+  /// website's protocol rule).
+  Validator get optionalWebLink => (value) {
+    final text = (value ?? '').trim();
+    if (text.isEmpty) return null;
+    final uri = Uri.tryParse(text);
+    final isWebLink =
+        uri != null &&
+        (uri.scheme == 'https' || uri.scheme == 'http') &&
+        uri.host.isNotEmpty;
+    return isWebLink ? null : _l10n.validationUrl;
+  };
+
   /// The first failing rule's message, like zod reports per field.
   static Validator all(List<Validator> rules) => (value) {
     for (final rule in rules) {

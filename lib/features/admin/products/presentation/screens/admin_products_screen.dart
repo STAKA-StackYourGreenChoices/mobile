@@ -14,14 +14,18 @@ import 'package:staka/features/admin/products/presentation/widgets/product_filte
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// The website's `/admin/products`: every product, searchable and
-/// filterable by brand, opening each to edit.
+/// filterable by brand, opening each to edit. [brandId] opens it already
+/// filtered to that brand (the website's `?brand=`).
 class AdminProductsScreen extends ConsumerWidget {
-  const new({super.key});
+  const new({this.brandId, super.key});
+
+  final String? brandId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(adminProductsControllerProvider);
-    final controller = ref.read(adminProductsControllerProvider.notifier);
+    final list = adminProductsControllerProvider(brandId: this.brandId);
+    final state = ref.watch(list);
+    final controller = ref.read(list.notifier);
     final brands = ref.watch(brandOptionsProvider);
     final brandId = state.filter.brandId;
 

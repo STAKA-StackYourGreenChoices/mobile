@@ -1852,11 +1852,11 @@ abstract class AppLocalizations {
   /// **'Delete product'**
   String get deleteProduct;
 
-  /// Same as the website's delete-product dialog. Button while waiting.
+  /// Delete buttons while waiting (products, brands). Same as the website.
   ///
   /// In en, this message translates to:
   /// **'Deleting…'**
-  String get deletingProduct;
+  String get deleting;
 
   /// Same as the website's delete-product dialog.
   ///
@@ -1881,6 +1881,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} deleted'**
   String productDeleted(String name);
+
+  /// Same as the website's brands page. Also the dialog title and submit button.
+  ///
+  /// In en, this message translates to:
+  /// **'Add brand'**
+  String get addBrand;
+
+  /// Same as the website's brands page.
+  ///
+  /// In en, this message translates to:
+  /// **'No brands yet'**
+  String get noBrandsTitle;
+
+  /// Same as the website's brands page.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a brand before adding its products. Importing a CSV also creates any brands it names.'**
+  String get noBrandsBody;
+
+  /// Same as the website's brands page. Opens the products list filtered to the brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product} other{{count} products}}'**
+  String brandProductCount(int count);
+
+  /// Same as the website's brands page.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// Same as the website's brands page. Screen-reader label of Edit; also the dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit {name}'**
+  String editBrandLabel(String name);
+
+  /// Same as the website's brands page.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// Same as the website's brands page. Screen-reader label of Delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}'**
+  String deleteBrandLabel(String name);
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes show on every tag for this brand\'s products.'**
+  String get editBrandDescription;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'You can add its products once the brand exists.'**
+  String get addBrandDescription;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand name'**
+  String get fieldBrandName;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'About the brand'**
+  String get fieldAboutBrand;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. One sentence on what they make and how.'**
+  String get aboutBrandHint;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo link'**
+  String get fieldLogoLink;
+
+  /// Same as the website's brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional.'**
+  String get optionalHint;
+
+  /// Same as the website's brand rules.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the brand name'**
+  String get validationBrandName;
+
+  /// Same as the website's brand dialog (409, on the name field).
+  ///
+  /// In en, this message translates to:
+  /// **'A brand with this name already exists'**
+  String get brandNameTaken;
+
+  /// Same as the website's brand dialog. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand added'**
+  String get brandAdded;
+
+  /// Same as the website's brand dialog. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand updated'**
+  String get brandUpdated;
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} still has products'**
+  String brandHasProductsTitle(String name);
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Delete its 1 product or move them to another brand first.} other{Delete its {count} products or move them to another brand first.}}'**
+  String brandHasProductsBody(int count);
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}?'**
+  String deleteBrandTitle(String name);
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone.'**
+  String get cantBeUndone;
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'See its products'**
+  String get seeItsProducts;
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep brand'**
+  String get keepBrand;
+
+  /// Same as the website's delete-brand dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete brand'**
+  String get deleteBrand;
+
+  /// Same as the website's delete-brand dialog. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} deleted'**
+  String brandDeleted(String name);
 }
 
 class _AppLocalizationsDelegate

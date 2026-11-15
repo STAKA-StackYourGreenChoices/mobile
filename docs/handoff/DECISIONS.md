@@ -52,4 +52,6 @@ _None._
 | S16 | Photo link on edit | The form edits the address exactly as stored (`EditableProduct.storedImageUrl`), not the phone-loadable one, so saving never rewrites seeded `localhost` catalog links |
 | S16 | Unknown product id | Website shows the Next.js 404 ("This page could not be found."); the app shows that line and a "Products" button (the website's back link) |
 | S16 | Build | `kotlin.incremental=false` in `android/gradle.properties` (Windows cross-drive Kotlin cache failure) |
+| S17 | Brand add / edit | Bottom sheet instead of the website's dialog (keyboard-friendly on phones); same fields, copy and rules |
+| S17 | Brand product count | Opens the products list filtered to the brand (`/admin/products?brand=<id>`, like the website's link). Back returns to the Admin hub |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

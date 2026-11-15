@@ -1404,9 +1404,9 @@
   "@deleteProduct": {
     "description": "Same as the website's delete-product dialog."
   },
-  "deletingProduct": "Deleting…",
-  "@deletingProduct": {
-    "description": "Same as the website's delete-product dialog. Button while waiting."
+  "deleting": "Deleting…",
+  "@deleting": {
+    "description": "Delete buttons while waiting (products, brands). Same as the website."
   },
   "deleteProductTitle": "Delete {name}?",
   "@deleteProductTitle": {
@@ -1428,6 +1428,153 @@
   "productDeleted": "{name} deleted",
   "@productDeleted": {
     "description": "Same as the website's delete-product dialog. Snackbar.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "addBrand": "Add brand",
+  "@addBrand": {
+    "description": "Same as the website's brands page. Also the dialog title and submit button."
+  },
+  "noBrandsTitle": "No brands yet",
+  "@noBrandsTitle": {
+    "description": "Same as the website's brands page."
+  },
+  "noBrandsBody": "Add a brand before adding its products. Importing a CSV also creates any brands it names.",
+  "@noBrandsBody": {
+    "description": "Same as the website's brands page."
+  },
+  "brandProductCount": "{count, plural, =1{1 product} other{{count} products}}",
+  "@brandProductCount": {
+    "description": "Same as the website's brands page. Opens the products list filtered to the brand.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Same as the website's brands page."
+  },
+  "editBrandLabel": "Edit {name}",
+  "@editBrandLabel": {
+    "description": "Same as the website's brands page. Screen-reader label of Edit; also the dialog title.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Same as the website's brands page."
+  },
+  "deleteBrandLabel": "Delete {name}",
+  "@deleteBrandLabel": {
+    "description": "Same as the website's brands page. Screen-reader label of Delete.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "editBrandDescription": "Changes show on every tag for this brand's products.",
+  "@editBrandDescription": {
+    "description": "Same as the website's brand dialog."
+  },
+  "addBrandDescription": "You can add its products once the brand exists.",
+  "@addBrandDescription": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldBrandName": "Brand name",
+  "@fieldBrandName": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldAboutBrand": "About the brand",
+  "@fieldAboutBrand": {
+    "description": "Same as the website's brand dialog."
+  },
+  "aboutBrandHint": "Optional. One sentence on what they make and how.",
+  "@aboutBrandHint": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldLogoLink": "Logo link",
+  "@fieldLogoLink": {
+    "description": "Same as the website's brand dialog."
+  },
+  "optionalHint": "Optional.",
+  "@optionalHint": {
+    "description": "Same as the website's brand dialog."
+  },
+  "validationBrandName": "Enter the brand name",
+  "@validationBrandName": {
+    "description": "Same as the website's brand rules."
+  },
+  "brandNameTaken": "A brand with this name already exists",
+  "@brandNameTaken": {
+    "description": "Same as the website's brand dialog (409, on the name field)."
+  },
+  "brandAdded": "Brand added",
+  "@brandAdded": {
+    "description": "Same as the website's brand dialog. Snackbar."
+  },
+  "brandUpdated": "Brand updated",
+  "@brandUpdated": {
+    "description": "Same as the website's brand dialog. Snackbar."
+  },
+  "brandHasProductsTitle": "{name} still has products",
+  "@brandHasProductsTitle": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "brandHasProductsBody": "{count, plural, =1{Delete its 1 product or move them to another brand first.} other{Delete its {count} products or move them to another brand first.}}",
+  "@brandHasProductsBody": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteBrandTitle": "Delete {name}?",
+  "@deleteBrandTitle": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cantBeUndone": "This can't be undone.",
+  "@cantBeUndone": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "seeItsProducts": "See its products",
+  "@seeItsProducts": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "keepBrand": "Keep brand",
+  "@keepBrand": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "deleteBrand": "Delete brand",
+  "@deleteBrand": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "brandDeleted": "{name} deleted",
+  "@brandDeleted": {
+    "description": "Same as the website's delete-brand dialog. Snackbar.",
     "placeholders": {
       "name": {
         "type": "String"

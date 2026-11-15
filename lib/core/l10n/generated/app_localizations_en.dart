@@ -1037,7 +1037,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteProduct => 'Delete product';
 
   @override
-  String get deletingProduct => 'Deleting…';
+  String get deleting => 'Deleting…';
 
   @override
   String deleteProductTitle(String name) {
@@ -1053,6 +1053,120 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String productDeleted(String name) {
+    return '$name deleted';
+  }
+
+  @override
+  String get addBrand => 'Add brand';
+
+  @override
+  String get noBrandsTitle => 'No brands yet';
+
+  @override
+  String get noBrandsBody =>
+      'Add a brand before adding its products. Importing a CSV also creates any brands it names.';
+
+  @override
+  String brandProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products',
+      one: '1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String editBrandLabel(String name) {
+    return 'Edit $name';
+  }
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String deleteBrandLabel(String name) {
+    return 'Delete $name';
+  }
+
+  @override
+  String get editBrandDescription =>
+      'Changes show on every tag for this brand\'s products.';
+
+  @override
+  String get addBrandDescription =>
+      'You can add its products once the brand exists.';
+
+  @override
+  String get fieldBrandName => 'Brand name';
+
+  @override
+  String get fieldAboutBrand => 'About the brand';
+
+  @override
+  String get aboutBrandHint =>
+      'Optional. One sentence on what they make and how.';
+
+  @override
+  String get fieldLogoLink => 'Logo link';
+
+  @override
+  String get optionalHint => 'Optional.';
+
+  @override
+  String get validationBrandName => 'Enter the brand name';
+
+  @override
+  String get brandNameTaken => 'A brand with this name already exists';
+
+  @override
+  String get brandAdded => 'Brand added';
+
+  @override
+  String get brandUpdated => 'Brand updated';
+
+  @override
+  String brandHasProductsTitle(String name) {
+    return '$name still has products';
+  }
+
+  @override
+  String brandHasProductsBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Delete its $count products or move them to another brand first.',
+      one: 'Delete its 1 product or move them to another brand first.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String deleteBrandTitle(String name) {
+    return 'Delete $name?';
+  }
+
+  @override
+  String get cantBeUndone => 'This can\'t be undone.';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get seeItsProducts => 'See its products';
+
+  @override
+  String get keepBrand => 'Keep brand';
+
+  @override
+  String get deleteBrand => 'Delete brand';
+
+  @override
+  String brandDeleted(String name) {
     return '$name deleted';
   }
 }

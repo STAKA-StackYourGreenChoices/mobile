@@ -25,7 +25,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Slice 7 `feat/auth-sign-in`: Login + Register (feature layers, web copy/validation), `SignedIn.isNewAccount`, 11 tests + 4 goldens, **live test passes against the real API** (register, 409, 401, login, /auth/me, refresh rotation, logout revoke)
 - [x] Slice 8 `feat/auth-password`: Forgot password (web copy + 'link opens the website' note), Account tab (name, email, change password, sign out), Change password (re-signs this phone in; fallback sign-in alert), 15 tests + 6 goldens, live tests pass. Fixed router refresh racing `pop()`
 - [x] Slice 9 `feat/shared-hang-tag`: HangTag (shape, hole, stitching, shadow, string, one swing / fade under reduce-motion), TagImage, OwnershipChip, carbon/GTIN formatters, Welcome hero tag (bundled seeded-catalog SVG). EAN-13 drawing skipped: only the website's marketing page uses it. 10 tests + 4 goldens; fixed 200%-text overflow in the photo placeholder and the tag's merged screen-reader label
-- [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): adminBrands (17), adminImport (18), adminClaims (19)
+- [ ] **Temporary `PendingScreen` routes still to replace** (delete `app/pending/` + `pendingScreenTitle` ARB key when empty): adminImport (18), adminClaims (19)
 - [ ] Follow-up: Linux golden baselines for CI (needs Docker or a CI job)
 - [x] Auth: login, register, forgot, logout, session restore, route guards (slices 3, 6–8); reset password + verify email happen on the website (decision 7)
 - [x] Slice 10 `feat/wardrobe-list`: core models + DTOs/mappers, Wardrobe tab (welcome header, verify-email banner + resend, Verified / Waiting for proof, empty state, pull-to-refresh, error + retry), RequestState moved to core. 11 tests + 4 goldens + 2 live tests
@@ -37,7 +37,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Public shared tag: stays on the website by design (decision 8); "See what others see" opens it
 - [x] Slice 15 `feat/admin-products-list`: Admin hub (Products / Brands / Import / Claims with the website's page descriptions), products list (search, brand filter sheet, Clear, "Showing 1–n of N", rows with thumbnail + brand, barcode + compact figures badge, infinite scroll 20 at a time, load-more retry, empty/filtered-empty/error states, pull to refresh). Shared `SustainabilityBadge`. 16 tests + 6 goldens + 1 live test (11/11 live)
 - [x] Slice 16 `feat/admin-product-form`: add / edit product (website fields, hints, limits and zod messages; brand picker with "Add it on the Brands page"; figures switch that can't remove saved figures; verified + certifier; live hang-tag preview), save errors split like the website (409 code taken / 400 bad check digit on the field), "Product added" opens the new product, "Changes saved" refreshes the heading, delete with confirm dialog that keeps the API's refusal, 404 page. List reloads after any change. 25 tests + 4 goldens + 1 live test (12/12 live)
-- [ ] Admin: brands
+- [x] Slice 17 `feat/admin-brands`: brands page (name, description, "{n} products" opening the products list filtered to that brand, Edit / Delete), add / edit in a bottom sheet (website fields, rules, 409 → "A brand with this name already exists" on the name), delete dialog (brand with products: "still has products" + See its products; otherwise confirm, API refusal kept), empty / error / pull to refresh. Products list takes `?brand=`; brand filter options and both lists reload after any catalog change. 14 tests + 4 goldens + 2 live tests (14/14 live)
 - [ ] Admin: CSV import
 - [ ] Admin: claims queue + detail + receipt + approve/reject
 
@@ -53,6 +53,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-15 — Slice 17 done: 222 tests + 52 goldens + 14 live tests pass, debug APK builds.
 - 2026-11-15 — Slice 16 done: 208 tests + 48 goldens + 12 live tests pass, debug APK builds. User asked to be asked before slice 17.
 - 2026-11-15 — Slice 15 done: 183 tests + 44 goldens + 11 live tests pass. Admin side started; delete moves to slice 16 with the edit page (where the website has it).
 - 2026-11-15 — Slice 14 done: 167 tests + 38 goldens pass. Shopper side complete. Sharing live test then passed (10/10 live).
