@@ -1580,5 +1580,289 @@
         "type": "String"
       }
     }
+  },
+  "importTitle": "Import products",
+  "@importTitle": {
+    "description": "Same as the website's import page header."
+  },
+  "importProgressLabel": "Import progress",
+  "@importProgressLabel": {
+    "description": "Same as the website's import flow. Screen-reader label of the stepper."
+  },
+  "stepChooseFile": "Choose a file",
+  "@stepChooseFile": {
+    "description": "Same as the website's import flow."
+  },
+  "stepReview": "Review",
+  "@stepReview": {
+    "description": "Same as the website's import flow."
+  },
+  "stepImport": "Import",
+  "@stepImport": {
+    "description": "Same as the website's import flow."
+  },
+  "stepLabel": "Step {number} of {total}: {name}",
+  "@stepLabel": {
+    "description": "Screen-reader label of one step circle (the website hides step names on phones).",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepDone": "(done)",
+  "@stepDone": {
+    "description": "Same as the website's import flow. Screen-reader suffix of a finished step."
+  },
+  "chooseCsvFile": "Choose a CSV file",
+  "@chooseCsvFile": {
+    "description": "Same as the website's import flow."
+  },
+  "csvLimits": "Up to 2 MB and 5,000 rows.",
+  "@csvLimits": {
+    "description": "Same as the website's import flow."
+  },
+  "chosenFileSize": "{size} KB. Choose another file to replace it.",
+  "@chosenFileSize": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadTemplate": "Download the template",
+  "@downloadTemplate": {
+    "description": "Same as the website's import flow. On the phone it opens the share sheet with the file."
+  },
+  "checkFile": "Check file",
+  "@checkFile": {
+    "description": "Same as the website's import flow."
+  },
+  "checkingFile": "Checking file…",
+  "@checkingFile": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsTitle": "What the file needs",
+  "@fileNeedsTitle": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsColumnsLabel": "Required columns:",
+  "@fileNeedsColumnsLabel": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsColumns": "gtin, sku, name, brandName",
+  "@fileNeedsColumns": {
+    "description": "Same as the website's import flow. CSV column names: do not translate."
+  },
+  "fileNeedsBarcodes": "Barcodes can be 8, 12, 13 or 14 digits. Keep leading zeros by formatting the column as text.",
+  "@fileNeedsBarcodes": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsFigures": "For figures, fill both carbonScoreGrams and recyclabilityPercent, and set verified to true or false.",
+  "@fileNeedsFigures": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsBrands": "Brands that don't exist yet are created for you.",
+  "@fileNeedsBrands": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsReview": "Nothing is saved until you've reviewed the check.",
+  "@fileNeedsReview": {
+    "description": "Same as the website's import flow."
+  },
+  "chooseCsvFirst": "Choose a CSV file to import.",
+  "@chooseCsvFirst": {
+    "description": "Same as the website's importProducts action."
+  },
+  "notCsvFile": "{name} isn't a CSV file. Save the sheet as .csv and try again.",
+  "@notCsvFile": {
+    "description": "Same as the website's importProducts action.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "csvTooLarge": "The file is larger than 2 MB. Split it into smaller files.",
+  "@csvTooLarge": {
+    "description": "Same as the website's importProducts action."
+  },
+  "templateUnavailable": "The template isn't available right now. Try again in a moment.",
+  "@templateUnavailable": {
+    "description": "Same as the website's template route."
+  },
+  "readyToImport": "{count, plural, =1{Ready to import 1 product} other{Ready to import {count} products}}",
+  "@readyToImport": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nothingToImport": "Nothing in this file can be imported",
+  "@nothingToImport": {
+    "description": "Same as the website's import flow."
+  },
+  "checkedRows": "{count, plural, =1{Checked 1 row in {file}. Nothing has been saved yet.} other{Checked {count} rows in {file}. Nothing has been saved yet.}}",
+  "@checkedRows": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "statNewProducts": "New products",
+  "@statNewProducts": {
+    "description": "Same as the website's import flow."
+  },
+  "statUpdates": "Updates",
+  "@statUpdates": {
+    "description": "Same as the website's import flow."
+  },
+  "statNewBrands": "New brands",
+  "@statNewBrands": {
+    "description": "Same as the website's import flow."
+  },
+  "statRowsToFix": "Rows to fix",
+  "@statRowsToFix": {
+    "description": "Same as the website's import flow."
+  },
+  "newBrandsList": "New brands: {names}",
+  "@newBrandsList": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "rowsSkipped": "{count, plural, =1{1 row will be skipped} other{{count} rows will be skipped}}",
+  "@rowsSkipped": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rowsSkippedHint": "Fix these lines in your spreadsheet and import the file again; rows already imported are just updated.",
+  "@rowsSkippedHint": {
+    "description": "Same as the website's import flow."
+  },
+  "columnLine": "Line",
+  "@columnLine": {
+    "description": "Same as the website's import flow."
+  },
+  "columnBarcode": "Barcode",
+  "@columnBarcode": {
+    "description": "Same as the website's import flow."
+  },
+  "columnFix": "What to fix",
+  "@columnFix": {
+    "description": "Same as the website's import flow."
+  },
+  "barcodeMissing": "Missing",
+  "@barcodeMissing": {
+    "description": "Same as the website's import flow. A row without a barcode."
+  },
+  "chooseDifferentFile": "Choose a different file",
+  "@chooseDifferentFile": {
+    "description": "Same as the website's import flow."
+  },
+  "importProductCount": "{count, plural, =1{Import 1 product} other{Import {count} products}}",
+  "@importProductCount": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importing": "Importing…",
+  "@importing": {
+    "description": "Same as the website's import flow."
+  },
+  "importedCount": "{count, plural, =1{Imported 1 product} other{Imported {count} products}}",
+  "@importedCount": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importSummary": "{added}, {updated}{brands}.{skipped}",
+  "@importSummary": {
+    "description": "Same as the website's import flow. Assembles the parts below, as the website does.",
+    "placeholders": {
+      "added": {
+        "type": "String"
+      },
+      "updated": {
+        "type": "String"
+      },
+      "brands": {
+        "type": "String"
+      },
+      "skipped": {
+        "type": "String"
+      }
+    }
+  },
+  "importAdded": "{count, plural, =1{1 new product} other{{count} new products}} added",
+  "@importAdded": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importUpdated": "{count, plural, =1{1 product} other{{count} products}} updated",
+  "@importUpdated": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importBrandsCreated": "{count, plural, =1{, 1 new brand created} other{, {count} new brands created}}",
+  "@importBrandsCreated": {
+    "description": "Same as the website's import flow. Keep the leading comma.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importSkipped": "{count, plural, =1{ 1 row with problems was skipped.} other{ {count} rows with problems were skipped.}}",
+  "@importSkipped": {
+    "description": "Same as the website's import flow. Keep the leading space.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "viewProducts": "View products",
+  "@viewProducts": {
+    "description": "Same as the website's import flow."
+  },
+  "importAnotherFile": "Import another file",
+  "@importAnotherFile": {
+    "description": "Same as the website's import flow."
   }
 }

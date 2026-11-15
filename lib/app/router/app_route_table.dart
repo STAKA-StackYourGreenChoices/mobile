@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart' show ValueKey;
 import 'package:go_router/go_router.dart';
-
 import 'package:staka/app/launch/launch_screen.dart';
 import 'package:staka/app/launch/unreachable_screen.dart';
 import 'package:staka/app/pending/pending_screen.dart';
@@ -9,6 +8,7 @@ import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
 import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
+import 'package:staka/features/admin/import/presentation/screens/admin_import_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
@@ -138,7 +138,11 @@ final appRouteTable = <RouteBase>[
                 AppRoute.adminBrands,
                 (_, _) => const AdminBrandsScreen(),
               ),
-              _pending(AppRoute.adminHome, AppRoute.adminImport),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminImport,
+                (_, _) => const AdminImportScreen(),
+              ),
               _pending(AppRoute.adminHome, AppRoute.adminClaims),
             ],
           ),

@@ -2049,6 +2049,305 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} deleted'**
   String brandDeleted(String name);
+
+  /// Same as the website's import page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Import products'**
+  String get importTitle;
+
+  /// Same as the website's import flow. Screen-reader label of the stepper.
+  ///
+  /// In en, this message translates to:
+  /// **'Import progress'**
+  String get importProgressLabel;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a file'**
+  String get stepChooseFile;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get stepReview;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get stepImport;
+
+  /// Screen-reader label of one step circle (the website hides step names on phones).
+  ///
+  /// In en, this message translates to:
+  /// **'Step {number} of {total}: {name}'**
+  String stepLabel(int number, int total, String name);
+
+  /// Same as the website's import flow. Screen-reader suffix of a finished step.
+  ///
+  /// In en, this message translates to:
+  /// **'(done)'**
+  String get stepDone;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a CSV file'**
+  String get chooseCsvFile;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 2 MB and 5,000 rows.'**
+  String get csvLimits;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} KB. Choose another file to replace it.'**
+  String chosenFileSize(String size);
+
+  /// Same as the website's import flow. On the phone it opens the share sheet with the file.
+  ///
+  /// In en, this message translates to:
+  /// **'Download the template'**
+  String get downloadTemplate;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Check file'**
+  String get checkFile;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking file…'**
+  String get checkingFile;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'What the file needs'**
+  String get fileNeedsTitle;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Required columns:'**
+  String get fileNeedsColumnsLabel;
+
+  /// Same as the website's import flow. CSV column names: do not translate.
+  ///
+  /// In en, this message translates to:
+  /// **'gtin, sku, name, brandName'**
+  String get fileNeedsColumns;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcodes can be 8, 12, 13 or 14 digits. Keep leading zeros by formatting the column as text.'**
+  String get fileNeedsBarcodes;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'For figures, fill both carbonScoreGrams and recyclabilityPercent, and set verified to true or false.'**
+  String get fileNeedsFigures;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands that don\'t exist yet are created for you.'**
+  String get fileNeedsBrands;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is saved until you\'ve reviewed the check.'**
+  String get fileNeedsReview;
+
+  /// Same as the website's importProducts action.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a CSV file to import.'**
+  String get chooseCsvFirst;
+
+  /// Same as the website's importProducts action.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} isn\'t a CSV file. Save the sheet as .csv and try again.'**
+  String notCsvFile(String name);
+
+  /// Same as the website's importProducts action.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is larger than 2 MB. Split it into smaller files.'**
+  String get csvTooLarge;
+
+  /// Same as the website's template route.
+  ///
+  /// In en, this message translates to:
+  /// **'The template isn\'t available right now. Try again in a moment.'**
+  String get templateUnavailable;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Ready to import 1 product} other{Ready to import {count} products}}'**
+  String readyToImport(int count);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing in this file can be imported'**
+  String get nothingToImport;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Checked 1 row in {file}. Nothing has been saved yet.} other{Checked {count} rows in {file}. Nothing has been saved yet.}}'**
+  String checkedRows(int count, String file);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'New products'**
+  String get statNewProducts;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates'**
+  String get statUpdates;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'New brands'**
+  String get statNewBrands;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows to fix'**
+  String get statRowsToFix;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'New brands: {names}'**
+  String newBrandsList(String names);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 row will be skipped} other{{count} rows will be skipped}}'**
+  String rowsSkipped(int count);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Fix these lines in your spreadsheet and import the file again; rows already imported are just updated.'**
+  String get rowsSkippedHint;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get columnLine;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode'**
+  String get columnBarcode;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'What to fix'**
+  String get columnFix;
+
+  /// Same as the website's import flow. A row without a barcode.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing'**
+  String get barcodeMissing;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a different file'**
+  String get chooseDifferentFile;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Import 1 product} other{Import {count} products}}'**
+  String importProductCount(int count);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Importing…'**
+  String get importing;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Imported 1 product} other{Imported {count} products}}'**
+  String importedCount(int count);
+
+  /// Same as the website's import flow. Assembles the parts below, as the website does.
+  ///
+  /// In en, this message translates to:
+  /// **'{added}, {updated}{brands}.{skipped}'**
+  String importSummary(
+    String added,
+    String updated,
+    String brands,
+    String skipped,
+  );
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 new product} other{{count} new products}} added'**
+  String importAdded(int count);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product} other{{count} products}} updated'**
+  String importUpdated(int count);
+
+  /// Same as the website's import flow. Keep the leading comma.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{, 1 new brand created} other{, {count} new brands created}}'**
+  String importBrandsCreated(int count);
+
+  /// Same as the website's import flow. Keep the leading space.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{ 1 row with problems was skipped.} other{ {count} rows with problems were skipped.}}'**
+  String importSkipped(int count);
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'View products'**
+  String get viewProducts;
+
+  /// Same as the website's import flow.
+  ///
+  /// In en, this message translates to:
+  /// **'Import another file'**
+  String get importAnotherFile;
 }
 
 class _AppLocalizationsDelegate

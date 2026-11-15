@@ -1169,4 +1169,245 @@ class AppLocalizationsEn extends AppLocalizations {
   String brandDeleted(String name) {
     return '$name deleted';
   }
+
+  @override
+  String get importTitle => 'Import products';
+
+  @override
+  String get importProgressLabel => 'Import progress';
+
+  @override
+  String get stepChooseFile => 'Choose a file';
+
+  @override
+  String get stepReview => 'Review';
+
+  @override
+  String get stepImport => 'Import';
+
+  @override
+  String stepLabel(int number, int total, String name) {
+    return 'Step $number of $total: $name';
+  }
+
+  @override
+  String get stepDone => '(done)';
+
+  @override
+  String get chooseCsvFile => 'Choose a CSV file';
+
+  @override
+  String get csvLimits => 'Up to 2 MB and 5,000 rows.';
+
+  @override
+  String chosenFileSize(String size) {
+    return '$size KB. Choose another file to replace it.';
+  }
+
+  @override
+  String get downloadTemplate => 'Download the template';
+
+  @override
+  String get checkFile => 'Check file';
+
+  @override
+  String get checkingFile => 'Checking file…';
+
+  @override
+  String get fileNeedsTitle => 'What the file needs';
+
+  @override
+  String get fileNeedsColumnsLabel => 'Required columns:';
+
+  @override
+  String get fileNeedsColumns => 'gtin, sku, name, brandName';
+
+  @override
+  String get fileNeedsBarcodes =>
+      'Barcodes can be 8, 12, 13 or 14 digits. Keep leading zeros by formatting the column as text.';
+
+  @override
+  String get fileNeedsFigures =>
+      'For figures, fill both carbonScoreGrams and recyclabilityPercent, and set verified to true or false.';
+
+  @override
+  String get fileNeedsBrands =>
+      'Brands that don\'t exist yet are created for you.';
+
+  @override
+  String get fileNeedsReview =>
+      'Nothing is saved until you\'ve reviewed the check.';
+
+  @override
+  String get chooseCsvFirst => 'Choose a CSV file to import.';
+
+  @override
+  String notCsvFile(String name) {
+    return '$name isn\'t a CSV file. Save the sheet as .csv and try again.';
+  }
+
+  @override
+  String get csvTooLarge =>
+      'The file is larger than 2 MB. Split it into smaller files.';
+
+  @override
+  String get templateUnavailable =>
+      'The template isn\'t available right now. Try again in a moment.';
+
+  @override
+  String readyToImport(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ready to import $count products',
+      one: 'Ready to import 1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get nothingToImport => 'Nothing in this file can be imported';
+
+  @override
+  String checkedRows(int count, String file) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Checked $count rows in $file. Nothing has been saved yet.',
+      one: 'Checked 1 row in $file. Nothing has been saved yet.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get statNewProducts => 'New products';
+
+  @override
+  String get statUpdates => 'Updates';
+
+  @override
+  String get statNewBrands => 'New brands';
+
+  @override
+  String get statRowsToFix => 'Rows to fix';
+
+  @override
+  String newBrandsList(String names) {
+    return 'New brands: $names';
+  }
+
+  @override
+  String rowsSkipped(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count rows will be skipped',
+      one: '1 row will be skipped',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get rowsSkippedHint =>
+      'Fix these lines in your spreadsheet and import the file again; rows already imported are just updated.';
+
+  @override
+  String get columnLine => 'Line';
+
+  @override
+  String get columnBarcode => 'Barcode';
+
+  @override
+  String get columnFix => 'What to fix';
+
+  @override
+  String get barcodeMissing => 'Missing';
+
+  @override
+  String get chooseDifferentFile => 'Choose a different file';
+
+  @override
+  String importProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Import $count products',
+      one: 'Import 1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get importing => 'Importing…';
+
+  @override
+  String importedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Imported $count products',
+      one: 'Imported 1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String importSummary(
+    String added,
+    String updated,
+    String brands,
+    String skipped,
+  ) {
+    return '$added, $updated$brands.$skipped';
+  }
+
+  @override
+  String importAdded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count new products',
+      one: '1 new product',
+    );
+    return '$_temp0 added';
+  }
+
+  @override
+  String importUpdated(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products',
+      one: '1 product',
+    );
+    return '$_temp0 updated';
+  }
+
+  @override
+  String importBrandsCreated(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ', $count new brands created',
+      one: ', 1 new brand created',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String importSkipped(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: ' $count rows with problems were skipped.',
+      one: ' 1 row with problems was skipped.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get viewProducts => 'View products';
+
+  @override
+  String get importAnotherFile => 'Import another file';
 }

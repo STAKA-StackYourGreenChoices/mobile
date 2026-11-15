@@ -54,4 +54,7 @@ _None._
 | S16 | Build | `kotlin.incremental=false` in `android/gradle.properties` (Windows cross-drive Kotlin cache failure) |
 | S17 | Brand add / edit | Bottom sheet instead of the website's dialog (keyboard-friendly on phones); same fields, copy and rules |
 | S17 | Brand product count | Opens the products list filtered to the brand (`/admin/products?brand=<id>`, like the website's link). Back returns to the Admin hub |
+| S18 | CSV file | Picked with the file picker (no drag and drop on a phone); checked by name, size and emptiness before sending, as the website does |
+| S18 | Template download | Fetched with the admin's token, then handed to the share sheet (Save to Files / Drive / email) as `staka-products-template.csv`; failure shows the website's template message |
+| S18 | Import layout | Stepper shows numbers only (as the website on phones); the skipped-rows table becomes stacked cards (Line, Barcode, What to fix) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

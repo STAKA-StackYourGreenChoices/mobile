@@ -291,7 +291,7 @@ void main() {
 
     await tester.tap(find.text('Import CSV'));
     await tester.pumpAndSettle();
-    expect(find.text('/admin/import'), findsOneWidget);
+    expect(find.text('Up to 2 MB and 5,000 rows.'), findsOneWidget);
   });
 
   testWidgets('the list fails to load: the reason and Try again', (

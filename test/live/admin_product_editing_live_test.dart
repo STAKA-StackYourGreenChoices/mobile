@@ -12,10 +12,10 @@ import 'live_client.dart';
 
 /// A 13-digit barcode unique to this run, with a valid check digit.
 String _uniqueGtin({String prefix = '2'}) {
-  final body = '$prefix${DateTime.now().millisecondsSinceEpoch}'.substring(
-    0,
-    12,
-  );
+  // Other live tests run alongside this one: the fastest-changing digits
+  // of the clock, after a prefix per caller.
+  final micros = '${DateTime.now().microsecondsSinceEpoch}';
+  final body = '$prefix${micros.substring(micros.length - 11)}';
   var sum = 0;
   for (var i = 0; i < 12; i++) {
     sum += int.parse(body[i]) * (i.isEven ? 1 : 3);

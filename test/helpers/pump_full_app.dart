@@ -8,6 +8,9 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/admin/brands/domain/repositories/admin_brand_repository.dart';
+import 'package:staka/features/admin/import/data/repositories/import_repository_impl.dart';
+import 'package:staka/features/admin/import/domain/repositories/import_repository.dart';
+import 'package:staka/features/admin/import/presentation/state/import_file_actions.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/admin/products/domain/repositories/admin_product_repository.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
@@ -27,6 +30,7 @@ import 'admin_brand_fakes.dart';
 import 'admin_product_fakes.dart';
 import 'auth_fakes.dart';
 import 'fake_http_adapter.dart';
+import 'import_fakes.dart';
 import 'product_fakes.dart';
 import 'scan_fakes.dart';
 import 'tag_fakes.dart';
@@ -48,6 +52,8 @@ Future<InMemoryTokenStore> pumpApp(
   ShareActions? shareActions,
   AdminProductRepository? adminProducts,
   AdminBrandRepository? adminBrands,
+  ImportRepository? importRepository,
+  ImportFileActions? importFileActions,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -80,6 +86,12 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         adminBrandRepositoryProvider.overrideWithValue(
           adminBrands ?? FakeAdminBrandRepository(),
+        ),
+        importRepositoryProvider.overrideWithValue(
+          importRepository ?? FakeImportRepository(),
+        ),
+        importFileActionsProvider.overrideWithValue(
+          importFileActions ?? FakeImportFileActions(),
         ),
         // The real camera needs a device.
         scanCameraProvider.overrideWithValue(
