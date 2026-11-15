@@ -15,8 +15,8 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **4 — Backend sync done: auth attempt limits applied (user-approved). Next: Phase 5** |
-| Next action | **Phase 5 — Verification** (the user asked to go straight on after Phase 4). Walk every Phase 1 flow on the app against the real API, give the checklist table (Feature, Web behaviour, Mobile status, Tested?, Notes), edge cases (offline, slow, expired session, invalid input, empty, 5xx), and confirm the website still works, including its sign-in showing the new 429 message. Phase 4 report: `PHASE4_BACKEND_SYNC.md`. api change is on api branch `feat/auth-attempt-limits` (committed, kept local by the user's choice: never push it). Needs a device: phone `1cca22b9` showed "offline" (allow USB debugging), no emulator set up |
+| Current phase | **5 — Verification done on Android (report `PHASE5_VERIFICATION.md`). Waiting for the user's go-ahead for Phase 6** |
+| Next action | **Phase 6 — Release readiness, after the user says go.** Ask first (numbered): app icon artwork, splash, confirm name STAKA + id com.staka.app (decision 9), Android signing key (user creates/keeps it), whether a Mac is available for iOS. Then: icon + splash, permission texts, release builds, Play/App Store steps, README in `mobile/`. Open items from Phase 5 are listed at the end of `PHASE5_VERIFICATION.md` |
 | Local API | Runs on this PC (user starts it): Docker Postgres `startup-dev-postgres-1` + `pnpm start:dev` in `api/`. The Windows service `postgresql-x64-16` also uses :5432 and must be stopped or Prisma hits it (P1000). `/health` returns 401 (API bug: no `@Public()`; user declined fixing for now). Live check: `flutter test test/live --dart-define=LIVE_API_URL=http://localhost:7070` (+ `LIVE_ADMIN_EMAIL`/`LIVE_ADMIN_PASSWORD` from the seed header for the sharing and admin tests; never print them). User starts the API with: Docker Desktop → `docker compose -f infra/docker-compose.dev.yml up -d` → `pnpm start:dev` in api/ |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `android/gradle.properties` sets `kotlin.incremental=false`: plugin Kotlin builds failed with "Could not close incremental caches" (project on D:, pub cache on C:). `flutter doctor` still warns about unaccepted Android licences (user's call) |
 | Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` → `feat/auth-sign-in` → `feat/auth-password` → `feat/shared-hang-tag` → `feat/wardrobe-list` → `feat/scan-barcode` → `feat/products-detail` → `feat/tags-ownership` → `feat/tags-sharing` → `feat/admin-products-list` → `feat/admin-product-form` → `feat/admin-brands` → `feat/admin-import` → `feat/admin-claims` (stacked, all pushed, nothing merged) |
@@ -109,6 +109,7 @@ From `files/FRONTEND_GUIDE.md` (the ones that shape code most):
 | `DECISIONS.md` | Always — open questions and the user's answers. Answers override everything else |
 | `PHASE1_ANALYSIS.md` | Building any feature: stack, feature inventory, full API map, auth, validations, copy |
 | `PHASE2_PLAN.md` | Always during Phase 3: folder layout, packages, routes, screen mapping, slice order |
+| `PHASE5_VERIFICATION.md` | The checklist table, edge cases, bugs fixed, and what is not done (iOS, TalkBack, test data) |
 | `PHASE4_BACKEND_SYNC.md` | Any backend question: what was changed (nothing so far), the contract check, optional changes awaiting the user |
 
 ## 6. Before you stop (every session)

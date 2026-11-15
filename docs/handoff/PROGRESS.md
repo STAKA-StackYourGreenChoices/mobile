@@ -49,14 +49,17 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Approved and applied: attempt limits on login / change-password / forgot-password / resend-verification (api branch `feat/auth-attempt-limits`), app words 429 itself (PHASE4 §1.1–1.2). `/health` fix and push notifications not requested
 
 ## Phase 5 — Verification
-- [ ] Every flow end-to-end on device against real API; checklist table
-- [ ] Edge cases: offline, slow, expired session, invalid input, empty, 5xx
-- [ ] Unit + widget tests; goldens for shared widgets
+- [x] Every flow on an Android 15 phone against the real API + website; checklist table in `PHASE5_VERIFICATION.md`
+- [x] Edge cases on the phone: offline (in app + at launch), slow (proxy), 500, revoked/expired session, 429, empty, unknown barcode
+- [x] 316 widget/unit tests (64 goldens), 17 live, 2 device scripts (`integration_test/`)
+- [x] Fixed on the phone: story image download (webDioProvider), bottom sheets over the tab bar
+- [ ] Not done: iOS (needs a Mac), TalkBack, release build (Phase 6)
 
 ## Phase 6 — Release readiness
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-15 — Phase 5 done on Android: device scripts + hand checks + edge cases; 2 bugs fixed; report `PHASE5_VERIFICATION.md`. Waiting for the go-ahead for Phase 6.
 - 2026-11-15 — Phase 4: auth attempt limits in api/ (55/55 e2e) + app 429 copy; 17/17 live tests pass 3× back to back. Phase 5 next.
 - 2026-11-15 — Phase 4: no approved backend changes, so none applied; contract audit clean; three optional changes listed for the user.
 - 2026-11-15 — Slice 19 done (all 19 slices): 248 tests + 64 goldens + 16 live tests pass, debug APK builds with `pdfx`. Phase 3 complete.
