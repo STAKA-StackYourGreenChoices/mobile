@@ -10,6 +10,8 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
 import 'package:staka/features/admin/brands/data/datasources/brand_editor_remote_data_source.dart';
 import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
+import 'package:staka/features/admin/claims/data/datasources/admin_claim_remote_data_source.dart';
+import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
 import 'package:staka/features/admin/products/data/datasources/admin_product_remote_data_source.dart';
 import 'package:staka/features/admin/products/data/datasources/product_editor_remote_data_source.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
@@ -76,6 +78,7 @@ class LiveClient {
       BrandsApi(dio),
       BrandEditorRemoteDataSource(dio),
     );
+    adminClaims = AdminClaimRepositoryImpl(AdminClaimRemoteDataSource(dio));
     session = SessionRepository(dio, store);
   }
 
@@ -90,6 +93,7 @@ class LiveClient {
   late final TagRepositoryImpl tags;
   late final AdminProductRepositoryImpl adminProducts;
   late final AdminBrandRepositoryImpl adminBrands;
+  late final AdminClaimRepositoryImpl adminClaims;
   late final SessionRepository session;
   int rejections = 0;
 

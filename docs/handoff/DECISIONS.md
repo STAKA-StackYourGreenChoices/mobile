@@ -57,4 +57,8 @@ _None._
 | S18 | CSV file | Picked with the file picker (no drag and drop on a phone); checked by name, size and emptiness before sending, as the website does |
 | S18 | Template download | Fetched with the admin's token, then handed to the share sheet (Save to Files / Drive / email) as `staka-products-template.csv`; failure shows the website's template message |
 | S18 | Import layout | Stepper shows numbers only (as the website on phones); the skipped-rows table becomes stacked cards (Line, Barcode, What to fix) |
+| S19 | PDF viewer | `pdfx` (the phone's own PDF renderer) instead of `pdfrx`: pdfrx's `pdfium_dart` build hook needs a C compiler and broke every `flutter test` run on this PC |
+| S19 | Receipt viewer | Opens in the app (pinch-zoom photo, scrollable PDF) instead of the website's new browser tab; the receipt is fetched with the admin's token |
+| S19 | Claims list | Infinite scroll, 20 per request, replaces the website's Previous / Next (same as the products list) |
+| S19 | Common reject reasons | The website's four reasons are wrapping pills that fill the reason box (a chip cut long reasons off on a 360 dp phone) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

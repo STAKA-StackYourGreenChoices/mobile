@@ -133,7 +133,19 @@ void main() {
     );
     expect(find.text('All claims for this piece'), findsNothing);
 
-    // TODO(slice19): open the full-size viewer (the tap misses the photo).
+    // Under the fake clock the photo is never decoded, so it lays out with
+    // no height and a tap lands on nothing; decode it for real first.
+    final photo = find.byType(Image).first;
+    await tester.runAsync(
+      () => precacheImage(
+        tester.widget<Image>(photo).image,
+        tester.element(photo),
+      ),
+    );
+    await _tap(tester, photo);
+
+    expect(find.text('Receipt'), findsOneWidget);
+    expect(find.byType(InteractiveViewer), findsOneWidget);
   });
 
   testWidgets('approve: the website message, back to the queue', (
