@@ -55,6 +55,8 @@ class LiveClient {
     session = SessionRepository(dio, store);
   }
 
+  /// Set by `signedUpClient`: this run's unique shopper.
+  String email = '';
   final store = InMemoryTokenStore();
   late final TokenRefresher refresher;
   late final Dio dio;
@@ -93,10 +95,10 @@ String randomPassword() {
 
 /// Registers a throwaway shopper and keeps their tokens, like sign-up does.
 Future<LiveClient> signedUpClient() async {
-  final client = LiveClient();
+  final client = LiveClient()..email = throwawayEmail();
   final result = await client.auth.register(
     name: 'Mobile Live Test',
-    email: throwawayEmail(),
+    email: client.email,
     password: randomPassword(),
   );
   await client.session.saveTokens((result as Ok<AuthSession>).value.tokens);

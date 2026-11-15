@@ -50,7 +50,7 @@ void main() {
         cardId,
         PickedReceipt(name: 'receipt.png', bytes: png),
       );
-      await _approveLatestClaimFor(cardId);
+      await _approveClaimOf(shopper.email);
       final tag = await shopper.tags.fetchTag(cardId);
       expect(
         (tag as Ok<DigitalCard>).value.ownership.status,
@@ -80,9 +80,10 @@ Future<Response<Object?>> _publicTag(String slug) => Dio(
   BaseOptions(validateStatus: (_) => true),
 ).get<Object?>('$liveApiUrl/public/tags/$slug', options: publicRequest());
 
-/// Signs in as the seeded admin and approves the newest pending receipt
-/// for [cardId]'s product from this shopper.
-Future<void> _approveLatestClaimFor(String cardId) async {
+/// Signs in as the seeded admin and approves this run's shopper's pending
+/// receipt. Matched by their unique email: earlier runs leave pending
+/// claims from other throwaway shoppers with the same name.
+Future<void> _approveClaimOf(String email) async {
   final admin = LiveClient();
   final login = await admin.auth.login(
     email: _adminEmail,
@@ -95,9 +96,7 @@ Future<void> _approveLatestClaimFor(String cardId) async {
   );
   final items = (claims.data!['items'] as List).cast<Map<String, dynamic>>();
   final mine = items.firstWhere(
-    (claim) =>
-        (claim['user'] as Map)['name'] == 'Mobile Live Test' &&
-        (claim['product'] as Map)['gtin'] == '08901234500019',
+    (claim) => (claim['user'] as Map)['email'] == email,
   );
   await admin.dio.post<Object?>('/claims/${mine['id']}/approve');
 }
