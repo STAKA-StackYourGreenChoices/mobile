@@ -9,6 +9,7 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
 import 'package:staka/features/admin/products/data/datasources/admin_product_remote_data_source.dart';
+import 'package:staka/features/admin/products/data/datasources/product_editor_remote_data_source.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
@@ -67,6 +68,7 @@ class LiveClient {
     adminProducts = AdminProductRepositoryImpl(
       AdminProductRemoteDataSource(dio),
       BrandsApi(dio),
+      ProductEditorRemoteDataSource(dio),
     );
     session = SessionRepository(dio, store);
   }

@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/core/models/product.dart';
+import 'package:staka/features/admin/products/domain/models/editable_product.dart';
+import 'package:staka/features/admin/products/domain/models/product_draft.dart';
 import 'package:staka/features/admin/products/domain/models/product_page.dart';
 import 'package:staka/features/admin/products/domain/repositories/admin_product_repository.dart';
 
@@ -12,16 +15,30 @@ typedef PageRequest = ({ProductFilter filter, int page});
 
 /// Answers product pages from `pages` (default: no products; return a
 /// future to hold an answer back) and the brand list from [brands],
-/// recording every page asked for.
+/// recording every page asked for. One product is answered from
+/// [products] (unknown ids are not found); saves and deletes from the
+/// `saves` and `deletes` scripts, recorded in [saved] and [deleted].
 class FakeAdminProductRepository implements AdminProductRepository {
   new({
     FutureOr<Result<ProductPage>> Function(PageRequest request)? pages,
     this.brands = const Ok([]),
-  }) : _pages = pages ?? ((_) => Ok(pageOf(const [])));
+    this.products = const {},
+    List<Result<EditableProduct>> saves = const [],
+    List<Result<void>> deletes = const [],
+  }) : _pages = pages ?? ((_) => Ok(pageOf(const []))),
+       _saves = [...saves],
+       _deletes = [...deletes];
 
   final FutureOr<Result<ProductPage>> Function(PageRequest request) _pages;
   final Result<List<BrandSummary>> brands;
   final List<PageRequest> requests = [];
+  final Map<String, Result<EditableProduct>> products;
+  final List<Result<EditableProduct>> _saves;
+  final List<Result<void>> _deletes;
+
+  /// (product id or null for a new one, what was sent).
+  final List<(String?, ProductDraft)> saved = [];
+  final List<String> deleted = [];
 
   @override
   Future<Result<ProductPage>> fetchProducts(
@@ -35,7 +52,36 @@ class FakeAdminProductRepository implements AdminProductRepository {
 
   @override
   Future<Result<List<BrandSummary>>> fetchBrands() async => brands;
+
+  @override
+  Future<Result<EditableProduct>> fetchProduct(String id) async =>
+      products[id] ?? const Err(NotFoundFailure(['Product not found']));
+
+  @override
+  Future<Result<EditableProduct>> createProduct(ProductDraft draft) async {
+    saved.add((null, draft));
+    return _saves.removeAt(0);
+  }
+
+  @override
+  Future<Result<EditableProduct>> updateProduct(
+    String id,
+    ProductDraft draft,
+  ) async {
+    saved.add((id, draft));
+    return _saves.removeAt(0);
+  }
+
+  @override
+  Future<Result<void>> deleteProduct(String id) async {
+    deleted.add(id);
+    return _deletes.removeAt(0);
+  }
 }
+
+/// [product] opened for editing, its photo stored as [storedImageUrl].
+Result<EditableProduct> editable(Product product, {String? storedImageUrl}) =>
+    Ok(EditableProduct(product: product, storedImageUrl: storedImageUrl));
 
 /// One page as the API sends it: 20 per page unless [total] says fewer.
 ProductPage pageOf(List<Product> items, {int? total, int page = 1}) =>

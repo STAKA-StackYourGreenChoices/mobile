@@ -48,7 +48,7 @@ final class AdminProductsControllerProvider
 }
 
 String _$adminProductsControllerHash() =>
-    r'85a1ace9fba29eed7aa0ee6a86cd6492d42851d3';
+    r'c82d98c32879114f11ec553863c987c5b97063d6';
 
 /// The admin product list: search, brand filter, and pages loaded as the
 /// admin scrolls (guide §11: 20 at a time).

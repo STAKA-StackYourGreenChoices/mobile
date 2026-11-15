@@ -1168,5 +1168,270 @@
   "noProductsBody": "Add products one at a time, or import a whole catalog from a CSV file.",
   "@noProductsBody": {
     "description": "Same as the website's products empty state."
+  },
+  "productNewDescription": "Shoppers find this product by scanning its barcode.",
+  "@productNewDescription": {
+    "description": "Same as the website's product pages."
+  },
+  "productLastUpdated": "Last updated {date}.",
+  "@productLastUpdated": {
+    "description": "Same as the website's product pages.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pageNotFound": "This page could not be found.",
+  "@pageNotFound": {
+    "description": "No product with this id. The website shows the Next.js 404 page with this line."
+  },
+  "productSection": "Product",
+  "@productSection": {
+    "description": "Same as the website's product form."
+  },
+  "fieldProductName": "Name",
+  "@fieldProductName": {
+    "description": "Same as the website's product form."
+  },
+  "productNameHint": "As it's printed on the label, e.g. Organic Cotton Tee.",
+  "@productNameHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldBrand": "Brand",
+  "@fieldBrand": {
+    "description": "Same as the website's product form. Also the preview's brand before one is chosen."
+  },
+  "chooseBrand": "Choose a brand",
+  "@chooseBrand": {
+    "description": "Same as the website's product form. Placeholder and validation message."
+  },
+  "brandMissing": "Missing one?",
+  "@brandMissing": {
+    "description": "Same as the website's product form."
+  },
+  "addBrandLink": "Add it on the Brands page",
+  "@addBrandLink": {
+    "description": "Same as the website's product form."
+  },
+  "fieldBarcode": "Barcode number",
+  "@fieldBarcode": {
+    "description": "Same as the website's product form."
+  },
+  "barcodeHint": "The digits under the barcode (EAN, UPC or GTIN).",
+  "@barcodeHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldSku": "SKU",
+  "@fieldSku": {
+    "description": "Same as the website's product form."
+  },
+  "skuHint": "Your internal product code.",
+  "@skuHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldDescription": "Description",
+  "@fieldDescription": {
+    "description": "Same as the website's product form."
+  },
+  "descriptionHint": "Optional. One or two sentences about materials and making.",
+  "@descriptionHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldPhotoLink": "Photo link",
+  "@fieldPhotoLink": {
+    "description": "Same as the website's product form."
+  },
+  "photoLinkHint": "Optional. A square photo works best.",
+  "@photoLinkHint": {
+    "description": "Same as the website's product form."
+  },
+  "photoLinkPlaceholder": "https://",
+  "@photoLinkPlaceholder": {
+    "description": "Same as the website's product form."
+  },
+  "figuresSection": "Sustainability figures",
+  "@figuresSection": {
+    "description": "Same as the website's product form."
+  },
+  "includeFigures": "Include carbon and recyclability figures",
+  "@includeFigures": {
+    "description": "Same as the website's product form."
+  },
+  "fieldCarbon": "Carbon footprint (grams CO₂e)",
+  "@fieldCarbon": {
+    "description": "Same as the website's product form. Keep the subscript ₂."
+  },
+  "carbonHint": "Whole grams, e.g. 2100.",
+  "@carbonHint": {
+    "description": "Same as the website's product form."
+  },
+  "carbonShownAs": "Shown as {value}",
+  "@carbonShownAs": {
+    "description": "Same as the website's product form.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "fieldRecyclable": "Recyclable (%)",
+  "@fieldRecyclable": {
+    "description": "Same as the website's product form."
+  },
+  "recyclableHint": "0 to 100.",
+  "@recyclableHint": {
+    "description": "Same as the website's product form."
+  },
+  "verifiedByThirdPartyHint": "Leave off if the brand states these figures itself. Tags show the difference.",
+  "@verifiedByThirdPartyHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldCertifier": "Verified by",
+  "@fieldCertifier": {
+    "description": "Same as the website's product form."
+  },
+  "certifierHint": "The certification or body, e.g. Global Organic Textile Standard.",
+  "@certifierHint": {
+    "description": "Same as the website's product form."
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Same as the website's product form."
+  },
+  "saveChanges": "Save changes",
+  "@saveChanges": {
+    "description": "Same as the website's product form."
+  },
+  "saving": "Saving…",
+  "@saving": {
+    "description": "Same as the website's product form. Submit button while waiting."
+  },
+  "tagPreviewCaption": "Shoppers will see this tag",
+  "@tagPreviewCaption": {
+    "description": "Same as the website's product form."
+  },
+  "previewProductName": "Product name",
+  "@previewProductName": {
+    "description": "Same as the website's product form. Preview before a name is typed."
+  },
+  "productAdded": "Product added",
+  "@productAdded": {
+    "description": "Same as the website's product form. Snackbar."
+  },
+  "changesSaved": "Changes saved",
+  "@changesSaved": {
+    "description": "Same as the website's product form. Snackbar."
+  },
+  "productFormInvalid": "Some details need fixing before this product can be saved.",
+  "@productFormInvalid": {
+    "description": "Same as the website's product form."
+  },
+  "productCodeTaken": "Another product already uses this code.",
+  "@productCodeTaken": {
+    "description": "Same as the website's product form. Alert on a 409; the API's message goes on the field."
+  },
+  "barcodeInvalid": "The barcode number isn't valid.",
+  "@barcodeInvalid": {
+    "description": "Same as the website's product form. Alert on a GTIN 400."
+  },
+  "barcodeInvalidField": "{message}. Check the digits under the barcode.",
+  "@barcodeInvalidField": {
+    "description": "Same as the website's product form. {message} is the API's reason.",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "validationProductName": "Enter the product name",
+  "@validationProductName": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationGtin": "Enter the 8, 12, 13 or 14 digits printed under the barcode",
+  "@validationGtin": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationSku": "Enter the SKU",
+  "@validationSku": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationFieldTooLong": "{label} must be {max} characters or fewer",
+  "@validationFieldTooLong": {
+    "description": "Same as the website's product rules (admin/actions.ts).",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationUrl": "Enter a full link starting with https://",
+  "@validationUrl": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationFigureRequired": "Required when figures are included",
+  "@validationFigureRequired": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationAtMost": "{label} must be {max} or less",
+  "@validationAtMost": {
+    "description": "Same as the website's product rules (admin/actions.ts).",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationCertifier": "Name who verified the figures",
+  "@validationCertifier": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "certifierLabel": "Certifier",
+  "@certifierLabel": {
+    "description": "Same as the website's product rules (admin/actions.ts). Used inside validationFieldTooLong."
+  },
+  "recyclabilityLabel": "Recyclability",
+  "@recyclabilityLabel": {
+    "description": "Same as the website's product rules (admin/actions.ts). Used inside validationAtMost."
+  },
+  "deleteProduct": "Delete product",
+  "@deleteProduct": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "deletingProduct": "Deleting…",
+  "@deletingProduct": {
+    "description": "Same as the website's delete-product dialog. Button while waiting."
+  },
+  "deleteProductTitle": "Delete {name}?",
+  "@deleteProductTitle": {
+    "description": "Same as the website's delete-product dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteProductBody": "Shoppers will no longer find it by scanning. This can't be undone.",
+  "@deleteProductBody": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "keepProduct": "Keep product",
+  "@keepProduct": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "productDeleted": "{name} deleted",
+  "@productDeleted": {
+    "description": "Same as the website's delete-product dialog. Snackbar.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

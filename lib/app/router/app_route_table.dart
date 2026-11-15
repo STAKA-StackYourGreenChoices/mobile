@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show ValueKey;
 import 'package:go_router/go_router.dart';
 
 import 'package:staka/app/launch/launch_screen.dart';
@@ -7,6 +8,7 @@ import 'package:staka/app/routes.dart';
 import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
+import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
@@ -111,8 +113,20 @@ final appRouteTable = <RouteBase>[
                 (_, _) => const AdminProductsScreen(),
                 children: [
                   // 'new' before ':id', or it would be read as an id.
-                  _pending(AppRoute.adminProducts, AppRoute.adminProductNew),
-                  _pending(AppRoute.adminProducts, AppRoute.adminProductEdit),
+                  _child(
+                    AppRoute.adminProducts,
+                    AppRoute.adminProductNew,
+                    (_, _) => const AdminProductFormScreen(),
+                  ),
+                  _child(
+                    AppRoute.adminProducts,
+                    AppRoute.adminProductEdit,
+                    (_, state) => AdminProductFormScreen(
+                      // A new id builds a new screen (after "Add product").
+                      key: ValueKey(state.pathParameters['id']),
+                      productId: state.pathParameters['id'] ?? '',
+                    ),
+                  ),
                 ],
               ),
               _pending(AppRoute.adminHome, AppRoute.adminBrands),

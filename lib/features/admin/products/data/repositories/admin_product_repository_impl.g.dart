@@ -55,4 +55,4 @@ final class AdminProductRepositoryProvider
 }
 
 String _$adminProductRepositoryHash() =>
-    r'fe8a37fc6a6d97d4d1e1a1b1422a4626c77472d0';
+    r'dd97271d5cb210b8989ebf60c9d95e341b5e1dcb';

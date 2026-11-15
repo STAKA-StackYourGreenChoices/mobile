@@ -865,4 +865,194 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get noProductsBody =>
       'Add products one at a time, or import a whole catalog from a CSV file.';
+
+  @override
+  String get productNewDescription =>
+      'Shoppers find this product by scanning its barcode.';
+
+  @override
+  String productLastUpdated(String date) {
+    return 'Last updated $date.';
+  }
+
+  @override
+  String get pageNotFound => 'This page could not be found.';
+
+  @override
+  String get productSection => 'Product';
+
+  @override
+  String get fieldProductName => 'Name';
+
+  @override
+  String get productNameHint =>
+      'As it\'s printed on the label, e.g. Organic Cotton Tee.';
+
+  @override
+  String get fieldBrand => 'Brand';
+
+  @override
+  String get chooseBrand => 'Choose a brand';
+
+  @override
+  String get brandMissing => 'Missing one?';
+
+  @override
+  String get addBrandLink => 'Add it on the Brands page';
+
+  @override
+  String get fieldBarcode => 'Barcode number';
+
+  @override
+  String get barcodeHint => 'The digits under the barcode (EAN, UPC or GTIN).';
+
+  @override
+  String get fieldSku => 'SKU';
+
+  @override
+  String get skuHint => 'Your internal product code.';
+
+  @override
+  String get fieldDescription => 'Description';
+
+  @override
+  String get descriptionHint =>
+      'Optional. One or two sentences about materials and making.';
+
+  @override
+  String get fieldPhotoLink => 'Photo link';
+
+  @override
+  String get photoLinkHint => 'Optional. A square photo works best.';
+
+  @override
+  String get photoLinkPlaceholder => 'https://';
+
+  @override
+  String get figuresSection => 'Sustainability figures';
+
+  @override
+  String get includeFigures => 'Include carbon and recyclability figures';
+
+  @override
+  String get fieldCarbon => 'Carbon footprint (grams CO₂e)';
+
+  @override
+  String get carbonHint => 'Whole grams, e.g. 2100.';
+
+  @override
+  String carbonShownAs(String value) {
+    return 'Shown as $value';
+  }
+
+  @override
+  String get fieldRecyclable => 'Recyclable (%)';
+
+  @override
+  String get recyclableHint => '0 to 100.';
+
+  @override
+  String get verifiedByThirdPartyHint =>
+      'Leave off if the brand states these figures itself. Tags show the difference.';
+
+  @override
+  String get fieldCertifier => 'Verified by';
+
+  @override
+  String get certifierHint =>
+      'The certification or body, e.g. Global Organic Textile Standard.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get saveChanges => 'Save changes';
+
+  @override
+  String get saving => 'Saving…';
+
+  @override
+  String get tagPreviewCaption => 'Shoppers will see this tag';
+
+  @override
+  String get previewProductName => 'Product name';
+
+  @override
+  String get productAdded => 'Product added';
+
+  @override
+  String get changesSaved => 'Changes saved';
+
+  @override
+  String get productFormInvalid =>
+      'Some details need fixing before this product can be saved.';
+
+  @override
+  String get productCodeTaken => 'Another product already uses this code.';
+
+  @override
+  String get barcodeInvalid => 'The barcode number isn\'t valid.';
+
+  @override
+  String barcodeInvalidField(String message) {
+    return '$message. Check the digits under the barcode.';
+  }
+
+  @override
+  String get validationProductName => 'Enter the product name';
+
+  @override
+  String get validationGtin =>
+      'Enter the 8, 12, 13 or 14 digits printed under the barcode';
+
+  @override
+  String get validationSku => 'Enter the SKU';
+
+  @override
+  String validationFieldTooLong(String label, int max) {
+    return '$label must be $max characters or fewer';
+  }
+
+  @override
+  String get validationUrl => 'Enter a full link starting with https://';
+
+  @override
+  String get validationFigureRequired => 'Required when figures are included';
+
+  @override
+  String validationAtMost(String label, int max) {
+    return '$label must be $max or less';
+  }
+
+  @override
+  String get validationCertifier => 'Name who verified the figures';
+
+  @override
+  String get certifierLabel => 'Certifier';
+
+  @override
+  String get recyclabilityLabel => 'Recyclability';
+
+  @override
+  String get deleteProduct => 'Delete product';
+
+  @override
+  String get deletingProduct => 'Deleting…';
+
+  @override
+  String deleteProductTitle(String name) {
+    return 'Delete $name?';
+  }
+
+  @override
+  String get deleteProductBody =>
+      'Shoppers will no longer find it by scanning. This can\'t be undone.';
+
+  @override
+  String get keepProduct => 'Keep product';
+
+  @override
+  String productDeleted(String name) {
+    return '$name deleted';
+  }
 }

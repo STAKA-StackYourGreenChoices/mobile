@@ -275,13 +275,17 @@ void main() {
 
     await tester.tap(find.text('Add product'));
     await tester.pumpAndSettle();
-    expect(find.text('/admin/products/new'), findsOneWidget);
+    expect(
+      find.text('Shoppers find this product by scanning its barcode.'),
+      findsOneWidget,
+    );
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();
 
+    // Unknown to the fake repository: the edit page says so.
     await tester.tap(find.text('Organic Cotton Tee'));
     await tester.pumpAndSettle();
-    expect(find.text('/admin/products/:id'), findsOneWidget);
+    expect(find.text('This page could not be found.'), findsOneWidget);
     await tester.binding.handlePopRoute();
     await tester.pumpAndSettle();
 

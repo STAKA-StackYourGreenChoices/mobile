@@ -6,6 +6,7 @@ import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/admin/products/domain/models/product_page.dart';
+import 'package:staka/features/admin/products/presentation/state/admin_catalog_revision.dart';
 import 'package:staka/features/admin/products/presentation/state/admin_products_state.dart';
 
 part 'admin_products_controller.g.dart';
@@ -19,6 +20,8 @@ class AdminProductsController extends _$AdminProductsController {
 
   @override
   AdminProductsState build() {
+    // A product was added, changed or deleted: back to the first page.
+    ref.listen(adminCatalogRevisionProvider, (_, _) => unawaited(refresh()));
     unawaited(Future.microtask(() => _reload(const ProductFilter())));
     return const AdminProductsState(
       filter: ProductFilter(),

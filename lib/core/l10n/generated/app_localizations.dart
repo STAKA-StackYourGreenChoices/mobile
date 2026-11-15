@@ -1545,6 +1545,342 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add products one at a time, or import a whole catalog from a CSV file.'**
   String get noProductsBody;
+
+  /// Same as the website's product pages.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers find this product by scanning its barcode.'**
+  String get productNewDescription;
+
+  /// Same as the website's product pages.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated {date}.'**
+  String productLastUpdated(String date);
+
+  /// No product with this id. The website shows the Next.js 404 page with this line.
+  ///
+  /// In en, this message translates to:
+  /// **'This page could not be found.'**
+  String get pageNotFound;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get productSection;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get fieldProductName;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'As it\'s printed on the label, e.g. Organic Cotton Tee.'**
+  String get productNameHint;
+
+  /// Same as the website's product form. Also the preview's brand before one is chosen.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get fieldBrand;
+
+  /// Same as the website's product form. Placeholder and validation message.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a brand'**
+  String get chooseBrand;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing one?'**
+  String get brandMissing;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Add it on the Brands page'**
+  String get addBrandLink;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode number'**
+  String get fieldBarcode;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'The digits under the barcode (EAN, UPC or GTIN).'**
+  String get barcodeHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'SKU'**
+  String get fieldSku;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Your internal product code.'**
+  String get skuHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get fieldDescription;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. One or two sentences about materials and making.'**
+  String get descriptionHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo link'**
+  String get fieldPhotoLink;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. A square photo works best.'**
+  String get photoLinkHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'https://'**
+  String get photoLinkPlaceholder;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Sustainability figures'**
+  String get figuresSection;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Include carbon and recyclability figures'**
+  String get includeFigures;
+
+  /// Same as the website's product form. Keep the subscript ₂.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbon footprint (grams CO₂e)'**
+  String get fieldCarbon;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole grams, e.g. 2100.'**
+  String get carbonHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown as {value}'**
+  String carbonShownAs(String value);
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Recyclable (%)'**
+  String get fieldRecyclable;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'0 to 100.'**
+  String get recyclableHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave off if the brand states these figures itself. Tags show the difference.'**
+  String get verifiedByThirdPartyHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified by'**
+  String get fieldCertifier;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'The certification or body, e.g. Global Organic Textile Standard.'**
+  String get certifierHint;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get saveChanges;
+
+  /// Same as the website's product form. Submit button while waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving…'**
+  String get saving;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers will see this tag'**
+  String get tagPreviewCaption;
+
+  /// Same as the website's product form. Preview before a name is typed.
+  ///
+  /// In en, this message translates to:
+  /// **'Product name'**
+  String get previewProductName;
+
+  /// Same as the website's product form. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added'**
+  String get productAdded;
+
+  /// Same as the website's product form. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes saved'**
+  String get changesSaved;
+
+  /// Same as the website's product form.
+  ///
+  /// In en, this message translates to:
+  /// **'Some details need fixing before this product can be saved.'**
+  String get productFormInvalid;
+
+  /// Same as the website's product form. Alert on a 409; the API's message goes on the field.
+  ///
+  /// In en, this message translates to:
+  /// **'Another product already uses this code.'**
+  String get productCodeTaken;
+
+  /// Same as the website's product form. Alert on a GTIN 400.
+  ///
+  /// In en, this message translates to:
+  /// **'The barcode number isn\'t valid.'**
+  String get barcodeInvalid;
+
+  /// Same as the website's product form. {message} is the API's reason.
+  ///
+  /// In en, this message translates to:
+  /// **'{message}. Check the digits under the barcode.'**
+  String barcodeInvalidField(String message);
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the product name'**
+  String get validationProductName;
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 8, 12, 13 or 14 digits printed under the barcode'**
+  String get validationGtin;
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the SKU'**
+  String get validationSku;
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'{label} must be {max} characters or fewer'**
+  String validationFieldTooLong(String label, int max);
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a full link starting with https://'**
+  String get validationUrl;
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Required when figures are included'**
+  String get validationFigureRequired;
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'{label} must be {max} or less'**
+  String validationAtMost(String label, int max);
+
+  /// Same as the website's product rules (admin/actions.ts).
+  ///
+  /// In en, this message translates to:
+  /// **'Name who verified the figures'**
+  String get validationCertifier;
+
+  /// Same as the website's product rules (admin/actions.ts). Used inside validationFieldTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Certifier'**
+  String get certifierLabel;
+
+  /// Same as the website's product rules (admin/actions.ts). Used inside validationAtMost.
+  ///
+  /// In en, this message translates to:
+  /// **'Recyclability'**
+  String get recyclabilityLabel;
+
+  /// Same as the website's delete-product dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete product'**
+  String get deleteProduct;
+
+  /// Same as the website's delete-product dialog. Button while waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting…'**
+  String get deletingProduct;
+
+  /// Same as the website's delete-product dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}?'**
+  String deleteProductTitle(String name);
+
+  /// Same as the website's delete-product dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers will no longer find it by scanning. This can\'t be undone.'**
+  String get deleteProductBody;
+
+  /// Same as the website's delete-product dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep product'**
+  String get keepProduct;
+
+  /// Same as the website's delete-product dialog. Snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} deleted'**
+  String productDeleted(String name);
 }
 
 class _AppLocalizationsDelegate

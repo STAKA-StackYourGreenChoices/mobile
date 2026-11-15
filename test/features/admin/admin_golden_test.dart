@@ -8,6 +8,7 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/sustainability_info.dart';
 import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
+import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 
 import '../../helpers/admin_product_fakes.dart';
@@ -15,10 +16,16 @@ import '../../helpers/golden.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
 
-Widget _products(FakeAdminProductRepository repository) => ProviderScope(
-  overrides: [adminProductRepositoryProvider.overrideWithValue(repository)],
-  child: const AdminProductsScreen(),
-);
+Widget _scoped(FakeAdminProductRepository repository, Widget screen) =>
+    ProviderScope(
+      overrides: [adminProductRepositoryProvider.overrideWithValue(repository)],
+      child: screen,
+    );
+
+Widget _products(FakeAdminProductRepository repository) =>
+    _scoped(repository, const AdminProductsScreen());
+
+const _id = '11111111-2222-4333-8444-555555555555';
 
 void main() {
   setUpAll(loadAppFonts);
@@ -46,23 +53,44 @@ void main() {
     brands: Ok([brandSummary('b1', 'Terra Threads')]),
   );
 
+  final editing = FakeAdminProductRepository(
+    brands: Ok([brandSummary('b1', 'Terra Threads')]),
+    products: {
+      _id: editable(productNamed('Organic Cotton Tee').copyWith(id: _id)),
+    },
+  );
+  final adding = FakeAdminProductRepository(
+    brands: Ok([brandSummary('b1', 'Terra Threads')]),
+  );
+
   final cases = <String, (Widget Function(), double)>{
     'hub': (() => const AdminHomeScreen(), 760),
     'products': (() => _products(list), 760),
     'products_empty': (() => _products(FakeAdminProductRepository()), 760),
+    'product_new': (
+      () => _scoped(adding, const AdminProductFormScreen()),
+      2300,
+    ),
+    'product_edit': (
+      () => _scoped(editing, const AdminProductFormScreen(productId: _id)),
+      2500,
+    ),
   };
 
   for (final MapEntry(key: name, value: (build, height)) in cases.entries) {
     for (final brightness in Brightness.values) {
-      testWidgets('admin $name, ${brightness.name}', (tester) async {
-        usePhoneScreen(tester, height: height);
-        await pumpThemed(tester, build(), brightness: brightness);
-        await tester.pumpAndSettle();
-        await expectLater(
-          find.byType(MaterialApp),
-          matchesGoldenFile('goldens/admin_${name}_${brightness.name}.png'),
-        );
-      });
+      testWidgets(
+        'admin $name, ${brightness.name}',
+        (tester) => withRealShadows(() async {
+          usePhoneScreen(tester, height: height);
+          await pumpThemed(tester, build(), brightness: brightness);
+          await tester.pumpAndSettle();
+          await expectLater(
+            find.byType(MaterialApp),
+            matchesGoldenFile('goldens/admin_${name}_${brightness.name}.png'),
+          );
+        }),
+      );
     }
   }
 }

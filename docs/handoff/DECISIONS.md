@@ -48,4 +48,8 @@ _None._
 | S15 | Brand filter | Bottom sheet instead of the website's select. If `/brands` fails the filter is hidden and the list still works |
 | S15 | "Missing" figures badge | Uses the `warning` token: the app's design tokens have no ochre. Icon is an empty circle (Material has no dashed circle) |
 | S15 | Folder | Admin code lives in `features/admin/<area>/` (`hub`, `products`, later `brands`, `import`, `claims`), per PHASE2_PLAN §1 |
+| S16 | Product form layout | Phone order like the website below `lg`: heading (+ Delete product on edit), tag preview, form; Save and Cancel full width at the bottom. Brand is a dropdown |
+| S16 | Photo link on edit | The form edits the address exactly as stored (`EditableProduct.storedImageUrl`), not the phone-loadable one, so saving never rewrites seeded `localhost` catalog links |
+| S16 | Unknown product id | Website shows the Next.js 404 ("This page could not be found."); the app shows that line and a "Products" button (the website's back link) |
+| S16 | Build | `kotlin.incremental=false` in `android/gradle.properties` (Windows cross-drive Kotlin cache failure) |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |
