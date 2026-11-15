@@ -6,6 +6,8 @@ import 'package:staka/app/pending/pending_screen.dart';
 import 'package:staka/app/routes.dart';
 import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
+import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
+import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
@@ -30,7 +32,12 @@ GoRoute _route(
 /// A screen inside a tab: its path is relative to the tab's route, so
 /// `AppRoute.changePassword.path` ('/account/change-password') becomes
 /// 'change-password' under `AppRoute.account`.
-GoRoute _child(AppRoute parent, AppRoute route, GoRouterWidgetBuilder builder) {
+GoRoute _child(
+  AppRoute parent,
+  AppRoute route,
+  GoRouterWidgetBuilder builder, {
+  List<RouteBase> children = const [],
+}) {
   assert(
     route.path.startsWith('${parent.path}/'),
     '${route.name} under ${parent.name}',
@@ -39,13 +46,14 @@ GoRoute _child(AppRoute parent, AppRoute route, GoRouterWidgetBuilder builder) {
     path: route.path.substring(parent.path.length + 1),
     name: route.name,
     builder: builder,
+    routes: children,
   );
 }
 
 /// Stand-in for a destination whose screen lands in a later slice
 /// (PHASE2_PLAN.md §9). PROGRESS.md tracks them; none may remain at Phase 5.
-GoRoute _pending(AppRoute route) =>
-    _route(route, (_, _) => PendingScreen(route: route));
+GoRoute _pending(AppRoute parent, AppRoute route) =>
+    _child(parent, route, (_, _) => PendingScreen(route: route));
 
 final appRouteTable = <RouteBase>[
   _route(AppRoute.launch, (_, _) => const LaunchScreen()),
@@ -91,7 +99,29 @@ final appRouteTable = <RouteBase>[
           ),
         ],
       ),
-      StatefulShellBranch(routes: [_pending(AppRoute.adminHome)]),
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.adminHome,
+            (_, _) => const AdminHomeScreen(),
+            children: [
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminProducts,
+                (_, _) => const AdminProductsScreen(),
+                children: [
+                  // 'new' before ':id', or it would be read as an id.
+                  _pending(AppRoute.adminProducts, AppRoute.adminProductNew),
+                  _pending(AppRoute.adminProducts, AppRoute.adminProductEdit),
+                ],
+              ),
+              _pending(AppRoute.adminHome, AppRoute.adminBrands),
+              _pending(AppRoute.adminHome, AppRoute.adminImport),
+              _pending(AppRoute.adminHome, AppRoute.adminClaims),
+            ],
+          ),
+        ],
+      ),
       StatefulShellBranch(
         routes: [
           _route(

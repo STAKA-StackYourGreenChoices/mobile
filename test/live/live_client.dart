@@ -4,9 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/auth/token_refresher.dart';
 import 'package:staka/core/cards/cards_api.dart';
+import 'package:staka/core/catalog/brands_api.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
+import 'package:staka/features/admin/products/data/datasources/admin_product_remote_data_source.dart';
+import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
@@ -23,6 +26,15 @@ import '../helpers/auth_fakes.dart';
 /// The API address for live tests; empty means "skip".
 const liveApiUrl = String.fromEnvironment('LIVE_API_URL');
 final String? liveSkip = liveApiUrl.isEmpty ? 'Set LIVE_API_URL to run' : null;
+
+/// The seeded admin, for tests that need one. Pass them with
+/// `--dart-define=LIVE_ADMIN_EMAIL=…` and `--dart-define=LIVE_ADMIN_PASSWORD=…`
+/// (from the header of api/src/prisma/seed.ts; never commit them).
+const _adminEmail = String.fromEnvironment('LIVE_ADMIN_EMAIL');
+const _adminPassword = String.fromEnvironment('LIVE_ADMIN_PASSWORD');
+final String? liveAdminSkip =
+    liveSkip ??
+    (_adminPassword.isEmpty ? 'Set LIVE_ADMIN_PASSWORD to run' : null);
 
 /// The app's real network stack (auth interceptor, single-flight refresh,
 /// repositories) pointed at a running API, with in-memory token storage.
@@ -52,6 +64,10 @@ class LiveClient {
       TagRemoteDataSource(dio),
       ShareRemoteDataSource(dio, Dio()),
     );
+    adminProducts = AdminProductRepositoryImpl(
+      AdminProductRemoteDataSource(dio),
+      BrandsApi(dio),
+    );
     session = SessionRepository(dio, store);
   }
 
@@ -64,6 +80,7 @@ class LiveClient {
   late final WardrobeRepositoryImpl wardrobe;
   late final ProductRepositoryImpl products;
   late final TagRepositoryImpl tags;
+  late final AdminProductRepositoryImpl adminProducts;
   late final SessionRepository session;
   int rejections = 0;
 
@@ -103,4 +120,15 @@ Future<LiveClient> signedUpClient() async {
   );
   await client.session.saveTokens((result as Ok<AuthSession>).value.tokens);
   return client;
+}
+
+/// Signs in as the seeded admin (see [liveAdminSkip]).
+Future<LiveClient> signedInAdmin() async {
+  final admin = LiveClient();
+  final login = await admin.auth.login(
+    email: _adminEmail,
+    password: _adminPassword,
+  );
+  await admin.session.saveTokens((login as Ok<AuthSession>).value.tokens);
+  return admin;
 }

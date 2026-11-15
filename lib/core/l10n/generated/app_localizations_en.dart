@@ -774,4 +774,95 @@ class AppLocalizationsEn extends AppLocalizations {
   String shareSubject(String product) {
     return '$product on STAKA';
   }
+
+  @override
+  String get adminProducts => 'Products';
+
+  @override
+  String get adminProductsDescription =>
+      'Everything shoppers can scan. A product\'s tag shows exactly what\'s recorded here.';
+
+  @override
+  String get adminBrands => 'Brands';
+
+  @override
+  String get adminBrandsDescription =>
+      'Every product belongs to a brand. Its name appears at the top of each tag.';
+
+  @override
+  String get adminImport => 'Import';
+
+  @override
+  String get adminImportDescription =>
+      'Add or update many products at once from a spreadsheet saved as CSV. Rows are matched on barcode: new barcodes are added, known ones are updated.';
+
+  @override
+  String get adminClaims => 'Claims';
+
+  @override
+  String get adminClaimsDescription =>
+      'Shoppers prove they bought a piece with a receipt. Approving one makes them its verified owner. Order matches are approved automatically.';
+
+  @override
+  String get importCsv => 'Import CSV';
+
+  @override
+  String get addProduct => 'Add product';
+
+  @override
+  String get searchProductsLabel => 'Search products';
+
+  @override
+  String get searchProductsHint => 'Search by name, SKU, barcode or brand';
+
+  @override
+  String get filterByBrand => 'Filter by brand';
+
+  @override
+  String get allBrands => 'All brands';
+
+  @override
+  String get clearFilters => 'Clear';
+
+  @override
+  String get clearSearch => 'Clear search';
+
+  @override
+  String showingProducts(int total, int first, int last) {
+    String _temp0 = intl.Intl.pluralLogic(
+      total,
+      locale: localeName,
+      other: 'Showing $first–$last of $total products',
+      one: 'Showing $first–$last of $total product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get figuresVerified => 'Verified';
+
+  @override
+  String get figuresBrandStated => 'Brand-stated';
+
+  @override
+  String get figuresMissing => 'Missing';
+
+  @override
+  String figuresBadgeLabel(String status) {
+    return 'Figures: $status';
+  }
+
+  @override
+  String get noProductsMatchTitle => 'No products match';
+
+  @override
+  String get noProductsMatchBody =>
+      'Try a different name, SKU or barcode, or clear the filters.';
+
+  @override
+  String get noProductsTitle => 'No products yet';
+
+  @override
+  String get noProductsBody =>
+      'Add products one at a time, or import a whole catalog from a CSV file.';
 }

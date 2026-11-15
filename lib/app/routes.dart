@@ -20,7 +20,13 @@ enum AppRoute {
   // Inside a tab (keep the bottom bar).
   changePassword('/account/change-password'),
   product('/scan/product/:gtin'),
-  tag('/wardrobe/tag/:id');
+  tag('/wardrobe/tag/:id'),
+  adminProducts('/admin/products'),
+  adminProductNew('/admin/products/new'),
+  adminProductEdit('/admin/products/:id'),
+  adminBrands('/admin/brands'),
+  adminImport('/admin/import'),
+  adminClaims('/admin/claims');
 
   new(this.path);
 

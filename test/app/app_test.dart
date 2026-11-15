@@ -54,7 +54,10 @@ void main() {
 
     await tester.tap(find.text('Admin'));
     await tester.pumpAndSettle();
-    expect(find.text('/admin'), findsOneWidget);
+    // The hub: the website's admin nav.
+    for (final area in ['Products', 'Brands', 'Import', 'Claims']) {
+      expect(find.text(area), findsOneWidget);
+    }
   });
 
   testWidgets('API down at launch: retry, then into the app', (tester) async {

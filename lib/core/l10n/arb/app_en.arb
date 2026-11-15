@@ -1052,5 +1052,121 @@
         "type": "String"
       }
     }
+  },
+  "adminProducts": "Products",
+  "@adminProducts": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminProductsDescription": "Everything shoppers can scan. A product's tag shows exactly what's recorded here.",
+  "@adminProductsDescription": {
+    "description": "Same as the website's products page header."
+  },
+  "adminBrands": "Brands",
+  "@adminBrands": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminBrandsDescription": "Every product belongs to a brand. Its name appears at the top of each tag.",
+  "@adminBrandsDescription": {
+    "description": "Same as the website's brands page header."
+  },
+  "adminImport": "Import",
+  "@adminImport": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminImportDescription": "Add or update many products at once from a spreadsheet saved as CSV. Rows are matched on barcode: new barcodes are added, known ones are updated.",
+  "@adminImportDescription": {
+    "description": "Same as the website's import page header."
+  },
+  "adminClaims": "Claims",
+  "@adminClaims": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminClaimsDescription": "Shoppers prove they bought a piece with a receipt. Approving one makes them its verified owner. Order matches are approved automatically.",
+  "@adminClaimsDescription": {
+    "description": "Same as the website's claims page header."
+  },
+  "importCsv": "Import CSV",
+  "@importCsv": {
+    "description": "Same as the website's products page action."
+  },
+  "addProduct": "Add product",
+  "@addProduct": {
+    "description": "Same as the website's products page action."
+  },
+  "searchProductsLabel": "Search products",
+  "@searchProductsLabel": {
+    "description": "Same as the website's product search (screen-reader label)."
+  },
+  "searchProductsHint": "Search by name, SKU, barcode or brand",
+  "@searchProductsHint": {
+    "description": "Same as the website's product search placeholder."
+  },
+  "filterByBrand": "Filter by brand",
+  "@filterByBrand": {
+    "description": "Same as the website's brand filter label; also the sheet title."
+  },
+  "allBrands": "All brands",
+  "@allBrands": {
+    "description": "Same as the website's brand filter."
+  },
+  "clearFilters": "Clear",
+  "@clearFilters": {
+    "description": "Same as the website's product filters: removes search and brand."
+  },
+  "clearSearch": "Clear search",
+  "@clearSearch": {
+    "description": "Clears the search field (screen-reader label of its x button)."
+  },
+  "showingProducts": "{total, plural, =1{Showing {first}–{last} of {total} product} other{Showing {first}–{last} of {total} products}}",
+  "@showingProducts": {
+    "description": "Same as the website's product list count. The app loads more as you scroll, so first is 1.",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "first": {
+        "type": "int"
+      },
+      "last": {
+        "type": "int"
+      }
+    }
+  },
+  "figuresVerified": "Verified",
+  "@figuresVerified": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresBrandStated": "Brand-stated",
+  "@figuresBrandStated": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresMissing": "Missing",
+  "@figuresMissing": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresBadgeLabel": "Figures: {status}",
+  "@figuresBadgeLabel": {
+    "description": "Same as the website's compact SustainabilityBadge (screen-reader label).",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "noProductsMatchTitle": "No products match",
+  "@noProductsMatchTitle": {
+    "description": "Same as the website's products empty state (filtered)."
+  },
+  "noProductsMatchBody": "Try a different name, SKU or barcode, or clear the filters.",
+  "@noProductsMatchBody": {
+    "description": "Same as the website's products empty state (filtered)."
+  },
+  "noProductsTitle": "No products yet",
+  "@noProductsTitle": {
+    "description": "Same as the website's products empty state."
+  },
+  "noProductsBody": "Add products one at a time, or import a whole catalog from a CSV file.",
+  "@noProductsBody": {
+    "description": "Same as the website's products empty state."
   }
 }

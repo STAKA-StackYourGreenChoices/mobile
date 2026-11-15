@@ -1395,6 +1395,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{product} on STAKA'**
   String shareSubject(String product);
+
+  /// Same as the website's admin nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get adminProducts;
+
+  /// Same as the website's products page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything shoppers can scan. A product\'s tag shows exactly what\'s recorded here.'**
+  String get adminProductsDescription;
+
+  /// Same as the website's admin nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands'**
+  String get adminBrands;
+
+  /// Same as the website's brands page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Every product belongs to a brand. Its name appears at the top of each tag.'**
+  String get adminBrandsDescription;
+
+  /// Same as the website's admin nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get adminImport;
+
+  /// Same as the website's import page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Add or update many products at once from a spreadsheet saved as CSV. Rows are matched on barcode: new barcodes are added, known ones are updated.'**
+  String get adminImportDescription;
+
+  /// Same as the website's admin nav.
+  ///
+  /// In en, this message translates to:
+  /// **'Claims'**
+  String get adminClaims;
+
+  /// Same as the website's claims page header.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers prove they bought a piece with a receipt. Approving one makes them its verified owner. Order matches are approved automatically.'**
+  String get adminClaimsDescription;
+
+  /// Same as the website's products page action.
+  ///
+  /// In en, this message translates to:
+  /// **'Import CSV'**
+  String get importCsv;
+
+  /// Same as the website's products page action.
+  ///
+  /// In en, this message translates to:
+  /// **'Add product'**
+  String get addProduct;
+
+  /// Same as the website's product search (screen-reader label).
+  ///
+  /// In en, this message translates to:
+  /// **'Search products'**
+  String get searchProductsLabel;
+
+  /// Same as the website's product search placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, SKU, barcode or brand'**
+  String get searchProductsHint;
+
+  /// Same as the website's brand filter label; also the sheet title.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by brand'**
+  String get filterByBrand;
+
+  /// Same as the website's brand filter.
+  ///
+  /// In en, this message translates to:
+  /// **'All brands'**
+  String get allBrands;
+
+  /// Same as the website's product filters: removes search and brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearFilters;
+
+  /// Clears the search field (screen-reader label of its x button).
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get clearSearch;
+
+  /// Same as the website's product list count. The app loads more as you scroll, so first is 1.
+  ///
+  /// In en, this message translates to:
+  /// **'{total, plural, =1{Showing {first}–{last} of {total} product} other{Showing {first}–{last} of {total} products}}'**
+  String showingProducts(int total, int first, int last);
+
+  /// Same as the website's SustainabilityBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get figuresVerified;
+
+  /// Same as the website's SustainabilityBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand-stated'**
+  String get figuresBrandStated;
+
+  /// Same as the website's SustainabilityBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing'**
+  String get figuresMissing;
+
+  /// Same as the website's compact SustainabilityBadge (screen-reader label).
+  ///
+  /// In en, this message translates to:
+  /// **'Figures: {status}'**
+  String figuresBadgeLabel(String status);
+
+  /// Same as the website's products empty state (filtered).
+  ///
+  /// In en, this message translates to:
+  /// **'No products match'**
+  String get noProductsMatchTitle;
+
+  /// Same as the website's products empty state (filtered).
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different name, SKU or barcode, or clear the filters.'**
+  String get noProductsMatchBody;
+
+  /// Same as the website's products empty state.
+  ///
+  /// In en, this message translates to:
+  /// **'No products yet'**
+  String get noProductsTitle;
+
+  /// Same as the website's products empty state.
+  ///
+  /// In en, this message translates to:
+  /// **'Add products one at a time, or import a whole catalog from a CSV file.'**
+  String get noProductsBody;
 }
 
 class _AppLocalizationsDelegate

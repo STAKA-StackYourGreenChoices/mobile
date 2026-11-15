@@ -43,4 +43,9 @@ _None._
 | S11 | Camera blocked copy | Website says "browser's site settings"; app says "Allow it for STAKA in your phone's Settings". No "open Settings" button (would need an extra package) |
 | S13 | Receipt photos | Scaled to max 2400 px at JPEG quality 85 before upload (readable, well under 5 MB, and iOS returns JPEG not HEIC, which the API rejects). Source chooser sheet: Take a photo / Choose from your photos / Choose a PDF (web has one file input) |
 | S14 | Share buttons | The phone's share sheet replaces the website's WhatsApp/X/Facebook/LinkedIn buttons (it lists every installed app). "Image for Instagram stories" downloads the website's story image and opens the share sheet with it |
+| S15 | Admin tab | Opens a hub listing Products / Brands / Import / Claims with each page's website description (the website's `/admin` just redirects to products; a phone has no top nav for the other three) |
+| S15 | Product pages | Infinite scroll, 20 per request, next page asked for when about five rows remain, replaces the website's Previous / Next. Count line reads "Showing 1–n of N products" |
+| S15 | Brand filter | Bottom sheet instead of the website's select. If `/brands` fails the filter is hidden and the list still works |
+| S15 | "Missing" figures badge | Uses the `warning` token: the app's design tokens have no ochre. Icon is an empty circle (Material has no dashed circle) |
+| S15 | Folder | Admin code lives in `features/admin/<area>/` (`hub`, `products`, later `brands`, `import`, `claims`), per PHASE2_PLAN §1 |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |

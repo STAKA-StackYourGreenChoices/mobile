@@ -11,23 +11,15 @@ import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/share_link.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
-import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 
 import 'live_client.dart';
 
 /// Sharing against a running API (see auth_live_test). Sharing needs a
-/// verified owner, so an admin approves a receipt first. Pass the seeded
-/// admin with `--dart-define=LIVE_ADMIN_EMAIL=…` and
-/// `--dart-define=LIVE_ADMIN_PASSWORD=…` (from the header of
-/// api/src/prisma/seed.ts; never commit them).
-const _adminEmail = String.fromEnvironment('LIVE_ADMIN_EMAIL');
-const _adminPassword = String.fromEnvironment('LIVE_ADMIN_PASSWORD');
-
+/// verified owner, so the seeded admin approves a receipt first (see
+/// `liveAdminSkip` for how to pass them).
 void main() {
-  final skip =
-      liveSkip ??
-      (_adminPassword.isEmpty ? 'Set LIVE_ADMIN_PASSWORD to run' : null);
+  final skip = liveAdminSkip;
 
   final png = base64Decode(
     'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA'
@@ -84,12 +76,7 @@ Future<Response<Object?>> _publicTag(String slug) => Dio(
 /// receipt. Matched by their unique email: earlier runs leave pending
 /// claims from other throwaway shoppers with the same name.
 Future<void> _approveClaimOf(String email) async {
-  final admin = LiveClient();
-  final login = await admin.auth.login(
-    email: _adminEmail,
-    password: _adminPassword,
-  );
-  await admin.session.saveTokens((login as Ok<AuthSession>).value.tokens);
+  final admin = await signedInAdmin();
   final claims = await admin.dio.get<Map<String, dynamic>>(
     '/claims',
     queryParameters: {'status': 'PENDING', 'limit': 100},
