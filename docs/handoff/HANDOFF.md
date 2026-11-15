@@ -15,8 +15,8 @@ user's "go ahead" after each phase. Never invent endpoints. Never change `api/`,
 
 | Item | Value |
 |---|---|
-| Current phase | **3 — Implementation complete: all 19 slices done. Waiting for the user's go-ahead for Phase 4** |
-| Next action | **Phase 4 — Backend sync: ask the user before starting.** Phase 3 is done (slice 19 `feat/admin-claims` finished: 248 tests + 64 goldens + 16 live tests pass, debug APK builds). Phase 4 per `files/app_build_prompt.md`: list any API changes the app needs (none required so far; known API bug: `/health` returns 401, user declined fixing earlier) and get approval before touching `api/` |
+| Current phase | **4 — Backend sync done (no changes applied). Waiting for the user's answers and go-ahead for Phase 5** |
+| Next action | **Wait for the user.** Phase 4 report: `PHASE4_BACKEND_SYNC.md` (no approved backend changes, none applied; all 25 app calls match the API). The user decides on the three optional changes in its §4 (`/health` public, push notifications, auth rate limiting); apply only approved ones, document them in that file, re-run live tests. Then Phase 5 (verification checklist table, edge cases, confirm the website still works) |
 | Local API | Runs on this PC (user starts it): Docker Postgres `startup-dev-postgres-1` + `pnpm start:dev` in `api/`. The Windows service `postgresql-x64-16` also uses :5432 and must be stopped or Prisma hits it (P1000). `/health` returns 401 (API bug: no `@Public()`; user declined fixing for now). Live check: `flutter test test/live --dart-define=LIVE_API_URL=http://localhost:7070` (+ `LIVE_ADMIN_EMAIL`/`LIVE_ADMIN_PASSWORD` from the seed header for the sharing and admin tests; never print them). User starts the API with: Docker Desktop → `docker compose -f infra/docker-compose.dev.yml up -d` → `pnpm start:dev` in api/ |
 | Toolchain | Flutter 3.50.0 / Dart 3.14.0. No emulator/phone attached. `flutter build apk --debug` works (first build ~13 min while Gradle 9.5 downloads). `android/gradle.properties` sets `kotlin.incremental=false`: plugin Kotlin builds failed with "Could not close incremental caches" (project on D:, pub cache on C:). `flutter doctor` still warns about unaccepted Android licences (user's call) |
 | Branches | `docs/mobile-handoff` → `chore/project-setup` → `feat/core-network` → `feat/core-session` → `feat/shared-foundations` → `feat/shared-inputs` → `feat/app-shell-router` → `feat/auth-sign-in` → `feat/auth-password` → `feat/shared-hang-tag` → `feat/wardrobe-list` → `feat/scan-barcode` → `feat/products-detail` → `feat/tags-ownership` → `feat/tags-sharing` → `feat/admin-products-list` → `feat/admin-product-form` → `feat/admin-brands` → `feat/admin-import` → `feat/admin-claims` (stacked, all pushed, nothing merged) |
@@ -106,6 +106,7 @@ From `files/FRONTEND_GUIDE.md` (the ones that shape code most):
 | `DECISIONS.md` | Always — open questions and the user's answers. Answers override everything else |
 | `PHASE1_ANALYSIS.md` | Building any feature: stack, feature inventory, full API map, auth, validations, copy |
 | `PHASE2_PLAN.md` | Always during Phase 3: folder layout, packages, routes, screen mapping, slice order |
+| `PHASE4_BACKEND_SYNC.md` | Any backend question: what was changed (nothing so far), the contract check, optional changes awaiting the user |
 
 ## 6. Before you stop (every session)
 
