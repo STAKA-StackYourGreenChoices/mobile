@@ -27,6 +27,33 @@ void main() {
       expect(failureFromDioException(_response(413)), isA<BadRequestFailure>());
     });
 
+    test('429 keeps the Retry-After seconds when they are a number', () {
+      TooManyRequestsFailure tooMany(String? retryAfter) {
+        final options = RequestOptions(path: '/auth/login');
+        return failureFromDioException(
+          DioException.badResponse(
+            statusCode: 429,
+            requestOptions: options,
+            response: Response(
+              requestOptions: options,
+              statusCode: 429,
+              data: {'message': 'Too many attempts.'},
+              headers: Headers.fromMap({
+                if (retryAfter != null) 'retry-after': [retryAfter],
+              }),
+            ),
+          ),
+        ) as TooManyRequestsFailure;
+      }
+
+      final failure = tooMany('900');
+      expect(failure.statusCode, 429);
+      expect(failure.message, 'Too many attempts.');
+      expect(failure.retryAfter, const Duration(minutes: 15));
+      expect(tooMany(null).retryAfter, isNull);
+      expect(tooMany('Wed, 21 Oct 2026 07:28:00 GMT').retryAfter, isNull);
+    });
+
     test('keeps the status code and the API messages', () {
       final failure = failureFromDioException(
         _response(400, {'message': 'Invalid GTIN check digit'}),

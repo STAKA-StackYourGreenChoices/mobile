@@ -130,6 +130,18 @@ abstract class AppLocalizations {
   /// **'Your account doesn\'t have access to this.'**
   String get errorForbidden;
 
+  /// 429 (too many sign-in attempts or emails). Same wording as the API's message, which the website shows.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes, plural, =1{Too many attempts. Please wait 1 minute and try again.} other{Too many attempts. Please wait {minutes} minutes and try again.}}'**
+  String errorTooManyAttempts(int minutes);
+
+  /// 429 when the API didn't say how long to wait.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please wait a few minutes and try again.'**
+  String get errorTooManyAttemptsSoon;
+
   /// Screen-reader label for spinners.
   ///
   /// In en, this message translates to:

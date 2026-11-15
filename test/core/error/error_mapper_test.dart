@@ -20,6 +20,32 @@ void main() {
     );
   });
 
+  test('429 is always worded by the app, with the wait in minutes', () {
+    String message(Duration? retryAfter) => messageForFailure(
+      TooManyRequestsFailure(const [
+        'ThrottlerException: Too Many Requests',
+      ], retryAfter: retryAfter),
+      l10n,
+    );
+
+    expect(
+      message(const Duration(seconds: 899)),
+      'Too many attempts. Please wait 15 minutes and try again.',
+    );
+    expect(
+      message(const Duration(seconds: 20)),
+      'Too many attempts. Please wait 1 minute and try again.',
+    );
+    expect(
+      message(Duration.zero),
+      'Too many attempts. Please wait 1 minute and try again.',
+    );
+    expect(
+      message(null),
+      'Too many attempts. Please wait a few minutes and try again.',
+    );
+  });
+
   test('status fallbacks when the API sent no message', () {
     expect(
       messageForFailure(const UnauthorizedFailure([]), l10n),

@@ -26,10 +26,20 @@ Failure _fromResponse(Response<Object?>? response) {
     403 => ForbiddenFailure(messages),
     404 => NotFoundFailure(messages),
     409 => ConflictFailure(messages),
+    429 => TooManyRequestsFailure(
+      messages,
+      retryAfter: _retryAfter(response?.headers.value('retry-after')),
+    ),
     >= 500 => ServerFailure(status, messages),
     _ => BadRequestFailure(status, messages),
   };
 }
+
+/// `Retry-After` in seconds (the API's form); dates and junk are ignored.
+Duration? _retryAfter(String? header) => switch (int.tryParse(header ?? '')) {
+  final int seconds when seconds >= 0 => Duration(seconds: seconds),
+  _ => null,
+};
 
 /// Reads Nest's error body: `{"message": "..."}` or `{"message": ["..."]}`.
 List<String> apiMessages(Object? body) {

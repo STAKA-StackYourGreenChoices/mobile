@@ -30,6 +30,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorForbidden => 'Your account doesn\'t have access to this.';
 
   @override
+  String errorTooManyAttempts(int minutes) {
+    String _temp0 = intl.Intl.pluralLogic(
+      minutes,
+      locale: localeName,
+      other: 'Too many attempts. Please wait $minutes minutes and try again.',
+      one: 'Too many attempts. Please wait 1 minute and try again.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get errorTooManyAttemptsSoon =>
+      'Too many attempts. Please wait a few minutes and try again.';
+
+  @override
   String get loading => 'Loading';
 
   @override

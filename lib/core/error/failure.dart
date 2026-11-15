@@ -60,6 +60,14 @@ final class ConflictFailure extends ApiFailure {
   const new(List<String> messages) : super(409, messages);
 }
 
+/// 429: too many sign-in attempts or emails. [retryAfter] is the API's
+/// `Retry-After` header, when it sent one.
+final class TooManyRequestsFailure extends ApiFailure {
+  const new(List<String> messages, {this.retryAfter}) : super(429, messages);
+
+  final Duration? retryAfter;
+}
+
 /// 5xx.
 final class ServerFailure extends ApiFailure {
   const new(super.statusCode, super.messages);

@@ -46,7 +46,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 ## Phase 4 — Backend sync
 - [x] Only approved changes: none approved, none applied; `api/` and `web/` unchanged since 2026-11-08 (report: `PHASE4_BACKEND_SYNC.md`)
 - [x] Contract check: all 25 app calls match the API controllers and `openapi.json`; all are live-tested
-- [ ] User to answer the three optional backend changes (PHASE4 §4) and give the go-ahead for Phase 5
+- [x] Approved and applied: attempt limits on login / change-password / forgot-password / resend-verification (api branch `feat/auth-attempt-limits`), app words 429 itself (PHASE4 §1.1–1.2). `/health` fix and push notifications not requested
 
 ## Phase 5 — Verification
 - [ ] Every flow end-to-end on device against real API; checklist table
@@ -57,6 +57,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] Icon, splash, name, ids, permissions text, signing, release steps, README
 
 ## Session log (newest first, one line each)
+- 2026-11-15 — Phase 4: auth attempt limits in api/ (55/55 e2e) + app 429 copy; 17/17 live tests pass 3× back to back. Phase 5 next.
 - 2026-11-15 — Phase 4: no approved backend changes, so none applied; contract audit clean; three optional changes listed for the user.
 - 2026-11-15 — Slice 19 done (all 19 slices): 248 tests + 64 goldens + 16 live tests pass, debug APK builds with `pdfx`. Phase 3 complete.
 - 2026-11-15 — Slice 18 done: 232 tests + 58 goldens + 15 live tests pass (live suite 3× in a row), debug APK builds.

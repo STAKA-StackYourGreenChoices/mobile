@@ -24,6 +24,19 @@
   "@errorForbidden": {
     "description": "403 without an API message. Same as the website."
   },
+  "errorTooManyAttempts": "{minutes, plural, =1{Too many attempts. Please wait 1 minute and try again.} other{Too many attempts. Please wait {minutes} minutes and try again.}}",
+  "@errorTooManyAttempts": {
+    "description": "429 (too many sign-in attempts or emails). Same wording as the API's message, which the website shows.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorTooManyAttemptsSoon": "Too many attempts. Please wait a few minutes and try again.",
+  "@errorTooManyAttemptsSoon": {
+    "description": "429 when the API didn't say how long to wait."
+  },
   "loading": "Loading",
   "@loading": {
     "description": "Screen-reader label for spinners."

@@ -92,6 +92,34 @@ void main() {
     expect(find.text('Sign in to STAKA'), findsOneWidget);
   });
 
+  testWidgets('too many wrong passwords: how long to wait, still on sign-in', (
+    tester,
+  ) async {
+    await pumpApp(
+      tester,
+      auth: FakeAuthRepository([
+        const Err(
+          TooManyRequestsFailure([
+            'ThrottlerException: Too Many Requests',
+          ], retryAfter: Duration(seconds: 899)),
+        ),
+      ]),
+    );
+    await _openSignIn(tester);
+
+    await tester.enterText(_field('Email'), 'ada@example.com');
+    await tester.enterText(_field('Password'), 'correct horse');
+    await tester.tap(find.widgetWithText(FilledButton, 'Sign in'));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text('Too many attempts. Please wait 15 minutes and try again.'),
+      findsOneWidget,
+    );
+    expect(find.textContaining('Throttler'), findsNothing);
+    expect(find.text('Sign in to STAKA'), findsOneWidget);
+  });
+
   testWidgets('back from sign-in returns to welcome', (tester) async {
     await pumpApp(tester, auth: FakeAuthRepository([]));
     await _openSignIn(tester);

@@ -61,4 +61,5 @@ _None._
 | S19 | Receipt viewer | Opens in the app (pinch-zoom photo, scrollable PDF) instead of the website's new browser tab; the receipt is fetched with the admin's token |
 | S19 | Claims list | Infinite scroll, 20 per request, replaces the website's Previous / Next (same as the products list) |
 | S19 | Common reject reasons | The website's four reasons are wrapping pills that fill the reason box (a chip cut long reasons off on a 360 dp phone) |
+| P4 | Backend change | User approved only auth rate limiting (2026-11-15). Built as attempt limits keyed on address + email or user (the website calls the API from one server address); sign-in counts wrong passwords only. App always words 429 itself. Website gets the API's readable message with no web change |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |
