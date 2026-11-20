@@ -1,0 +1,188 @@
+import 'package:flutter/foundation.dart' show ValueKey;
+import 'package:go_router/go_router.dart';
+import 'package:staka/app/launch/launch_screen.dart';
+import 'package:staka/app/launch/unreachable_screen.dart';
+import 'package:staka/app/routes.dart';
+import 'package:staka/app/shell/app_navigation_shell.dart';
+import 'package:staka/features/account/presentation/screens/account_screen.dart';
+import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/admin_claim_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/admin_claims_screen.dart';
+import 'package:staka/features/admin/claims/presentation/screens/claim_receipt_screen.dart';
+import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
+import 'package:staka/features/admin/import/presentation/screens/admin_import_screen.dart';
+import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
+import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
+import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
+import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:staka/features/auth/presentation/screens/login_screen.dart';
+import 'package:staka/features/auth/presentation/screens/register_screen.dart';
+import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/products/presentation/screens/product_screen.dart';
+import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
+import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
+import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
+
+GoRoute _route(
+  AppRoute route,
+  GoRouterWidgetBuilder builder, {
+  List<RouteBase> children = const [],
+}) => GoRoute(
+  path: route.path,
+  name: route.name,
+  builder: builder,
+  routes: children,
+);
+
+/// A screen inside a tab: its path is relative to the tab's route, so
+/// `AppRoute.changePassword.path` ('/account/change-password') becomes
+/// 'change-password' under `AppRoute.account`.
+GoRoute _child(
+  AppRoute parent,
+  AppRoute route,
+  GoRouterWidgetBuilder builder, {
+  List<RouteBase> children = const [],
+}) {
+  assert(
+    route.path.startsWith('${parent.path}/'),
+    '${route.name} under ${parent.name}',
+  );
+  return GoRoute(
+    path: route.path.substring(parent.path.length + 1),
+    name: route.name,
+    builder: builder,
+    routes: children,
+  );
+}
+
+final appRouteTable = <RouteBase>[
+  _route(AppRoute.launch, (_, _) => const LaunchScreen()),
+  _route(AppRoute.unreachable, (_, _) => const UnreachableScreen()),
+  _route(AppRoute.welcome, (_, _) => const WelcomeScreen()),
+  _route(AppRoute.login, (_, _) => const LoginScreen()),
+  _route(AppRoute.register, (_, _) => const RegisterScreen()),
+  _route(AppRoute.forgotPassword, (_, _) => const ForgotPasswordScreen()),
+  StatefulShellRoute.indexedStack(
+    builder: (_, _, shell) => AppNavigationShell(shell: shell),
+    branches: [
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.wardrobe,
+            (_, _) => const WardrobeScreen(),
+            children: [
+              _child(
+                AppRoute.wardrobe,
+                AppRoute.tag,
+                (_, state) => TagScreen(
+                  cardId: state.pathParameters['id'] ?? '',
+                  isJustAdded: state.uri.queryParameters['added'] == '1',
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.scan,
+            (_, _) => const ScanScreen(),
+            children: [
+              _child(
+                AppRoute.scan,
+                AppRoute.product,
+                (_, state) =>
+                    ProductScreen(gtin: state.pathParameters['gtin'] ?? ''),
+              ),
+            ],
+          ),
+        ],
+      ),
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.adminHome,
+            (_, _) => const AdminHomeScreen(),
+            children: [
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminProducts,
+                (_, state) => AdminProductsScreen(
+                  key: ValueKey(state.uri.queryParameters['brand']),
+                  brandId: state.uri.queryParameters['brand'],
+                ),
+                children: [
+                  // 'new' before ':id', or it would be read as an id.
+                  _child(
+                    AppRoute.adminProducts,
+                    AppRoute.adminProductNew,
+                    (_, _) => const AdminProductFormScreen(),
+                  ),
+                  _child(
+                    AppRoute.adminProducts,
+                    AppRoute.adminProductEdit,
+                    (_, state) => AdminProductFormScreen(
+                      // A new id builds a new screen (after "Add product").
+                      key: ValueKey(state.pathParameters['id']),
+                      productId: state.pathParameters['id'] ?? '',
+                    ),
+                  ),
+                ],
+              ),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminBrands,
+                (_, _) => const AdminBrandsScreen(),
+              ),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminImport,
+                (_, _) => const AdminImportScreen(),
+              ),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminClaims,
+                (_, _) => const AdminClaimsScreen(),
+                children: [
+                  _child(
+                    AppRoute.adminClaims,
+                    AppRoute.adminClaim,
+                    (_, state) => AdminClaimScreen(
+                      key: ValueKey(state.pathParameters['id']),
+                      claimId: state.pathParameters['id'] ?? '',
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.adminClaim,
+                        AppRoute.adminClaimReceipt,
+                        (_, state) => ClaimReceiptScreen(
+                          claimId: state.pathParameters['id'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.account,
+            (_, _) => const AccountScreen(),
+            children: [
+              _child(
+                AppRoute.account,
+                AppRoute.changePassword,
+                (_, _) => const ChangePasswordScreen(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  ),
+];

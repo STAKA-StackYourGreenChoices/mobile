@@ -1,0 +1,116 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'product_controller.dart';
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+/// The product for one scanned code.
+
+@ProviderFor(ProductController)
+final productControllerProvider = ProductControllerFamily._();
+
+/// The product for one scanned code.
+final class ProductControllerProvider
+    extends $NotifierProvider<ProductController, ProductState> {
+  /// The product for one scanned code.
+  ProductControllerProvider._({
+    required ProductControllerFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'productControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$productControllerHash();
+
+  @override
+  String toString() {
+    return r'productControllerProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  ProductController create() => ProductController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ProductState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ProductState>(value),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ProductControllerProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$productControllerHash() => r'985fe7fbaf52b79b9b4e9201ebe33b4a2686f650';
+
+/// The product for one scanned code.
+
+final class ProductControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          ProductController,
+          ProductState,
+          ProductState,
+          ProductState,
+          String
+        > {
+  ProductControllerFamily._()
+    : super(
+        retry: null,
+        name: r'productControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// The product for one scanned code.
+
+  ProductControllerProvider call(String gtin) =>
+      ProductControllerProvider._(argument: gtin, from: this);
+
+  @override
+  String toString() => r'productControllerProvider';
+}
+
+/// The product for one scanned code.
+
+abstract class _$ProductController extends $Notifier<ProductState> {
+  late final _$args = ref.$arg as String;
+  String get gtin => _$args;
+
+  ProductState build(String gtin);
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<ProductState, ProductState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<ProductState, ProductState>,
+              ProductState,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, () => build(_$args));
+  }
+}

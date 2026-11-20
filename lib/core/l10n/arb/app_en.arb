@@ -1,0 +1,2210 @@
+{
+  "@@locale": "en",
+  "appName": "STAKA",
+  "@appName": {
+    "description": "Product name. Never translated."
+  },
+  "appTagline": "Your clothes, with their footprint attached.",
+  "@appTagline": {
+    "description": "One-line description of what STAKA does, from the website's home page."
+  },
+  "errorNetwork": "STAKA's server isn't reachable right now. Check your connection, then try again.",
+  "@errorNetwork": {
+    "description": "Shown when the API can't be reached (offline, timeout). Adapted from the website's 503 copy."
+  },
+  "errorGeneric": "Something went wrong on our side. Try again in a moment.",
+  "@errorGeneric": {
+    "description": "Fallback error when nothing more specific is known. Same as the website."
+  },
+  "errorSessionEnded": "Your session has ended. Sign in again.",
+  "@errorSessionEnded": {
+    "description": "401 without an API message. Same as the website."
+  },
+  "errorForbidden": "Your account doesn't have access to this.",
+  "@errorForbidden": {
+    "description": "403 without an API message. Same as the website."
+  },
+  "errorTooManyAttempts": "{minutes, plural, =1{Too many attempts. Please wait 1 minute and try again.} other{Too many attempts. Please wait {minutes} minutes and try again.}}",
+  "@errorTooManyAttempts": {
+    "description": "429 (too many sign-in attempts or emails). Same wording as the API's message, which the website shows.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorTooManyAttemptsSoon": "Too many attempts. Please wait a few minutes and try again.",
+  "@errorTooManyAttemptsSoon": {
+    "description": "429 when the API didn't say how long to wait."
+  },
+  "loading": "Loading",
+  "@loading": {
+    "description": "Screen-reader label for spinners."
+  },
+  "tryAgain": "Try again",
+  "@tryAgain": {
+    "description": "Retry button after a failed load. Same wording as the website."
+  },
+  "errorTitle": "This didn't load",
+  "@errorTitle": {
+    "description": "Heading above an error message when a screen or section fails to load."
+  },
+  "errorOfflineTitle": "No connection",
+  "@errorOfflineTitle": {
+    "description": "Heading when the API can't be reached."
+  },
+  "validationEmail": "Enter an email address like name@example.com",
+  "@validationEmail": {
+    "description": "Invalid email. Same as the website."
+  },
+  "validationPasswordRequired": "Enter your password",
+  "@validationPasswordRequired": {
+    "description": "Empty password on sign-in. Same as the website."
+  },
+  "validationPasswordShort": "Use at least 8 characters",
+  "@validationPasswordShort": {
+    "description": "New password under 8 characters. Same as the website."
+  },
+  "validationPasswordLong": "Use 128 characters or fewer",
+  "@validationPasswordLong": {
+    "description": "New password over 128 characters. Same as the website."
+  },
+  "validationNameRequired": "Enter your name",
+  "@validationNameRequired": {
+    "description": "Empty name on registration. Same as the website."
+  },
+  "validationPasswordsDiffer": "The two passwords don't match",
+  "@validationPasswordsDiffer": {
+    "description": "Confirmation differs from the new password. Same as the website."
+  },
+  "validationTooLong": "Use {max} characters or fewer",
+  "@validationTooLong": {
+    "description": "Text over the length limit. Same as the website.",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "showPassword": "Show password",
+  "@showPassword": {
+    "description": "Tooltip and screen-reader label of the eye button in password fields."
+  },
+  "hidePassword": "Hide password",
+  "@hidePassword": {
+    "description": "Tooltip and screen-reader label when the password is visible."
+  },
+  "welcomeLede": "Scan the barcode on a clothing label to see the piece's carbon footprint and recyclability, prove you bought it, and keep its tag in one wardrobe.",
+  "@welcomeLede": {
+    "description": "Welcome screen intro. From the website's home page."
+  },
+  "createAccount": "Create an account",
+  "@createAccount": {
+    "description": "Primary action for signed-out people. From the website's home page."
+  },
+  "signIn": "Sign in",
+  "@signIn": {
+    "description": "Sign-in action and screen title. Same as the website."
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "Ends the session. Same as the website's account menu."
+  },
+  "howItWorks": "How it works",
+  "@howItWorks": {
+    "description": "Heading of the three steps on the welcome screen. From the website's home page."
+  },
+  "stepScanTitle": "Scan the label",
+  "@stepScanTitle": {
+    "description": "Step 1 title. From the website's home page."
+  },
+  "stepScanBody": "Point your phone's camera at the barcode on a clothing label, or type the number under it.",
+  "@stepScanBody": {
+    "description": "Step 1. Website copy without its 'No app to install' line."
+  },
+  "stepFootprintTitle": "See its footprint",
+  "@stepFootprintTitle": {
+    "description": "Step 2 title. From the website's home page."
+  },
+  "stepFootprintBody": "The piece's tag shows its carbon footprint, how much of it can be recycled, and who checked those figures.",
+  "@stepFootprintBody": {
+    "description": "Step 2. From the website's home page."
+  },
+  "stepProveTitle": "Prove you own it",
+  "@stepProveTitle": {
+    "description": "Step 3 title. From the website's home page."
+  },
+  "stepProveBody": "Match it to a paid order, or upload a receipt for the STAKA team to check. Proven pieces join your wardrobe.",
+  "@stepProveBody": {
+    "description": "Step 3. From the website's home page."
+  },
+  "navWardrobe": "Wardrobe",
+  "@navWardrobe": {
+    "description": "Bottom bar tab. Same as the website nav."
+  },
+  "navScan": "Scan",
+  "@navScan": {
+    "description": "Bottom bar tab. Same as the website nav."
+  },
+  "navAdmin": "Admin",
+  "@navAdmin": {
+    "description": "Bottom bar tab for admins: products, brands, import, claims."
+  },
+  "navAccount": "Account",
+  "@navAccount": {
+    "description": "Bottom bar tab: the user's account and sign out."
+  },
+  "loginTitle": "Sign in to STAKA",
+  "@loginTitle": {
+    "description": "Sign-in heading. Same as the website."
+  },
+  "loginLede": "Pick up where you left off with your tags.",
+  "@loginLede": {
+    "description": "Under the sign-in heading. Same as the website."
+  },
+  "fieldEmail": "Email",
+  "@fieldEmail": {
+    "description": "Email field label. Same as the website."
+  },
+  "fieldPassword": "Password",
+  "@fieldPassword": {
+    "description": "Password field label. Same as the website."
+  },
+  "forgotPassword": "Forgot your password?",
+  "@forgotPassword": {
+    "description": "Link under the sign-in password. Same as the website."
+  },
+  "signingIn": "Signing in…",
+  "@signingIn": {
+    "description": "Sign-in button while waiting. Same as the website."
+  },
+  "newToStaka": "New to STAKA?",
+  "@newToStaka": {
+    "description": "Before the 'Create an account' link on sign-in. Same as the website."
+  },
+  "loginWrongCredentials": "That email and password don't match an account. Check them and try again.",
+  "@loginWrongCredentials": {
+    "description": "Sign-in 401. Same as the website."
+  },
+  "registerTitle": "Create your STAKA account",
+  "@registerTitle": {
+    "description": "Register heading. Same as the website."
+  },
+  "registerLede": "Start a digital tag for every piece you own.",
+  "@registerLede": {
+    "description": "Under the register heading. Same as the website."
+  },
+  "fieldYourName": "Your name",
+  "@fieldYourName": {
+    "description": "Register name label. Same as the website."
+  },
+  "nameHint": "Shown on tags you share.",
+  "@nameHint": {
+    "description": "Hint under the name field. Same as the website."
+  },
+  "passwordHint": "At least 8 characters.",
+  "@passwordHint": {
+    "description": "Hint under a new password. Same as the website."
+  },
+  "createAccountSubmit": "Create account",
+  "@createAccountSubmit": {
+    "description": "Register submit button. Same as the website."
+  },
+  "creatingAccount": "Creating account…",
+  "@creatingAccount": {
+    "description": "Register button while waiting. Same as the website."
+  },
+  "alreadyHaveAccount": "Already have an account?",
+  "@alreadyHaveAccount": {
+    "description": "Before the 'Sign in' link on register. Same as the website."
+  },
+  "registerEmailTaken": "An account already uses this email. Sign in instead.",
+  "@registerEmailTaken": {
+    "description": "Register 409, shown on the email field. Same as the website."
+  },
+  "forgotTitle": "Reset your password",
+  "@forgotTitle": {
+    "description": "Forgot-password heading. Same as the website."
+  },
+  "forgotLede": "Enter the email you signed up with and we'll send you a link to choose a new password.",
+  "@forgotLede": {
+    "description": "Under the forgot-password heading. Same as the website."
+  },
+  "sendResetLink": "Send reset link",
+  "@sendResetLink": {
+    "description": "Forgot-password submit. Same as the website."
+  },
+  "sendAnotherLink": "Send another link",
+  "@sendAnotherLink": {
+    "description": "Forgot-password submit after a link was sent. Same as the website."
+  },
+  "sendingLink": "Sending link…",
+  "@sendingLink": {
+    "description": "Forgot-password button while waiting. Same as the website."
+  },
+  "resetLinkSent": "If {email} has a STAKA account, a reset link is on its way. It works once and expires in 1 hour.",
+  "@resetLinkSent": {
+    "description": "Forgot-password success. Same as the website.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "resetLinkOpensWebsite": "The link opens the STAKA website: choose your new password there, then sign in here.",
+  "@resetLinkOpensWebsite": {
+    "description": "Mobile-only addition after the reset success message: the link opens the website (decision 7)."
+  },
+  "rememberedIt": "Remembered it?",
+  "@rememberedIt": {
+    "description": "Before 'Back to sign in'. Same as the website."
+  },
+  "backToSignIn": "Back to sign in",
+  "@backToSignIn": {
+    "description": "Link back to sign-in. Same as the website."
+  },
+  "signingOut": "Signing out…",
+  "@signingOut": {
+    "description": "Sign-out button while waiting."
+  },
+  "changePassword": "Change password",
+  "@changePassword": {
+    "description": "Account row, screen heading and submit button (decision 14; not on the website)."
+  },
+  "changePasswordLede": "You'll stay signed in on this phone. Other devices will need to sign in again.",
+  "@changePasswordLede": {
+    "description": "Under the change-password heading. The API revokes every session on change."
+  },
+  "fieldCurrentPassword": "Current password",
+  "@fieldCurrentPassword": {
+    "description": "Change-password field label."
+  },
+  "fieldNewPassword": "New password",
+  "@fieldNewPassword": {
+    "description": "Change-password field label."
+  },
+  "fieldConfirmPassword": "Confirm new password",
+  "@fieldConfirmPassword": {
+    "description": "Change-password confirmation label."
+  },
+  "validationCurrentPasswordRequired": "Enter your current password",
+  "@validationCurrentPasswordRequired": {
+    "description": "Empty current password."
+  },
+  "changingPassword": "Changing password…",
+  "@changingPassword": {
+    "description": "Change-password button while waiting."
+  },
+  "currentPasswordWrong": "That isn't your current password. Check it and try again.",
+  "@currentPasswordWrong": {
+    "description": "Change-password 401, shown on the current-password field."
+  },
+  "passwordChanged": "Password changed. Other devices will need to sign in again.",
+  "@passwordChanged": {
+    "description": "Snackbar after a successful change."
+  },
+  "passwordChangedSignIn": "Password changed. Sign in with your new password.",
+  "@passwordChangedSignIn": {
+    "description": "Sign-in alert when re-signing in after a change failed. Website's reset-password success copy."
+  },
+  "tagSemantics": "Digital tag for {product} by {brand}",
+  "@tagSemantics": {
+    "description": "Screen-reader label of a hang tag. Same as the website's hang tag.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "noPhotoYet": "No photo yet",
+  "@noPhotoYet": {
+    "description": "Tag photo area without a photo. Same as the website's hang tag."
+  },
+  "imageUnavailable": "Image unavailable",
+  "@imageUnavailable": {
+    "description": "A product photo failed to load (guide §6.4)."
+  },
+  "tagFootprint": "Footprint",
+  "@tagFootprint": {
+    "description": "Carbon figure label on a tag. Same as the website's hang tag."
+  },
+  "tagRecyclable": "Recyclable",
+  "@tagRecyclable": {
+    "description": "Recyclability figure label on a tag. Same as the website's hang tag."
+  },
+  "verifiedBy": "Verified by {certifier}",
+  "@verifiedBy": {
+    "description": "Figures checked by a named certifier. Same as the website's hang tag.",
+    "placeholders": {
+      "certifier": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByThirdParty": "Verified by a third party",
+  "@verifiedByThirdParty": {
+    "description": "Verified figures without a certifier name. Same as the website's hang tag."
+  },
+  "statedByBrand": "Figures stated by the brand",
+  "@statedByBrand": {
+    "description": "Unverified figures. Same as the website's hang tag."
+  },
+  "noFiguresYet": "No sustainability figures yet",
+  "@noFiguresYet": {
+    "description": "Product without figures. Same as the website's hang tag."
+  },
+  "keptBy": "Kept by {name}",
+  "@keptBy": {
+    "description": "Owner line on a tag. Same as the website's hang tag.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedOwnerSemantics": "verified owner",
+  "@verifiedOwnerSemantics": {
+    "description": "Screen-reader suffix after 'Kept by …' when ownership is proven. Same as the website's hang tag."
+  },
+  "barcodeNumber": "Barcode {number}",
+  "@barcodeNumber": {
+    "description": "GTIN line on a tag. Same as the website's hang tag.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "unitGramsCo2e": "g CO₂e",
+  "@unitGramsCo2e": {
+    "description": "Unit after a carbon figure under 1 kg. Keep the subscript ₂."
+  },
+  "unitKgCo2e": "kg CO₂e",
+  "@unitKgCo2e": {
+    "description": "Unit after a carbon figure of 1 kg or more. Keep the subscript ₂."
+  },
+  "ownershipVerified": "Verified owner",
+  "@ownershipVerified": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipPending": "Receipt under review",
+  "@ownershipPending": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipRejected": "Receipt turned down",
+  "@ownershipRejected": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipBlocked": "Can't be verified",
+  "@ownershipBlocked": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "ownershipUnverified": "Not verified yet",
+  "@ownershipUnverified": {
+    "description": "Ownership chip. Same as the website."
+  },
+  "sampleTagProduct": "Organic Cotton Tee",
+  "@sampleTagProduct": {
+    "description": "Welcome example tag: a seeded product's name. Proper noun, do not translate."
+  },
+  "sampleTagBrand": "Terra Threads",
+  "@sampleTagBrand": {
+    "description": "Welcome example tag: a seeded brand. Proper noun, do not translate."
+  },
+  "wardrobeTitle": "My wardrobe",
+  "@wardrobeTitle": {
+    "description": "Wardrobe heading. Same as the website's /wardrobe."
+  },
+  "welcomeName": "Welcome, {name}",
+  "@welcomeName": {
+    "description": "Wardrobe heading right after registering. Same as the website's /wardrobe.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wardrobeEmptyDescription": "Scan the barcode on a garment's label to keep its footprint on a digital tag.",
+  "@wardrobeEmptyDescription": {
+    "description": "Wardrobe intro when empty. Same as the website's /wardrobe."
+  },
+  "wardrobeCount": "{count, plural, =1{1 piece} other{{count} pieces}}, {verified} verified.",
+  "@wardrobeCount": {
+    "description": "Wardrobe intro with tags. Same as the website's /wardrobe.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "verified": {
+        "type": "int"
+      }
+    }
+  },
+  "scanAProduct": "Scan a product",
+  "@scanAProduct": {
+    "description": "Wardrobe action. Same as the website's /wardrobe."
+  },
+  "wardrobeEmptyTitle": "Your wardrobe is empty",
+  "@wardrobeEmptyTitle": {
+    "description": "Empty wardrobe heading. Same as the website's /wardrobe."
+  },
+  "wardrobeEmptyBody": "Point your camera at the barcode on a clothing label, or type the number under it. Each piece you add gets its own tag.",
+  "@wardrobeEmptyBody": {
+    "description": "Empty wardrobe text. Same as the website's /wardrobe."
+  },
+  "scanFirstPiece": "Scan your first piece",
+  "@scanFirstPiece": {
+    "description": "Empty wardrobe action. Same as the website's /wardrobe."
+  },
+  "sectionVerified": "Verified",
+  "@sectionVerified": {
+    "description": "Wardrobe group of proven pieces. Same as the website's /wardrobe."
+  },
+  "sectionVerifiedBody": "Pieces you've proven you own.",
+  "@sectionVerifiedBody": {
+    "description": "Same as the website's /wardrobe."
+  },
+  "sectionWaiting": "Waiting for proof",
+  "@sectionWaiting": {
+    "description": "Wardrobe group of unproven pieces. Same as the website's /wardrobe."
+  },
+  "sectionWaitingBody": "Open a tag to match it to an order or upload a receipt.",
+  "@sectionWaitingBody": {
+    "description": "Same as the website's /wardrobe."
+  },
+  "confirmYourEmail": "Confirm your email",
+  "@confirmYourEmail": {
+    "description": "Screen-reader label of the verify-email banner. Same as the website's /wardrobe."
+  },
+  "verifyEmailJustJoined": "We've sent a confirmation link to {email}. Open it to confirm your email.",
+  "@verifyEmailJustJoined": {
+    "description": "Banner right after registering. Same as the website's /wardrobe.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailReminder": "We sent a confirmation link to {email}. Open it to confirm your email.",
+  "@verifyEmailReminder": {
+    "description": "Banner later on. Same as the website's /wardrobe.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "sendNewLink": "Send a new link",
+  "@sendNewLink": {
+    "description": "Banner button. Same as the website's /wardrobe."
+  },
+  "sending": "Sending…",
+  "@sending": {
+    "description": "Banner button while waiting. Same as the website's /wardrobe."
+  },
+  "verificationResent": "We've sent a new confirmation link.",
+  "@verificationResent": {
+    "description": "After a resend. Same as the website's /wardrobe."
+  },
+  "emailAlreadyConfirmed": "Your email is already confirmed.",
+  "@emailAlreadyConfirmed": {
+    "description": "Resend when already confirmed. Same as the website's /wardrobe."
+  },
+  "scanTitle": "Scan a product",
+  "@scanTitle": {
+    "description": "Scan heading. Same as the website's /scan."
+  },
+  "scanLede": "Hold the barcode on the clothing label inside the frame. QR codes on tags work too.",
+  "@scanLede": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraRegion": "Camera",
+  "@cameraRegion": {
+    "description": "Screen-reader label of the camera area. Same as the website's /scan."
+  },
+  "cameraStarting": "Starting the camera…",
+  "@cameraStarting": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraLooking": "Looking for a barcode…",
+  "@cameraLooking": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraFound": "Found {gtin}. Opening the product…",
+  "@cameraFound": {
+    "description": "Same as the website's /scan.",
+    "placeholders": {
+      "gtin": {
+        "type": "String"
+      }
+    }
+  },
+  "cameraOff": "Camera is off.",
+  "@cameraOff": {
+    "description": "Same as the website's /scan."
+  },
+  "turnCameraOn": "Turn camera on",
+  "@turnCameraOn": {
+    "description": "Same as the website's /scan."
+  },
+  "turnCameraOff": "Turn camera off",
+  "@turnCameraOff": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraBlocked": "Camera access is blocked. Allow it for STAKA in your phone's Settings, then try again. Or type the number.",
+  "@cameraBlocked": {
+    "description": "Camera permission refused. Website copy, adapted: phone Settings instead of browser site settings."
+  },
+  "cameraUnavailable": "{reason} Type the barcode number instead.",
+  "@cameraUnavailable": {
+    "description": "Same as the website's /scan.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "cameraNoCamera": "No camera was found on this device.",
+  "@cameraNoCamera": {
+    "description": "Same as the website's /scan."
+  },
+  "cameraCouldNotStart": "The camera couldn't start.",
+  "@cameraCouldNotStart": {
+    "description": "Same as the website's /scan."
+  },
+  "typeNumberTitle": "Type the number instead",
+  "@typeNumberTitle": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberLabel": "Barcode number",
+  "@barcodeNumberLabel": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberHint": "e.g. 8901234500019",
+  "@barcodeNumberHint": {
+    "description": "Same as the website's /scan."
+  },
+  "barcodeNumberHelp": "The digits printed under the bars.",
+  "@barcodeNumberHelp": {
+    "description": "Same as the website's /scan."
+  },
+  "lookUpProduct": "Look up product",
+  "@lookUpProduct": {
+    "description": "Same as the website's /scan."
+  },
+  "scanEmpty": "Enter the number under the barcode.",
+  "@scanEmpty": {
+    "description": "web lib/scan.ts"
+  },
+  "scanWrongLength": "That's {count} digits. Barcode numbers have 8, 12, 13 or 14.",
+  "@scanWrongLength": {
+    "description": "web lib/scan.ts",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "scanWebsite": "This QR code links to a website, not a product STAKA knows.",
+  "@scanWebsite": {
+    "description": "web lib/scan.ts"
+  },
+  "scanNotBarcode": "This code isn't a product barcode.",
+  "@scanNotBarcode": {
+    "description": "web lib/scan.ts"
+  },
+  "productInWardrobe": "In your wardrobe",
+  "@productInWardrobe": {
+    "description": "Same as the website's product page."
+  },
+  "viewYourTag": "View your tag",
+  "@viewYourTag": {
+    "description": "Same as the website's product page."
+  },
+  "addToMyWardrobe": "Add to my wardrobe",
+  "@addToMyWardrobe": {
+    "description": "Same as the website's product page."
+  },
+  "adding": "Adding…",
+  "@adding": {
+    "description": "Same as the website's product page."
+  },
+  "figuresTitle": "What the figures mean",
+  "@figuresTitle": {
+    "description": "Same as the website's product page."
+  },
+  "figureCarbon": "Carbon footprint: {value}",
+  "@figureCarbon": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "figureCarbonBody": "Estimated greenhouse gases from making this piece, expressed as the same warming effect in carbon dioxide.",
+  "@figureCarbonBody": {
+    "description": "Same as the website's product page."
+  },
+  "figureRecyclable": "Recyclable: {percent}%",
+  "@figureRecyclable": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "figureRecyclableBody": "The share of the piece, by weight, that can be recycled at end of life.",
+  "@figureRecyclableBody": {
+    "description": "Same as the website's product page."
+  },
+  "independentlyVerified": "Independently verified",
+  "@independentlyVerified": {
+    "description": "Same as the website's product page."
+  },
+  "certifierChecked": "{certifier} has checked these figures.",
+  "@certifierChecked": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "certifier": {
+        "type": "String"
+      }
+    }
+  },
+  "thirdPartyChecked": "A third party has checked these figures.",
+  "@thirdPartyChecked": {
+    "description": "Same as the website's product page."
+  },
+  "statedByBrandTitle": "Stated by the brand",
+  "@statedByBrandTitle": {
+    "description": "Same as the website's product page."
+  },
+  "noOneChecked": "No one outside the brand has checked these figures yet.",
+  "@noOneChecked": {
+    "description": "Same as the website's product page."
+  },
+  "brandNoFigures": "{brand} hasn't shared figures for this piece yet.",
+  "@brandNoFigures": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutBrand": "About {brand}",
+  "@aboutBrand": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "barcodeInvalidTitle": "That barcode didn't read correctly",
+  "@barcodeInvalidTitle": {
+    "description": "Same as the website's product page."
+  },
+  "barcodeInvalidBody": "{message}. Scan it again, or check the digits if you typed them.",
+  "@barcodeInvalidBody": {
+    "description": "Same as the website's product page. {message} is the API's reason.",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "productUnknownTitle": "This product isn't on STAKA yet",
+  "@productUnknownTitle": {
+    "description": "Same as the website's product page."
+  },
+  "productUnknownBody": "No brand has added barcode {gtin} yet. Only products from partner brands have tags for now.",
+  "@productUnknownBody": {
+    "description": "Same as the website's product page.",
+    "placeholders": {
+      "gtin": {
+        "type": "String"
+      }
+    }
+  },
+  "scanAgain": "Scan again",
+  "@scanAgain": {
+    "description": "Same as the website's product page."
+  },
+  "addedBanner": "{product} is in your wardrobe.",
+  "@addedBanner": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "addedOn": "Added to your wardrobe on {date}.",
+  "@addedOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "scanAnotherPiece": "Scan another piece",
+  "@scanAnotherPiece": {
+    "description": "Same as the website's tag page."
+  },
+  "productDetails": "Product details",
+  "@productDetails": {
+    "description": "Same as the website's tag page."
+  },
+  "tagMissingTitle": "This tag isn't in your wardrobe",
+  "@tagMissingTitle": {
+    "description": "The tag doesn't exist or isn't this shopper's (API 404). The website shows its 404 page."
+  },
+  "tagMissingBody": "It may have been removed, or the link was copied wrong.",
+  "@tagMissingBody": {
+    "description": "Under tagMissingTitle."
+  },
+  "uploadsLeft": "{left, plural, =1{1 upload left.} other{{left} of 5 uploads left.}}",
+  "@uploadsLeft": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "left": {
+        "type": "int"
+      }
+    }
+  },
+  "ownershipVerifiedTitle": "You're the verified owner",
+  "@ownershipVerifiedTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "verifiedByOrderOn": "We matched this piece to a paid order on your account on {date}. It counts toward your wardrobe.",
+  "@verifiedByOrderOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByOrder": "We matched this piece to a paid order on your account. It counts toward your wardrobe.",
+  "@verifiedByOrder": {
+    "description": "Same as the website's tag page."
+  },
+  "verifiedByReceiptOn": "An admin approved your receipt on {date}. It counts toward your wardrobe.",
+  "@verifiedByReceiptOn": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByReceipt": "An admin approved your receipt. It counts toward your wardrobe.",
+  "@verifiedByReceipt": {
+    "description": "Same as the website's tag page."
+  },
+  "pendingBody": "Sent {date}. An admin will check it, and the result shows up here. {uploadsLeft}",
+  "@pendingBody": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingBodyUndated": "An admin will check it, and the result shows up here. {uploadsLeft}",
+  "@pendingBodyUndated": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedTitle": "This piece can't be verified",
+  "@blockedTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "blockedBody": "All 5 receipt uploads for it were used. You can still keep its tag.",
+  "@blockedBody": {
+    "description": "Same as the website's tag page."
+  },
+  "blockedBodyWithReason": "All 5 receipt uploads for it were used. The last one was turned down: {reason}. You can still keep its tag.",
+  "@blockedBodyWithReason": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "proveTitle": "Prove you own it",
+  "@proveTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "proveLede": "Verified pieces count toward your wardrobe. Use whichever way works for you.",
+  "@proveLede": {
+    "description": "Same as the website's tag page."
+  },
+  "lastReceiptRejected": "Your last receipt was turned down: {reason}. {uploadsLeft}",
+  "@lastReceiptRejected": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "noReasonGiven": "no reason given",
+  "@noReasonGiven": {
+    "description": "Same as the website's tag page."
+  },
+  "orderTitle": "Bought it through STAKA's partner shop?",
+  "@orderTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "orderBody": "We'll look for it in the paid orders on your account.",
+  "@orderBody": {
+    "description": "Same as the website's tag page."
+  },
+  "findInOrders": "Find it in my orders",
+  "@findInOrders": {
+    "description": "Same as the website's tag page."
+  },
+  "checkingOrders": "Checking orders…",
+  "@checkingOrders": {
+    "description": "Same as the website's tag page."
+  },
+  "orderMatched": "Verified: we found it in your orders.",
+  "@orderMatched": {
+    "description": "Same as the website's tag page."
+  },
+  "orderNotFound": "No paid order on your account includes this piece. Upload a receipt instead.",
+  "@orderNotFound": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptTitle": "Upload a receipt",
+  "@receiptTitle": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptBody": "A clear photo or PDF showing the shop, the date and this piece. An admin checks it. {uploadsLeft}",
+  "@receiptBody": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "choosePhotoOrPdf": "Choose a photo or PDF",
+  "@choosePhotoOrPdf": {
+    "description": "Same as the website's tag page."
+  },
+  "fileSizeTapToChange": "{size} MB. Tap to change.",
+  "@fileSizeTapToChange": {
+    "description": "Same as the website's tag page.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "fileTooLarge": "The file is over 5 MB. Take a smaller photo or crop it.",
+  "@fileTooLarge": {
+    "description": "Same as the website's tag page."
+  },
+  "sendForReview": "Send for review",
+  "@sendForReview": {
+    "description": "Same as the website's tag page."
+  },
+  "sendingReceipt": "Sending receipt…",
+  "@sendingReceipt": {
+    "description": "Same as the website's tag page."
+  },
+  "receiptSent": "Receipt sent. We'll check it soon.",
+  "@receiptSent": {
+    "description": "Same as the website's tag page."
+  },
+  "takePhoto": "Take a photo",
+  "@takePhoto": {
+    "description": "Receipt source: the camera. Mobile only (the website has one file input)."
+  },
+  "choosePhoto": "Choose from your photos",
+  "@choosePhoto": {
+    "description": "Receipt source: the photo library."
+  },
+  "choosePdf": "Choose a PDF",
+  "@choosePdf": {
+    "description": "Receipt source: a PDF file."
+  },
+  "openTagLabel": "{product} by {brand}, open tag",
+  "@openTagLabel": {
+    "description": "Screen-reader label of a tag in the wardrobe. Same as the website.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "shareLockedTitle": "Sharing unlocks once you're verified",
+  "@shareLockedTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLockedBody": "Only proven pieces can be shared, so every STAKA tag people see is backed by a real purchase.",
+  "@shareLockedBody": {
+    "description": "Same as the website's share panel."
+  },
+  "shareTitle": "Share this tag",
+  "@shareTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "shareBody": "Anyone with the link sees the tag, your first name and that you're the verified owner. Never your email.",
+  "@shareBody": {
+    "description": "Same as the website's share panel."
+  },
+  "createShareLink": "Create share link",
+  "@createShareLink": {
+    "description": "Same as the website's share panel."
+  },
+  "creatingLink": "Creating link…",
+  "@creatingLink": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLinkLabel": "Share link",
+  "@shareLinkLabel": {
+    "description": "Screen-reader label of the link box. Same as the website's share panel."
+  },
+  "copyLink": "Copy link",
+  "@copyLink": {
+    "description": "Same as the website's share panel."
+  },
+  "linkCopied": "Link copied",
+  "@linkCopied": {
+    "description": "Same as the website's share panel."
+  },
+  "shareEllipsis": "Share…",
+  "@shareEllipsis": {
+    "description": "Opens the phone's share sheet. Same as the website's share panel."
+  },
+  "storyImage": "Image for Instagram stories",
+  "@storyImage": {
+    "description": "Same as the website's share panel. On the phone it opens the share sheet with the image."
+  },
+  "preparingImage": "Preparing image…",
+  "@preparingImage": {
+    "description": "While the story image downloads."
+  },
+  "seeWhatOthersSee": "See what others see",
+  "@seeWhatOthersSee": {
+    "description": "Same as the website's share panel."
+  },
+  "stopSharing": "Stop sharing",
+  "@stopSharing": {
+    "description": "Same as the website's share panel."
+  },
+  "stoppingSharing": "Stopping…",
+  "@stoppingSharing": {
+    "description": "Stop sharing while waiting."
+  },
+  "stopSharingTitle": "Stop sharing this tag?",
+  "@stopSharingTitle": {
+    "description": "Same as the website's share panel."
+  },
+  "stopSharingBody": "The link stops working for everyone, including posts that already use it. You can share again later with a new link.",
+  "@stopSharingBody": {
+    "description": "Same as the website's share panel."
+  },
+  "keepSharing": "Keep sharing",
+  "@keepSharing": {
+    "description": "Same as the website's share panel."
+  },
+  "shareLinkReady": "Share link ready",
+  "@shareLinkReady": {
+    "description": "Same as the website's share panel."
+  },
+  "sharingTurnedOff": "Sharing turned off. The old link no longer works.",
+  "@sharingTurnedOff": {
+    "description": "Same as the website's share panel."
+  },
+  "couldNotOpenLink": "The link couldn't be opened.",
+  "@couldNotOpenLink": {
+    "description": "No app could open the public page."
+  },
+  "shareText": "I own this {product}, verified on STAKA.",
+  "@shareText": {
+    "description": "Text shared with the link. Same as the website's share panel.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "shareSubject": "{product} on STAKA",
+  "@shareSubject": {
+    "description": "Share subject (e.g. email). Same as the website's share panel.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "adminProducts": "Products",
+  "@adminProducts": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminProductsDescription": "Everything shoppers can scan. A product's tag shows exactly what's recorded here.",
+  "@adminProductsDescription": {
+    "description": "Same as the website's products page header."
+  },
+  "adminBrands": "Brands",
+  "@adminBrands": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminBrandsDescription": "Every product belongs to a brand. Its name appears at the top of each tag.",
+  "@adminBrandsDescription": {
+    "description": "Same as the website's brands page header."
+  },
+  "adminImport": "Import",
+  "@adminImport": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminImportDescription": "Add or update many products at once from a spreadsheet saved as CSV. Rows are matched on barcode: new barcodes are added, known ones are updated.",
+  "@adminImportDescription": {
+    "description": "Same as the website's import page header."
+  },
+  "adminClaims": "Claims",
+  "@adminClaims": {
+    "description": "Same as the website's admin nav."
+  },
+  "adminClaimsDescription": "Shoppers prove they bought a piece with a receipt. Approving one makes them its verified owner. Order matches are approved automatically.",
+  "@adminClaimsDescription": {
+    "description": "Same as the website's claims page header."
+  },
+  "importCsv": "Import CSV",
+  "@importCsv": {
+    "description": "Same as the website's products page action."
+  },
+  "addProduct": "Add product",
+  "@addProduct": {
+    "description": "Same as the website's products page action."
+  },
+  "searchProductsLabel": "Search products",
+  "@searchProductsLabel": {
+    "description": "Same as the website's product search (screen-reader label)."
+  },
+  "searchProductsHint": "Search by name, SKU, barcode or brand",
+  "@searchProductsHint": {
+    "description": "Same as the website's product search placeholder."
+  },
+  "filterByBrand": "Filter by brand",
+  "@filterByBrand": {
+    "description": "Same as the website's brand filter label; also the sheet title."
+  },
+  "allBrands": "All brands",
+  "@allBrands": {
+    "description": "Same as the website's brand filter."
+  },
+  "clearFilters": "Clear",
+  "@clearFilters": {
+    "description": "Same as the website's product filters: removes search and brand."
+  },
+  "clearSearch": "Clear search",
+  "@clearSearch": {
+    "description": "Clears the search field (screen-reader label of its x button)."
+  },
+  "showingProducts": "{total, plural, =1{Showing {first}–{last} of {total} product} other{Showing {first}–{last} of {total} products}}",
+  "@showingProducts": {
+    "description": "Same as the website's product list count. The app loads more as you scroll, so first is 1.",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "first": {
+        "type": "int"
+      },
+      "last": {
+        "type": "int"
+      }
+    }
+  },
+  "figuresVerified": "Verified",
+  "@figuresVerified": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresBrandStated": "Brand-stated",
+  "@figuresBrandStated": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresMissing": "Missing",
+  "@figuresMissing": {
+    "description": "Same as the website's SustainabilityBadge."
+  },
+  "figuresBadgeLabel": "Figures: {status}",
+  "@figuresBadgeLabel": {
+    "description": "Same as the website's compact SustainabilityBadge (screen-reader label).",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "noProductsMatchTitle": "No products match",
+  "@noProductsMatchTitle": {
+    "description": "Same as the website's products empty state (filtered)."
+  },
+  "noProductsMatchBody": "Try a different name, SKU or barcode, or clear the filters.",
+  "@noProductsMatchBody": {
+    "description": "Same as the website's products empty state (filtered)."
+  },
+  "noProductsTitle": "No products yet",
+  "@noProductsTitle": {
+    "description": "Same as the website's products empty state."
+  },
+  "noProductsBody": "Add products one at a time, or import a whole catalog from a CSV file.",
+  "@noProductsBody": {
+    "description": "Same as the website's products empty state."
+  },
+  "productNewDescription": "Shoppers find this product by scanning its barcode.",
+  "@productNewDescription": {
+    "description": "Same as the website's product pages."
+  },
+  "productLastUpdated": "Last updated {date}.",
+  "@productLastUpdated": {
+    "description": "Same as the website's product pages.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pageNotFound": "This page could not be found.",
+  "@pageNotFound": {
+    "description": "No product with this id. The website shows the Next.js 404 page with this line."
+  },
+  "productSection": "Product",
+  "@productSection": {
+    "description": "Same as the website's product form."
+  },
+  "fieldProductName": "Name",
+  "@fieldProductName": {
+    "description": "Same as the website's product form."
+  },
+  "productNameHint": "As it's printed on the label, e.g. Organic Cotton Tee.",
+  "@productNameHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldBrand": "Brand",
+  "@fieldBrand": {
+    "description": "Same as the website's product form. Also the preview's brand before one is chosen."
+  },
+  "chooseBrand": "Choose a brand",
+  "@chooseBrand": {
+    "description": "Same as the website's product form. Placeholder and validation message."
+  },
+  "brandMissing": "Missing one?",
+  "@brandMissing": {
+    "description": "Same as the website's product form."
+  },
+  "addBrandLink": "Add it on the Brands page",
+  "@addBrandLink": {
+    "description": "Same as the website's product form."
+  },
+  "fieldBarcode": "Barcode number",
+  "@fieldBarcode": {
+    "description": "Same as the website's product form."
+  },
+  "barcodeHint": "The digits under the barcode (EAN, UPC or GTIN).",
+  "@barcodeHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldSku": "SKU",
+  "@fieldSku": {
+    "description": "Same as the website's product form."
+  },
+  "skuHint": "Your internal product code.",
+  "@skuHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldDescription": "Description",
+  "@fieldDescription": {
+    "description": "Same as the website's product form."
+  },
+  "descriptionHint": "Optional. One or two sentences about materials and making.",
+  "@descriptionHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldPhotoLink": "Photo link",
+  "@fieldPhotoLink": {
+    "description": "Same as the website's product form."
+  },
+  "photoLinkHint": "Optional. A square photo works best.",
+  "@photoLinkHint": {
+    "description": "Same as the website's product form."
+  },
+  "photoLinkPlaceholder": "https://",
+  "@photoLinkPlaceholder": {
+    "description": "Same as the website's product form."
+  },
+  "figuresSection": "Sustainability figures",
+  "@figuresSection": {
+    "description": "Same as the website's product form."
+  },
+  "includeFigures": "Include carbon and recyclability figures",
+  "@includeFigures": {
+    "description": "Same as the website's product form."
+  },
+  "fieldCarbon": "Carbon footprint (grams CO₂e)",
+  "@fieldCarbon": {
+    "description": "Same as the website's product form. Keep the subscript ₂."
+  },
+  "carbonHint": "Whole grams, e.g. 2100.",
+  "@carbonHint": {
+    "description": "Same as the website's product form."
+  },
+  "carbonShownAs": "Shown as {value}",
+  "@carbonShownAs": {
+    "description": "Same as the website's product form.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "fieldRecyclable": "Recyclable (%)",
+  "@fieldRecyclable": {
+    "description": "Same as the website's product form."
+  },
+  "recyclableHint": "0 to 100.",
+  "@recyclableHint": {
+    "description": "Same as the website's product form."
+  },
+  "verifiedByThirdPartyHint": "Leave off if the brand states these figures itself. Tags show the difference.",
+  "@verifiedByThirdPartyHint": {
+    "description": "Same as the website's product form."
+  },
+  "fieldCertifier": "Verified by",
+  "@fieldCertifier": {
+    "description": "Same as the website's product form."
+  },
+  "certifierHint": "The certification or body, e.g. Global Organic Textile Standard.",
+  "@certifierHint": {
+    "description": "Same as the website's product form."
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Same as the website's product form."
+  },
+  "saveChanges": "Save changes",
+  "@saveChanges": {
+    "description": "Same as the website's product form."
+  },
+  "saving": "Saving…",
+  "@saving": {
+    "description": "Same as the website's product form. Submit button while waiting."
+  },
+  "tagPreviewCaption": "Shoppers will see this tag",
+  "@tagPreviewCaption": {
+    "description": "Same as the website's product form."
+  },
+  "previewProductName": "Product name",
+  "@previewProductName": {
+    "description": "Same as the website's product form. Preview before a name is typed."
+  },
+  "productAdded": "Product added",
+  "@productAdded": {
+    "description": "Same as the website's product form. Snackbar."
+  },
+  "changesSaved": "Changes saved",
+  "@changesSaved": {
+    "description": "Same as the website's product form. Snackbar."
+  },
+  "productFormInvalid": "Some details need fixing before this product can be saved.",
+  "@productFormInvalid": {
+    "description": "Same as the website's product form."
+  },
+  "productCodeTaken": "Another product already uses this code.",
+  "@productCodeTaken": {
+    "description": "Same as the website's product form. Alert on a 409; the API's message goes on the field."
+  },
+  "barcodeInvalid": "The barcode number isn't valid.",
+  "@barcodeInvalid": {
+    "description": "Same as the website's product form. Alert on a GTIN 400."
+  },
+  "barcodeInvalidField": "{message}. Check the digits under the barcode.",
+  "@barcodeInvalidField": {
+    "description": "Same as the website's product form. {message} is the API's reason.",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "validationProductName": "Enter the product name",
+  "@validationProductName": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationGtin": "Enter the 8, 12, 13 or 14 digits printed under the barcode",
+  "@validationGtin": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationSku": "Enter the SKU",
+  "@validationSku": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationFieldTooLong": "{label} must be {max} characters or fewer",
+  "@validationFieldTooLong": {
+    "description": "Same as the website's product rules (admin/actions.ts).",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationUrl": "Enter a full link starting with https://",
+  "@validationUrl": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationFigureRequired": "Required when figures are included",
+  "@validationFigureRequired": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "validationAtMost": "{label} must be {max} or less",
+  "@validationAtMost": {
+    "description": "Same as the website's product rules (admin/actions.ts).",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationCertifier": "Name who verified the figures",
+  "@validationCertifier": {
+    "description": "Same as the website's product rules (admin/actions.ts)."
+  },
+  "certifierLabel": "Certifier",
+  "@certifierLabel": {
+    "description": "Same as the website's product rules (admin/actions.ts). Used inside validationFieldTooLong."
+  },
+  "recyclabilityLabel": "Recyclability",
+  "@recyclabilityLabel": {
+    "description": "Same as the website's product rules (admin/actions.ts). Used inside validationAtMost."
+  },
+  "deleteProduct": "Delete product",
+  "@deleteProduct": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "deleting": "Deleting…",
+  "@deleting": {
+    "description": "Delete buttons while waiting (products, brands). Same as the website."
+  },
+  "deleteProductTitle": "Delete {name}?",
+  "@deleteProductTitle": {
+    "description": "Same as the website's delete-product dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteProductBody": "Shoppers will no longer find it by scanning. This can't be undone.",
+  "@deleteProductBody": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "keepProduct": "Keep product",
+  "@keepProduct": {
+    "description": "Same as the website's delete-product dialog."
+  },
+  "productDeleted": "{name} deleted",
+  "@productDeleted": {
+    "description": "Same as the website's delete-product dialog. Snackbar.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "addBrand": "Add brand",
+  "@addBrand": {
+    "description": "Same as the website's brands page. Also the dialog title and submit button."
+  },
+  "noBrandsTitle": "No brands yet",
+  "@noBrandsTitle": {
+    "description": "Same as the website's brands page."
+  },
+  "noBrandsBody": "Add a brand before adding its products. Importing a CSV also creates any brands it names.",
+  "@noBrandsBody": {
+    "description": "Same as the website's brands page."
+  },
+  "brandProductCount": "{count, plural, =1{1 product} other{{count} products}}",
+  "@brandProductCount": {
+    "description": "Same as the website's brands page. Opens the products list filtered to the brand.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Same as the website's brands page."
+  },
+  "editBrandLabel": "Edit {name}",
+  "@editBrandLabel": {
+    "description": "Same as the website's brands page. Screen-reader label of Edit; also the dialog title.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Same as the website's brands page."
+  },
+  "deleteBrandLabel": "Delete {name}",
+  "@deleteBrandLabel": {
+    "description": "Same as the website's brands page. Screen-reader label of Delete.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "editBrandDescription": "Changes show on every tag for this brand's products.",
+  "@editBrandDescription": {
+    "description": "Same as the website's brand dialog."
+  },
+  "addBrandDescription": "You can add its products once the brand exists.",
+  "@addBrandDescription": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldBrandName": "Brand name",
+  "@fieldBrandName": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldAboutBrand": "About the brand",
+  "@fieldAboutBrand": {
+    "description": "Same as the website's brand dialog."
+  },
+  "aboutBrandHint": "Optional. One sentence on what they make and how.",
+  "@aboutBrandHint": {
+    "description": "Same as the website's brand dialog."
+  },
+  "fieldLogoLink": "Logo link",
+  "@fieldLogoLink": {
+    "description": "Same as the website's brand dialog."
+  },
+  "optionalHint": "Optional.",
+  "@optionalHint": {
+    "description": "Same as the website's brand dialog."
+  },
+  "validationBrandName": "Enter the brand name",
+  "@validationBrandName": {
+    "description": "Same as the website's brand rules."
+  },
+  "brandNameTaken": "A brand with this name already exists",
+  "@brandNameTaken": {
+    "description": "Same as the website's brand dialog (409, on the name field)."
+  },
+  "brandAdded": "Brand added",
+  "@brandAdded": {
+    "description": "Same as the website's brand dialog. Snackbar."
+  },
+  "brandUpdated": "Brand updated",
+  "@brandUpdated": {
+    "description": "Same as the website's brand dialog. Snackbar."
+  },
+  "brandHasProductsTitle": "{name} still has products",
+  "@brandHasProductsTitle": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "brandHasProductsBody": "{count, plural, =1{Delete its 1 product or move them to another brand first.} other{Delete its {count} products or move them to another brand first.}}",
+  "@brandHasProductsBody": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteBrandTitle": "Delete {name}?",
+  "@deleteBrandTitle": {
+    "description": "Same as the website's delete-brand dialog.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cantBeUndone": "This can't be undone.",
+  "@cantBeUndone": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "seeItsProducts": "See its products",
+  "@seeItsProducts": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "keepBrand": "Keep brand",
+  "@keepBrand": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "deleteBrand": "Delete brand",
+  "@deleteBrand": {
+    "description": "Same as the website's delete-brand dialog."
+  },
+  "brandDeleted": "{name} deleted",
+  "@brandDeleted": {
+    "description": "Same as the website's delete-brand dialog. Snackbar.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "importTitle": "Import products",
+  "@importTitle": {
+    "description": "Same as the website's import page header."
+  },
+  "importProgressLabel": "Import progress",
+  "@importProgressLabel": {
+    "description": "Same as the website's import flow. Screen-reader label of the stepper."
+  },
+  "stepChooseFile": "Choose a file",
+  "@stepChooseFile": {
+    "description": "Same as the website's import flow."
+  },
+  "stepReview": "Review",
+  "@stepReview": {
+    "description": "Same as the website's import flow."
+  },
+  "stepImport": "Import",
+  "@stepImport": {
+    "description": "Same as the website's import flow."
+  },
+  "stepLabel": "Step {number} of {total}: {name}",
+  "@stepLabel": {
+    "description": "Screen-reader label of one step circle (the website hides step names on phones).",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stepDone": "(done)",
+  "@stepDone": {
+    "description": "Same as the website's import flow. Screen-reader suffix of a finished step."
+  },
+  "chooseCsvFile": "Choose a CSV file",
+  "@chooseCsvFile": {
+    "description": "Same as the website's import flow."
+  },
+  "csvLimits": "Up to 2 MB and 5,000 rows.",
+  "@csvLimits": {
+    "description": "Same as the website's import flow."
+  },
+  "chosenFileSize": "{size} KB. Choose another file to replace it.",
+  "@chosenFileSize": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadTemplate": "Download the template",
+  "@downloadTemplate": {
+    "description": "Same as the website's import flow. On the phone it opens the share sheet with the file."
+  },
+  "checkFile": "Check file",
+  "@checkFile": {
+    "description": "Same as the website's import flow."
+  },
+  "checkingFile": "Checking file…",
+  "@checkingFile": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsTitle": "What the file needs",
+  "@fileNeedsTitle": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsColumnsLabel": "Required columns:",
+  "@fileNeedsColumnsLabel": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsColumns": "gtin, sku, name, brandName",
+  "@fileNeedsColumns": {
+    "description": "Same as the website's import flow. CSV column names: do not translate."
+  },
+  "fileNeedsBarcodes": "Barcodes can be 8, 12, 13 or 14 digits. Keep leading zeros by formatting the column as text.",
+  "@fileNeedsBarcodes": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsFigures": "For figures, fill both carbonScoreGrams and recyclabilityPercent, and set verified to true or false.",
+  "@fileNeedsFigures": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsBrands": "Brands that don't exist yet are created for you.",
+  "@fileNeedsBrands": {
+    "description": "Same as the website's import flow."
+  },
+  "fileNeedsReview": "Nothing is saved until you've reviewed the check.",
+  "@fileNeedsReview": {
+    "description": "Same as the website's import flow."
+  },
+  "chooseCsvFirst": "Choose a CSV file to import.",
+  "@chooseCsvFirst": {
+    "description": "Same as the website's importProducts action."
+  },
+  "notCsvFile": "{name} isn't a CSV file. Save the sheet as .csv and try again.",
+  "@notCsvFile": {
+    "description": "Same as the website's importProducts action.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "csvTooLarge": "The file is larger than 2 MB. Split it into smaller files.",
+  "@csvTooLarge": {
+    "description": "Same as the website's importProducts action."
+  },
+  "templateUnavailable": "The template isn't available right now. Try again in a moment.",
+  "@templateUnavailable": {
+    "description": "Same as the website's template route."
+  },
+  "readyToImport": "{count, plural, =1{Ready to import 1 product} other{Ready to import {count} products}}",
+  "@readyToImport": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nothingToImport": "Nothing in this file can be imported",
+  "@nothingToImport": {
+    "description": "Same as the website's import flow."
+  },
+  "checkedRows": "{count, plural, =1{Checked 1 row in {file}. Nothing has been saved yet.} other{Checked {count} rows in {file}. Nothing has been saved yet.}}",
+  "@checkedRows": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "statNewProducts": "New products",
+  "@statNewProducts": {
+    "description": "Same as the website's import flow."
+  },
+  "statUpdates": "Updates",
+  "@statUpdates": {
+    "description": "Same as the website's import flow."
+  },
+  "statNewBrands": "New brands",
+  "@statNewBrands": {
+    "description": "Same as the website's import flow."
+  },
+  "statRowsToFix": "Rows to fix",
+  "@statRowsToFix": {
+    "description": "Same as the website's import flow."
+  },
+  "newBrandsList": "New brands: {names}",
+  "@newBrandsList": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "rowsSkipped": "{count, plural, =1{1 row will be skipped} other{{count} rows will be skipped}}",
+  "@rowsSkipped": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rowsSkippedHint": "Fix these lines in your spreadsheet and import the file again; rows already imported are just updated.",
+  "@rowsSkippedHint": {
+    "description": "Same as the website's import flow."
+  },
+  "columnLine": "Line",
+  "@columnLine": {
+    "description": "Same as the website's import flow."
+  },
+  "columnBarcode": "Barcode",
+  "@columnBarcode": {
+    "description": "Same as the website's import flow."
+  },
+  "columnFix": "What to fix",
+  "@columnFix": {
+    "description": "Same as the website's import flow."
+  },
+  "barcodeMissing": "Missing",
+  "@barcodeMissing": {
+    "description": "Same as the website's import flow. A row without a barcode."
+  },
+  "chooseDifferentFile": "Choose a different file",
+  "@chooseDifferentFile": {
+    "description": "Same as the website's import flow."
+  },
+  "importProductCount": "{count, plural, =1{Import 1 product} other{Import {count} products}}",
+  "@importProductCount": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importing": "Importing…",
+  "@importing": {
+    "description": "Same as the website's import flow."
+  },
+  "importedCount": "{count, plural, =1{Imported 1 product} other{Imported {count} products}}",
+  "@importedCount": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importSummary": "{added}, {updated}{brands}.{skipped}",
+  "@importSummary": {
+    "description": "Same as the website's import flow. Assembles the parts below, as the website does.",
+    "placeholders": {
+      "added": {
+        "type": "String"
+      },
+      "updated": {
+        "type": "String"
+      },
+      "brands": {
+        "type": "String"
+      },
+      "skipped": {
+        "type": "String"
+      }
+    }
+  },
+  "importAdded": "{count, plural, =1{1 new product} other{{count} new products}} added",
+  "@importAdded": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importUpdated": "{count, plural, =1{1 product} other{{count} products}} updated",
+  "@importUpdated": {
+    "description": "Same as the website's import flow.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importBrandsCreated": "{count, plural, =1{, 1 new brand created} other{, {count} new brands created}}",
+  "@importBrandsCreated": {
+    "description": "Same as the website's import flow. Keep the leading comma.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importSkipped": "{count, plural, =1{ 1 row with problems was skipped.} other{ {count} rows with problems were skipped.}}",
+  "@importSkipped": {
+    "description": "Same as the website's import flow. Keep the leading space.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "viewProducts": "View products",
+  "@viewProducts": {
+    "description": "Same as the website's import flow."
+  },
+  "importAnotherFile": "Import another file",
+  "@importAnotherFile": {
+    "description": "Same as the website's import flow."
+  },
+  "claimsTitle": "Ownership claims",
+  "@claimsTitle": {
+    "description": "Same as the website's claims page header."
+  },
+  "claimStatusLabel": "Claim status",
+  "@claimStatusLabel": {
+    "description": "Same as the website's claims page. Screen-reader label of the tabs."
+  },
+  "tabToReview": "To review",
+  "@tabToReview": {
+    "description": "Same as the website's claims page."
+  },
+  "tabApproved": "Approved",
+  "@tabApproved": {
+    "description": "Same as the website's claims page."
+  },
+  "tabRejected": "Rejected",
+  "@tabRejected": {
+    "description": "Same as the website's claims page."
+  },
+  "nothingToReview": "Nothing to review",
+  "@nothingToReview": {
+    "description": "Same as the website's claims page."
+  },
+  "nothingToReviewBody": "Receipts shoppers upload appear here, oldest first.",
+  "@nothingToReviewBody": {
+    "description": "Same as the website's claims page."
+  },
+  "noApprovedClaims": "No approved claims yet",
+  "@noApprovedClaims": {
+    "description": "Same as the website's claims page."
+  },
+  "noRejectedClaims": "No rejected claims yet",
+  "@noRejectedClaims": {
+    "description": "Same as the website's claims page."
+  },
+  "decidedClaimsBody": "Decisions you make will be listed here.",
+  "@decidedClaimsBody": {
+    "description": "Same as the website's claims page."
+  },
+  "claimUserLine": "{name} ({email})",
+  "@claimUserLine": {
+    "description": "Same as the website's claims page.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "methodOrderMatch": "Order match",
+  "@methodOrderMatch": {
+    "description": "Same as the website's claims page."
+  },
+  "receiptAttemptOf": "Receipt {attempt} of 5",
+  "@receiptAttemptOf": {
+    "description": "Same as the website's claims page. {attempt} is the upload number, or ? when unknown.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      }
+    }
+  },
+  "showingClaims": "{total, plural, =1{Showing 1–{last} of {total} claim} other{Showing 1–{last} of {total} claims}}",
+  "@showingClaims": {
+    "description": "Count above the claims list (the app loads more as you scroll).",
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "last": {
+        "type": "int"
+      }
+    }
+  },
+  "claimTitle": "{name}: {product}",
+  "@claimTitle": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "claimOrderMatched": "Matched automatically to a paid order on {date}.",
+  "@claimOrderMatched": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "claimReceiptSent": "Receipt {attempt} of 5, sent {date}.",
+  "@claimReceiptSent": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "openPdfReceipt": "Open the PDF receipt",
+  "@openPdfReceipt": {
+    "description": "Same as the website's claim review page. Website: 'in a new tab'; the app opens it in its own viewer."
+  },
+  "tapReceiptFullSize": "Tap the image to open it full size.",
+  "@tapReceiptFullSize": {
+    "description": "Same as the website's claim review page. Website says 'Select'."
+  },
+  "receiptImageLabel": "Receipt uploaded by {name}",
+  "@receiptImageLabel": {
+    "description": "Same as the website's claim review page. Screen-reader label of the receipt image.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noReceiptOrder": "No receipt: this claim was verified from order {order}.",
+  "@noReceiptOrder": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "order": {
+        "type": "String"
+      }
+    }
+  },
+  "orderOnRecord": "on record",
+  "@orderOnRecord": {
+    "description": "Same as the website's claim review page. Used in noReceiptOrder when the order id is unknown."
+  },
+  "receiptUnavailable": "This receipt isn't available.",
+  "@receiptUnavailable": {
+    "description": "Same as the website's receipt route."
+  },
+  "receiptViewerTitle": "Receipt",
+  "@receiptViewerTitle": {
+    "description": "App bar title of the full-screen receipt viewer."
+  },
+  "yourDecision": "Your decision",
+  "@yourDecision": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "approve": "Approve",
+  "@approve": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "approving": "Approving…",
+  "@approving": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reject": "Reject",
+  "@reject": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectReasonLabel": "Reason the shopper will see",
+  "@rejectReasonLabel": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "commonReasonsLabel": "Common reasons",
+  "@commonReasonsLabel": {
+    "description": "Same as the website's claim decision panel. Screen-reader label of the reason chips."
+  },
+  "reasonBlurry": "The receipt is too blurry to read",
+  "@reasonBlurry": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonProductMissing": "This product isn't on the receipt",
+  "@reasonProductMissing": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonWrongShop": "The receipt is from a shop that doesn't sell this brand",
+  "@reasonWrongShop": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "reasonCutOff": "Part of the receipt is cut off",
+  "@reasonCutOff": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "lastUpload": "This was their last upload: rejecting it means they can't verify this piece.",
+  "@lastUpload": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectUploadsLeft": "{count, plural, =1{They'll have 1 upload left.} other{They'll have {count} uploads left.}}",
+  "@rejectUploadsLeft": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejectReceipt": "Reject receipt",
+  "@rejectReceipt": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "rejecting": "Rejecting…",
+  "@rejecting": {
+    "description": "Same as the website's claim decision panel."
+  },
+  "claimApproved": "Approved. The shopper is now the verified owner.",
+  "@claimApproved": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "claimRejected": "Rejected. The shopper will see your reason.",
+  "@claimRejected": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "reasonTooShort": "Tell the shopper what was wrong so they can fix it",
+  "@reasonTooShort": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "reasonTooLong": "Keep the reason under 500 characters",
+  "@reasonTooLong": {
+    "description": "Same as the website's claim actions (admin/actions.ts)."
+  },
+  "claimDecidedApproved": "Approved {date}",
+  "@claimDecidedApproved": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "claimDecidedRejected": "Rejected {date}",
+  "@claimDecidedRejected": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewedBy": " by {name}",
+  "@reviewedBy": {
+    "description": "Same as the website's claim decision panel. Keep the leading space.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reasonGiven": "Reason given: “{reason}”",
+  "@reasonGiven": {
+    "description": "Same as the website's claim decision panel.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "whatToCheck": "What to check",
+  "@whatToCheck": {
+    "description": "Same as the website's claim review page."
+  },
+  "checkShop": "The shop or brand is {brand} or a stockist.",
+  "@checkShop": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "checkLine": "A line on the receipt matches {product} (SKU {sku}).",
+  "@checkLine": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "sku": {
+        "type": "String"
+      }
+    }
+  },
+  "checkReal": "It looks like a real, unedited receipt.",
+  "@checkReal": {
+    "description": "Same as the website's claim review page."
+  },
+  "shopperHeading": "Shopper",
+  "@shopperHeading": {
+    "description": "Same as the website's claim review page."
+  },
+  "allClaimsForPiece": "All claims for this piece",
+  "@allClaimsForPiece": {
+    "description": "Same as the website's claim review page."
+  },
+  "historyReceipt": "Receipt {attempt}",
+  "@historyReceipt": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "attempt": {
+        "type": "String"
+      }
+    }
+  },
+  "thisOne": " (this one)",
+  "@thisOne": {
+    "description": "Same as the website's claim review page. Keep the leading space."
+  },
+  "waitingSince": "Waiting since {date}",
+  "@waitingSince": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "quotedText": "“{text}”",
+  "@quotedText": {
+    "description": "Same as the website's claim review page.",
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  }
+}

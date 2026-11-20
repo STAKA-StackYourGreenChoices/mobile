@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- forest800: the website header green, behind the icon and splash. -->
+    <color name="staka_forest">#24422A</color>
+</resources>
