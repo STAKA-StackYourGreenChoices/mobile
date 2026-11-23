@@ -1646,4 +1646,100 @@ class AppLocalizationsEn extends AppLocalizations {
   String quotedText(String text) {
     return '“$text”';
   }
+
+  @override
+  String get continueWithPhone => 'Continue with phone number';
+
+  @override
+  String get useEmailInstead => 'Use email instead';
+
+  @override
+  String get phoneTitle => 'Your phone number';
+
+  @override
+  String get phoneLede =>
+      'We\'ll text you a 6-digit code. New to STAKA? The same code creates your account.';
+
+  @override
+  String get fieldPhone => 'Mobile number';
+
+  @override
+  String get phoneHelper =>
+      'A 10-digit Indian number, or start with + and the country code.';
+
+  @override
+  String get phoneInvalid =>
+      'Enter a 10-digit mobile number, or a number that starts with + and the country code.';
+
+  @override
+  String get sendCode => 'Send code';
+
+  @override
+  String get sendingCode => 'Sending code…';
+
+  @override
+  String get codeTitle => 'Enter the code';
+
+  @override
+  String codeLede(String phone, int minutes) {
+    String _temp0 = intl.Intl.pluralLogic(
+      minutes,
+      locale: localeName,
+      other: '$minutes minutes',
+      one: '1 minute',
+    );
+    return 'We sent a 6-digit code to $phone. It works for $_temp0.';
+  }
+
+  @override
+  String get fieldCode => '6-digit code';
+
+  @override
+  String get checkCode => 'Continue';
+
+  @override
+  String get checkingCode => 'Checking…';
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String resendCodeIn(String time) {
+    return 'Resend code in $time';
+  }
+
+  @override
+  String get resendingCode => 'Sending a new code…';
+
+  @override
+  String get codeResent => 'We sent a new code.';
+
+  @override
+  String get changeNumber => 'Change number';
+
+  @override
+  String get codeWrong =>
+      'That code isn\'t right. Check the message and try again.';
+
+  @override
+  String get codeExpired => 'This code has expired. Ask for a new one.';
+
+  @override
+  String get nameTitle => 'What should we call you?';
+
+  @override
+  String get nameLede =>
+      'This is the name on your account. You can add an email later in Account.';
+
+  @override
+  String get startAgain => 'Start again';
+
+  @override
+  String get signInWithEmailPrompt => 'Signed up with email?';
+
+  @override
+  String get signInWithPhonePrompt => 'No email on your account?';
+
+  @override
+  String get signInWithPhone => 'Use your phone number';
 }

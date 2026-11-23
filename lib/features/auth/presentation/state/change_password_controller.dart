@@ -41,7 +41,14 @@ class ChangePasswordController extends _$ChangePasswordController {
       return;
     }
 
-    switch (await repository.login(email: user.email, password: newPassword)) {
+    // An account without an email can't sign back in with a password here;
+    // it signs in again with a text-message code.
+    final email = user.email;
+    if (email == null) {
+      await session.signOutAfterPasswordChange();
+      return;
+    }
+    switch (await repository.login(email: email, password: newPassword)) {
       case Ok(:final value):
         await session.signIn(tokens: value.tokens, user: value.user);
         if (ref.mounted) state = const RequestDone(null);

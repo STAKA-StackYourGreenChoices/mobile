@@ -63,7 +63,9 @@ class ClaimUser {
 
   final String id;
   final String name;
-  final String email;
+
+  /// Null for a shopper who signed up with a phone number only.
+  final String? email;
 }
 
 /// The piece claimed. [imageUrl] is ready for this phone to load.

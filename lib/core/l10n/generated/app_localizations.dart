@@ -2696,6 +2696,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'“{text}”'**
   String quotedText(String text);
+
+  /// Welcome screen main button (V2-1): sign in or sign up with a text-message code.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with phone number'**
+  String get continueWithPhone;
+
+  /// Welcome screen second button: the email and password sign-in.
+  ///
+  /// In en, this message translates to:
+  /// **'Use email instead'**
+  String get useEmailInstead;
+
+  /// Phone sign-in screen heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone number'**
+  String get phoneTitle;
+
+  /// Phone sign-in screen lede.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll text you a 6-digit code. New to STAKA? The same code creates your account.'**
+  String get phoneLede;
+
+  /// Phone number field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get fieldPhone;
+
+  /// Helper under the phone field.
+  ///
+  /// In en, this message translates to:
+  /// **'A 10-digit Indian number, or start with + and the country code.'**
+  String get phoneHelper;
+
+  /// Phone field error.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a 10-digit mobile number, or a number that starts with + and the country code.'**
+  String get phoneInvalid;
+
+  /// Phone sign-in button.
+  ///
+  /// In en, this message translates to:
+  /// **'Send code'**
+  String get sendCode;
+
+  /// Phone sign-in button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending code…'**
+  String get sendingCode;
+
+  /// Code screen heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code'**
+  String get codeTitle;
+
+  /// Code screen lede.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a 6-digit code to {phone}. It works for {minutes, plural, =1{1 minute} other{{minutes} minutes}}.'**
+  String codeLede(String phone, int minutes);
+
+  /// Code field label (read by screen readers).
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit code'**
+  String get fieldCode;
+
+  /// Code screen button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get checkCode;
+
+  /// Code screen button while checking.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking…'**
+  String get checkingCode;
+
+  /// Link that sends a new code.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resendCode;
+
+  /// Countdown before a new code can be sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code in {time}'**
+  String resendCodeIn(String time);
+
+  /// While a new code is being sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending a new code…'**
+  String get resendingCode;
+
+  /// Snackbar after a new code was sent.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a new code.'**
+  String get codeResent;
+
+  /// Code screen link back to the phone number.
+  ///
+  /// In en, this message translates to:
+  /// **'Change number'**
+  String get changeNumber;
+
+  /// Wrong code (API 401).
+  ///
+  /// In en, this message translates to:
+  /// **'That code isn\'t right. Check the message and try again.'**
+  String get codeWrong;
+
+  /// Expired or used-up code (API 410).
+  ///
+  /// In en, this message translates to:
+  /// **'This code has expired. Ask for a new one.'**
+  String get codeExpired;
+
+  /// Name screen heading for a new phone account.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we call you?'**
+  String get nameTitle;
+
+  /// Name screen lede.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the name on your account. You can add an email later in Account.'**
+  String get nameLede;
+
+  /// Button when the sign-in code screens lost their state.
+  ///
+  /// In en, this message translates to:
+  /// **'Start again'**
+  String get startAgain;
+
+  /// Phone sign-in screen: prompt before the link to email sign-in.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed up with email?'**
+  String get signInWithEmailPrompt;
+
+  /// Sign-in screen prompt above the phone link.
+  ///
+  /// In en, this message translates to:
+  /// **'No email on your account?'**
+  String get signInWithPhonePrompt;
+
+  /// Sign-in screen link to phone sign-in.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your phone number'**
+  String get signInWithPhone;
 }
 
 class _AppLocalizationsDelegate

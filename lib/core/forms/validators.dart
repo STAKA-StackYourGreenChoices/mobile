@@ -1,4 +1,5 @@
 import 'package:staka/core/l10n/l10n.dart';
+import 'package:staka/core/utils/phone_number.dart';
 
 /// A form-field rule: null when valid, otherwise the message to show.
 typedef Validator = String? Function(String? value);
@@ -31,6 +32,11 @@ class Validators {
     if (length > 128) return _l10n.validationPasswordLong;
     return null;
   };
+
+  /// A mobile number we can text a code to (see `PhoneNumber.toE164`).
+  Validator get phone =>
+      (value) =>
+          PhoneNumber.toE164(value ?? '') == null ? _l10n.phoneInvalid : null;
 
   /// A person's name: 1 to 100 characters after trimming.
   Validator get name =>

@@ -16,6 +16,9 @@ import 'package:staka/features/admin/products/presentation/screens/admin_product
 import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
+import 'package:staka/features/auth/presentation/screens/otp_code_screen.dart';
+import 'package:staka/features/auth/presentation/screens/otp_name_screen.dart';
+import 'package:staka/features/auth/presentation/screens/phone_sign_in_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
@@ -62,6 +65,9 @@ final appRouteTable = <RouteBase>[
   _route(AppRoute.login, (_, _) => const LoginScreen()),
   _route(AppRoute.register, (_, _) => const RegisterScreen()),
   _route(AppRoute.forgotPassword, (_, _) => const ForgotPasswordScreen()),
+  _route(AppRoute.phoneSignIn, (_, _) => const PhoneSignInScreen()),
+  _route(AppRoute.otpCode, (_, _) => const OtpCodeScreen()),
+  _route(AppRoute.otpName, (_, _) => const OtpNameScreen()),
   StatefulShellRoute.indexedStack(
     builder: (_, _, shell) => AppNavigationShell(shell: shell),
     branches: [

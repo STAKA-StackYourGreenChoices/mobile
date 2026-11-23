@@ -8,8 +8,11 @@ part of 'user_dto.dart';
 
 UserDto _$UserDtoFromJson(Map<String, dynamic> json) => UserDto(
   id: json['id'] as String,
-  email: json['email'] as String,
+  email: json['email'] as String?,
   name: json['name'] as String,
   role: json['role'] as String,
   emailVerified: json['emailVerified'] as bool,
+  phone: json['phone'] as String?,
+  phoneVerified: json['phoneVerified'] as bool?,
+  hasPassword: json['hasPassword'] as bool?,
 );

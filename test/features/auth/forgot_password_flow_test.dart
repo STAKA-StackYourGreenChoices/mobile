@@ -6,7 +6,7 @@ import 'package:staka/core/error/result.dart';
 import '../../helpers/pump_full_app.dart';
 
 Future<void> _openForgot(WidgetTester tester) async {
-  await tester.tap(find.text('Sign in'));
+  await tester.tap(find.text('Use email instead'));
   await tester.pumpAndSettle();
   await tester.tap(find.text('Forgot your password?'));
   await tester.pumpAndSettle();

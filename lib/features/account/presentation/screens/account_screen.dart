@@ -7,6 +7,8 @@ import 'package:staka/core/auth/session_controller.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/l10n/l10n.dart';
+import 'package:staka/core/models/user.dart';
+import 'package:staka/core/utils/phone_number.dart';
 import 'package:staka/features/account/presentation/state/account_controller.dart';
 import 'package:staka/features/account/presentation/widgets/account_header.dart';
 import 'package:staka/features/account/presentation/widgets/account_link_tile.dart';
@@ -36,7 +38,14 @@ class AccountScreen extends ConsumerWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AccountHeader(name: user.name, email: user.email),
+          AccountHeader(
+            name: user.name,
+            detail: switch (user) {
+              User(:final String email) => email,
+              User(:final String phone) => PhoneNumber.display(phone),
+              _ => null,
+            },
+          ),
           const SizedBox(height: AppSpacing.lg),
           AccountLinkTile(
             icon: Icons.lock_outline_rounded,

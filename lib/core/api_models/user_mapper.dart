@@ -10,5 +10,8 @@ extension UserDtoMapper on UserDto {
     name: name,
     role: role == 'ADMIN' ? Role.admin : Role.user,
     emailVerified: emailVerified,
+    phone: phone,
+    phoneVerified: phoneVerified ?? false,
+    hasPassword: hasPassword ?? true,
   );
 }

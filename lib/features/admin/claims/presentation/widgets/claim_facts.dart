@@ -43,7 +43,7 @@ class ClaimFacts extends StatelessWidget {
           title: l10n.shopperHeading,
           children: [
             Text(claim.user.name, style: context.text.bodyLarge),
-            Text(claim.user.email, style: muted),
+            if (claim.user.email case final email?) Text(email, style: muted),
           ],
         ),
       ],

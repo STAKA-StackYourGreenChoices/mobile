@@ -10,6 +10,9 @@ enum AppRoute {
   login('/login'),
   register('/register'),
   forgotPassword('/forgot-password'),
+  phoneSignIn('/phone'),
+  otpCode('/phone/code'),
+  otpName('/phone/name'),
 
   // Signed in: bottom-bar tabs.
   wardrobe('/wardrobe'),
@@ -41,6 +44,9 @@ const Set<AppRoute> guestRoutes = {
   AppRoute.login,
   AppRoute.register,
   AppRoute.forgotPassword,
+  AppRoute.phoneSignIn,
+  AppRoute.otpCode,
+  AppRoute.otpName,
 };
 
 /// Where a signed-in person lands, like the website's `/wardrobe`.

@@ -75,7 +75,9 @@ class ClaimUserDto {
 
   final String id;
   final String name;
-  final String email;
+
+  /// Null for a shopper who signed up with a phone number only.
+  final String? email;
 }
 
 @JsonSerializable(createToJson: false)
