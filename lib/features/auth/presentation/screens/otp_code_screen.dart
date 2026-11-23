@@ -6,7 +6,6 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/app/routes.dart';
 import 'package:staka/core/error/error_mapper.dart';
-import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/time/clock.dart';
 import 'package:staka/core/utils/phone_number.dart';
@@ -96,12 +95,3 @@ class OtpCodeScreen extends ConsumerWidget {
     );
   }
 }
-
-/// A wrong or expired code gets its own words; anything else is worded
-/// like every other request.
-String codeFailureMessage(Failure failure, AppLocalizations l10n) =>
-    switch (failure) {
-      UnauthorizedFailure() => l10n.codeWrong,
-      BadRequestFailure(statusCode: 410) => l10n.codeExpired,
-      _ => messageForFailure(failure, l10n),
-    };

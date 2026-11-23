@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/core/l10n/l10n.dart';
-import 'package:staka/features/auth/presentation/screens/otp_code_screen.dart';
 import 'package:staka/features/auth/presentation/state/otp_request_controller.dart';
 import 'package:staka/features/auth/presentation/state/otp_verify_controller.dart';
 import 'package:staka/features/auth/presentation/state/otp_verify_state.dart';
 import 'package:staka/features/auth/presentation/widgets/auth_page_heading.dart';
+import 'package:staka/features/auth/presentation/widgets/otp_code_form.dart';
 import 'package:staka/features/auth/presentation/widgets/otp_name_form.dart';
 import 'package:staka/features/auth/presentation/widgets/otp_start_again.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';

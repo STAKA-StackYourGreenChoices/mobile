@@ -62,7 +62,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Ada Lovelace'), findsOneWidget);
-    expect(find.text('ada@example.com'), findsOneWidget);
+    // In the header and on the Email row.
+    expect(find.text('ada@example.com'), findsNWidgets(2));
 
     await tester.tap(find.text('Sign out'));
     await tester.pumpAndSettle();
@@ -134,7 +135,8 @@ void main() {
       find.text('Password changed. Other devices will need to sign in again.'),
       findsOneWidget,
     );
-    expect(find.text('ada@example.com'), findsOneWidget);
+    // In the header and on the Email row.
+    expect(find.text('ada@example.com'), findsNWidgets(2));
   });
 
   testWidgets('if signing back in fails, sign-in asks for the new password', (

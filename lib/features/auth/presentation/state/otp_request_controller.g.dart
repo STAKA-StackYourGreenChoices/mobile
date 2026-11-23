@@ -48,7 +48,7 @@ final class OtpRequestControllerProvider
 }
 
 String _$otpRequestControllerHash() =>
-    r'6aee1e9dcb4ab10e8e5e61a154e2d5a2845a7c02';
+    r'be5caefd59c721d18af81921796f3319d41a7fdf';
 
 /// Sends (and resends) the sign-in code. Lives while the phone sign-in
 /// screens are on the stack.

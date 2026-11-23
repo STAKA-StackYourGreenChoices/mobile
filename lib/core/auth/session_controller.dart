@@ -54,6 +54,14 @@ class SessionController extends _$SessionController {
     );
   }
 
+  /// A screen changed the user and the API sent back (or confirmed) the
+  /// new one, e.g. a phone number added in Account.
+  void updateUser(User user) {
+    final current = state;
+    if (current is! SignedIn) return;
+    state = SignedIn(user, isNewAccount: current.isNewAccount);
+  }
+
   Future<void> signOut() async {
     await _repository.signOut();
     state = const SignedOut();

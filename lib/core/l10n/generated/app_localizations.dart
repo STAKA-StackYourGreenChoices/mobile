@@ -2858,6 +2858,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Use your phone number'**
   String get signInWithPhone;
+
+  /// Account screen: heading above phone, email and password.
+  ///
+  /// In en, this message translates to:
+  /// **'How you sign in'**
+  String get accountSectionSignIn;
+
+  /// Account row and screen title: the phone number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get accountPhoneRow;
+
+  /// Account row: the email address.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get accountEmailRow;
+
+  /// Account row: the password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get accountPasswordRow;
+
+  /// Account row detail when there is no phone number or email yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not added'**
+  String get accountNotAdded;
+
+  /// Account email row detail before the email is confirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} · not confirmed yet'**
+  String accountEmailUnconfirmed(String email);
+
+  /// Account password row detail when the account has no password.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get accountPasswordNotSet;
+
+  /// Account phone screen, when there is a number.
+  ///
+  /// In en, this message translates to:
+  /// **'You sign in with {phone} and a 6-digit code we text you.'**
+  String accountPhoneLede(String phone);
+
+  /// Account phone screen, when there is no number.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a number to sign in with a 6-digit code we text you.'**
+  String get accountPhoneAddLede;
+
+  /// Account phone screen button: replace the number.
+  ///
+  /// In en, this message translates to:
+  /// **'Change number'**
+  String get accountPhoneChange;
+
+  /// Account phone screen button and dialog action.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove number'**
+  String get accountPhoneRemove;
+
+  /// Account phone screen when removing the number would leave no way to sign in.
+  ///
+  /// In en, this message translates to:
+  /// **'This number is how you sign in. To remove it, first add an email and set a password.'**
+  String get accountPhoneOnlyWay;
+
+  /// Remove phone number dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {phone}?'**
+  String accountPhoneRemoveTitle(String phone);
+
+  /// Remove phone number dialog body.
+  ///
+  /// In en, this message translates to:
+  /// **'You won\'t be able to sign in with this number any more. You can add it again later.'**
+  String get accountPhoneRemoveBody;
+
+  /// Remove phone number dialog: cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep number'**
+  String get keepNumber;
+
+  /// Button label while removing.
+  ///
+  /// In en, this message translates to:
+  /// **'Removing…'**
+  String get removing;
+
+  /// Snackbar after adding or changing the phone number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number saved.'**
+  String get accountPhoneSaved;
+
+  /// Snackbar after removing the phone number.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number removed.'**
+  String get accountPhoneRemoved;
+
+  /// Adding a phone number that another account has.
+  ///
+  /// In en, this message translates to:
+  /// **'That number is on another STAKA account.'**
+  String get phoneTaken;
+
+  /// Add email screen heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an email'**
+  String get addEmailTitle;
+
+  /// Add email screen lede.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll send a link to confirm it. Then you can also sign in with your email and a password.'**
+  String get addEmailLede;
+
+  /// Add email button.
+  ///
+  /// In en, this message translates to:
+  /// **'Add email'**
+  String get addEmail;
+
+  /// Add email button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Adding email…'**
+  String get addingEmail;
+
+  /// Adding an email that another account has.
+  ///
+  /// In en, this message translates to:
+  /// **'An account already uses this email.'**
+  String get emailTaken;
+
+  /// Snackbar after adding an email.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your inbox: we sent a confirmation link to {email}.'**
+  String emailAdded(String email);
+
+  /// Set password screen heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a password'**
+  String get setPasswordTitle;
+
+  /// Set password screen lede when the account has an email.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with your email and this password, as well as with your phone.'**
+  String get setPasswordLede;
+
+  /// Set password screen lede when the account has no email.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll need an email too, to sign in with a password. You can add one in Account.'**
+  String get setPasswordLedeNoEmail;
+
+  /// Set password button.
+  ///
+  /// In en, this message translates to:
+  /// **'Set password'**
+  String get setPassword;
+
+  /// Set password button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting password…'**
+  String get settingPassword;
+
+  /// Snackbar after setting a first password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password set.'**
+  String get passwordSet;
 }
 
 class _AppLocalizationsDelegate

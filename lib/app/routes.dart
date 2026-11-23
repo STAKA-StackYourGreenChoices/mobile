@@ -22,6 +22,9 @@ enum AppRoute {
 
   // Inside a tab (keep the bottom bar).
   changePassword('/account/change-password'),
+  accountPhone('/account/phone'),
+  addEmail('/account/email'),
+  setPassword('/account/set-password'),
   product('/scan/product/:gtin'),
   tag('/wardrobe/tag/:id'),
   adminProducts('/admin/products'),

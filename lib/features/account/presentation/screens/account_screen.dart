@@ -12,11 +12,13 @@ import 'package:staka/core/utils/phone_number.dart';
 import 'package:staka/features/account/presentation/state/account_controller.dart';
 import 'package:staka/features/account/presentation/widgets/account_header.dart';
 import 'package:staka/features/account/presentation/widgets/account_link_tile.dart';
+import 'package:staka/features/account/presentation/widgets/account_section.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
-/// The Account tab: who is signed in, change password, sign out. The user
-/// comes from the session, so there is nothing to load here.
+/// The Account tab: who is signed in, how they sign in (phone, email,
+/// password), sign out. The user comes from the session, so there is
+/// nothing to load here.
 class AccountScreen extends ConsumerWidget {
   const new({super.key});
 
@@ -36,7 +38,7 @@ class AccountScreen extends ConsumerWidget {
     return AppScaffold(
       title: l10n.navAccount,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           AccountHeader(
             name: user.name,
@@ -46,13 +48,50 @@ class AccountScreen extends ConsumerWidget {
               _ => null,
             },
           ),
-          const SizedBox(height: AppSpacing.lg),
-          AccountLinkTile(
-            icon: Icons.lock_outline_rounded,
-            label: l10n.changePassword,
-            onPressed: () => context.pushNamed(AppRoute.changePassword.name),
+          const SizedBox(height: AppSpacing.xl),
+          AccountSection(
+            title: l10n.accountSectionSignIn,
+            children: [
+              AccountLinkTile(
+                icon: Icons.smartphone_rounded,
+                label: l10n.accountPhoneRow,
+                detail: switch (user.phone) {
+                  final phone? => PhoneNumber.display(phone),
+                  null => l10n.accountNotAdded,
+                },
+                onPressed: () => context.pushNamed(AppRoute.accountPhone.name),
+              ),
+              AccountLinkTile(
+                icon: Icons.mail_outline_rounded,
+                label: l10n.accountEmailRow,
+                detail: switch (user) {
+                  User(:final String email, emailVerified: true) => email,
+                  User(:final String email) => l10n.accountEmailUnconfirmed(
+                    email,
+                  ),
+                  _ => l10n.accountNotAdded,
+                },
+                // Changing an email isn't in the API; adding one is.
+                onPressed: user.email == null
+                    ? () => context.pushNamed(AppRoute.addEmail.name)
+                    : null,
+              ),
+              if (user.hasPassword)
+                AccountLinkTile(
+                  icon: Icons.lock_outline_rounded,
+                  label: l10n.changePassword,
+                  onPressed: () =>
+                      context.pushNamed(AppRoute.changePassword.name),
+                )
+              else
+                AccountLinkTile(
+                  icon: Icons.lock_outline_rounded,
+                  label: l10n.setPasswordTitle,
+                  onPressed: () => context.pushNamed(AppRoute.setPassword.name),
+                ),
+            ],
           ),
-          const SizedBox(height: AppSpacing.lg),
+          const SizedBox(height: AppSpacing.xl),
           AppButton(
             label: l10n.signOut,
             loadingLabel: l10n.signingOut,

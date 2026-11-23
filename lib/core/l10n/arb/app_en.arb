@@ -2329,5 +2329,141 @@
   "signInWithPhone": "Use your phone number",
   "@signInWithPhone": {
     "description": "Sign-in screen link to phone sign-in."
+  },
+  "accountSectionSignIn": "How you sign in",
+  "@accountSectionSignIn": {
+    "description": "Account screen: heading above phone, email and password."
+  },
+  "accountPhoneRow": "Phone number",
+  "@accountPhoneRow": {
+    "description": "Account row and screen title: the phone number."
+  },
+  "accountEmailRow": "Email",
+  "@accountEmailRow": {
+    "description": "Account row: the email address."
+  },
+  "accountNotAdded": "Not added",
+  "@accountNotAdded": {
+    "description": "Account row detail when there is no phone number or email yet."
+  },
+  "accountEmailUnconfirmed": "{email} · not confirmed yet",
+  "@accountEmailUnconfirmed": {
+    "description": "Account email row detail before the email is confirmed.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "accountPhoneLede": "You sign in with {phone} and a 6-digit code we text you.",
+  "@accountPhoneLede": {
+    "description": "Account phone screen, when there is a number.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "accountPhoneAddLede": "Add a number to sign in with a 6-digit code we text you.",
+  "@accountPhoneAddLede": {
+    "description": "Account phone screen, when there is no number."
+  },
+  "accountPhoneChange": "Change number",
+  "@accountPhoneChange": {
+    "description": "Account phone screen button: replace the number."
+  },
+  "accountPhoneRemove": "Remove number",
+  "@accountPhoneRemove": {
+    "description": "Account phone screen button and dialog action."
+  },
+  "accountPhoneOnlyWay": "This number is how you sign in. To remove it, first add an email and set a password.",
+  "@accountPhoneOnlyWay": {
+    "description": "Account phone screen when removing the number would leave no way to sign in."
+  },
+  "accountPhoneRemoveTitle": "Remove {phone}?",
+  "@accountPhoneRemoveTitle": {
+    "description": "Remove phone number dialog title.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "accountPhoneRemoveBody": "You won't be able to sign in with this number any more. You can add it again later.",
+  "@accountPhoneRemoveBody": {
+    "description": "Remove phone number dialog body."
+  },
+  "keepNumber": "Keep number",
+  "@keepNumber": {
+    "description": "Remove phone number dialog: cancel."
+  },
+  "removing": "Removing…",
+  "@removing": {
+    "description": "Button label while removing."
+  },
+  "accountPhoneSaved": "Phone number saved.",
+  "@accountPhoneSaved": {
+    "description": "Snackbar after adding or changing the phone number."
+  },
+  "accountPhoneRemoved": "Phone number removed.",
+  "@accountPhoneRemoved": {
+    "description": "Snackbar after removing the phone number."
+  },
+  "phoneTaken": "That number is on another STAKA account.",
+  "@phoneTaken": {
+    "description": "Adding a phone number that another account has."
+  },
+  "addEmailTitle": "Add an email",
+  "@addEmailTitle": {
+    "description": "Add email screen heading."
+  },
+  "addEmailLede": "We'll send a link to confirm it. Then you can also sign in with your email and a password.",
+  "@addEmailLede": {
+    "description": "Add email screen lede."
+  },
+  "addEmail": "Add email",
+  "@addEmail": {
+    "description": "Add email button."
+  },
+  "addingEmail": "Adding email…",
+  "@addingEmail": {
+    "description": "Add email button while sending."
+  },
+  "emailTaken": "An account already uses this email.",
+  "@emailTaken": {
+    "description": "Adding an email that another account has."
+  },
+  "emailAdded": "Check your inbox: we sent a confirmation link to {email}.",
+  "@emailAdded": {
+    "description": "Snackbar after adding an email.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "setPasswordTitle": "Set a password",
+  "@setPasswordTitle": {
+    "description": "Set password screen heading."
+  },
+  "setPasswordLede": "Sign in with your email and this password, as well as with your phone.",
+  "@setPasswordLede": {
+    "description": "Set password screen lede when the account has an email."
+  },
+  "setPasswordLedeNoEmail": "You'll need an email too, to sign in with a password. You can add one in Account.",
+  "@setPasswordLedeNoEmail": {
+    "description": "Set password screen lede when the account has no email."
+  },
+  "setPassword": "Set password",
+  "@setPassword": {
+    "description": "Set password button."
+  },
+  "settingPassword": "Setting password…",
+  "@settingPassword": {
+    "description": "Set password button while sending."
+  },
+  "passwordSet": "Password set.",
+  "@passwordSet": {
+    "description": "Snackbar after setting a first password."
   }
 }

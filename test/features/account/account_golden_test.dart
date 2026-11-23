@@ -21,7 +21,7 @@ void main() {
     testWidgets('account screen, ${brightness.name}', (tester) async {
       final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
         ..httpClientAdapter = FakeHttpAdapter([json(200, userJson())]);
-      usePhoneScreen(tester, height: 480);
+      usePhoneScreen(tester, height: 640);
       await pumpThemed(
         tester,
         ProviderScope(

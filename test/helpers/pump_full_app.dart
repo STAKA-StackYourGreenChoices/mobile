@@ -7,6 +7,8 @@ import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/time/clock.dart';
+import 'package:staka/features/account/data/repositories/account_repository_impl.dart';
+import 'package:staka/features/account/domain/repositories/account_repository.dart';
 import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/admin/brands/domain/repositories/admin_brand_repository.dart';
 import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
@@ -62,6 +64,7 @@ Future<InMemoryTokenStore> pumpApp(
   ImportFileActions? importFileActions,
   AdminClaimRepository? adminClaims,
   DateTime Function()? clock,
+  AccountRepository? account,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -110,6 +113,8 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         if (auth != null) authRepositoryProvider.overrideWithValue(auth),
         if (clock != null) clockProvider.overrideWithValue(clock),
+        if (account != null)
+          accountRepositoryProvider.overrideWithValue(account),
       ],
       child: const App(),
     ),

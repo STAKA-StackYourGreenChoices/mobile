@@ -1742,4 +1742,111 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signInWithPhone => 'Use your phone number';
+
+  @override
+  String get accountSectionSignIn => 'How you sign in';
+
+  @override
+  String get accountPhoneRow => 'Phone number';
+
+  @override
+  String get accountEmailRow => 'Email';
+
+  @override
+  String get accountPasswordRow => 'Password';
+
+  @override
+  String get accountNotAdded => 'Not added';
+
+  @override
+  String accountEmailUnconfirmed(String email) {
+    return '$email · not confirmed yet';
+  }
+
+  @override
+  String get accountPasswordNotSet => 'Not set';
+
+  @override
+  String accountPhoneLede(String phone) {
+    return 'You sign in with $phone and a 6-digit code we text you.';
+  }
+
+  @override
+  String get accountPhoneAddLede =>
+      'Add a number to sign in with a 6-digit code we text you.';
+
+  @override
+  String get accountPhoneChange => 'Change number';
+
+  @override
+  String get accountPhoneRemove => 'Remove number';
+
+  @override
+  String get accountPhoneOnlyWay =>
+      'This number is how you sign in. To remove it, first add an email and set a password.';
+
+  @override
+  String accountPhoneRemoveTitle(String phone) {
+    return 'Remove $phone?';
+  }
+
+  @override
+  String get accountPhoneRemoveBody =>
+      'You won\'t be able to sign in with this number any more. You can add it again later.';
+
+  @override
+  String get keepNumber => 'Keep number';
+
+  @override
+  String get removing => 'Removing…';
+
+  @override
+  String get accountPhoneSaved => 'Phone number saved.';
+
+  @override
+  String get accountPhoneRemoved => 'Phone number removed.';
+
+  @override
+  String get phoneTaken => 'That number is on another STAKA account.';
+
+  @override
+  String get addEmailTitle => 'Add an email';
+
+  @override
+  String get addEmailLede =>
+      'We\'ll send a link to confirm it. Then you can also sign in with your email and a password.';
+
+  @override
+  String get addEmail => 'Add email';
+
+  @override
+  String get addingEmail => 'Adding email…';
+
+  @override
+  String get emailTaken => 'An account already uses this email.';
+
+  @override
+  String emailAdded(String email) {
+    return 'Check your inbox: we sent a confirmation link to $email.';
+  }
+
+  @override
+  String get setPasswordTitle => 'Set a password';
+
+  @override
+  String get setPasswordLede =>
+      'Sign in with your email and this password, as well as with your phone.';
+
+  @override
+  String get setPasswordLedeNoEmail =>
+      'You\'ll need an email too, to sign in with a password. You can add one in Account.';
+
+  @override
+  String get setPassword => 'Set password';
+
+  @override
+  String get settingPassword => 'Setting password…';
+
+  @override
+  String get passwordSet => 'Password set.';
 }
