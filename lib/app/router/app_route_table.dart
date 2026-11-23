@@ -9,14 +9,6 @@ import 'package:staka/features/account/presentation/screens/account_screen.dart'
 import 'package:staka/features/account/presentation/screens/add_email_screen.dart';
 import 'package:staka/features/account/presentation/screens/delete_account_screen.dart';
 import 'package:staka/features/account/presentation/screens/set_password_screen.dart';
-import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
-import 'package:staka/features/admin/claims/presentation/screens/admin_claim_screen.dart';
-import 'package:staka/features/admin/claims/presentation/screens/admin_claims_screen.dart';
-import 'package:staka/features/admin/claims/presentation/screens/claim_receipt_screen.dart';
-import 'package:staka/features/admin/hub/presentation/screens/admin_home_screen.dart';
-import 'package:staka/features/admin/import/presentation/screens/admin_import_screen.dart';
-import 'package:staka/features/admin/products/presentation/screens/admin_product_form_screen.dart';
-import 'package:staka/features/admin/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/auth/presentation/screens/change_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:staka/features/auth/presentation/screens/login_screen.dart';
@@ -25,10 +17,23 @@ import 'package:staka/features/auth/presentation/screens/otp_name_screen.dart';
 import 'package:staka/features/auth/presentation/screens/phone_sign_in_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/manage/brands/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/manage/claims/presentation/screens/admin_claim_screen.dart';
+import 'package:staka/features/manage/claims/presentation/screens/admin_claims_screen.dart';
+import 'package:staka/features/manage/claims/presentation/screens/claim_receipt_screen.dart';
+import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen.dart';
+import 'package:staka/features/manage/import/presentation/screens/admin_import_screen.dart';
+import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
+import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
+import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
+
+/// The Admin tab works on every brand (V2-12 adds a Brand tab with
+/// `BrandScope`).
+const _admin = AdminScope();
 
 GoRoute _route(
   AppRoute route,
@@ -120,6 +125,7 @@ final appRouteTable = <RouteBase>[
                 AppRoute.adminProducts,
                 (_, state) => AdminProductsScreen(
                   key: ValueKey(state.uri.queryParameters['brand']),
+                  scope: _admin,
                   brandId: state.uri.queryParameters['brand'],
                 ),
                 children: [
@@ -127,7 +133,7 @@ final appRouteTable = <RouteBase>[
                   _child(
                     AppRoute.adminProducts,
                     AppRoute.adminProductNew,
-                    (_, _) => const AdminProductFormScreen(),
+                    (_, _) => const AdminProductFormScreen(scope: _admin),
                   ),
                   _child(
                     AppRoute.adminProducts,
@@ -135,6 +141,7 @@ final appRouteTable = <RouteBase>[
                     (_, state) => AdminProductFormScreen(
                       // A new id builds a new screen (after "Add product").
                       key: ValueKey(state.pathParameters['id']),
+                      scope: _admin,
                       productId: state.pathParameters['id'] ?? '',
                     ),
                   ),
@@ -148,18 +155,19 @@ final appRouteTable = <RouteBase>[
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminImport,
-                (_, _) => const AdminImportScreen(),
+                (_, _) => const AdminImportScreen(scope: _admin),
               ),
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminClaims,
-                (_, _) => const AdminClaimsScreen(),
+                (_, _) => const AdminClaimsScreen(scope: _admin),
                 children: [
                   _child(
                     AppRoute.adminClaims,
                     AppRoute.adminClaim,
                     (_, state) => AdminClaimScreen(
                       key: ValueKey(state.pathParameters['id']),
+                      scope: _admin,
                       claimId: state.pathParameters['id'] ?? '',
                     ),
                     children: [
@@ -167,6 +175,7 @@ final appRouteTable = <RouteBase>[
                         AppRoute.adminClaim,
                         AppRoute.adminClaimReceipt,
                         (_, state) => ClaimReceiptScreen(
+                          scope: _admin,
                           claimId: state.pathParameters['id'] ?? '',
                         ),
                       ),

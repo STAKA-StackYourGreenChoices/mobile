@@ -8,16 +8,17 @@ import 'package:staka/core/catalog/brands_api.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/interceptors/auth_interceptor.dart';
-import 'package:staka/features/admin/brands/data/datasources/brand_editor_remote_data_source.dart';
-import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
-import 'package:staka/features/admin/claims/data/datasources/admin_claim_remote_data_source.dart';
-import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
-import 'package:staka/features/admin/products/data/datasources/admin_product_remote_data_source.dart';
-import 'package:staka/features/admin/products/data/datasources/product_editor_remote_data_source.dart';
-import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
+import 'package:staka/features/manage/brands/data/datasources/brand_editor_remote_data_source.dart';
+import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
+import 'package:staka/features/manage/claims/data/datasources/admin_claim_remote_data_source.dart';
+import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
+import 'package:staka/features/manage/products/data/datasources/admin_product_remote_data_source.dart';
+import 'package:staka/features/manage/products/data/datasources/product_editor_remote_data_source.dart';
+import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
+import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/products/data/datasources/product_remote_data_source.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/tags/data/datasources/share_remote_data_source.dart';
@@ -70,15 +71,17 @@ class LiveClient {
       ShareRemoteDataSource(dio, Dio()),
     );
     adminProducts = AdminProductRepositoryImpl(
-      AdminProductRemoteDataSource(dio),
+      AdminProductRemoteDataSource(dio, const AdminScope()),
       BrandsApi(dio),
-      ProductEditorRemoteDataSource(dio),
+      ProductEditorRemoteDataSource(dio, const AdminScope()),
     );
     adminBrands = AdminBrandRepositoryImpl(
       BrandsApi(dio),
       BrandEditorRemoteDataSource(dio),
     );
-    adminClaims = AdminClaimRepositoryImpl(AdminClaimRemoteDataSource(dio));
+    adminClaims = AdminClaimRepositoryImpl(
+      AdminClaimRemoteDataSource(dio, const AdminScope()),
+    );
     session = SessionRepository(dio, store);
   }
 

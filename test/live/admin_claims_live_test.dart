@@ -9,8 +9,8 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/ownership_status.dart';
-import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
-import 'package:staka/features/admin/claims/domain/models/claim.dart';
+import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
+import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 
 import 'live_client.dart';

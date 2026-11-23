@@ -71,9 +71,14 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/account-sign-in-methods` (V2-1): Account "How you sign in": add/change/remove phone, add email, set first password
 - [~] `feat/account-data` (V2-10): Account "Your data": download (share sheet), delete with password or texted code → welcome
 - [ ] M1 check: USB phone run against the local API once it has the V2-1/V2-10 endpoints; V2-11 performance check (200-piece wardrobe, 1,000 products) needs the API's 1,000-product seed
-- [ ] Arham's go-ahead for M2
+- [x] Arham's go-ahead for M2 (2026-11-23)
+
+## V2 — M2 Brands run themselves
+- [x] `refactor/manage-scope` (V2-12): `features/admin` → `features/manage`, `ManageScope` threaded through data sources, providers and screens; no behaviour change, goldens unchanged (only moved)
+- [ ] `feat/brand-apply`, `feat/brand-portal`, `feat/brand-claims`, `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-23 — M2 started: `refactor/manage-scope` (admin code → `features/manage/` with `ManageScope`). 377 tests pass, no golden changed.
 - 2026-11-23 — M1 slices built: phone sign-in, Account sign-in methods, Your data (export + delete). 372 tests pass. Fixed a V1 bug: after a server error on a field (wrong current password, taken email) the form could not be sent again. Not yet run against a real API.
 - 2026-11-15 — Phase 6 (cut-down): icon, splash, name/id, README; 318 tests pass; release APK checked on the phone. Next: hosting talk.
 - 2026-11-15 — Phase 5 done on Android: device scripts + hand checks + edge cases; 2 bugs fixed; report `PHASE5_VERIFICATION.md`. Waiting for the go-ahead for Phase 6.

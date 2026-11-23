@@ -4,10 +4,10 @@ import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/core/models/product.dart';
-import 'package:staka/features/admin/products/domain/models/editable_product.dart';
-import 'package:staka/features/admin/products/domain/models/product_draft.dart';
-import 'package:staka/features/admin/products/domain/models/product_page.dart';
-import 'package:staka/features/admin/products/domain/repositories/admin_product_repository.dart';
+import 'package:staka/features/manage/products/domain/models/editable_product.dart';
+import 'package:staka/features/manage/products/domain/models/product_draft.dart';
+import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
 
 import 'product_fakes.dart';
 

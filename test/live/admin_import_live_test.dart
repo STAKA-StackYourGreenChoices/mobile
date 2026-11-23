@@ -7,11 +7,12 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
-import 'package:staka/features/admin/import/data/datasources/import_remote_data_source.dart';
-import 'package:staka/features/admin/import/data/repositories/import_repository_impl.dart';
-import 'package:staka/features/admin/import/domain/models/import_report.dart';
-import 'package:staka/features/admin/import/domain/models/picked_csv.dart';
-import 'package:staka/features/admin/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/import/data/datasources/import_remote_data_source.dart';
+import 'package:staka/features/manage/import/data/repositories/import_repository_impl.dart';
+import 'package:staka/features/manage/import/domain/models/import_report.dart';
+import 'package:staka/features/manage/import/domain/models/picked_csv.dart';
+import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/shared/manage_scope.dart';
 
 import 'live_client.dart';
 
@@ -33,7 +34,9 @@ String _uniqueGtin() {
 void main() {
   test('template, check (nothing saved), import, clean up', () async {
     final admin = await signedInAdmin();
-    final imports = ImportRepositoryImpl(ImportRemoteDataSource(admin.dio));
+    final imports = ImportRepositoryImpl(
+      ImportRemoteDataSource(admin.dio, const AdminScope()),
+    );
     final products = admin.adminProducts;
 
     final template = await imports.fetchTemplate();

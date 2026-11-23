@@ -9,20 +9,20 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/time/clock.dart';
 import 'package:staka/features/account/data/repositories/account_repository_impl.dart';
 import 'package:staka/features/account/domain/repositories/account_repository.dart';
-import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
-import 'package:staka/features/admin/brands/domain/repositories/admin_brand_repository.dart';
-import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
-import 'package:staka/features/admin/claims/domain/repositories/admin_claim_repository.dart';
-import 'package:staka/features/admin/import/data/repositories/import_repository_impl.dart';
-import 'package:staka/features/admin/import/domain/repositories/import_repository.dart';
-import 'package:staka/features/admin/import/presentation/state/import_file_actions.dart';
-import 'package:staka/features/admin/products/data/repositories/admin_product_repository_impl.dart';
-import 'package:staka/features/admin/products/domain/repositories/admin_product_repository.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/auth/domain/models/otp_challenge.dart';
 import 'package:staka/features/auth/domain/models/otp_verification.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
+import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
+import 'package:staka/features/manage/brands/domain/repositories/admin_brand_repository.dart';
+import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
+import 'package:staka/features/manage/claims/domain/repositories/admin_claim_repository.dart';
+import 'package:staka/features/manage/import/data/repositories/import_repository_impl.dart';
+import 'package:staka/features/manage/import/domain/repositories/import_repository.dart';
+import 'package:staka/features/manage/import/presentation/state/import_file_actions.dart';
+import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
+import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/products/domain/repositories/product_repository.dart';
 import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart';
@@ -92,20 +92,20 @@ Future<InMemoryTokenStore> pumpApp(
         shareActionsProvider.overrideWithValue(
           shareActions ?? FakeShareActions(),
         ),
-        adminProductRepositoryProvider.overrideWithValue(
-          adminProducts ?? FakeAdminProductRepository(),
+        adminProductRepositoryProvider.overrideWith(
+          (_, _) => adminProducts ?? FakeAdminProductRepository(),
         ),
         adminBrandRepositoryProvider.overrideWithValue(
           adminBrands ?? FakeAdminBrandRepository(),
         ),
-        importRepositoryProvider.overrideWithValue(
-          importRepository ?? FakeImportRepository(),
+        importRepositoryProvider.overrideWith(
+          (_, _) => importRepository ?? FakeImportRepository(),
         ),
         importFileActionsProvider.overrideWithValue(
           importFileActions ?? FakeImportFileActions(),
         ),
-        adminClaimRepositoryProvider.overrideWithValue(
-          adminClaims ?? FakeAdminClaimRepository(),
+        adminClaimRepositoryProvider.overrideWith(
+          (_, _) => adminClaims ?? FakeAdminClaimRepository(),
         ),
         // The real camera needs a device.
         scanCameraProvider.overrideWithValue(

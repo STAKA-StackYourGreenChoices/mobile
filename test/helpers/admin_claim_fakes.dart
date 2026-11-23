@@ -6,8 +6,8 @@ import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/product.dart';
-import 'package:staka/features/admin/claims/domain/models/claim.dart';
-import 'package:staka/features/admin/claims/domain/repositories/admin_claim_repository.dart';
+import 'package:staka/features/manage/claims/domain/models/claim.dart';
+import 'package:staka/features/manage/claims/domain/repositories/admin_claim_repository.dart';
 
 typedef ClaimPageRequest = ({ClaimStatus status, int page});
 

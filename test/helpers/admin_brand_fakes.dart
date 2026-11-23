@@ -1,7 +1,7 @@
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
-import 'package:staka/features/admin/brands/domain/models/brand_draft.dart';
-import 'package:staka/features/admin/brands/domain/repositories/admin_brand_repository.dart';
+import 'package:staka/features/manage/brands/domain/models/brand_draft.dart';
+import 'package:staka/features/manage/brands/domain/repositories/admin_brand_repository.dart';
 
 /// Answers the brand list from `lists` in order (the last one repeats),
 /// saves and deletes from the `saves` and `deletes` scripts, recording

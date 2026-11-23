@@ -3,10 +3,10 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:staka/core/error/result.dart';
-import 'package:staka/features/admin/import/domain/models/import_report.dart';
-import 'package:staka/features/admin/import/domain/models/picked_csv.dart';
-import 'package:staka/features/admin/import/domain/repositories/import_repository.dart';
-import 'package:staka/features/admin/import/presentation/state/import_file_actions.dart';
+import 'package:staka/features/manage/import/domain/models/import_report.dart';
+import 'package:staka/features/manage/import/domain/models/picked_csv.dart';
+import 'package:staka/features/manage/import/domain/repositories/import_repository.dart';
+import 'package:staka/features/manage/import/presentation/state/import_file_actions.dart';
 
 /// Answers checks and imports from scripts, recording the files sent.
 class FakeImportRepository implements ImportRepository {

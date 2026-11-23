@@ -4,7 +4,7 @@ library;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
-import 'package:staka/features/admin/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/models/product_page.dart';
 
 import 'live_client.dart';
 
