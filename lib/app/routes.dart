@@ -25,6 +25,7 @@ enum AppRoute {
   accountPhone('/account/phone'),
   addEmail('/account/email'),
   setPassword('/account/set-password'),
+  deleteAccount('/account/delete'),
   product('/scan/product/:gtin'),
   tag('/wardrobe/tag/:id'),
   adminProducts('/admin/products'),

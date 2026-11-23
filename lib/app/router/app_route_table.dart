@@ -7,6 +7,7 @@ import 'package:staka/app/shell/app_navigation_shell.dart';
 import 'package:staka/features/account/presentation/screens/account_phone_screen.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
 import 'package:staka/features/account/presentation/screens/add_email_screen.dart';
+import 'package:staka/features/account/presentation/screens/delete_account_screen.dart';
 import 'package:staka/features/account/presentation/screens/set_password_screen.dart';
 import 'package:staka/features/admin/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/admin/claims/presentation/screens/admin_claim_screen.dart';
@@ -202,6 +203,11 @@ final appRouteTable = <RouteBase>[
                 AppRoute.account,
                 AppRoute.setPassword,
                 (_, _) => const SetPasswordScreen(),
+              ),
+              _child(
+                AppRoute.account,
+                AppRoute.deleteAccount,
+                (_, _) => const DeleteAccountScreen(),
               ),
             ],
           ),

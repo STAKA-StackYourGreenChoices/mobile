@@ -49,7 +49,8 @@ class LoginScreen extends ConsumerWidget {
           message: l10n.passwordChangedSignIn,
           tone: AlertTone.success,
         ),
-        null => null,
+        // Shown on welcome, where a deleted account lands.
+        SignedOutReason.accountDeleted || null => null,
       },
     };
 

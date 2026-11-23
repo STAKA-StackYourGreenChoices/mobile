@@ -8,8 +8,9 @@ import 'package:staka/shared/widgets/inputs/password_visibility_button.dart';
 /// Label above, input, hint and error below: the website's `TextField`.
 ///
 /// [errorText] is an error from the server (e.g. "An account already uses
-/// this email") and wins over [validator]. The label and field are merged
-/// for screen readers, so the field is announced by its label.
+/// this email") and wins over [validator] until the person edits the field,
+/// so the form can be sent again. The label and field are merged for screen
+/// readers, so the field is announced by its label.
 class AppTextField extends StatefulWidget {
   const new({
     required this.label,
@@ -53,6 +54,22 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   bool _isObscured = true;
 
+  /// Set once the field is edited after a server error: a pinned error
+  /// would also make the form's `validate()` fail on every later try.
+  bool _isServerErrorStale = false;
+
+  @override
+  void didUpdateWidget(AppTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // A new answer from the server (screens pass null while sending).
+    if (widget.errorText != oldWidget.errorText) _isServerErrorStale = false;
+  }
+
+  void _onChanged(String _) {
+    if (widget.errorText == null || _isServerErrorStale) return;
+    setState(() => _isServerErrorStale = true);
+  }
+
   @override
   Widget build(BuildContext context) {
     final obscure = widget.isPassword && _isObscured;
@@ -65,7 +82,8 @@ class _AppTextFieldState extends State<AppTextField> {
           TextFormField(
             controller: widget.controller,
             validator: widget.validator,
-            forceErrorText: widget.errorText,
+            forceErrorText: _isServerErrorStale ? null : widget.errorText,
+            onChanged: _onChanged,
             keyboardType: widget.keyboardType,
             textInputAction: widget.textInputAction,
             autofillHints: widget.autofillHints,

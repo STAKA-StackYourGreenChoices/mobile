@@ -65,6 +65,8 @@ void main() {
     // In the header and on the Email row.
     expect(find.text('ada@example.com'), findsNWidgets(2));
 
+    await tester.ensureVisible(find.text('Sign out'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Sign out'));
     await tester.pumpAndSettle();
     expect(find.text('Continue with phone number'), findsOneWidget);

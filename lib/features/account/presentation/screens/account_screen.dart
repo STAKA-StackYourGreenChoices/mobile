@@ -6,19 +6,24 @@ import 'package:staka/app/routes.dart';
 import 'package:staka/core/auth/session_controller.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/design/app_spacing.dart';
+import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/user.dart';
+import 'package:staka/core/state/request_state.dart';
 import 'package:staka/core/utils/phone_number.dart';
 import 'package:staka/features/account/presentation/state/account_controller.dart';
+import 'package:staka/features/account/presentation/state/account_data_controllers.dart';
 import 'package:staka/features/account/presentation/widgets/account_header.dart';
 import 'package:staka/features/account/presentation/widgets/account_link_tile.dart';
 import 'package:staka/features/account/presentation/widgets/account_section.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
+import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
+import 'package:staka/shared/widgets/feedback/app_snackbar.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// The Account tab: who is signed in, how they sign in (phone, email,
-/// password), sign out. The user comes from the session, so there is
-/// nothing to load here.
+/// password), their data (download, delete), sign out. The user comes from
+/// the session, so there is nothing to load here.
 class AccountScreen extends ConsumerWidget {
   const new({super.key});
 
@@ -34,6 +39,17 @@ class AccountScreen extends ConsumerWidget {
     // the router is leaving after sign-out.
     if (user == null) return const SizedBox.shrink();
     final isSigningOut = ref.watch(accountControllerProvider);
+    final export = ref.watch(exportDataControllerProvider);
+
+    ref.listen(exportDataControllerProvider, (_, next) {
+      if (next case RequestFailed(:final failure)) {
+        AppSnackbar.show(
+          context,
+          message: messageForFailure(failure, l10n),
+          tone: AlertTone.error,
+        );
+      }
+    });
 
     return AppScaffold(
       title: l10n.navAccount,
@@ -89,6 +105,27 @@ class AccountScreen extends ConsumerWidget {
                   label: l10n.setPasswordTitle,
                   onPressed: () => context.pushNamed(AppRoute.setPassword.name),
                 ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          AccountSection(
+            title: l10n.accountSectionData,
+            children: [
+              AccountLinkTile(
+                icon: Icons.download_rounded,
+                label: l10n.downloadData,
+                detail: l10n.downloadDataDetail,
+                isBusy: export is RequestSending,
+                onPressed: ref
+                    .read(exportDataControllerProvider.notifier)
+                    .download,
+              ),
+              AccountLinkTile(
+                icon: Icons.delete_outline_rounded,
+                label: l10n.deleteAccount,
+                isDestructive: true,
+                onPressed: () => context.pushNamed(AppRoute.deleteAccount.name),
+              ),
             ],
           ),
           const SizedBox(height: AppSpacing.xl),

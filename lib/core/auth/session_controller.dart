@@ -79,6 +79,13 @@ class SessionController extends _$SessionController {
     state = const SignedOut(reason: SignedOutReason.passwordChanged);
   }
 
+  /// The API deleted the account and revoked every session: forget the
+  /// tokens and go back to the welcome screen.
+  Future<void> signOutAfterAccountDeleted() async {
+    await _repository.clearTokens();
+    state = const SignedOut(reason: SignedOutReason.accountDeleted);
+  }
+
   Future<void> _loadUser({
     required SessionState whenUnreachable,
     bool isNewAccount = false,

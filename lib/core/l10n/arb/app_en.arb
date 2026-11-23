@@ -2465,5 +2465,70 @@
   "passwordSet": "Password set.",
   "@passwordSet": {
     "description": "Snackbar after setting a first password."
+  },
+  "accountSectionData": "Your data",
+  "@accountSectionData": {
+    "description": "Account screen: heading above download and delete."
+  },
+  "downloadData": "Download my data",
+  "@downloadData": {
+    "description": "Account row: export the account's data."
+  },
+  "downloadDataDetail": "Your profile, tags and claims as a file",
+  "@downloadDataDetail": {
+    "description": "Account row detail under Download my data."
+  },
+  "deleteAccount": "Delete my account",
+  "@deleteAccount": {
+    "description": "Account row, and the delete screen's button."
+  },
+  "deleteAccountTitle": "Delete your account",
+  "@deleteAccountTitle": {
+    "description": "Delete account screen heading."
+  },
+  "deleteAccountLede": "This can't be undone. Download your data first if you want a copy.",
+  "@deleteAccountLede": {
+    "description": "Delete account screen lede."
+  },
+  "deleteAccountRemovesProfile": "Your name, email and phone number are removed from STAKA.",
+  "@deleteAccountRemovesProfile": {
+    "description": "Delete account: what happens (1)."
+  },
+  "deleteAccountStopsShares": "Your tags and share links stop working.",
+  "@deleteAccountStopsShares": {
+    "description": "Delete account: what happens (2)."
+  },
+  "deleteAccountDeletesReceipts": "Your receipts are deleted once we no longer have to keep them.",
+  "@deleteAccountDeletesReceipts": {
+    "description": "Delete account: what happens (3)."
+  },
+  "deleteAccountSignsOut": "You're signed out on every device.",
+  "@deleteAccountSignsOut": {
+    "description": "Delete account: what happens (4)."
+  },
+  "deleteAccountConfirmPassword": "Enter your password to confirm.",
+  "@deleteAccountConfirmPassword": {
+    "description": "Delete account: above the password field."
+  },
+  "deleteAccountConfirmCode": "We'll text a code to {phone} to confirm.",
+  "@deleteAccountConfirmCode": {
+    "description": "Delete account for an account without a password.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "deletingAccount": "Deleting account…",
+  "@deletingAccount": {
+    "description": "Delete button while deleting."
+  },
+  "deleteAccountWrongPassword": "That isn't your password. Check it and try again.",
+  "@deleteAccountWrongPassword": {
+    "description": "Delete account: wrong password."
+  },
+  "accountDeleted": "Your account has been deleted.",
+  "@accountDeleted": {
+    "description": "Shown on the welcome screen after deleting the account."
   }
 }

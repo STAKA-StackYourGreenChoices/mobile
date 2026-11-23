@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:staka/core/error/failure.dart';
@@ -93,5 +96,44 @@ void main() {
     expect(email.data, {'email': 'ada@example.com'});
     expect((password.method, password.path), ('POST', '/me/password'));
     expect(password.data, {'newPassword': ' with spaces '});
+  });
+
+  test('export returns the API file byte for byte', () async {
+    api = FakeHttpAdapter([
+      json(200, {
+        'profile': {'name': 'Ada Lovelace'},
+        'cards': <Object?>[],
+      }),
+    ]);
+
+    final result = await repository().exportData();
+
+    expect(api.requests.single.method, 'GET');
+    expect(api.requests.single.path, '/me/export');
+    expect(
+      utf8.decode((result as Ok<Uint8List>).value),
+      '{"profile":{"name":"Ada Lovelace"},"cards":[]}',
+    );
+  });
+
+  test('delete sends the password or the code; a 401 is not retried', () async {
+    api = FakeHttpAdapter([
+      json(401, {'message': 'Invalid password'}),
+      json(204, null),
+    ]);
+
+    final wrong = await repository().deleteWithPassword(password: ' pw ');
+    final deleted = await repository().deleteWithCode(
+      challengeId: 'c1',
+      code: '123456',
+    );
+
+    expect((wrong as Err).failure, isA<UnauthorizedFailure>());
+    expect(deleted, isA<Ok<void>>());
+    final [byPassword, byCode] = api.requests;
+    expect((byPassword.method, byPassword.path), ('DELETE', '/me'));
+    expect(byPassword.data, {'password': ' pw '});
+    expect(byPassword.extra[AuthInterceptor.no401RetryKey], isTrue);
+    expect(byCode.data, {'challengeId': 'c1', 'code': '123456'});
   });
 }

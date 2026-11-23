@@ -67,6 +67,27 @@ void main() {
     );
   });
 
+  testWidgets('editing clears a server error, so the form can be sent', (
+    tester,
+  ) async {
+    const taken = 'An account already uses this email. Sign in instead.';
+    final formKey = GlobalKey<FormState>();
+    await pumpThemed(
+      tester,
+      Form(
+        key: formKey,
+        child: const AppTextField(label: 'Email', errorText: taken),
+      ),
+    );
+    expect(formKey.currentState!.validate(), isFalse);
+
+    await tester.enterText(find.byType(EditableText), 'ada@example.org');
+    await tester.pump();
+
+    expect(find.text(taken), findsNothing);
+    expect(formKey.currentState!.validate(), isTrue);
+  });
+
   testWidgets('password fields hide the text until toggled', (tester) async {
     await pumpThemed(
       tester,

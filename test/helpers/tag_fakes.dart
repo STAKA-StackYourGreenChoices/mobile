@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui';
 
@@ -92,6 +93,8 @@ class FakeShareActions implements ShareActions {
   final List<String> copied = [];
   final List<String> sharedTexts = [];
   final List<String> sharedImages = [];
+  final List<({String fileName, String mimeType, String text})> sharedFiles =
+      [];
   final List<String> opened = [];
 
   @override
@@ -112,6 +115,18 @@ class FakeShareActions implements ShareActions {
     required String text,
     Rect? origin,
   }) async => sharedImages.add(fileName);
+
+  @override
+  Future<void> shareFile({
+    required Uint8List bytes,
+    required String fileName,
+    required String mimeType,
+    Rect? origin,
+  }) async => sharedFiles.add((
+    fileName: fileName,
+    mimeType: mimeType,
+    text: utf8.decode(bytes),
+  ));
 
   @override
   Future<bool> open(String url) async {

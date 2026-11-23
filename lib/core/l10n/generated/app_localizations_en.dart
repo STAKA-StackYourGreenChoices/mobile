@@ -1753,18 +1753,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountEmailRow => 'Email';
 
   @override
-  String get accountPasswordRow => 'Password';
-
-  @override
   String get accountNotAdded => 'Not added';
 
   @override
   String accountEmailUnconfirmed(String email) {
     return '$email · not confirmed yet';
   }
-
-  @override
-  String get accountPasswordNotSet => 'Not set';
 
   @override
   String accountPhoneLede(String phone) {
@@ -1849,4 +1843,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordSet => 'Password set.';
+
+  @override
+  String get accountSectionData => 'Your data';
+
+  @override
+  String get downloadData => 'Download my data';
+
+  @override
+  String get downloadDataDetail => 'Your profile, tags and claims as a file';
+
+  @override
+  String get deleteAccount => 'Delete my account';
+
+  @override
+  String get deleteAccountTitle => 'Delete your account';
+
+  @override
+  String get deleteAccountLede =>
+      'This can\'t be undone. Download your data first if you want a copy.';
+
+  @override
+  String get deleteAccountRemovesProfile =>
+      'Your name, email and phone number are removed from STAKA.';
+
+  @override
+  String get deleteAccountStopsShares =>
+      'Your tags and share links stop working.';
+
+  @override
+  String get deleteAccountDeletesReceipts =>
+      'Your receipts are deleted once we no longer have to keep them.';
+
+  @override
+  String get deleteAccountSignsOut => 'You\'re signed out on every device.';
+
+  @override
+  String get deleteAccountConfirmPassword => 'Enter your password to confirm.';
+
+  @override
+  String deleteAccountConfirmCode(String phone) {
+    return 'We\'ll text a code to $phone to confirm.';
+  }
+
+  @override
+  String get deletingAccount => 'Deleting account…';
+
+  @override
+  String get deleteAccountWrongPassword =>
+      'That isn\'t your password. Check it and try again.';
+
+  @override
+  String get accountDeleted => 'Your account has been deleted.';
 }

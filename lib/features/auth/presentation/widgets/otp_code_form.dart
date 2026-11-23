@@ -17,10 +17,14 @@ class OtpCodeForm extends StatefulWidget {
     required this.now,
     required this.onSubmitted,
     required this.onResendPressed,
-    required this.onChangeNumberPressed,
+    this.onChangeNumberPressed,
     this.alertMessage,
     this.isChecking = false,
     this.isResending = false,
+    this.submitLabel,
+    this.submittingLabel,
+    this.isDestructive = false,
+    this.submitsOnLastDigit = true,
     super.key,
   });
 
@@ -28,10 +32,23 @@ class OtpCodeForm extends StatefulWidget {
   final DateTime Function() now;
   final ValueChanged<String> onSubmitted;
   final VoidCallback onResendPressed;
-  final VoidCallback onChangeNumberPressed;
+
+  /// No "Change number" button without it (e.g. the account's own number).
+  final VoidCallback? onChangeNumberPressed;
   final String? alertMessage;
   final bool isChecking;
   final bool isResending;
+
+  /// Defaults to "Continue" / "Checking…".
+  final String? submitLabel;
+  final String? submittingLabel;
+
+  /// The submit button in the danger colour, for deleting the account.
+  final bool isDestructive;
+
+  /// False when the code confirms something that can't be undone: the
+  /// person presses the button themselves.
+  final bool submitsOnLastDigit;
 
   @override
   State<OtpCodeForm> createState() => _OtpCodeFormState();
@@ -65,13 +82,16 @@ class _OtpCodeFormState extends State<OtpCodeForm> {
           controller: _code,
           hasError: widget.alertMessage != null,
           isEnabled: !widget.isChecking,
-          onCompleted: widget.onSubmitted,
+          onCompleted: widget.submitsOnLastDigit ? widget.onSubmitted : (_) {},
         ),
         ListenableBuilder(
           listenable: _code,
           builder: (context, _) => AppButton(
-            label: l10n.checkCode,
-            loadingLabel: l10n.checkingCode,
+            label: widget.submitLabel ?? l10n.checkCode,
+            loadingLabel: widget.submittingLabel ?? l10n.checkingCode,
+            variant: widget.isDestructive
+                ? AppButtonVariant.destructive
+                : AppButtonVariant.primary,
             isLoading: widget.isChecking,
             isExpanded: true,
             onPressed: _code.text.length == _length ? _submit : null,
@@ -87,11 +107,12 @@ class _OtpCodeFormState extends State<OtpCodeForm> {
               isSending: widget.isResending,
               onPressed: widget.onResendPressed,
             ),
-            AppButton(
-              label: l10n.changeNumber,
-              variant: AppButtonVariant.ghost,
-              onPressed: widget.onChangeNumberPressed,
-            ),
+            if (widget.onChangeNumberPressed case final onPressed?)
+              AppButton(
+                label: l10n.changeNumber,
+                variant: AppButtonVariant.ghost,
+                onPressed: onPressed,
+              ),
           ],
         ),
       ],

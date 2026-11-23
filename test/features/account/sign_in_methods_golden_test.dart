@@ -10,6 +10,7 @@ import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/features/account/presentation/screens/account_phone_screen.dart';
 import 'package:staka/features/account/presentation/screens/account_screen.dart';
 import 'package:staka/features/account/presentation/screens/add_email_screen.dart';
+import 'package:staka/features/account/presentation/screens/delete_account_screen.dart';
 import 'package:staka/features/account/presentation/screens/set_password_screen.dart';
 
 import '../../helpers/auth_fakes.dart';
@@ -47,16 +48,18 @@ void main() {
   setUpAll(loadAppFonts);
 
   final screens = {
-    'account_phone_only': const AccountScreen(),
-    'account_phone': const AccountPhoneScreen(),
-    'add_email': const AddEmailScreen(),
-    'set_password': const SetPasswordScreen(),
+    'account_phone_only': (const AccountScreen(), 760.0),
+    'account_phone': (const AccountPhoneScreen(), 640.0),
+    'add_email': (const AddEmailScreen(), 640.0),
+    'set_password': (const SetPasswordScreen(), 640.0),
+    // No password: confirmed with a texted code.
+    'delete_account_code': (const DeleteAccountScreen(), 760.0),
   };
 
-  for (final MapEntry(key: name, value: screen) in screens.entries) {
+  for (final MapEntry(key: name, value: (screen, height)) in screens.entries) {
     for (final brightness in Brightness.values) {
       testWidgets('$name screen, ${brightness.name}', (tester) async {
-        usePhoneScreen(tester, height: 640);
+        usePhoneScreen(tester, height: height);
         await pumpThemed(tester, _signedIn(screen), brightness: brightness);
         await tester.pumpAndSettle();
         await expectLater(

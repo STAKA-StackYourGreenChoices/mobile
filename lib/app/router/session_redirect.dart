@@ -14,6 +14,9 @@ String? redirectFor(SessionState session, String path) {
   return switch (session) {
     SessionRestoring() => goTo(AppRoute.launch),
     SessionUnreachable() => goTo(AppRoute.unreachable),
+    // A deleted account starts over at welcome.
+    SignedOut(reason: SignedOutReason.accountDeleted) when !atGuestRoute =>
+      AppRoute.welcome.path,
     // Signed out by the app (session ended, password changed): straight to
     // sign-in, which explains why.
     SignedOut(reason: _?) when !atGuestRoute => AppRoute.login.path,

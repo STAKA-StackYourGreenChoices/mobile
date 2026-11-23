@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/user.dart';
 import 'package:staka/features/auth/domain/models/otp_challenge.dart';
@@ -23,4 +25,18 @@ abstract interface class AccountRepository {
 
   /// Sets a first password (only when the account has none).
   Future<Result<void>> setPassword({required String newPassword});
+
+  /// Everything STAKA holds about the user, as the API's JSON file.
+  Future<Result<Uint8List>> exportData();
+
+  /// Deletes the account for good, confirmed with the password. 401 when
+  /// the password is wrong.
+  Future<Result<void>> deleteWithPassword({required String password});
+
+  /// Deletes the account for good, confirmed with a texted code. 401 when
+  /// the code is wrong, 410 when it has expired.
+  Future<Result<void>> deleteWithCode({
+    required String challengeId,
+    required String code,
+  });
 }

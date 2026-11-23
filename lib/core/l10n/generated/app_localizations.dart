@@ -2877,12 +2877,6 @@ abstract class AppLocalizations {
   /// **'Email'**
   String get accountEmailRow;
 
-  /// Account row: the password.
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get accountPasswordRow;
-
   /// Account row detail when there is no phone number or email yet.
   ///
   /// In en, this message translates to:
@@ -2894,12 +2888,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{email} · not confirmed yet'**
   String accountEmailUnconfirmed(String email);
-
-  /// Account password row detail when the account has no password.
-  ///
-  /// In en, this message translates to:
-  /// **'Not set'**
-  String get accountPasswordNotSet;
 
   /// Account phone screen, when there is a number.
   ///
@@ -3044,6 +3032,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password set.'**
   String get passwordSet;
+
+  /// Account screen: heading above download and delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data'**
+  String get accountSectionData;
+
+  /// Account row: export the account's data.
+  ///
+  /// In en, this message translates to:
+  /// **'Download my data'**
+  String get downloadData;
+
+  /// Account row detail under Download my data.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile, tags and claims as a file'**
+  String get downloadDataDetail;
+
+  /// Account row, and the delete screen's button.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete my account'**
+  String get deleteAccount;
+
+  /// Delete account screen heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your account'**
+  String get deleteAccountTitle;
+
+  /// Delete account screen lede.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone. Download your data first if you want a copy.'**
+  String get deleteAccountLede;
+
+  /// Delete account: what happens (1).
+  ///
+  /// In en, this message translates to:
+  /// **'Your name, email and phone number are removed from STAKA.'**
+  String get deleteAccountRemovesProfile;
+
+  /// Delete account: what happens (2).
+  ///
+  /// In en, this message translates to:
+  /// **'Your tags and share links stop working.'**
+  String get deleteAccountStopsShares;
+
+  /// Delete account: what happens (3).
+  ///
+  /// In en, this message translates to:
+  /// **'Your receipts are deleted once we no longer have to keep them.'**
+  String get deleteAccountDeletesReceipts;
+
+  /// Delete account: what happens (4).
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re signed out on every device.'**
+  String get deleteAccountSignsOut;
+
+  /// Delete account: above the password field.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password to confirm.'**
+  String get deleteAccountConfirmPassword;
+
+  /// Delete account for an account without a password.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll text a code to {phone} to confirm.'**
+  String deleteAccountConfirmCode(String phone);
+
+  /// Delete button while deleting.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting account…'**
+  String get deletingAccount;
+
+  /// Delete account: wrong password.
+  ///
+  /// In en, this message translates to:
+  /// **'That isn\'t your password. Check it and try again.'**
+  String get deleteAccountWrongPassword;
+
+  /// Shown on the welcome screen after deleting the account.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been deleted.'**
+  String get accountDeleted;
 }
 
 class _AppLocalizationsDelegate

@@ -61,6 +61,13 @@ void main() {
     expect(redirectFor(changed, '/account'), '/login');
   });
 
+  test('a deleted account starts over at welcome', () {
+    const deleted = SignedOut(reason: SignedOutReason.accountDeleted);
+    expect(redirectFor(deleted, '/account/delete'), '/welcome');
+    expect(redirectFor(deleted, '/welcome'), isNull);
+    expect(redirectFor(deleted, '/phone'), isNull);
+  });
+
   test('signed in: guest and launch pages go to the wardrobe', () {
     for (final path in [
       '/welcome',

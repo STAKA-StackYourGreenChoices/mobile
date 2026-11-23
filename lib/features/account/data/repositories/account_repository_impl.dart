@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:staka/core/api_models/user_mapper.dart';
@@ -52,4 +54,19 @@ class AccountRepositoryImpl implements AccountRepository {
   @override
   Future<Result<void>> setPassword({required String newPassword}) =>
       guardApi(() => _remote.setPassword(newPassword: newPassword));
+
+  @override
+  Future<Result<Uint8List>> exportData() => guardApi(_remote.exportData);
+
+  @override
+  Future<Result<void>> deleteWithPassword({required String password}) =>
+      guardApi(() => _remote.deleteAccount({'password': password}));
+
+  @override
+  Future<Result<void>> deleteWithCode({
+    required String challengeId,
+    required String code,
+  }) => guardApi(
+    () => _remote.deleteAccount({'challengeId': challengeId, 'code': code}),
+  );
 }

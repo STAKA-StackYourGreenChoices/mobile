@@ -27,6 +27,9 @@ enum SignedOutReason {
 
   /// The password was changed but signing back in on this phone failed.
   passwordChanged,
+
+  /// The person deleted their account (V2-10). Welcome, not sign-in.
+  accountDeleted,
 }
 
 final class SignedOut extends SessionState {

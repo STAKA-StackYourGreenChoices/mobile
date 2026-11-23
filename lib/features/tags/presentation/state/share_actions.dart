@@ -26,6 +26,15 @@ abstract interface class ShareActions {
     Rect? origin,
   });
 
+  /// A file for the share sheet (Save to Files, Drive, email…), e.g. the
+  /// account's data export.
+  Future<void> shareFile({
+    required Uint8List bytes,
+    required String fileName,
+    required String mimeType,
+    Rect? origin,
+  });
+
   /// False when no app could open it.
   Future<bool> open(String url);
 }
@@ -65,6 +74,20 @@ class DeviceShareActions implements ShareActions {
       files: [XFile.fromData(png, mimeType: 'image/png', name: fileName)],
       fileNameOverrides: [fileName],
       text: text,
+      sharePositionOrigin: origin,
+    ),
+  );
+
+  @override
+  Future<void> shareFile({
+    required Uint8List bytes,
+    required String fileName,
+    required String mimeType,
+    Rect? origin,
+  }) => SharePlus.instance.share(
+    ShareParams(
+      files: [XFile.fromData(bytes, mimeType: mimeType, name: fileName)],
+      fileNameOverrides: [fileName],
       sharePositionOrigin: origin,
     ),
   );

@@ -64,7 +64,17 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] Release APK builds (72.8 MB, debug-signed) and works on the phone against the local API over http
 - [ ] Next: talk with the user about hosting so the app works on a friend's phone
 
+## V2 — M1 Identity (plan: `D:\Additional Project\plans\mobile\PLAN.md`)
+`[~]` below = built and tested with fakes; not yet run against a real API (the friends' API needs the V2 endpoints).
+- [~] `chore/v2-foundation`: version 2.0.0+2, V2 decisions (Account sections landed with the next two slices)
+- [~] `feat/phone-otp-sign-in` (V2-1): welcome → phone → code → name; phone-only accounts; `AppOtpField`
+- [~] `feat/account-sign-in-methods` (V2-1): Account "How you sign in": add/change/remove phone, add email, set first password
+- [~] `feat/account-data` (V2-10): Account "Your data": download (share sheet), delete with password or texted code → welcome
+- [ ] M1 check: USB phone run against the local API once it has the V2-1/V2-10 endpoints; V2-11 performance check (200-piece wardrobe, 1,000 products) needs the API's 1,000-product seed
+- [ ] Arham's go-ahead for M2
+
 ## Session log (newest first, one line each)
+- 2026-11-23 — M1 slices built: phone sign-in, Account sign-in methods, Your data (export + delete). 372 tests pass. Fixed a V1 bug: after a server error on a field (wrong current password, taken email) the form could not be sent again. Not yet run against a real API.
 - 2026-11-15 — Phase 6 (cut-down): icon, splash, name/id, README; 318 tests pass; release APK checked on the phone. Next: hosting talk.
 - 2026-11-15 — Phase 5 done on Android: device scripts + hand checks + edge cases; 2 bugs fixed; report `PHASE5_VERIFICATION.md`. Waiting for the go-ahead for Phase 6.
 - 2026-11-15 — Phase 4: auth attempt limits in api/ (55/55 e2e) + app 429 copy; 17/17 live tests pass 3× back to back. Phase 5 next.
