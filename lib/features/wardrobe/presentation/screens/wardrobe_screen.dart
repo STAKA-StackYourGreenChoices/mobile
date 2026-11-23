@@ -7,6 +7,7 @@ import 'package:staka/core/auth/session_controller.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/l10n/l10n.dart';
+import 'package:staka/core/models/user.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
 import 'package:staka/features/wardrobe/presentation/state/verify_email_controller.dart';
@@ -64,12 +65,15 @@ class WardrobeScreen extends ConsumerWidget {
             AppRoute.tag.name,
             pathParameters: {'id': card.id},
           ),
-          banner: session.user.emailVerified
-              ? null
-              : _VerifyEmailSection(
-                  email: session.user.email,
-                  isJustJoined: session.isNewAccount,
-                ),
+          // A phone-only account has no email to confirm.
+          banner: switch (session.user) {
+            User(emailVerified: false, :final String email) =>
+              _VerifyEmailSection(
+                email: email,
+                isJustJoined: session.isNewAccount,
+              ),
+            _ => null,
+          },
         ),
       },
     );

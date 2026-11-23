@@ -2206,5 +2206,128 @@
         "type": "String"
       }
     }
+  },
+  "continueWithPhone": "Continue with phone number",
+  "@continueWithPhone": {
+    "description": "Welcome screen main button (V2-1): sign in or sign up with a text-message code."
+  },
+  "useEmailInstead": "Use email instead",
+  "@useEmailInstead": {
+    "description": "Welcome screen second button: the email and password sign-in."
+  },
+  "phoneTitle": "Your phone number",
+  "@phoneTitle": {
+    "description": "Phone sign-in screen heading."
+  },
+  "phoneLede": "We'll text you a 6-digit code. New to STAKA? The same code creates your account.",
+  "@phoneLede": {
+    "description": "Phone sign-in screen lede."
+  },
+  "fieldPhone": "Mobile number",
+  "@fieldPhone": {
+    "description": "Phone number field label."
+  },
+  "phoneHelper": "A 10-digit Indian number, or start with + and the country code.",
+  "@phoneHelper": {
+    "description": "Helper under the phone field."
+  },
+  "phoneInvalid": "Enter a 10-digit mobile number, or a number that starts with + and the country code.",
+  "@phoneInvalid": {
+    "description": "Phone field error."
+  },
+  "sendCode": "Send code",
+  "@sendCode": {
+    "description": "Phone sign-in button."
+  },
+  "sendingCode": "Sending code…",
+  "@sendingCode": {
+    "description": "Phone sign-in button while sending."
+  },
+  "codeTitle": "Enter the code",
+  "@codeTitle": {
+    "description": "Code screen heading."
+  },
+  "codeLede": "We sent a 6-digit code to {phone}. It works for {minutes, plural, =1{1 minute} other{{minutes} minutes}}.",
+  "@codeLede": {
+    "description": "Code screen lede.",
+    "placeholders": {
+      "phone": {
+        "type": "String",
+        "example": "+91 98765 43210"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "fieldCode": "6-digit code",
+  "@fieldCode": {
+    "description": "Code field label (read by screen readers)."
+  },
+  "checkCode": "Continue",
+  "@checkCode": {
+    "description": "Code screen button."
+  },
+  "checkingCode": "Checking…",
+  "@checkingCode": {
+    "description": "Code screen button while checking."
+  },
+  "resendCode": "Resend code",
+  "@resendCode": {
+    "description": "Link that sends a new code."
+  },
+  "resendCodeIn": "Resend code in {time}",
+  "@resendCodeIn": {
+    "description": "Countdown before a new code can be sent.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "0:24"
+      }
+    }
+  },
+  "resendingCode": "Sending a new code…",
+  "@resendingCode": {
+    "description": "While a new code is being sent."
+  },
+  "codeResent": "We sent a new code.",
+  "@codeResent": {
+    "description": "Snackbar after a new code was sent."
+  },
+  "changeNumber": "Change number",
+  "@changeNumber": {
+    "description": "Code screen link back to the phone number."
+  },
+  "codeWrong": "That code isn't right. Check the message and try again.",
+  "@codeWrong": {
+    "description": "Wrong code (API 401)."
+  },
+  "codeExpired": "This code has expired. Ask for a new one.",
+  "@codeExpired": {
+    "description": "Expired or used-up code (API 410)."
+  },
+  "nameTitle": "What should we call you?",
+  "@nameTitle": {
+    "description": "Name screen heading for a new phone account."
+  },
+  "nameLede": "This is the name on your account. You can add an email later in Account.",
+  "@nameLede": {
+    "description": "Name screen lede."
+  },
+  "startAgain": "Start again",
+  "@startAgain": {
+    "description": "Button when the sign-in code screens lost their state."
+  },
+  "signInWithEmailPrompt": "Signed up with email?",
+  "@signInWithEmailPrompt": {
+    "description": "Phone sign-in screen: prompt before the link to email sign-in."
+  },
+  "signInWithPhonePrompt": "No email on your account?",
+  "@signInWithPhonePrompt": {
+    "description": "Sign-in screen prompt above the phone link."
+  },
+  "signInWithPhone": "Use your phone number",
+  "@signInWithPhone": {
+    "description": "Sign-in screen link to phone sign-in."
   }
 }

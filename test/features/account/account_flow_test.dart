@@ -66,7 +66,7 @@ void main() {
 
     await tester.tap(find.text('Sign out'));
     await tester.pumpAndSettle();
-    expect(find.text('Create an account'), findsOneWidget);
+    expect(find.text('Continue with phone number'), findsOneWidget);
   });
 
   testWidgets('wrong current password is shown on that field', (tester) async {

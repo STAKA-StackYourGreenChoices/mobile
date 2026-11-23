@@ -25,7 +25,14 @@ Finder _field(String label) => find.descendant(
 );
 
 Future<void> _openSignIn(WidgetTester tester) async {
-  await tester.tap(find.text('Sign in'));
+  await tester.tap(find.text('Use email instead'));
+  await tester.pumpAndSettle();
+}
+
+/// Register is one step further now: welcome, email sign-in, then its link.
+Future<void> _openRegister(WidgetTester tester) async {
+  await _openSignIn(tester);
+  await tester.tap(find.text('Create an account'));
   await tester.pumpAndSettle();
 }
 
@@ -127,7 +134,7 @@ void main() {
     await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
 
-    expect(find.text('Create an account'), findsOneWidget);
+    expect(find.text('Continue with phone number'), findsOneWidget);
   });
 
   testWidgets('register: a taken email is shown on the email field', (
@@ -139,8 +146,7 @@ void main() {
         const Err(ConflictFailure(['taken'])),
       ]),
     );
-    await tester.tap(find.text('Create an account'));
-    await tester.pumpAndSettle();
+    await _openRegister(tester);
 
     await tester.enterText(_field('Your name'), 'Ada Lovelace');
     await tester.enterText(_field('Email'), 'ada@example.com');
@@ -159,8 +165,7 @@ void main() {
   ) async {
     final auth = FakeAuthRepository([]);
     await pumpApp(tester, auth: auth);
-    await tester.tap(find.text('Create an account'));
-    await tester.pumpAndSettle();
+    await _openRegister(tester);
 
     await tester.enterText(_field('Your name'), 'Ada');
     await tester.enterText(_field('Email'), 'ada@example.com');
@@ -175,8 +180,7 @@ void main() {
   testWidgets('register success signs in as a new account', (tester) async {
     final auth = FakeAuthRepository([const Ok(_session)]);
     await pumpApp(tester, auth: auth);
-    await tester.tap(find.text('Create an account'));
-    await tester.pumpAndSettle();
+    await _openRegister(tester);
 
     await tester.enterText(_field('Your name'), 'Ada Lovelace');
     await tester.enterText(_field('Email'), 'ada@example.com');

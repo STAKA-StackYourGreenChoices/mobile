@@ -74,6 +74,12 @@ class LoginScreen extends ConsumerWidget {
             onPressed: () =>
                 context.pushReplacementNamed(AppRoute.register.name),
           ),
+          AuthSwitchLink(
+            prompt: l10n.signInWithPhonePrompt,
+            actionLabel: l10n.signInWithPhone,
+            onPressed: () =>
+                context.pushReplacementNamed(AppRoute.phoneSignIn.name),
+          ),
         ],
       ),
     );

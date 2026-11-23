@@ -6,6 +6,7 @@ import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
+import 'package:staka/core/time/clock.dart';
 import 'package:staka/features/admin/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/admin/brands/domain/repositories/admin_brand_repository.dart';
 import 'package:staka/features/admin/claims/data/repositories/admin_claim_repository_impl.dart';
@@ -17,6 +18,8 @@ import 'package:staka/features/admin/products/data/repositories/admin_product_re
 import 'package:staka/features/admin/products/domain/repositories/admin_product_repository.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
+import 'package:staka/features/auth/domain/models/otp_challenge.dart';
+import 'package:staka/features/auth/domain/models/otp_verification.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/products/domain/repositories/product_repository.dart';
@@ -58,6 +61,7 @@ Future<InMemoryTokenStore> pumpApp(
   ImportRepository? importRepository,
   ImportFileActions? importFileActions,
   AdminClaimRepository? adminClaims,
+  DateTime Function()? clock,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -105,6 +109,7 @@ Future<InMemoryTokenStore> pumpApp(
           ({required onGtinFound}) => FakeScanCamera(onGtinFound: onGtinFound),
         ),
         if (auth != null) authRepositoryProvider.overrideWithValue(auth),
+        if (clock != null) clockProvider.overrideWithValue(clock),
       ],
       child: const App(),
     ),
@@ -114,16 +119,23 @@ Future<InMemoryTokenStore> pumpApp(
 }
 
 /// Answers from scripts and records what it was asked: `results` for
-/// login/register, `requests` for reset-link and change-password.
+/// login/register, `requests` for reset-link and change-password, `codes`
+/// and `checks` for phone sign-in.
 class FakeAuthRepository implements AuthRepository {
   new(
     List<Result<AuthSession>> results, {
     List<Result<void>> requests = const [],
+    List<Result<OtpChallenge>> codes = const [],
+    List<Result<OtpVerification>> checks = const [],
   }) : _results = [...results],
-       _requests = [...requests];
+       _requests = [...requests],
+       _codes = [...codes],
+       _checks = [...checks];
 
   final List<Result<AuthSession>> _results;
   final List<Result<void>> _requests;
+  final List<Result<OtpChallenge>> _codes;
+  final List<Result<OtpVerification>> _checks;
   final List<Map<String, String>> calls = [];
 
   @override
@@ -162,5 +174,26 @@ class FakeAuthRepository implements AuthRepository {
   }) async {
     calls.add({'name': name, 'email': email, 'password': password});
     return _results.removeAt(0);
+  }
+
+  @override
+  Future<Result<OtpChallenge>> requestOtp({required String phone}) async {
+    calls.add({'call': 'otpRequest', 'phone': phone});
+    return _codes.removeAt(0);
+  }
+
+  @override
+  Future<Result<OtpVerification>> verifyOtp({
+    required String challengeId,
+    required String code,
+    String? name,
+  }) async {
+    calls.add({
+      'call': 'otpVerify',
+      'challengeId': challengeId,
+      'code': code,
+      'name': ?name,
+    });
+    return _checks.removeAt(0);
   }
 }

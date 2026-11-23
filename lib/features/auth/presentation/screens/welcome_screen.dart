@@ -11,9 +11,9 @@ import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// First screen for signed-out people: what STAKA does, in the website's
-/// words, then one primary action (create an account) and sign in second
-/// (DECISIONS.md #6), then a real tag swinging from its string, as on the
-/// website's phone layout.
+/// words, then one primary action (phone number, V2-1) and email second
+/// (DECISIONS.md #6; email sign-in links on to create an account), then a
+/// real tag swinging from its string, as on the website's phone layout.
 class WelcomeScreen extends StatelessWidget {
   const new({super.key});
 
@@ -35,13 +35,13 @@ class WelcomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           AppButton(
-            label: l10n.createAccount,
+            label: l10n.continueWithPhone,
             isExpanded: true,
-            onPressed: () => context.pushNamed(AppRoute.register.name),
+            onPressed: () => context.pushNamed(AppRoute.phoneSignIn.name),
           ),
           const SizedBox(height: AppSpacing.sm),
           AppButton(
-            label: l10n.signIn,
+            label: l10n.useEmailInstead,
             variant: AppButtonVariant.secondary,
             isExpanded: true,
             onPressed: () => context.pushNamed(AppRoute.login.name),

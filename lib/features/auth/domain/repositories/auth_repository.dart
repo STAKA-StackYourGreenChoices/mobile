@@ -1,5 +1,7 @@
 import 'package:staka/core/error/result.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
+import 'package:staka/features/auth/domain/models/otp_challenge.dart';
+import 'package:staka/features/auth/domain/models/otp_verification.dart';
 
 /// Signing in and creating accounts. Session storage and sign-out live in
 /// `core/auth`, because every feature depends on them.
@@ -26,5 +28,19 @@ abstract interface class AuthRepository {
   Future<Result<void>> changePassword({
     required String currentPassword,
     required String newPassword,
+  });
+
+  /// Texts a 6-digit code to [phone] (E.164). The API answers the same
+  /// whether or not the number has an account. `BadRequestFailure` means
+  /// the number isn't valid; `TooManyRequestsFailure`, asked too often.
+  Future<Result<OtpChallenge>> requestOtp({required String phone});
+
+  /// Checks [code]. Signs in (or, with [name], creates the account).
+  /// `UnauthorizedFailure` means a wrong code; `BadRequestFailure` with
+  /// status 410 means the code expired or was used up.
+  Future<Result<OtpVerification>> verifyOtp({
+    required String challengeId,
+    required String code,
+    String? name,
   });
 }

@@ -18,13 +18,24 @@ void main() {
       find.text('Your clothes, with their footprint attached.'),
       findsOneWidget,
     );
-    expect(find.text('Create an account'), findsOneWidget);
+    expect(find.text('Continue with phone number'), findsOneWidget);
+    expect(find.text('Use email instead'), findsOneWidget);
     expect(find.byType(NavigationBar), findsNothing);
   });
 
-  testWidgets('welcome actions open register and sign-in', (tester) async {
+  testWidgets('welcome actions open phone sign-in, email sign-in, register', (
+    tester,
+  ) async {
     await pumpApp(tester);
 
+    await tester.tap(find.text('Continue with phone number'));
+    await tester.pumpAndSettle();
+    expect(find.text('Your phone number'), findsOneWidget);
+
+    await tester.tap(find.byType(BackButton));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Use email instead'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Create an account'));
     await tester.pumpAndSettle();
     expect(find.text('Create your STAKA account'), findsOneWidget);
@@ -82,6 +93,6 @@ void main() {
 
     await tester.tap(find.text('Sign out'));
     await tester.pumpAndSettle();
-    expect(find.text('Create an account'), findsOneWidget);
+    expect(find.text('Continue with phone number'), findsOneWidget);
   });
 }

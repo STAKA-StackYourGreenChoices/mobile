@@ -50,7 +50,13 @@ class ClaimRow extends StatelessWidget {
                       style: context.text.label,
                     ),
                     Text(
-                      l10n.claimUserLine(claim.user.name, claim.user.email),
+                      switch (claim.user.email) {
+                        final email? => l10n.claimUserLine(
+                          claim.user.name,
+                          email,
+                        ),
+                        null => claim.user.name,
+                      },
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: muted,

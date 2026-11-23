@@ -5,7 +5,10 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/guard_api.dart';
 import 'package:staka/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:staka/features/auth/data/mappers/auth_session_mapper.dart';
+import 'package:staka/features/auth/data/mappers/otp_mapper.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
+import 'package:staka/features/auth/domain/models/otp_challenge.dart';
+import 'package:staka/features/auth/domain/models/otp_verification.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
 
 part 'auth_repository_impl.g.dart';
@@ -61,4 +64,27 @@ class AuthRepositoryImpl implements AuthRepository {
       newPassword: newPassword,
     ),
   );
+
+  @override
+  Future<Result<OtpChallenge>> requestOtp({required String phone}) =>
+      guardApi(() async {
+        final response = await _remote.requestOtp(phone: phone);
+        return response.toDomain(phone: phone);
+      });
+
+  /// The code is sent as typed (digits only); the name is trimmed like the
+  /// register form's.
+  @override
+  Future<Result<OtpVerification>> verifyOtp({
+    required String challengeId,
+    required String code,
+    String? name,
+  }) => guardApi(() async {
+    final response = await _remote.verifyOtp(
+      challengeId: challengeId,
+      code: code,
+      name: name?.trim(),
+    );
+    return response.toDomain();
+  });
 }

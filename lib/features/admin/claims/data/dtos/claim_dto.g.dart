@@ -27,7 +27,7 @@ ClaimDto _$ClaimDtoFromJson(Map<String, dynamic> json) => ClaimDto(
 ClaimUserDto _$ClaimUserDtoFromJson(Map<String, dynamic> json) => ClaimUserDto(
   id: json['id'] as String,
   name: json['name'] as String,
-  email: json['email'] as String,
+  email: json['email'] as String?,
 );
 
 ClaimProductDto _$ClaimProductDtoFromJson(Map<String, dynamic> json) =>

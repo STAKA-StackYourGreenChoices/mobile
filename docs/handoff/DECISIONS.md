@@ -76,5 +76,8 @@ _None._
 | V2 | Links | No App Links; `/t` and `/w` links keep opening the website |
 | V2 | Packages | Approved: `qr_flutter`, `firebase_core`, `firebase_messaging`, `flutter_local_notifications`, an SMS code reader (pick in the V2-1 slice) |
 | V2 | Brands run themselves (V2-12) | Brands register; a STAKA admin approves each brand once; then the brand runs its catalog, **checks its own products' proofs of purchase**, and runs its rewards + voucher codes. Admins: approve/suspend brands, disputes, overrule, rules, users, analytics. Brand portal in the website **and** the app (Brand tab). App plan: move `features/admin/` to `features/manage/` with `ManageScope` first |
+| V2 | Goldens | Update a golden only when the slice deliberately changes that screen; look at the new image first, and list every updated golden in the slice summary (Arham, 2026-11-23) |
+| V2-1 | Phone sign-in screens | Welcome: "Continue with phone number" primary, "Use email instead" second (register is reached from email sign-in). Routes `/phone`, `/phone/code`, `/phone/name`. Six digits submit on their own; Resend after 30 s on the app clock (`clockProvider`); a new number gets a name step that resends the same code with the name |
+| V2-1 | SMS code reader | Not added yet: V2 sends no real SMS (codes are in the API log), so there is nothing to read. The keyboard's one-time-code autofill hint is in place; add the reader package when the API sends real texts |
 | V2 | OCR / test data | Receipt OCR self-hosted (Tesseract) on the API; test catalog images are generated placeholders |
 | — | Test accounts | From `api/src/prisma/seed.ts` header (demo user + admin). Never copy passwords into docs/chat |
