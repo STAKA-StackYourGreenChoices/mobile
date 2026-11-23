@@ -1895,4 +1895,220 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountDeleted => 'Your account has been deleted.';
+
+  @override
+  String get accountSectionBrands => 'For brands';
+
+  @override
+  String get bringYourBrand => 'Bring your brand to STAKA';
+
+  @override
+  String get bringYourBrandDetail =>
+      'Apply, or see how your application is going';
+
+  @override
+  String get brandApplyIntroBody =>
+      'Once STAKA has checked your details, your team runs your brand here: no waiting on us.';
+
+  @override
+  String get brandApplyBenefitCatalog =>
+      'Add your products and their sustainability figures.';
+
+  @override
+  String get brandApplyBenefitClaims =>
+      'Check your shoppers\' proofs of purchase yourself.';
+
+  @override
+  String get brandApplyBenefitRewards =>
+      'Reward the people who buy and keep your clothes.';
+
+  @override
+  String get brandApplyNeedsTitle => 'What we need';
+
+  @override
+  String get brandApplyNeedsBody =>
+      'Your brand\'s legal name and a contact email. A business document, such as your GST certificate, helps us check faster.';
+
+  @override
+  String get brandApplyStart => 'Start your application';
+
+  @override
+  String get brandApplyAnother => 'Apply for another brand';
+
+  @override
+  String get brandStatusPending => 'Being checked';
+
+  @override
+  String get brandStatusApproved => 'Approved';
+
+  @override
+  String get brandStatusRejected => 'Not approved';
+
+  @override
+  String get brandStatusSuspended => 'Paused';
+
+  @override
+  String get brandStatusPendingBody =>
+      'We\'re checking your details and will let you know.';
+
+  @override
+  String brandStatusApprovedBody(String brand) {
+    return '$brand is on STAKA. Your team can now run it.';
+  }
+
+  @override
+  String get brandStatusRejectedBody =>
+      'STAKA couldn\'t approve this application. Fix what\'s needed and send it again.';
+
+  @override
+  String brandStatusSuspendedBody(String brand) {
+    return 'STAKA has paused $brand. Its products stay visible to shoppers.';
+  }
+
+  @override
+  String brandStatusReason(String reason) {
+    return 'Reason: $reason';
+  }
+
+  @override
+  String brandAppliedOn(String date) {
+    return 'Applied $date';
+  }
+
+  @override
+  String get brandEditAndResubmit => 'Edit and resubmit';
+
+  @override
+  String get brandApplyTitle => 'Apply for your brand';
+
+  @override
+  String get brandEditTitle => 'Edit your application';
+
+  @override
+  String brandApplyStepOf(int step, int total) {
+    return 'Step $step of $total';
+  }
+
+  @override
+  String get brandStepBrand => 'Your brand';
+
+  @override
+  String get brandStepContact => 'How we reach you';
+
+  @override
+  String get brandStepContactBody => 'STAKA uses these only about your brand.';
+
+  @override
+  String get brandStepFiles => 'Logo and documents';
+
+  @override
+  String get brandAlreadyListed => 'My brand is already on STAKA';
+
+  @override
+  String get brandAlreadyListedHint =>
+      'Pick it to take it over with its products.';
+
+  @override
+  String get chooseYourBrand => 'Choose your brand';
+
+  @override
+  String get listedBrandsFailed => 'Couldn\'t load the brands on STAKA.';
+
+  @override
+  String get fieldLegalName => 'Legal name';
+
+  @override
+  String get legalNameHint => 'As on your business registration.';
+
+  @override
+  String get validationLegalName => 'Enter your brand\'s legal name';
+
+  @override
+  String get fieldWebsite => 'Website';
+
+  @override
+  String get websitePlaceholder => 'https://yourbrand.com';
+
+  @override
+  String get fieldGstin => 'GSTIN';
+
+  @override
+  String get gstinHint => 'Optional. 15 characters, e.g. 22AAAAA0000A1Z5.';
+
+  @override
+  String get validationGstin => 'Enter a valid 15-character GSTIN';
+
+  @override
+  String get fieldContactEmail => 'Contact email';
+
+  @override
+  String get fieldContactPhone => 'Contact phone';
+
+  @override
+  String get brandLogo => 'Logo';
+
+  @override
+  String get brandLogoHint => 'A square image, up to 2 MB. Optional.';
+
+  @override
+  String get chooseLogo => 'Choose logo';
+
+  @override
+  String get logoTooLarge =>
+      'That image is larger than 2 MB. Choose a smaller one.';
+
+  @override
+  String get logoKept => 'Leave this to keep the logo you sent.';
+
+  @override
+  String get businessDocument => 'Business document';
+
+  @override
+  String get businessDocumentHint =>
+      'GST certificate or company registration, as a PDF or photo, up to 5 MB. Optional, but it helps us check faster.';
+
+  @override
+  String get addDocument => 'Add document';
+
+  @override
+  String get documentTooLarge =>
+      'That file is larger than 5 MB. Choose a smaller one.';
+
+  @override
+  String get documentKept =>
+      'Leave this to keep the document you sent, if any.';
+
+  @override
+  String get replaceFile => 'Replace';
+
+  @override
+  String get removeFile => 'Remove';
+
+  @override
+  String get continueStep => 'Continue';
+
+  @override
+  String get sendApplication => 'Send application';
+
+  @override
+  String get sendingApplication => 'Sending application…';
+
+  @override
+  String get applicationSent =>
+      'Application sent. We\'ll let you know when STAKA has checked it.';
+
+  @override
+  String get brandNameOnStaka =>
+      'A brand with this name already runs itself on STAKA.';
+
+  @override
+  String get applicationNotFound => 'We couldn\'t find that application.';
+
+  @override
+  String get applicationNotFoundBody =>
+      'It may have been withdrawn. Go back to see your applications.';
+
+  @override
+  String get aboutYourBrandHint =>
+      'Optional. One sentence on what you make and how.';
 }

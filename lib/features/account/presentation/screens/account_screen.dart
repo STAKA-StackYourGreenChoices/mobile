@@ -22,7 +22,8 @@ import 'package:staka/shared/widgets/feedback/app_snackbar.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// The Account tab: who is signed in, how they sign in (phone, email,
-/// password), their data (download, delete), sign out. The user comes from
+/// password), their data (download, delete), bringing a brand to STAKA,
+/// sign out. The user comes from
 /// the session, so there is nothing to load here.
 class AccountScreen extends ConsumerWidget {
   const new({super.key});
@@ -125,6 +126,19 @@ class AccountScreen extends ConsumerWidget {
                 label: l10n.deleteAccount,
                 isDestructive: true,
                 onPressed: () => context.pushNamed(AppRoute.deleteAccount.name),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          AccountSection(
+            title: l10n.accountSectionBrands,
+            children: [
+              AccountLinkTile(
+                icon: Icons.storefront_outlined,
+                label: l10n.bringYourBrand,
+                detail: l10n.bringYourBrandDetail,
+                onPressed: () =>
+                    context.pushNamed(AppRoute.brandApplications.name),
               ),
             ],
           ),

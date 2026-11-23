@@ -2530,5 +2530,285 @@
   "accountDeleted": "Your account has been deleted.",
   "@accountDeleted": {
     "description": "Shown on the welcome screen after deleting the account."
+  },
+  "accountSectionBrands": "For brands",
+  "@accountSectionBrands": {
+    "description": "Account: section heading for the brand sign-up row."
+  },
+  "bringYourBrand": "Bring your brand to STAKA",
+  "@bringYourBrand": {
+    "description": "Account row and screen title: apply to run a brand on STAKA (V2-12)."
+  },
+  "bringYourBrandDetail": "Apply, or see how your application is going",
+  "@bringYourBrandDetail": {
+    "description": "Account: under the brand sign-up row."
+  },
+  "brandApplyIntroBody": "Once STAKA has checked your details, your team runs your brand here: no waiting on us.",
+  "@brandApplyIntroBody": {
+    "description": "Brand sign-up intro: first paragraph."
+  },
+  "brandApplyBenefitCatalog": "Add your products and their sustainability figures.",
+  "@brandApplyBenefitCatalog": {
+    "description": "Brand sign-up intro: what a brand gets (1)."
+  },
+  "brandApplyBenefitClaims": "Check your shoppers' proofs of purchase yourself.",
+  "@brandApplyBenefitClaims": {
+    "description": "Brand sign-up intro: what a brand gets (2)."
+  },
+  "brandApplyBenefitRewards": "Reward the people who buy and keep your clothes.",
+  "@brandApplyBenefitRewards": {
+    "description": "Brand sign-up intro: what a brand gets (3)."
+  },
+  "brandApplyNeedsTitle": "What we need",
+  "@brandApplyNeedsTitle": {
+    "description": "Brand sign-up intro: heading above what to have ready."
+  },
+  "brandApplyNeedsBody": "Your brand's legal name and a contact email. A business document, such as your GST certificate, helps us check faster.",
+  "@brandApplyNeedsBody": {
+    "description": "Brand sign-up intro: what to have ready."
+  },
+  "brandApplyStart": "Start your application",
+  "@brandApplyStart": {
+    "description": "Brand sign-up intro: button that opens the form."
+  },
+  "brandApplyAnother": "Apply for another brand",
+  "@brandApplyAnother": {
+    "description": "Brand applications list: button under the list."
+  },
+  "brandStatusPending": "Being checked",
+  "@brandStatusPending": {
+    "description": "Brand application status chip: sent, not yet checked."
+  },
+  "brandStatusApproved": "Approved",
+  "@brandStatusApproved": {
+    "description": "Brand application status chip: approved."
+  },
+  "brandStatusRejected": "Not approved",
+  "@brandStatusRejected": {
+    "description": "Brand application status chip: rejected."
+  },
+  "brandStatusSuspended": "Paused",
+  "@brandStatusSuspended": {
+    "description": "Brand status chip: STAKA paused an approved brand."
+  },
+  "brandStatusPendingBody": "We're checking your details and will let you know.",
+  "@brandStatusPendingBody": {
+    "description": "Brand application card: pending."
+  },
+  "brandStatusApprovedBody": "{brand} is on STAKA. Your team can now run it.",
+  "@brandStatusApprovedBody": {
+    "description": "Brand application card: approved.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandStatusRejectedBody": "STAKA couldn't approve this application. Fix what's needed and send it again.",
+  "@brandStatusRejectedBody": {
+    "description": "Brand application card: rejected."
+  },
+  "brandStatusSuspendedBody": "STAKA has paused {brand}. Its products stay visible to shoppers.",
+  "@brandStatusSuspendedBody": {
+    "description": "Brand card: suspended.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandStatusReason": "Reason: {reason}",
+  "@brandStatusReason": {
+    "description": "Brand application card: why STAKA rejected or paused it.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "brandAppliedOn": "Applied {date}",
+  "@brandAppliedOn": {
+    "description": "Brand application card: when it was sent, e.g. \"Applied 14 Nov 2026\".",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "brandEditAndResubmit": "Edit and resubmit",
+  "@brandEditAndResubmit": {
+    "description": "Brand application card (rejected): opens the form to fix and resend."
+  },
+  "brandApplyTitle": "Apply for your brand",
+  "@brandApplyTitle": {
+    "description": "Brand application form: screen title."
+  },
+  "brandEditTitle": "Edit your application",
+  "@brandEditTitle": {
+    "description": "Brand application form when resubmitting: screen title."
+  },
+  "brandApplyStepOf": "Step {step} of {total}",
+  "@brandApplyStepOf": {
+    "description": "Brand application form: progress above the step heading.",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "brandStepBrand": "Your brand",
+  "@brandStepBrand": {
+    "description": "Brand application form: step 1 heading."
+  },
+  "brandStepContact": "How we reach you",
+  "@brandStepContact": {
+    "description": "Brand application form: step 2 heading."
+  },
+  "brandStepContactBody": "STAKA uses these only about your brand.",
+  "@brandStepContactBody": {
+    "description": "Brand application form: step 2 text."
+  },
+  "brandStepFiles": "Logo and documents",
+  "@brandStepFiles": {
+    "description": "Brand application form: step 3 heading."
+  },
+  "brandAlreadyListed": "My brand is already on STAKA",
+  "@brandAlreadyListed": {
+    "description": "Brand application form: switch to claim a brand STAKA already lists."
+  },
+  "brandAlreadyListedHint": "Pick it to take it over with its products.",
+  "@brandAlreadyListedHint": {
+    "description": "Brand application form: under the claim switch."
+  },
+  "chooseYourBrand": "Choose your brand",
+  "@chooseYourBrand": {
+    "description": "Brand application form: brand list hint and its error."
+  },
+  "listedBrandsFailed": "Couldn't load the brands on STAKA.",
+  "@listedBrandsFailed": {
+    "description": "Brand application form: the brand list failed to load."
+  },
+  "fieldLegalName": "Legal name",
+  "@fieldLegalName": {
+    "description": "Brand application form: registered company name."
+  },
+  "legalNameHint": "As on your business registration.",
+  "@legalNameHint": {
+    "description": "Brand application form: under Legal name."
+  },
+  "validationLegalName": "Enter your brand's legal name",
+  "@validationLegalName": {
+    "description": "Brand application form: legal name empty."
+  },
+  "fieldWebsite": "Website",
+  "@fieldWebsite": {
+    "description": "Brand application form: brand website."
+  },
+  "websitePlaceholder": "https://yourbrand.com",
+  "@websitePlaceholder": {
+    "description": "Brand application form: website placeholder."
+  },
+  "fieldGstin": "GSTIN",
+  "@fieldGstin": {
+    "description": "Brand application form: Indian GST number."
+  },
+  "gstinHint": "Optional. 15 characters, e.g. 22AAAAA0000A1Z5.",
+  "@gstinHint": {
+    "description": "Brand application form: under GSTIN."
+  },
+  "validationGstin": "Enter a valid 15-character GSTIN",
+  "@validationGstin": {
+    "description": "Brand application form: GSTIN in the wrong format."
+  },
+  "fieldContactEmail": "Contact email",
+  "@fieldContactEmail": {
+    "description": "Brand application form: email STAKA writes to about the brand."
+  },
+  "fieldContactPhone": "Contact phone",
+  "@fieldContactPhone": {
+    "description": "Brand application form: phone STAKA calls about the brand."
+  },
+  "brandLogo": "Logo",
+  "@brandLogo": {
+    "description": "Brand application form: logo heading."
+  },
+  "brandLogoHint": "A square image, up to 2 MB. Optional.",
+  "@brandLogoHint": {
+    "description": "Brand application form: logo help."
+  },
+  "chooseLogo": "Choose logo",
+  "@chooseLogo": {
+    "description": "Brand application form: pick a logo from photos."
+  },
+  "logoTooLarge": "That image is larger than 2 MB. Choose a smaller one.",
+  "@logoTooLarge": {
+    "description": "Brand application form: logo over the limit."
+  },
+  "logoKept": "Leave this to keep the logo you sent.",
+  "@logoKept": {
+    "description": "Brand application form when resubmitting: a logo was sent before."
+  },
+  "businessDocument": "Business document",
+  "@businessDocument": {
+    "description": "Brand application form: business document heading."
+  },
+  "businessDocumentHint": "GST certificate or company registration, as a PDF or photo, up to 5 MB. Optional, but it helps us check faster.",
+  "@businessDocumentHint": {
+    "description": "Brand application form: business document help."
+  },
+  "addDocument": "Add document",
+  "@addDocument": {
+    "description": "Brand application form: pick a business document."
+  },
+  "documentTooLarge": "That file is larger than 5 MB. Choose a smaller one.",
+  "@documentTooLarge": {
+    "description": "Brand application form: document over the limit."
+  },
+  "documentKept": "Leave this to keep the document you sent, if any.",
+  "@documentKept": {
+    "description": "Brand application form when resubmitting."
+  },
+  "replaceFile": "Replace",
+  "@replaceFile": {
+    "description": "Brand application form: pick another file instead."
+  },
+  "removeFile": "Remove",
+  "@removeFile": {
+    "description": "Brand application form: drop the picked file."
+  },
+  "continueStep": "Continue",
+  "@continueStep": {
+    "description": "Brand application form: go to the next step."
+  },
+  "sendApplication": "Send application",
+  "@sendApplication": {
+    "description": "Brand application form: last step button."
+  },
+  "sendingApplication": "Sending application…",
+  "@sendingApplication": {
+    "description": "Brand application form: button while sending."
+  },
+  "applicationSent": "Application sent. We'll let you know when STAKA has checked it.",
+  "@applicationSent": {
+    "description": "Snackbar after sending a brand application."
+  },
+  "brandNameOnStaka": "A brand with this name already runs itself on STAKA.",
+  "@brandNameOnStaka": {
+    "description": "Brand application form: the API refused the name (409)."
+  },
+  "applicationNotFound": "We couldn't find that application.",
+  "@applicationNotFound": {
+    "description": "Brand application edit: the id is not in the list."
+  },
+  "applicationNotFoundBody": "It may have been withdrawn. Go back to see your applications.",
+  "@applicationNotFoundBody": {
+    "description": "Brand application edit: under \"We couldn't find that application.\""
+  },
+  "aboutYourBrandHint": "Optional. One sentence on what you make and how.",
+  "@aboutYourBrandHint": {
+    "description": "Brand application form: under About the brand (the applicant describes their own brand)."
   }
 }

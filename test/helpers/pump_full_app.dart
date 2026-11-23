@@ -14,6 +14,9 @@ import 'package:staka/features/auth/domain/models/auth_session.dart';
 import 'package:staka/features/auth/domain/models/otp_challenge.dart';
 import 'package:staka/features/auth/domain/models/otp_verification.dart';
 import 'package:staka/features/auth/domain/repositories/auth_repository.dart';
+import 'package:staka/features/brand_apply/data/repositories/brand_application_repository_impl.dart';
+import 'package:staka/features/brand_apply/domain/repositories/brand_application_repository.dart';
+import 'package:staka/features/brand_apply/presentation/state/brand_file_picker.dart';
 import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/manage/brands/domain/repositories/admin_brand_repository.dart';
 import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
@@ -37,6 +40,7 @@ import 'admin_brand_fakes.dart';
 import 'admin_claim_fakes.dart';
 import 'admin_product_fakes.dart';
 import 'auth_fakes.dart';
+import 'brand_apply_fakes.dart';
 import 'fake_http_adapter.dart';
 import 'import_fakes.dart';
 import 'product_fakes.dart';
@@ -65,6 +69,8 @@ Future<InMemoryTokenStore> pumpApp(
   AdminClaimRepository? adminClaims,
   DateTime Function()? clock,
   AccountRepository? account,
+  BrandApplicationRepository? brandApplications,
+  BrandFilePicker? brandFilePicker,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -115,6 +121,12 @@ Future<InMemoryTokenStore> pumpApp(
         if (clock != null) clockProvider.overrideWithValue(clock),
         if (account != null)
           accountRepositoryProvider.overrideWithValue(account),
+        brandApplicationRepositoryProvider.overrideWithValue(
+          brandApplications ?? FakeBrandApplicationRepository(),
+        ),
+        brandFilePickerProvider.overrideWithValue(
+          brandFilePicker ?? FakeBrandFilePicker(),
+        ),
       ],
       child: const App(),
     ),

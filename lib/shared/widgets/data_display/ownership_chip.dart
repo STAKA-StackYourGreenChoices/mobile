@@ -1,10 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/core/design/app_colors.dart';
-import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/ownership_status.dart';
+import 'package:staka/shared/widgets/data_display/status_pill.dart';
 
 /// Ownership status as a pill: icon + label + colour, never colour alone
 /// (guide §6.1 law 3). The website's `OwnershipChip`, same labels.
@@ -17,35 +17,7 @@ class OwnershipChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final (icon, label, color) = _style(status, l10n, context.colors);
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.08),
-        border: Border.all(color: color.withValues(alpha: 0.35)),
-        borderRadius: AppRadius.allFull,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.sm - AppSpacing.xxs,
-          vertical: AppSpacing.xxs,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: AppSpacing.xxs,
-          children: [
-            Icon(icon, size: AppSpacing.md, color: color),
-            Flexible(
-              child: Text(
-                label,
-                style: context.text.bodySmall.copyWith(
-                  color: color,
-                  fontWeight: context.text.label.fontWeight,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return StatusPill(icon: icon, label: label, color: color);
   }
 
   static (IconData, String, Color) _style(

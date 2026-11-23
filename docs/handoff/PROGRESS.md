@@ -75,9 +75,11 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 
 ## V2 — M2 Brands run themselves
 - [x] `refactor/manage-scope` (V2-12): `features/admin` → `features/manage`, `ManageScope` threaded through data sources, providers and screens; no behaviour change, goldens unchanged (only moved)
-- [ ] `feat/brand-apply`, `feat/brand-portal`, `feat/brand-claims`, `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
+- [~] `feat/brand-apply` (V2-12): Account → For brands → intro, 3-step application (claim a listed brand, files), status cards, edit and resubmit
+- [ ] `feat/brand-portal`, `feat/brand-claims`, `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-23 — `feat/brand-apply`: brand sign-up form + application status. 396 tests pass; Account goldens updated for the new "For brands" section. Fakes only.
 - 2026-11-23 — M2 started: `refactor/manage-scope` (admin code → `features/manage/` with `ManageScope`). 377 tests pass, no golden changed.
 - 2026-11-23 — M1 slices built: phone sign-in, Account sign-in methods, Your data (export + delete). 372 tests pass. Fixed a V1 bug: after a server error on a field (wrong current password, taken email) the form could not be sent again. Not yet run against a real API.
 - 2026-11-15 — Phase 6 (cut-down): icon, splash, name/id, README; 318 tests pass; release APK checked on the phone. Next: hosting talk.

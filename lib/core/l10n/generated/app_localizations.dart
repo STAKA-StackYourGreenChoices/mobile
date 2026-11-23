@@ -3122,6 +3122,384 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your account has been deleted.'**
   String get accountDeleted;
+
+  /// Account: section heading for the brand sign-up row.
+  ///
+  /// In en, this message translates to:
+  /// **'For brands'**
+  String get accountSectionBrands;
+
+  /// Account row and screen title: apply to run a brand on STAKA (V2-12).
+  ///
+  /// In en, this message translates to:
+  /// **'Bring your brand to STAKA'**
+  String get bringYourBrand;
+
+  /// Account: under the brand sign-up row.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply, or see how your application is going'**
+  String get bringYourBrandDetail;
+
+  /// Brand sign-up intro: first paragraph.
+  ///
+  /// In en, this message translates to:
+  /// **'Once STAKA has checked your details, your team runs your brand here: no waiting on us.'**
+  String get brandApplyIntroBody;
+
+  /// Brand sign-up intro: what a brand gets (1).
+  ///
+  /// In en, this message translates to:
+  /// **'Add your products and their sustainability figures.'**
+  String get brandApplyBenefitCatalog;
+
+  /// Brand sign-up intro: what a brand gets (2).
+  ///
+  /// In en, this message translates to:
+  /// **'Check your shoppers\' proofs of purchase yourself.'**
+  String get brandApplyBenefitClaims;
+
+  /// Brand sign-up intro: what a brand gets (3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reward the people who buy and keep your clothes.'**
+  String get brandApplyBenefitRewards;
+
+  /// Brand sign-up intro: heading above what to have ready.
+  ///
+  /// In en, this message translates to:
+  /// **'What we need'**
+  String get brandApplyNeedsTitle;
+
+  /// Brand sign-up intro: what to have ready.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brand\'s legal name and a contact email. A business document, such as your GST certificate, helps us check faster.'**
+  String get brandApplyNeedsBody;
+
+  /// Brand sign-up intro: button that opens the form.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your application'**
+  String get brandApplyStart;
+
+  /// Brand applications list: button under the list.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply for another brand'**
+  String get brandApplyAnother;
+
+  /// Brand application status chip: sent, not yet checked.
+  ///
+  /// In en, this message translates to:
+  /// **'Being checked'**
+  String get brandStatusPending;
+
+  /// Brand application status chip: approved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get brandStatusApproved;
+
+  /// Brand application status chip: rejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not approved'**
+  String get brandStatusRejected;
+
+  /// Brand status chip: STAKA paused an approved brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get brandStatusSuspended;
+
+  /// Brand application card: pending.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re checking your details and will let you know.'**
+  String get brandStatusPendingBody;
+
+  /// Brand application card: approved.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} is on STAKA. Your team can now run it.'**
+  String brandStatusApprovedBody(String brand);
+
+  /// Brand application card: rejected.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA couldn\'t approve this application. Fix what\'s needed and send it again.'**
+  String get brandStatusRejectedBody;
+
+  /// Brand card: suspended.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA has paused {brand}. Its products stay visible to shoppers.'**
+  String brandStatusSuspendedBody(String brand);
+
+  /// Brand application card: why STAKA rejected or paused it.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason: {reason}'**
+  String brandStatusReason(String reason);
+
+  /// Brand application card: when it was sent, e.g. "Applied 14 Nov 2026".
+  ///
+  /// In en, this message translates to:
+  /// **'Applied {date}'**
+  String brandAppliedOn(String date);
+
+  /// Brand application card (rejected): opens the form to fix and resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit and resubmit'**
+  String get brandEditAndResubmit;
+
+  /// Brand application form: screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply for your brand'**
+  String get brandApplyTitle;
+
+  /// Brand application form when resubmitting: screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit your application'**
+  String get brandEditTitle;
+
+  /// Brand application form: progress above the step heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {step} of {total}'**
+  String brandApplyStepOf(int step, int total);
+
+  /// Brand application form: step 1 heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brand'**
+  String get brandStepBrand;
+
+  /// Brand application form: step 2 heading.
+  ///
+  /// In en, this message translates to:
+  /// **'How we reach you'**
+  String get brandStepContact;
+
+  /// Brand application form: step 2 text.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA uses these only about your brand.'**
+  String get brandStepContactBody;
+
+  /// Brand application form: step 3 heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo and documents'**
+  String get brandStepFiles;
+
+  /// Brand application form: switch to claim a brand STAKA already lists.
+  ///
+  /// In en, this message translates to:
+  /// **'My brand is already on STAKA'**
+  String get brandAlreadyListed;
+
+  /// Brand application form: under the claim switch.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick it to take it over with its products.'**
+  String get brandAlreadyListedHint;
+
+  /// Brand application form: brand list hint and its error.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your brand'**
+  String get chooseYourBrand;
+
+  /// Brand application form: the brand list failed to load.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load the brands on STAKA.'**
+  String get listedBrandsFailed;
+
+  /// Brand application form: registered company name.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal name'**
+  String get fieldLegalName;
+
+  /// Brand application form: under Legal name.
+  ///
+  /// In en, this message translates to:
+  /// **'As on your business registration.'**
+  String get legalNameHint;
+
+  /// Brand application form: legal name empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your brand\'s legal name'**
+  String get validationLegalName;
+
+  /// Brand application form: brand website.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get fieldWebsite;
+
+  /// Brand application form: website placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'https://yourbrand.com'**
+  String get websitePlaceholder;
+
+  /// Brand application form: Indian GST number.
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get fieldGstin;
+
+  /// Brand application form: under GSTIN.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. 15 characters, e.g. 22AAAAA0000A1Z5.'**
+  String get gstinHint;
+
+  /// Brand application form: GSTIN in the wrong format.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid 15-character GSTIN'**
+  String get validationGstin;
+
+  /// Brand application form: email STAKA writes to about the brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact email'**
+  String get fieldContactEmail;
+
+  /// Brand application form: phone STAKA calls about the brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact phone'**
+  String get fieldContactPhone;
+
+  /// Brand application form: logo heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo'**
+  String get brandLogo;
+
+  /// Brand application form: logo help.
+  ///
+  /// In en, this message translates to:
+  /// **'A square image, up to 2 MB. Optional.'**
+  String get brandLogoHint;
+
+  /// Brand application form: pick a logo from photos.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose logo'**
+  String get chooseLogo;
+
+  /// Brand application form: logo over the limit.
+  ///
+  /// In en, this message translates to:
+  /// **'That image is larger than 2 MB. Choose a smaller one.'**
+  String get logoTooLarge;
+
+  /// Brand application form when resubmitting: a logo was sent before.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave this to keep the logo you sent.'**
+  String get logoKept;
+
+  /// Brand application form: business document heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Business document'**
+  String get businessDocument;
+
+  /// Brand application form: business document help.
+  ///
+  /// In en, this message translates to:
+  /// **'GST certificate or company registration, as a PDF or photo, up to 5 MB. Optional, but it helps us check faster.'**
+  String get businessDocumentHint;
+
+  /// Brand application form: pick a business document.
+  ///
+  /// In en, this message translates to:
+  /// **'Add document'**
+  String get addDocument;
+
+  /// Brand application form: document over the limit.
+  ///
+  /// In en, this message translates to:
+  /// **'That file is larger than 5 MB. Choose a smaller one.'**
+  String get documentTooLarge;
+
+  /// Brand application form when resubmitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave this to keep the document you sent, if any.'**
+  String get documentKept;
+
+  /// Brand application form: pick another file instead.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace'**
+  String get replaceFile;
+
+  /// Brand application form: drop the picked file.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeFile;
+
+  /// Brand application form: go to the next step.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueStep;
+
+  /// Brand application form: last step button.
+  ///
+  /// In en, this message translates to:
+  /// **'Send application'**
+  String get sendApplication;
+
+  /// Brand application form: button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending application…'**
+  String get sendingApplication;
+
+  /// Snackbar after sending a brand application.
+  ///
+  /// In en, this message translates to:
+  /// **'Application sent. We\'ll let you know when STAKA has checked it.'**
+  String get applicationSent;
+
+  /// Brand application form: the API refused the name (409).
+  ///
+  /// In en, this message translates to:
+  /// **'A brand with this name already runs itself on STAKA.'**
+  String get brandNameOnStaka;
+
+  /// Brand application edit: the id is not in the list.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find that application.'**
+  String get applicationNotFound;
+
+  /// Brand application edit: under "We couldn't find that application."
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been withdrawn. Go back to see your applications.'**
+  String get applicationNotFoundBody;
+
+  /// Brand application form: under About the brand (the applicant describes their own brand).
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. One sentence on what you make and how.'**
+  String get aboutYourBrandHint;
 }
 
 class _AppLocalizationsDelegate

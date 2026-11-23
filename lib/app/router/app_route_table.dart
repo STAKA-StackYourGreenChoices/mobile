@@ -17,6 +17,8 @@ import 'package:staka/features/auth/presentation/screens/otp_name_screen.dart';
 import 'package:staka/features/auth/presentation/screens/phone_sign_in_screen.dart';
 import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
+import 'package:staka/features/brand_apply/presentation/screens/brand_application_form_screen.dart';
+import 'package:staka/features/brand_apply/presentation/screens/brand_applications_screen.dart';
 import 'package:staka/features/manage/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claim_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claims_screen.dart';
@@ -217,6 +219,26 @@ final appRouteTable = <RouteBase>[
                 AppRoute.account,
                 AppRoute.deleteAccount,
                 (_, _) => const DeleteAccountScreen(),
+              ),
+              _child(
+                AppRoute.account,
+                AppRoute.brandApplications,
+                (_, _) => const BrandApplicationsScreen(),
+                children: [
+                  _child(
+                    AppRoute.brandApplications,
+                    AppRoute.brandApply,
+                    (_, _) => const BrandApplicationFormScreen(),
+                  ),
+                  _child(
+                    AppRoute.brandApplications,
+                    AppRoute.brandApplicationEdit,
+                    (_, state) => BrandApplicationFormScreen(
+                      key: ValueKey(state.pathParameters['id']),
+                      applicationId: state.pathParameters['id'],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
