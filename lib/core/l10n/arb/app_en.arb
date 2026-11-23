@@ -2810,5 +2810,186 @@
   "aboutYourBrandHint": "Optional. One sentence on what you make and how.",
   "@aboutYourBrandHint": {
     "description": "Brand application form: under About the brand (the applicant describes their own brand)."
+  },
+  "navBrand": "Brand",
+  "@navBrand": {
+    "description": "Bottom bar tab for members of an approved brand (V2-12)."
+  },
+  "brandRoleOwner": "Owner",
+  "@brandRoleOwner": {
+    "description": "Brand role: runs the team and settings too."
+  },
+  "brandRoleStaff": "Staff",
+  "@brandRoleStaff": {
+    "description": "Brand role: products, import and claims."
+  },
+  "switchBrand": "Switch brand",
+  "@switchBrand": {
+    "description": "Brand tab: opens the list of the person's brands."
+  },
+  "yourBrands": "Your brands",
+  "@yourBrands": {
+    "description": "Brand switcher sheet: heading."
+  },
+  "brandSuspendedBanner": "STAKA has paused {brand}. Its products stay visible to shoppers, but your team can't make changes until STAKA reinstates it.",
+  "@brandSuspendedBanner": {
+    "description": "Brand tab: the brand is suspended.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "seeWhy": "See why",
+  "@seeWhy": {
+    "description": "Brand tab, paused brand: opens the application with the reason."
+  },
+  "brandProductsDescription": "Your products and their sustainability figures. A product's tag shows exactly what's recorded here.",
+  "@brandProductsDescription": {
+    "description": "Brand hub: Products row."
+  },
+  "brandImportDescription": "Add or update many of your products at once from a spreadsheet saved as CSV.",
+  "@brandImportDescription": {
+    "description": "Brand hub: Import row."
+  },
+  "brandTeam": "Team",
+  "@brandTeam": {
+    "description": "Brand hub row and Team screen title."
+  },
+  "brandTeamDescription": "Who runs {brand} with you.",
+  "@brandTeamDescription": {
+    "description": "Brand hub: Team row.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandSettings": "Settings",
+  "@brandSettings": {
+    "description": "Brand hub row and Settings screen title (owners only)."
+  },
+  "brandSettingsDescription": "Name, logo, description, website and contacts.",
+  "@brandSettingsDescription": {
+    "description": "Brand hub: Settings row."
+  },
+  "inviteSomeone": "Invite someone",
+  "@inviteSomeone": {
+    "description": "Team screen: button for owners."
+  },
+  "inviteTitle": "Invite to {brand}",
+  "@inviteTitle": {
+    "description": "Invite sheet: heading.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteBody": "We'll send them a link to join. They sign in to STAKA, or make an account, to accept it.",
+  "@inviteBody": {
+    "description": "Invite sheet: text under the heading."
+  },
+  "fieldEmailOrPhone": "Email or phone number",
+  "@fieldEmailOrPhone": {
+    "description": "Invite sheet: who to invite."
+  },
+  "validationEmailOrPhone": "Enter an email address or a mobile number",
+  "@validationEmailOrPhone": {
+    "description": "Invite sheet: neither an email nor a number."
+  },
+  "inviteRole": "Role",
+  "@inviteRole": {
+    "description": "Invite sheet: role choice label."
+  },
+  "roleOwnerHint": "Also runs the team and settings.",
+  "@roleOwnerHint": {
+    "description": "Invite sheet: what an owner can do."
+  },
+  "roleStaffHint": "Works on products, import and claims.",
+  "@roleStaffHint": {
+    "description": "Invite sheet: what staff can do."
+  },
+  "sendInvite": "Send invite",
+  "@sendInvite": {
+    "description": "Invite sheet: button."
+  },
+  "sendingInvite": "Sending invite…",
+  "@sendingInvite": {
+    "description": "Invite sheet: button while sending."
+  },
+  "inviteSent": "Invite sent to {who}.",
+  "@inviteSent": {
+    "description": "Snackbar after an invite.",
+    "placeholders": {
+      "who": {
+        "type": "String"
+      }
+    }
+  },
+  "memberYou": "{name} (you)",
+  "@memberYou": {
+    "description": "Team list: the signed-in person.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeFromTeam": "Remove {name} from the team",
+  "@removeFromTeam": {
+    "description": "Team list: remove button for screen readers.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeMemberTitle": "Remove {name}?",
+  "@removeMemberTitle": {
+    "description": "Remove member dialog: heading.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeMemberBody": "They can no longer work on {brand}. You can invite them again later.",
+  "@removeMemberBody": {
+    "description": "Remove member dialog: text.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "removeMember": "Remove",
+  "@removeMember": {
+    "description": "Remove member dialog: confirm button."
+  },
+  "removingMember": "Removing…",
+  "@removingMember": {
+    "description": "Remove member dialog: button while removing."
+  },
+  "memberRemoved": "{name} is no longer on the team.",
+  "@memberRemoved": {
+    "description": "Snackbar after removing a member.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "teamStaffNote": "Only owners can invite or remove people.",
+  "@teamStaffNote": {
+    "description": "Team screen for staff."
+  },
+  "openBrandTab": "Open the Brand tab",
+  "@openBrandTab": {
+    "description": "Approved application card: go to the brand portal."
+  },
+  "brandNotReadyYet": "Your brand isn't ready yet. Try again in a moment.",
+  "@brandNotReadyYet": {
+    "description": "Approved card: the session does not list the brand yet."
   }
 }

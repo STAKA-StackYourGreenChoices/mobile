@@ -3,13 +3,17 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/app/routes.dart';
+import 'package:staka/core/auth/session_controller.dart';
+import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/l10n/l10n.dart';
+import 'package:staka/features/brand_apply/domain/models/brand_application.dart';
 import 'package:staka/features/brand_apply/presentation/state/brand_applications_controller.dart';
 import 'package:staka/features/brand_apply/presentation/state/brand_applications_state.dart';
 import 'package:staka/features/brand_apply/presentation/widgets/brand_application_card.dart';
 import 'package:staka/features/brand_apply/presentation/widgets/brand_apply_intro.dart';
+import 'package:staka/features/brand_portal/presentation/state/current_brand.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
@@ -42,6 +46,27 @@ class BrandApplicationsScreen extends ConsumerWidget {
 
     void apply() => context.pushNamed(AppRoute.brandApply.name);
 
+    // The session lists the person's brands; it may not know about the
+    // approval yet, so it is re-read once before giving up.
+    Future<void> openPortal(BrandApplication application) async {
+      bool isListed() => switch (ref.read(sessionControllerProvider)) {
+        SignedIn(:final user) => user.portalBrands.any(
+          (brand) => brand.id == application.id,
+        ),
+        _ => false,
+      };
+      if (!isListed()) {
+        await ref.read(sessionControllerProvider.notifier).refreshUser();
+      }
+      if (!context.mounted) return;
+      if (!isListed()) {
+        AppSnackbar.show(context, message: l10n.brandNotReadyYet);
+        return;
+      }
+      ref.read(selectedBrandIdProvider.notifier).select(application.id);
+      context.goNamed(AppRoute.brandHome.name);
+    }
+
     return AppScaffold(
       title: l10n.bringYourBrand,
       isScrollable: false,
@@ -69,6 +94,7 @@ class BrandApplicationsScreen extends ConsumerWidget {
                         AppRoute.brandApplicationEdit.name,
                         pathParameters: {'id': application.id},
                       ),
+                      onOpenPortalPressed: () => openPortal(application),
                     ),
                   ),
                 const SizedBox(height: AppSpacing.xs),

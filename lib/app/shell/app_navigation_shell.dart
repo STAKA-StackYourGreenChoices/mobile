@@ -7,8 +7,8 @@ import 'package:staka/core/auth/session_controller.dart';
 import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/l10n/l10n.dart';
 
-/// The bottom bar for signed-in screens: Wardrobe, Scan, Admin (admins
-/// only), Account — the website's main menu (`web/lib/nav.ts`). Each tab
+/// The bottom bar for signed-in screens: Wardrobe, Scan, Brand (members of
+/// an approved brand), Admin (admins only), Account — the website's main menu (`web/lib/nav.ts`). Each tab
 /// keeps its own back stack.
 class AppNavigationShell extends ConsumerWidget {
   const new({required this.shell, super.key});
@@ -17,12 +17,15 @@ class AppNavigationShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isAdmin = ref.watch(
+    final (isAdmin, hasBrandPortal) = ref.watch(
       sessionControllerProvider.select(
-        (session) => session is SignedIn && session.user.isAdmin,
+        (session) => switch (session) {
+          SignedIn(:final user) => (user.isAdmin, user.hasBrandPortal),
+          _ => (false, false),
+        },
       ),
     );
-    final tabs = visibleTabs(isAdmin: isAdmin);
+    final tabs = visibleTabs(isAdmin: isAdmin, hasBrandPortal: hasBrandPortal);
     final selected = tabs.indexWhere((tab) => tab.branch == shell.currentIndex);
 
     return Scaffold(

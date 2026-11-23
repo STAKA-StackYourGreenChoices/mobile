@@ -26,6 +26,9 @@ String? redirectFor(SessionState session, String path) {
       homeRoute.path,
     SignedIn(:final user) when under(AppRoute.adminHome) && !user.isAdmin =>
       homeRoute.path,
+    SignedIn(:final user)
+        when under(AppRoute.brandHome) && !user.hasBrandPortal =>
+      homeRoute.path,
     SignedIn() => null,
   };
 }

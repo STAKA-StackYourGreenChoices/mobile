@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:staka/app/routes.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/brand_summary.dart';
@@ -10,6 +9,7 @@ import 'package:staka/features/manage/products/presentation/state/brand_options_
 import 'package:staka/features/manage/products/presentation/widgets/admin_products_scroll_view.dart';
 import 'package:staka/features/manage/products/presentation/widgets/brand_filter_sheet.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_filters.dart';
+import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
@@ -28,11 +28,14 @@ class AdminProductsScreen extends ConsumerWidget {
     final list = adminProductsControllerProvider(scope, brandId: this.brandId);
     final state = ref.watch(list);
     final controller = ref.read(list.notifier);
-    final brands = ref.watch(brandOptionsProvider(scope));
+    // A brand lists its own products only: no brand filter to load.
+    final brands = scope.worksOnOneBrand
+        ? null
+        : ref.watch(brandOptionsProvider(scope));
     final brandId = state.filter.brandId;
 
-    void addProduct() => context.goNamed(AppRoute.adminProductNew.name);
-    void importCsv() => context.goNamed(AppRoute.adminImport.name);
+    void addProduct() => context.goNamed(scope.productNewRoute.name);
+    void importCsv() => context.goNamed(scope.importRoute.name);
 
     Future<void> pickBrand(List<BrandSummary> options) async {
       final pick = await showBrandFilterSheet(
@@ -53,7 +56,7 @@ class AdminProductsScreen extends ConsumerWidget {
         filters: ProductFilters(
           filter: state.filter,
           brandLabel: switch (brands) {
-            AsyncData(value: Err()) || AsyncError() => null,
+            null || AsyncData(value: Err()) || AsyncError() => null,
             AsyncData(value: Ok(:final value)) => _nameOf(
               brandId,
               value,
@@ -74,7 +77,7 @@ class AdminProductsScreen extends ConsumerWidget {
         onAddPressed: addProduct,
         onImportPressed: importCsv,
         onProductPressed: (product) => context.goNamed(
-          AppRoute.adminProductEdit.name,
+          scope.productEditRoute.name,
           pathParameters: {'id': product.id},
         ),
       ),

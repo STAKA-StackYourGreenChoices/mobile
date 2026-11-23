@@ -19,6 +19,10 @@ import 'package:staka/features/auth/presentation/screens/register_screen.dart';
 import 'package:staka/features/auth/presentation/screens/welcome_screen.dart';
 import 'package:staka/features/brand_apply/presentation/screens/brand_application_form_screen.dart';
 import 'package:staka/features/brand_apply/presentation/screens/brand_applications_screen.dart';
+import 'package:staka/features/brand_portal/presentation/screens/brand_home_screen.dart';
+import 'package:staka/features/brand_portal/presentation/screens/brand_settings_screen.dart';
+import 'package:staka/features/brand_portal/presentation/screens/brand_team_screen.dart';
+import 'package:staka/features/brand_portal/presentation/widgets/current_brand_builder.dart';
 import 'package:staka/features/manage/brands/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claim_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claims_screen.dart';
@@ -239,6 +243,67 @@ final appRouteTable = <RouteBase>[
                     ),
                   ),
                 ],
+              ),
+            ],
+          ),
+        ],
+      ),
+      // Branch 4 (ShellTab.brand): shown between Scan and Admin.
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.brandHome,
+            (_, _) => const BrandHomeScreen(),
+            children: [
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandProducts,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (_, scope) => AdminProductsScreen(scope: scope),
+                ),
+                children: [
+                  // 'new' before ':id', or it would be read as an id.
+                  _child(
+                    AppRoute.brandProducts,
+                    AppRoute.brandProductNew,
+                    (_, _) => CurrentBrandBuilder(
+                      builder: (_, scope) =>
+                          AdminProductFormScreen(scope: scope),
+                    ),
+                  ),
+                  _child(
+                    AppRoute.brandProducts,
+                    AppRoute.brandProductEdit,
+                    (_, state) => CurrentBrandBuilder(
+                      key: ValueKey(state.pathParameters['id']),
+                      builder: (_, scope) => AdminProductFormScreen(
+                        scope: scope,
+                        productId: state.pathParameters['id'] ?? '',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandImport,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (_, scope) => AdminImportScreen(scope: scope),
+                ),
+              ),
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandTeam,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (brand, _) => BrandTeamScreen(brand: brand),
+                ),
+              ),
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandSettings,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (brand, _) => BrandSettingsScreen(brand: brand),
+                ),
               ),
             ],
           ),

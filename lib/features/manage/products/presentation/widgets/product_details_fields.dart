@@ -19,6 +19,7 @@ class ProductDetailsFields extends StatelessWidget {
     required this.brands,
     required this.serverErrors,
     required this.onAddBrandPressed,
+    this.isBrandLocked = false,
     super.key,
   });
 
@@ -26,7 +27,8 @@ class ProductDetailsFields extends StatelessWidget {
   final ProductFormRules rules;
   final List<BrandSummary> brands;
   final Map<ProductField, String> serverErrors;
-  final VoidCallback onAddBrandPressed;
+  final VoidCallback? onAddBrandPressed;
+  final bool isBrandLocked;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,7 @@ class ProductDetailsFields extends StatelessWidget {
           validator: rules.brand,
           onChanged: (id) => values.brandId = id,
           onAddBrandPressed: onAddBrandPressed,
+          isLocked: isBrandLocked,
         ),
         AppTextField(
           label: l10n.fieldBarcode,

@@ -19,6 +19,7 @@ enum AppRoute {
   scan('/scan'),
   account('/account'),
   adminHome('/admin'),
+  brandHome('/brand'),
 
   // Inside a tab (keep the bottom bar).
   changePassword('/account/change-password'),
@@ -38,7 +39,13 @@ enum AppRoute {
   adminImport('/admin/import'),
   adminClaims('/admin/claims'),
   adminClaim('/admin/claims/:id'),
-  adminClaimReceipt('/admin/claims/:id/receipt');
+  adminClaimReceipt('/admin/claims/:id/receipt'),
+  brandProducts('/brand/products'),
+  brandProductNew('/brand/products/new'),
+  brandProductEdit('/brand/products/:id'),
+  brandImport('/brand/import'),
+  brandTeam('/brand/team'),
+  brandSettings('/brand/settings');
 
   new(this.path);
 

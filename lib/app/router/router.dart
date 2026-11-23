@@ -40,7 +40,7 @@ GoRouter router(Ref ref) {
 /// a needless refresh can land after a `pop()` and redraw the old screen.
 @visibleForTesting
 Object routingKeyOf(SessionState session) => switch (session) {
-  SignedIn(:final user) => (SignedIn, user.isAdmin),
+  SignedIn(:final user) => (SignedIn, user.isAdmin, user.hasBrandPortal),
   SignedOut(:final reason) => (SignedOut, reason),
   _ => session.runtimeType,
 };

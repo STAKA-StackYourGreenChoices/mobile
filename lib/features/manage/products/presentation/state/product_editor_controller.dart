@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
 import 'package:staka/features/manage/products/presentation/state/product_editor_state.dart';
@@ -54,10 +54,19 @@ class ProductEditorController extends _$ProductEditorController {
       (Err(:final failure), _) ||
       (_, Err(:final failure)) => EditorFailed(failure),
       (Ok(value: final brands), Ok(value: final product)) => EditorReady(
-        brands: brands,
+        brands: _offered(brands),
         product: product,
       ),
-      (Ok(value: final brands), null) => EditorReady(brands: brands),
+      (Ok(value: final brands), null) => EditorReady(brands: _offered(brands)),
     };
   }
+
+  /// Every brand for an admin; a brand's team works on its own only.
+  List<BrandSummary> _offered(List<BrandSummary> brands) => switch (scope) {
+    AdminScope() => brands,
+    BrandScope(:final brandId) => [
+      for (final brand in brands)
+        if (brand.id == brandId) brand,
+    ],
+  };
 }

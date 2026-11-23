@@ -24,7 +24,8 @@ class ProductForm extends StatefulWidget {
     required this.brands,
     required this.onSubmitted,
     required this.onCancelPressed,
-    required this.onAddBrandPressed,
+    this.onAddBrandPressed,
+    this.fixedBrandId,
     this.product,
     this.saveErrors,
     this.isSaving = false,
@@ -39,7 +40,12 @@ class ProductForm extends StatefulWidget {
   final bool isSaving;
   final ValueChanged<ProductDraft> onSubmitted;
   final VoidCallback onCancelPressed;
-  final VoidCallback onAddBrandPressed;
+
+  /// Null hides "Missing one? Add it" (a brand can't add brands).
+  final VoidCallback? onAddBrandPressed;
+
+  /// A brand's own products: this brand, chosen and locked.
+  final String? fixedBrandId;
 
   @override
   State<ProductForm> createState() => _ProductFormState();
@@ -47,7 +53,10 @@ class ProductForm extends StatefulWidget {
 
 class _ProductFormState extends State<ProductForm> {
   final _formKey = GlobalKey<FormState>();
-  late final _values = ProductFormValues(widget.product);
+  late final _values = ProductFormValues(
+    widget.product,
+    defaultBrandId: widget.fixedBrandId,
+  );
   bool _hasInvalidFields = false;
 
   @override
@@ -93,6 +102,7 @@ class _ProductFormState extends State<ProductForm> {
                 ? const {}
                 : widget.saveErrors?.fields ?? const {},
             onAddBrandPressed: widget.onAddBrandPressed,
+            isBrandLocked: widget.fixedBrandId != null,
           ),
           const Divider(height: AppSpacing.xxl),
           _SectionTitle(l10n.figuresSection),

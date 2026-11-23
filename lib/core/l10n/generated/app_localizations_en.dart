@@ -2111,4 +2111,130 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get aboutYourBrandHint =>
       'Optional. One sentence on what you make and how.';
+
+  @override
+  String get navBrand => 'Brand';
+
+  @override
+  String get brandRoleOwner => 'Owner';
+
+  @override
+  String get brandRoleStaff => 'Staff';
+
+  @override
+  String get switchBrand => 'Switch brand';
+
+  @override
+  String get yourBrands => 'Your brands';
+
+  @override
+  String brandSuspendedBanner(String brand) {
+    return 'STAKA has paused $brand. Its products stay visible to shoppers, but your team can\'t make changes until STAKA reinstates it.';
+  }
+
+  @override
+  String get seeWhy => 'See why';
+
+  @override
+  String get brandProductsDescription =>
+      'Your products and their sustainability figures. A product\'s tag shows exactly what\'s recorded here.';
+
+  @override
+  String get brandImportDescription =>
+      'Add or update many of your products at once from a spreadsheet saved as CSV.';
+
+  @override
+  String get brandTeam => 'Team';
+
+  @override
+  String brandTeamDescription(String brand) {
+    return 'Who runs $brand with you.';
+  }
+
+  @override
+  String get brandSettings => 'Settings';
+
+  @override
+  String get brandSettingsDescription =>
+      'Name, logo, description, website and contacts.';
+
+  @override
+  String get inviteSomeone => 'Invite someone';
+
+  @override
+  String inviteTitle(String brand) {
+    return 'Invite to $brand';
+  }
+
+  @override
+  String get inviteBody =>
+      'We\'ll send them a link to join. They sign in to STAKA, or make an account, to accept it.';
+
+  @override
+  String get fieldEmailOrPhone => 'Email or phone number';
+
+  @override
+  String get validationEmailOrPhone =>
+      'Enter an email address or a mobile number';
+
+  @override
+  String get inviteRole => 'Role';
+
+  @override
+  String get roleOwnerHint => 'Also runs the team and settings.';
+
+  @override
+  String get roleStaffHint => 'Works on products, import and claims.';
+
+  @override
+  String get sendInvite => 'Send invite';
+
+  @override
+  String get sendingInvite => 'Sending invite…';
+
+  @override
+  String inviteSent(String who) {
+    return 'Invite sent to $who.';
+  }
+
+  @override
+  String memberYou(String name) {
+    return '$name (you)';
+  }
+
+  @override
+  String removeFromTeam(String name) {
+    return 'Remove $name from the team';
+  }
+
+  @override
+  String removeMemberTitle(String name) {
+    return 'Remove $name?';
+  }
+
+  @override
+  String removeMemberBody(String brand) {
+    return 'They can no longer work on $brand. You can invite them again later.';
+  }
+
+  @override
+  String get removeMember => 'Remove';
+
+  @override
+  String get removingMember => 'Removing…';
+
+  @override
+  String memberRemoved(String name) {
+    return '$name is no longer on the team.';
+  }
+
+  @override
+  String get teamStaffNote => 'Only owners can invite or remove people.';
+
+  @override
+  String get openBrandTab => 'Open the Brand tab';
+
+  @override
+  String get brandNotReadyYet =>
+      'Your brand isn\'t ready yet. Try again in a moment.';
 }

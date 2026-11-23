@@ -10,7 +10,8 @@ import 'package:staka/shared/formatters/gtin_format.dart';
 /// Everything typed into the product form. Notifies on every change, so
 /// the tag preview can follow along (the website's controlled inputs).
 class ProductFormValues extends ChangeNotifier {
-  new(EditableProduct? editing) {
+  /// [defaultBrandId] is chosen for a new product (a brand's own).
+  new(EditableProduct? editing, {String? defaultBrandId}) {
     final product = editing?.product;
     final info = product?.sustainabilityInfo;
     name.text = product?.name ?? '';
@@ -21,7 +22,7 @@ class ProductFormValues extends ChangeNotifier {
     carbon.text = info == null ? '' : '${info.carbonScoreGrams}';
     recyclability.text = info == null ? '' : '${info.recyclabilityPercent}';
     certifier.text = info?.certifierName ?? '';
-    _brandId = product?.brand.id;
+    _brandId = product?.brand.id ?? defaultBrandId;
     _hasFigures = info != null || product == null;
     _isVerified = info?.isVerified ?? false;
     canRemoveFigures = info == null;

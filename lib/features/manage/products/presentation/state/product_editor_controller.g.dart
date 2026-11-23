@@ -66,7 +66,7 @@ final class ProductEditorControllerProvider
 }
 
 String _$productEditorControllerHash() =>
-    r'0abae4ce1c8d72a003680372cf2ffd9a9fee3bab';
+    r'9bef5614e4fce5b268a6397aa0ef35a07b721e1f';
 
 /// The brands to choose from and, when editing, the product: what the
 /// website's new and `[id]` pages load before showing the form.

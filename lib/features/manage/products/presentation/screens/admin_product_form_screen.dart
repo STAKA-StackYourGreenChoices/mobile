@@ -13,6 +13,7 @@ import 'package:staka/features/manage/products/presentation/state/product_save_c
 import 'package:staka/features/manage/products/presentation/widgets/delete_product_dialog.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_form.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_form_header.dart';
+import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/manage/shared/widgets/admin_not_found.dart';
 import 'package:staka/shared/formatters/date_format.dart';
@@ -42,7 +43,7 @@ class AdminProductFormScreen extends ConsumerWidget {
         AppSnackbar.show(context, message: l10n.productAdded);
         // Like the website: carry on editing the new product.
         context.goNamed(
-          AppRoute.adminProductEdit.name,
+          scope.productEditRoute.name,
           pathParameters: {'id': next.value.product.id},
         );
       } else {
@@ -57,7 +58,7 @@ class AdminProductFormScreen extends ConsumerWidget {
         EditorLoading() => const AppLoader(),
         EditorNotFound() => AdminNotFound(
           backLabel: l10n.adminProducts,
-          onBackPressed: () => context.goNamed(AppRoute.adminProducts.name),
+          onBackPressed: () => context.goNamed(scope.productsRoute.name),
         ),
         EditorFailed(:final failure) => AppErrorState(
           failure: failure,
@@ -86,9 +87,14 @@ class AdminProductFormScreen extends ConsumerWidget {
                     productSaveControllerProvider(scope, productId).notifier,
                   )
                   .submit,
-              onCancelPressed: () => _leave(context),
-              onAddBrandPressed: () =>
-                  context.goNamed(AppRoute.adminBrands.name),
+              onCancelPressed: () => _leave(context, scope),
+              onAddBrandPressed: scope.worksOnOneBrand
+                  ? null
+                  : () => context.goNamed(AppRoute.adminBrands.name),
+              fixedBrandId: switch (scope) {
+                BrandScope(:final brandId) => brandId,
+                AdminScope() => null,
+              },
             ),
           ],
         ),
@@ -96,9 +102,10 @@ class AdminProductFormScreen extends ConsumerWidget {
     );
   }
 
-  static void _leave(BuildContext context) => context.canPop()
+  static void _leave(BuildContext context, ManageScope scope) =>
+      context.canPop()
       ? context.pop()
-      : context.goNamed(AppRoute.adminProducts.name);
+      : context.goNamed(scope.productsRoute.name);
 }
 
 /// The page heading; on edit it also deletes.
@@ -130,7 +137,7 @@ class _Header extends StatelessWidget {
         );
         if (!deleted || !context.mounted) return;
         AppSnackbar.show(context, message: l10n.productDeleted(current.name));
-        context.goNamed(AppRoute.adminProducts.name);
+        context.goNamed(scope.productsRoute.name);
       },
     );
   }

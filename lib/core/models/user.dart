@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:staka/core/models/brand_membership.dart';
+
 part 'user.freezed.dart';
 
 enum Role { user, admin }
@@ -19,11 +21,24 @@ abstract class User with _$User {
     String? phone,
     @Default(false) bool phoneVerified,
     @Default(true) bool hasPassword,
+
+    /// Brands the person belongs to (V2-12), any status.
+    @Default(<BrandMembership>[]) List<BrandMembership> brands,
   }) = _User;
 
   const new _();
 
   bool get isAdmin => role == Role.admin;
+
+  /// The brands shown in the Brand tab (approved or paused), in the API's
+  /// order.
+  List<BrandMembership> get portalBrands => [
+    for (final brand in brands)
+      if (brand.hasPortal) brand,
+  ];
+
+  /// Whether the Brand tab shows.
+  bool get hasBrandPortal => brands.any((brand) => brand.hasPortal);
 
   /// "Ada" from "Ada Lovelace", as the website greets people.
   String get firstName => name.trim().split(' ').first;

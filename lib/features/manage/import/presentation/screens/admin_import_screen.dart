@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:staka/app/routes.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/error/error_mapper.dart';
@@ -14,6 +13,7 @@ import 'package:staka/features/manage/import/presentation/widgets/choose_file_pa
 import 'package:staka/features/manage/import/presentation/widgets/import_done_panel.dart';
 import 'package:staka/features/manage/import/presentation/widgets/import_review_panel.dart';
 import 'package:staka/features/manage/import/presentation/widgets/import_stepper.dart';
+import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 import 'package:staka/shared/widgets/feedback/app_snackbar.dart';
@@ -100,7 +100,7 @@ class AdminImportScreen extends ConsumerWidget {
             ImportDone(:final report) => ImportDonePanel(
               report: report,
               onViewProductsPressed: () =>
-                  context.goNamed(AppRoute.adminProducts.name),
+                  context.goNamed(scope.productsRoute.name),
               onImportAnotherPressed: controller.startOver,
             ),
           },

@@ -7,7 +7,9 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/brand_summary.dart';
 
 /// "Brand": choose one from the list, with the website's "Missing one? Add
-/// it on the Brands page." link under it.
+/// it on the Brands page." link under it (when [onAddBrandPressed] is
+/// given). [isLocked] shows the brand without letting it change (a brand's
+/// own products).
 class BrandPickerField extends StatelessWidget {
   const new({
     required this.brands,
@@ -15,6 +17,7 @@ class BrandPickerField extends StatelessWidget {
     required this.validator,
     required this.onChanged,
     required this.onAddBrandPressed,
+    this.isLocked = false,
     super.key,
   });
 
@@ -22,7 +25,8 @@ class BrandPickerField extends StatelessWidget {
   final String? value;
   final Validator validator;
   final ValueChanged<String?> onChanged;
-  final VoidCallback onAddBrandPressed;
+  final VoidCallback? onAddBrandPressed;
+  final bool isLocked;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class BrandPickerField extends StatelessWidget {
           isExpanded: true,
           style: context.text.bodyLarge.copyWith(color: context.colors.ink),
           validator: validator,
-          onChanged: onChanged,
+          onChanged: isLocked ? null : onChanged,
           hint: Text(
             l10n.chooseBrand,
             style: context.text.bodyLarge.copyWith(
@@ -55,16 +59,17 @@ class BrandPickerField extends StatelessWidget {
               ),
           ],
         ),
-        Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Text(l10n.brandMissing, style: muted),
-            TextButton(
-              onPressed: onAddBrandPressed,
-              child: Text(l10n.addBrandLink),
-            ),
-          ],
-        ),
+        if (onAddBrandPressed case final onAddBrandPressed?)
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(l10n.brandMissing, style: muted),
+              TextButton(
+                onPressed: onAddBrandPressed,
+                child: Text(l10n.addBrandLink),
+              ),
+            ],
+          ),
       ],
     );
   }

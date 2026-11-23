@@ -3500,6 +3500,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Optional. One sentence on what you make and how.'**
   String get aboutYourBrandHint;
+
+  /// Bottom bar tab for members of an approved brand (V2-12).
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get navBrand;
+
+  /// Brand role: runs the team and settings too.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get brandRoleOwner;
+
+  /// Brand role: products, import and claims.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff'**
+  String get brandRoleStaff;
+
+  /// Brand tab: opens the list of the person's brands.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch brand'**
+  String get switchBrand;
+
+  /// Brand switcher sheet: heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brands'**
+  String get yourBrands;
+
+  /// Brand tab: the brand is suspended.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA has paused {brand}. Its products stay visible to shoppers, but your team can\'t make changes until STAKA reinstates it.'**
+  String brandSuspendedBanner(String brand);
+
+  /// Brand tab, paused brand: opens the application with the reason.
+  ///
+  /// In en, this message translates to:
+  /// **'See why'**
+  String get seeWhy;
+
+  /// Brand hub: Products row.
+  ///
+  /// In en, this message translates to:
+  /// **'Your products and their sustainability figures. A product\'s tag shows exactly what\'s recorded here.'**
+  String get brandProductsDescription;
+
+  /// Brand hub: Import row.
+  ///
+  /// In en, this message translates to:
+  /// **'Add or update many of your products at once from a spreadsheet saved as CSV.'**
+  String get brandImportDescription;
+
+  /// Brand hub row and Team screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Team'**
+  String get brandTeam;
+
+  /// Brand hub: Team row.
+  ///
+  /// In en, this message translates to:
+  /// **'Who runs {brand} with you.'**
+  String brandTeamDescription(String brand);
+
+  /// Brand hub row and Settings screen title (owners only).
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get brandSettings;
+
+  /// Brand hub: Settings row.
+  ///
+  /// In en, this message translates to:
+  /// **'Name, logo, description, website and contacts.'**
+  String get brandSettingsDescription;
+
+  /// Team screen: button for owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite someone'**
+  String get inviteSomeone;
+
+  /// Invite sheet: heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite to {brand}'**
+  String inviteTitle(String brand);
+
+  /// Invite sheet: text under the heading.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll send them a link to join. They sign in to STAKA, or make an account, to accept it.'**
+  String get inviteBody;
+
+  /// Invite sheet: who to invite.
+  ///
+  /// In en, this message translates to:
+  /// **'Email or phone number'**
+  String get fieldEmailOrPhone;
+
+  /// Invite sheet: neither an email nor a number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an email address or a mobile number'**
+  String get validationEmailOrPhone;
+
+  /// Invite sheet: role choice label.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get inviteRole;
+
+  /// Invite sheet: what an owner can do.
+  ///
+  /// In en, this message translates to:
+  /// **'Also runs the team and settings.'**
+  String get roleOwnerHint;
+
+  /// Invite sheet: what staff can do.
+  ///
+  /// In en, this message translates to:
+  /// **'Works on products, import and claims.'**
+  String get roleStaffHint;
+
+  /// Invite sheet: button.
+  ///
+  /// In en, this message translates to:
+  /// **'Send invite'**
+  String get sendInvite;
+
+  /// Invite sheet: button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending invite…'**
+  String get sendingInvite;
+
+  /// Snackbar after an invite.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite sent to {who}.'**
+  String inviteSent(String who);
+
+  /// Team list: the signed-in person.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} (you)'**
+  String memberYou(String name);
+
+  /// Team list: remove button for screen readers.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name} from the team'**
+  String removeFromTeam(String name);
+
+  /// Remove member dialog: heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name}?'**
+  String removeMemberTitle(String name);
+
+  /// Remove member dialog: text.
+  ///
+  /// In en, this message translates to:
+  /// **'They can no longer work on {brand}. You can invite them again later.'**
+  String removeMemberBody(String brand);
+
+  /// Remove member dialog: confirm button.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeMember;
+
+  /// Remove member dialog: button while removing.
+  ///
+  /// In en, this message translates to:
+  /// **'Removing…'**
+  String get removingMember;
+
+  /// Snackbar after removing a member.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is no longer on the team.'**
+  String memberRemoved(String name);
+
+  /// Team screen for staff.
+  ///
+  /// In en, this message translates to:
+  /// **'Only owners can invite or remove people.'**
+  String get teamStaffNote;
+
+  /// Approved application card: go to the brand portal.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Brand tab'**
+  String get openBrandTab;
+
+  /// Approved card: the session does not list the brand yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brand isn\'t ready yet. Try again in a moment.'**
+  String get brandNotReadyYet;
 }
 
 class _AppLocalizationsDelegate

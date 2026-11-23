@@ -19,6 +19,7 @@ class UserDto {
     this.phone,
     this.phoneVerified,
     this.hasPassword,
+    this.brands,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
@@ -37,4 +38,32 @@ class UserDto {
   final String? phone;
   final bool? phoneVerified;
   final bool? hasPassword;
+
+  /// V2-12: `[{ id, name, logoUrl, role, status }]`; absent before V2-12.
+  final List<BrandMembershipDto>? brands;
+}
+
+/// One of `brands[]` in `GET /auth/me`.
+@JsonSerializable(createToJson: false)
+class BrandMembershipDto {
+  const new({
+    required this.id,
+    required this.name,
+    required this.role,
+    required this.status,
+    this.logoUrl,
+  });
+
+  factory fromJson(Map<String, dynamic> json) =>
+      _$BrandMembershipDtoFromJson(json);
+
+  final String id;
+  final String name;
+
+  /// `OWNER | STAFF`.
+  final String role;
+
+  /// `PENDING | ACTIVE | REJECTED | SUSPENDED`.
+  final String status;
+  final String? logoUrl;
 }

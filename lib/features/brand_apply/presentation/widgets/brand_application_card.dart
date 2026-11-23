@@ -10,16 +10,19 @@ import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/data_display/status_pill.dart';
 
 /// One application: brand, status, what it means, the reason when STAKA
-/// said no, and "Edit and resubmit" for a rejected one.
+/// said no, "Edit and resubmit" for a rejected one and "Open the Brand
+/// tab" for an approved one.
 class BrandApplicationCard extends StatelessWidget {
   const new({
     required this.application,
     required this.onEditPressed,
+    required this.onOpenPortalPressed,
     super.key,
   });
 
   final BrandApplication application;
   final VoidCallback onEditPressed;
+  final VoidCallback onOpenPortalPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +86,15 @@ class BrandApplicationCard extends StatelessWidget {
                 style: context.text.bodyMedium.copyWith(
                   color: colors.dangerText,
                 ),
+              ),
+            ],
+            if (status == BrandApplicationStatus.approved) ...[
+              const SizedBox(height: AppSpacing.md),
+              AppButton(
+                label: l10n.openBrandTab,
+                icon: Icons.storefront_outlined,
+                isExpanded: true,
+                onPressed: onOpenPortalPressed,
               ),
             ],
             if (status == BrandApplicationStatus.rejected) ...[
