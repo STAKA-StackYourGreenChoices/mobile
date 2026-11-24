@@ -13,6 +13,7 @@ class WardrobeHeader extends StatelessWidget {
     required this.description,
     this.actionLabel,
     this.onActionPressed,
+    this.trailing,
     super.key,
   });
 
@@ -21,13 +22,23 @@ class WardrobeHeader extends StatelessWidget {
   final String? actionLabel;
   final VoidCallback? onActionPressed;
 
+  /// Beside the title, e.g. the notification bell (V2-9).
+  final Widget? trailing;
+
   @override
   Widget build(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Semantics(
-        header: true,
-        child: Text(title, style: context.text.headingLarge),
+      Row(
+        children: [
+          Expanded(
+            child: Semantics(
+              header: true,
+              child: Text(title, style: context.text.headingLarge),
+            ),
+          ),
+          ?trailing,
+        ],
       ),
       const SizedBox(height: AppSpacing.xxs),
       Text(

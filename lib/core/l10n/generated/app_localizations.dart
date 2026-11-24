@@ -5048,6 +5048,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No views yet. They show here once people open your link.'**
   String get tagStatsNoViews;
+
+  /// Inbox heading and the bell's label with nothing unread (V2-9).
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 unread notification} other{{count} unread notifications}}'**
+  String notificationsUnread(int count);
+
+  /// No description provided for @notificationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions about your pieces, shares and rewards.'**
+  String get notificationsBody;
+
+  /// No description provided for @notificationsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing yet'**
+  String get notificationsEmptyTitle;
+
+  /// No description provided for @notificationsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll let you know here when a receipt is checked or something happens with your tags.'**
+  String get notificationsEmptyBody;
+
+  /// No description provided for @markAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all as read'**
+  String get markAllRead;
+
+  /// Screen reader value on an unread notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get notificationUnreadLabel;
+
+  /// No description provided for @notificationSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationSettingsTitle;
+
+  /// No description provided for @notificationSettingsDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Push and email'**
+  String get notificationSettingsDetail;
+
+  /// No description provided for @notificationSettingsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose how STAKA tells you about decisions, shares and rewards.'**
+  String get notificationSettingsBody;
+
+  /// No description provided for @pushNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications'**
+  String get pushNotifications;
+
+  /// No description provided for @pushNotificationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'On this phone, when something needs you.'**
+  String get pushNotificationsBody;
+
+  /// No description provided for @emailNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Emails'**
+  String get emailNotifications;
+
+  /// No description provided for @emailNotificationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions and reward news to your inbox.'**
+  String get emailNotificationsBody;
+
+  /// No description provided for @accountSectionNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get accountSectionNotifications;
+
+  /// No description provided for @notificationSettingsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification settings'**
+  String get notificationSettingsTooltip;
+
+  /// No description provided for @accountNotificationsDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what STAKA sends you'**
+  String get accountNotificationsDetail;
 }
 
 class _AppLocalizationsDelegate

@@ -3118,4 +3118,68 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tagStatsNoViews =>
       'No views yet. They show here once people open your link.';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String notificationsUnread(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count unread notifications',
+      one: '1 unread notification',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsBody =>
+      'Decisions about your pieces, shares and rewards.';
+
+  @override
+  String get notificationsEmptyTitle => 'Nothing yet';
+
+  @override
+  String get notificationsEmptyBody =>
+      'We\'ll let you know here when a receipt is checked or something happens with your tags.';
+
+  @override
+  String get markAllRead => 'Mark all as read';
+
+  @override
+  String get notificationUnreadLabel => 'Unread';
+
+  @override
+  String get notificationSettingsTitle => 'Notifications';
+
+  @override
+  String get notificationSettingsDetail => 'Push and email';
+
+  @override
+  String get notificationSettingsBody =>
+      'Choose how STAKA tells you about decisions, shares and rewards.';
+
+  @override
+  String get pushNotifications => 'Push notifications';
+
+  @override
+  String get pushNotificationsBody =>
+      'On this phone, when something needs you.';
+
+  @override
+  String get emailNotifications => 'Emails';
+
+  @override
+  String get emailNotificationsBody =>
+      'Decisions and reward news to your inbox.';
+
+  @override
+  String get accountSectionNotifications => 'Notifications';
+
+  @override
+  String get notificationSettingsTooltip => 'Notification settings';
+
+  @override
+  String get accountNotificationsDetail => 'Choose what STAKA sends you';
 }

@@ -7,6 +7,7 @@ import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
+import 'package:staka/core/notifications/notifications_repository.dart';
 import 'package:staka/core/sharing/qr_png.dart';
 import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/core/sharing/share_image_api.dart';
@@ -55,6 +56,7 @@ import 'brand_apply_fakes.dart';
 import 'brand_portal_fakes.dart';
 import 'fake_http_adapter.dart';
 import 'import_fakes.dart';
+import 'notification_fakes.dart';
 import 'product_fakes.dart';
 import 'scan_fakes.dart';
 import 'sharing_fakes.dart';
@@ -91,6 +93,7 @@ Future<InMemoryTokenStore> pumpApp(
   BrandApplicationRepository? brandApplications,
   BrandFilePicker? brandFilePicker,
   BrandPortalRepository? brandPortal,
+  NotificationsRepository? notifications,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -165,6 +168,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         brandPortalRepositoryProvider.overrideWithValue(
           brandPortal ?? FakeBrandPortalRepository(),
+        ),
+        notificationsRepositoryProvider.overrideWithValue(
+          notifications ?? FakeNotificationsRepository(),
         ),
       ],
       child: const App(),

@@ -110,6 +110,19 @@ class AccountScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           AccountSection(
+            title: l10n.accountSectionNotifications,
+            children: [
+              AccountLinkTile(
+                icon: Icons.notifications_none_rounded,
+                label: l10n.notificationSettingsDetail,
+                detail: l10n.accountNotificationsDetail,
+                onPressed: () =>
+                    context.pushNamed(AppRoute.notificationSettings.name),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          AccountSection(
             title: l10n.accountSectionData,
             children: [
               AccountLinkTile(

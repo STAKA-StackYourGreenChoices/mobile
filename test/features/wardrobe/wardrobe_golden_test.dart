@@ -11,6 +11,7 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/product_variant.dart';
+import 'package:staka/core/notifications/notifications_repository.dart';
 import 'package:staka/features/wardrobe/data/repositories/impact_repository_impl.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
@@ -18,6 +19,7 @@ import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dar
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/golden.dart';
+import '../../helpers/notification_fakes.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/wardrobe_fakes.dart';
 
@@ -45,6 +47,22 @@ Widget _wardrobe(
       withImpact
           ? FakeImpactRepository(impact: const Ok(sampleImpact))
           : FakeImpactRepository(),
+    ),
+    // V2-9: the bell beside the title, shown with the impact case.
+    notificationsRepositoryProvider.overrideWithValue(
+      withImpact
+          ? FakeNotificationsRepository(
+              pages: {
+                1: Ok(
+                  notificationPage([
+                    notificationFor('n1'),
+                    notificationFor('n2'),
+                    notificationFor('n3'),
+                  ]),
+                ),
+              },
+            )
+          : FakeNotificationsRepository(),
     ),
   ],
   child: const WardrobeScreen(),

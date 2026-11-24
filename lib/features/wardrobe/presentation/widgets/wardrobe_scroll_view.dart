@@ -30,6 +30,7 @@ class WardrobeScrollView extends StatelessWidget {
     this.onCategorySelected,
     this.onSharePressed,
     this.impact,
+    this.headerTrailing,
     super.key,
   });
 
@@ -50,6 +51,9 @@ class WardrobeScrollView extends StatelessWidget {
 
   /// "Your impact" (V2-5), under the header once the wardrobe has pieces.
   final Widget? impact;
+
+  /// Beside the title: the notification bell (V2-9).
+  final Widget? headerTrailing;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +88,7 @@ class WardrobeScrollView extends StatelessWidget {
                   : l10n.wardrobeCount(data.total, data.verified.length),
               actionLabel: data == null ? null : l10n.scanAProduct,
               onActionPressed: data == null ? null : onScanPressed,
+              trailing: headerTrailing,
             ),
           ),
           if (data == null)

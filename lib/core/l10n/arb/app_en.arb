@@ -4147,5 +4147,35 @@
   "tagStatsNoViews": "No views yet. They show here once people open your link.",
   "@tagStatsNoViews": {
     "description": "V2-5: tag stats with no views."
-  }
+  },
+  "notificationsTitle": "Notifications",
+  "@notificationsTitle": {
+    "description": "Inbox heading and the bell's label with nothing unread (V2-9)."
+  },
+  "notificationsUnread": "{count, plural, =1{1 unread notification} other{{count} unread notifications}}",
+  "@notificationsUnread": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsBody": "Decisions about your pieces, shares and rewards.",
+  "notificationsEmptyTitle": "Nothing yet",
+  "notificationsEmptyBody": "We'll let you know here when a receipt is checked or something happens with your tags.",
+  "markAllRead": "Mark all as read",
+  "notificationUnreadLabel": "Unread",
+  "@notificationUnreadLabel": {
+    "description": "Screen reader value on an unread notification."
+  },
+  "notificationSettingsTitle": "Notifications",
+  "notificationSettingsDetail": "Push and email",
+  "notificationSettingsBody": "Choose how STAKA tells you about decisions, shares and rewards.",
+  "pushNotifications": "Push notifications",
+  "pushNotificationsBody": "On this phone, when something needs you.",
+  "emailNotifications": "Emails",
+  "emailNotificationsBody": "Decisions and reward news to your inbox.",
+  "accountSectionNotifications": "Notifications",
+  "notificationSettingsTooltip": "Notification settings",
+  "accountNotificationsDetail": "Choose what STAKA sends you"
 }

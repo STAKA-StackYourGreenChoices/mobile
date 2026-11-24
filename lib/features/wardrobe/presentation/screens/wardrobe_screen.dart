@@ -8,6 +8,7 @@ import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/user.dart';
+import 'package:staka/core/notifications/notifications_repository.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
 import 'package:staka/features/wardrobe/presentation/state/impact_controllers.dart';
@@ -18,6 +19,7 @@ import 'package:staka/features/wardrobe/presentation/state/wardrobe_state.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/verify_email_banner.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_impact_card.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_scroll_view.dart';
+import 'package:staka/shared/widgets/data_display/notification_bell.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
@@ -63,7 +65,9 @@ class WardrobeScreen extends ConsumerWidget {
               ? l10n.welcomeName(session.user.firstName)
               : l10n.wardrobeTitle,
           onRefresh: () async {
-            ref.invalidate(wardrobeImpactProvider);
+            ref
+              ..invalidate(wardrobeImpactProvider)
+              ..invalidate(unreadNotificationCountProvider);
             await controller.refresh();
           },
           impact: switch (ref.watch(wardrobeImpactProvider)) {
@@ -71,6 +75,14 @@ class WardrobeScreen extends ConsumerWidget {
               impact: impact,
               onActivityPressed: () =>
                   context.pushNamed(AppRoute.activity.name),
+            ),
+            _ => null,
+          },
+          // No bell when the inbox can't load (e.g. an older API).
+          headerTrailing: switch (ref.watch(unreadNotificationCountProvider)) {
+            AsyncData(value: final unread?) => NotificationBell(
+              unread: unread,
+              onPressed: () => context.pushNamed(AppRoute.notifications.name),
             ),
             _ => null,
           },

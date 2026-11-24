@@ -36,6 +36,8 @@ import 'package:staka/features/manage/import/presentation/screens/admin_import_s
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
+import 'package:staka/features/notifications/presentation/screens/notification_settings_screen.dart';
+import 'package:staka/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
@@ -115,6 +117,11 @@ final appRouteTable = <RouteBase>[
                 AppRoute.wardrobe,
                 AppRoute.activity,
                 (_, _) => const ActivityScreen(),
+              ),
+              _child(
+                AppRoute.wardrobe,
+                AppRoute.notifications,
+                (_, _) => const NotificationsScreen(),
               ),
             ],
           ),
@@ -262,6 +269,11 @@ final appRouteTable = <RouteBase>[
                 AppRoute.account,
                 AppRoute.deleteAccount,
                 (_, _) => const DeleteAccountScreen(),
+              ),
+              _child(
+                AppRoute.account,
+                AppRoute.notificationSettings,
+                (_, _) => const NotificationSettingsScreen(),
               ),
               _child(
                 AppRoute.account,
