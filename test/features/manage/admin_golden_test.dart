@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/ownership.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/models/sustainability_info.dart';
 import 'package:staka/features/brand_apply/domain/models/brand_application.dart';
 import 'package:staka/features/manage/brand_review/data/brand_review_repository_impl.dart';
@@ -18,6 +19,8 @@ import 'package:staka/features/manage/disputes/presentation/screens/admin_disput
 import 'package:staka/features/manage/disputes/presentation/screens/admin_disputes_screen.dart';
 import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
+import 'package:staka/features/manage/products/domain/models/editable_product.dart';
+import 'package:staka/features/manage/products/domain/models/sku_alias.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
@@ -101,7 +104,34 @@ void main() {
   final editing = FakeAdminProductRepository(
     brands: Ok([brandSummary('b1', 'Terra Threads')]),
     products: {
-      _id: editable(productNamed('Organic Cotton Tee').copyWith(id: _id)),
+      _id: Ok(
+        EditableProduct(
+          product: productNamed('Organic Cotton Tee').copyWith(
+            id: _id,
+            category: ProductCategory.tops,
+            styleCode: 'TT-TEE',
+            variants: const [
+              ProductVariant(
+                id: 'v1',
+                gtin: '08901234500019',
+                sku: 'TT-TEE-S',
+                size: 'S',
+                colour: 'Navy',
+              ),
+              ProductVariant(
+                id: 'v2',
+                gtin: '08901234500057',
+                sku: 'TT-TEE-M',
+                size: 'M',
+                colour: 'Navy',
+              ),
+            ],
+          ),
+          aliases: const {
+            'v2': [SkuAlias(source: 'Myntra', code: 'MY-2')],
+          },
+        ),
+      ),
     },
   );
   final adding = FakeAdminProductRepository(
@@ -136,14 +166,14 @@ void main() {
         const AdminProductFormScreen(scope: BrandScope('b1')),
         products: adding,
       ),
-      2300,
+      3000,
     ),
     'brand_product_edit': (
       () => _scoped(
         const AdminProductFormScreen(scope: BrandScope('b1'), productId: _id),
         products: editing,
       ),
-      2500,
+      3900,
     ),
   };
 

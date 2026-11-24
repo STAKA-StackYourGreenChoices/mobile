@@ -7,6 +7,7 @@ import 'package:staka/core/models/product.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
 import 'package:staka/features/manage/products/domain/models/product_draft.dart';
 import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/models/sku_alias.dart';
 import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
 
 import 'product_fakes.dart';
@@ -26,10 +27,12 @@ class FakeAdminProductRepository implements AdminProductRepository {
     List<Result<EditableProduct>> saves = const [],
     List<Result<void>> deletes = const [],
     List<Result<void>> visibility = const [],
+    List<Result<void>> aliasChanges = const [],
   }) : _pages = pages ?? ((_) => Ok(pageOf(const []))),
        _saves = [...saves],
        _deletes = [...deletes],
-       _visibility = [...visibility];
+       _visibility = [...visibility],
+       _aliasChanges = [...aliasChanges];
 
   final FutureOr<Result<ProductPage>> Function(PageRequest request) _pages;
   final Result<List<BrandSummary>> brands;
@@ -38,6 +41,30 @@ class FakeAdminProductRepository implements AdminProductRepository {
   final List<Result<EditableProduct>> _saves;
   final List<Result<void>> _deletes;
   final List<Result<void>> _visibility;
+  final List<Result<void>> _aliasChanges;
+
+  /// ('add' or 'remove', product id, variant id, code) for each sent.
+  final List<(String, String, String, SkuAlias)> aliasesSent = [];
+
+  @override
+  Future<Result<void>> addAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  ) async {
+    aliasesSent.add(('add', productId, variantId, alias));
+    return _aliasChanges.removeAt(0);
+  }
+
+  @override
+  Future<Result<void>> removeAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  ) async {
+    aliasesSent.add(('remove', productId, variantId, alias));
+    return _aliasChanges.removeAt(0);
+  }
 
   /// (product id, hidden) for each Hide / Show again sent.
   final List<(String, bool)> visibilityChanges = [];

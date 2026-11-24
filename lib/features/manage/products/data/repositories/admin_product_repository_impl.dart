@@ -2,6 +2,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:staka/core/api_models/product_dto.dart';
 import 'package:staka/core/api_models/product_mapper.dart';
+import 'package:staka/core/api_models/product_variant_dto.dart';
+import 'package:staka/core/api_models/sku_alias_dto.dart';
 import 'package:staka/core/catalog/brands_api.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
@@ -12,6 +14,7 @@ import 'package:staka/features/manage/products/data/datasources/product_editor_r
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
 import 'package:staka/features/manage/products/domain/models/product_draft.dart';
 import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/models/sku_alias.dart';
 import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 
@@ -79,9 +82,32 @@ class AdminProductRepositoryImpl implements AdminProductRepository {
   @override
   Future<Result<void>> deleteProduct(String id) =>
       guardApi(() => _editor.delete(id));
+
+  @override
+  Future<Result<void>> addAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  ) => guardApi(() => _editor.addAlias(productId, variantId, alias));
+
+  @override
+  Future<Result<void>> removeAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  ) => guardApi(() => _editor.removeAlias(productId, variantId, alias));
 }
 
 extension on ProductDto {
-  EditableProduct toEditable() =>
-      EditableProduct(product: toDomain(), storedImageUrl: imageUrl);
+  EditableProduct toEditable() => EditableProduct(
+    product: toDomain(),
+    storedImageUrl: imageUrl,
+    aliases: {
+      for (final variant in variants ?? const <ProductVariantDto>[])
+        variant.id: [
+          for (final alias in variant.aliases ?? const <SkuAliasDto>[])
+            SkuAlias(source: alias.source, code: alias.code),
+        ],
+    },
+  );
 }

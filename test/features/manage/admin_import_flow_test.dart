@@ -232,6 +232,12 @@ void main() {
       ),
       findsOneWidget,
     );
+    // V2-2: the variant columns.
+    expect(
+      find.textContaining('Rows with the same style_code become sizes'),
+      findsOneWidget,
+    );
+    expect(find.textContaining('category is one of TOPS'), findsOneWidget);
     expect(
       find.text("Brands that don't exist yet are created for you."),
       findsOneWidget,

@@ -32,6 +32,8 @@ class FileNeeds extends StatelessWidget {
         style: muted,
       ),
       Text(l10n.fileNeedsBarcodes, style: muted),
+      Text(l10n.fileNeedsVariants, style: muted),
+      Text(l10n.fileNeedsCategories, style: muted),
       Text(l10n.fileNeedsFigures, style: muted),
       Text(l10n.fileNeedsBrands, style: muted),
       Text(l10n.fileNeedsReview, style: muted),

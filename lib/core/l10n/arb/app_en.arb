@@ -3732,5 +3732,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "fieldCategory": "Type of piece",
+  "categoryHint": "Shoppers can sort their wardrobe by it.",
+  "fieldStyleCode": "Style code",
+  "styleCodeHint": "Optional. Your code for the style; each size and colour has its own SKU.",
+  "variantsSection": "Sizes and colours",
+  "variantsHint": "Each size or colour has its own barcode and SKU. Add at least one.",
+  "variantHeading": "Size or colour {number}",
+  "@variantHeading": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "fieldSize": "Size",
+  "sizeHint": "Optional, e.g. M or 32/34.",
+  "fieldColour": "Colour",
+  "colourHint": "Optional, e.g. Navy.",
+  "addVariant": "Add a size or colour",
+  "removeVariant": "Remove",
+  "removeVariantLabel": "Remove size or colour {number}",
+  "@removeVariantLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "validationDuplicateBarcode": "Another size or colour already uses this barcode.",
+  "validationDuplicateSku": "Another size or colour already uses this SKU.",
+  "otherShopCodes": "{count, plural, =0{Other shop codes} other{Other shop codes ({count})}}",
+  "@otherShopCodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "otherShopCodesSaveFirst": "Save the product first to add codes other shops use.",
+  "otherShopCodesTitle": "Other shop codes",
+  "otherShopCodesBody": "Codes other shops use for {variant}, so their orders and receipts match it.",
+  "@otherShopCodesBody": {
+    "placeholders": {
+      "variant": {
+        "type": "String"
+      }
+    }
+  },
+  "thisVariant": "this size or colour",
+  "aliasSource": "Shop",
+  "aliasSourceHint": "e.g. Myntra",
+  "aliasCode": "Their code",
+  "addAlias": "Add code",
+  "addingAlias": "Adding…",
+  "removeAliasLabel": "Remove the {source} code {code}",
+  "@removeAliasLabel": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "noAliases": "No other shop codes yet.",
+  "validationAliasSource": "Enter the shop name",
+  "validationAliasCode": "Enter the code",
+  "fileNeedsVariants": "Optional columns: style_code, size, colour, category. Rows with the same style_code become sizes or colours of one product.",
+  "fileNeedsCategories": "category is one of TOPS, BOTTOMS, DRESSES, OUTERWEAR, FOOTWEAR, ACCESSORIES or OTHER (the default)."
 }

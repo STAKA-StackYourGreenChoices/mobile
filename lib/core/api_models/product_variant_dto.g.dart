@@ -13,4 +13,7 @@ ProductVariantDto _$ProductVariantDtoFromJson(Map<String, dynamic> json) =>
       sku: json['sku'] as String,
       size: json['size'] as String?,
       colour: json['colour'] as String?,
+      aliases: (json['aliases'] as List<dynamic>?)
+          ?.map((e) => SkuAliasDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );

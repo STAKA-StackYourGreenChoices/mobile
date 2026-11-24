@@ -6,7 +6,6 @@ import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
-import 'package:staka/features/manage/products/presentation/forms/product_save_errors.dart';
 import 'package:staka/features/manage/products/presentation/state/product_editor_controller.dart';
 import 'package:staka/features/manage/products/presentation/state/product_editor_state.dart';
 import 'package:staka/features/manage/products/presentation/state/product_save_controller.dart';
@@ -75,13 +74,11 @@ class AdminProductFormScreen extends ConsumerWidget {
               brands: brands,
               product: product,
               isSaving: save is RequestSending,
-              saveErrors: switch (save) {
-                RequestFailed(:final failure) => productSaveErrors(
-                  failure,
-                  l10n,
-                ),
+              saveFailure: switch (save) {
+                RequestFailed(:final failure) => failure,
                 _ => null,
               },
+              scope: scope,
               onSubmitted: ref
                   .read(
                     productSaveControllerProvider(scope, productId).notifier,

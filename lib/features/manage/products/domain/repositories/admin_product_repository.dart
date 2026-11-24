@@ -3,6 +3,7 @@ import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
 import 'package:staka/features/manage/products/domain/models/product_draft.dart';
 import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/models/sku_alias.dart';
 
 /// The admin catalog: listing, adding, editing and deleting products, and
 /// the brands to filter and file them under.
@@ -20,6 +21,19 @@ abstract interface class AdminProductRepository {
 
   /// Refused with a conflict while shoppers hold tags for it.
   Future<Result<void>> deleteProduct(String id);
+
+  /// Other shops' codes for one size/colour (V2-2); brands only.
+  Future<Result<void>> addAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  );
+
+  Future<Result<void>> removeAlias(
+    String productId,
+    String variantId,
+    SkuAlias alias,
+  );
 
   /// Admins only (V2-12): hides the product from shoppers, or shows it
   /// again.

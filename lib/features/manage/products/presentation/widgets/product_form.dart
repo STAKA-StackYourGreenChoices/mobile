@@ -1,7 +1,9 @@
-import 'package:material_ui/material_ui.dart';
+import 'dart:async';
 
+import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
+import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
@@ -9,25 +11,32 @@ import 'package:staka/features/manage/products/domain/models/product_draft.dart'
 import 'package:staka/features/manage/products/presentation/forms/product_form_rules.dart';
 import 'package:staka/features/manage/products/presentation/forms/product_form_values.dart';
 import 'package:staka/features/manage/products/presentation/forms/product_save_errors.dart';
+import 'package:staka/features/manage/products/presentation/forms/variant_form_values.dart';
 import 'package:staka/features/manage/products/presentation/widgets/figures_fields.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_details_fields.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_tag_preview.dart';
+import 'package:staka/features/manage/products/presentation/widgets/sku_alias_sheet.dart';
+import 'package:staka/features/manage/products/presentation/widgets/variants_fields.dart';
+import 'package:staka/features/manage/shared/manage_scope.dart';
+import 'package:staka/shared/formatters/product_labels.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 
 /// The website's `ProductForm`: the live tag preview first (as on a
-/// phone), then the Product and Sustainability figures sections, then
-/// Cancel and Save. Checks the website's rules before calling
-/// [onSubmitted]; a refused save comes back as [saveErrors].
+/// phone), then the Product, Sizes and colours (V2-2) and Sustainability
+/// figures sections, then Cancel and Save. Checks the website's rules
+/// before calling [onSubmitted]; a refused save comes back as
+/// [saveFailure], shown on the size/colour row it names.
 class ProductForm extends StatefulWidget {
   const new({
     required this.brands,
     required this.onSubmitted,
     required this.onCancelPressed,
+    this.scope,
     this.onAddBrandPressed,
     this.fixedBrandId,
     this.product,
-    this.saveErrors,
+    this.saveFailure,
     this.isSaving = false,
     super.key,
   });
@@ -36,7 +45,10 @@ class ProductForm extends StatefulWidget {
 
   /// The product being edited; null when adding one.
   final EditableProduct? product;
-  final ProductSaveErrors? saveErrors;
+  final Failure? saveFailure;
+
+  /// Where other shop codes are saved; null hides them.
+  final ManageScope? scope;
   final bool isSaving;
   final ValueChanged<ProductDraft> onSubmitted;
   final VoidCallback onCancelPressed;
@@ -65,6 +77,29 @@ class _ProductFormState extends State<ProductForm> {
     super.dispose();
   }
 
+  void _openOtherCodes(VariantFormValues variant) {
+    final (scope, productId, variantId) = (
+      widget.scope,
+      widget.product?.product.id,
+      variant.id,
+    );
+    if (scope == null || productId == null || variantId == null) return;
+    final l10n = context.l10n;
+    unawaited(
+      showSkuAliasSheet(
+        context,
+        scope: scope,
+        productId: productId,
+        variantId: variantId,
+        variantName:
+            variantDetails(variant.toDraft().asVariant, l10n) ??
+            l10n.thisVariant,
+        aliases: variant.aliases,
+        onChanged: (aliases) => _values.setAliases(variant, aliases),
+      ),
+    );
+  }
+
   void _submit() {
     final isValid = _formKey.currentState?.validate() ?? false;
     setState(() => _hasInvalidFields = !isValid);
@@ -79,9 +114,17 @@ class _ProductFormState extends State<ProductForm> {
       hasFigures: () => _values.hasFigures,
       isVerified: () => _values.isVerified,
     );
+    final saveErrors = switch (widget.saveFailure) {
+      final failure? => productSaveErrors(
+        failure,
+        l10n,
+        variants: [for (final v in _values.variants) v.toDraft()],
+      ),
+      null => null,
+    };
     final alert = _hasInvalidFields
         ? l10n.productFormInvalid
-        : widget.saveErrors?.alert;
+        : saveErrors?.alert;
     return Form(
       key: _formKey,
       child: Column(
@@ -98,11 +141,24 @@ class _ProductFormState extends State<ProductForm> {
             values: _values,
             rules: rules,
             brands: widget.brands,
-            serverErrors: _hasInvalidFields
-                ? const {}
-                : widget.saveErrors?.fields ?? const {},
             onAddBrandPressed: widget.onAddBrandPressed,
             isBrandLocked: widget.fixedBrandId != null,
+          ),
+          const Divider(height: AppSpacing.xxl),
+          _SectionTitle(l10n.variantsSection),
+          ListenableBuilder(
+            listenable: _values,
+            builder: (_, _) => VariantsFields(
+              values: _values,
+              rules: rules,
+              serverErrors: _hasInvalidFields
+                  ? const {}
+                  : saveErrors?.fields ?? const {},
+              onOtherCodesPressed:
+                  widget.scope == null || widget.product == null
+                  ? null
+                  : _openOtherCodes,
+            ),
           ),
           const Divider(height: AppSpacing.xxl),
           _SectionTitle(l10n.figuresSection),

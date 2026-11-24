@@ -4,12 +4,14 @@ import 'package:staka/core/catalog/brands_api.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand_summary.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/features/manage/products/data/datasources/admin_product_remote_data_source.dart';
 import 'package:staka/features/manage/products/data/datasources/product_editor_remote_data_source.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/manage/products/domain/models/editable_product.dart';
 import 'package:staka/features/manage/products/domain/models/product_draft.dart';
 import 'package:staka/features/manage/products/domain/models/product_page.dart';
+import 'package:staka/features/manage/products/domain/models/sku_alias.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 
 import '../../helpers/fake_http_adapter.dart';
@@ -125,8 +127,7 @@ void main() {
     const draft = ProductDraft(
       name: 'Hemp Cap',
       brandId: 'b1',
-      gtin: '8901234500057',
-      sku: 'TT-CAP-01',
+      variants: [VariantDraft(gtin: '8901234500057', sku: 'TT-CAP-01')],
       figures: FiguresDraft(
         carbonScoreGrams: 900,
         recyclabilityPercent: 70,
@@ -147,6 +148,10 @@ void main() {
         'brandId': 'b1',
         'gtin': '8901234500057',
         'sku': 'TT-CAP-01',
+        'category': 'OTHER',
+        'variants': [
+          {'gtin': '8901234500057', 'sku': 'TT-CAP-01'},
+        ],
         'sustainabilityInfo': {
           'carbonScoreGrams': 900,
           'recyclabilityPercent': 70,
@@ -167,6 +172,101 @@ void main() {
       expect(body['description'], isNull);
       expect(body.containsKey('description'), isTrue);
       expect(body.containsKey('imageUrl'), isTrue);
+      expect(body.containsKey('styleCode'), isTrue);
+      expect(body['variants'], [
+        {
+          'gtin': '8901234500057',
+          'sku': 'TT-CAP-01',
+          'size': null,
+          'colour': null,
+        },
+      ]);
+    });
+
+    test('variants (V2-2): ids kept, the first is the primary', () async {
+      final (repository, adapter) = _repository([json(200, _product())]);
+
+      await repository.updateProduct(
+        'p1',
+        const ProductDraft(
+          name: 'Hemp Cap',
+          brandId: 'b1',
+          category: ProductCategory.accessories,
+          styleCode: 'CAP',
+          variants: [
+            VariantDraft(
+              id: 'v1',
+              gtin: '8901234500057',
+              sku: 'CAP-S',
+              size: 'S',
+            ),
+            VariantDraft(gtin: '8901234500064', sku: 'CAP-M', size: 'M'),
+          ],
+        ),
+      );
+
+      final body = adapter.requests.single.data as Map<String, Object?>;
+      expect(body['gtin'], '8901234500057');
+      expect(body['sku'], 'CAP-S');
+      expect(body['category'], 'ACCESSORIES');
+      expect(body['styleCode'], 'CAP');
+      expect(body['variants'], [
+        {
+          'id': 'v1',
+          'gtin': '8901234500057',
+          'sku': 'CAP-S',
+          'size': 'S',
+          'colour': null,
+        },
+        {'gtin': '8901234500064', 'sku': 'CAP-M', 'size': 'M', 'colour': null},
+      ]);
+    });
+
+    test('other shop codes: POST and DELETE on the variant', () async {
+      final (repository, adapter) = _repository([json(201, {}), json(200, {})]);
+      const alias = SkuAlias(source: 'Myntra', code: 'MY-123');
+
+      await repository.addAlias('p1', 'v1', alias);
+      await repository.removeAlias('p1', 'v1', alias);
+
+      expect(
+        [for (final r in adapter.requests) (r.method, r.path)],
+        [
+          ('POST', '/products/p1/variants/v1/aliases'),
+          ('DELETE', '/products/p1/variants/v1/aliases'),
+        ],
+      );
+      for (final request in adapter.requests) {
+        expect(request.data, {'source': 'Myntra', 'code': 'MY-123'});
+      }
+    });
+
+    test('a read brings each variant and its other shop codes', () async {
+      final (repository, _) = _repository([
+        json(200, {
+          ..._product(),
+          'variants': [
+            {
+              'id': 'v1',
+              'gtin': '08901234500019',
+              'sku': 'TT-TEE-01',
+              'aliases': [
+                {'source': 'Myntra', 'code': 'MY-1'},
+              ],
+            },
+            {'id': 'v2', 'gtin': '08901234500057', 'sku': 'TT-TEE-02'},
+          ],
+        }),
+      ]);
+
+      final result = await repository.fetchProduct('p1');
+
+      final editable = (result as Ok<EditableProduct>).value;
+      expect(editable.product.variants, hasLength(2));
+      expect(editable.aliases, {
+        'v1': [const SkuAlias(source: 'Myntra', code: 'MY-1')],
+        'v2': <SkuAlias>[],
+      });
     });
 
     test('verified figures carry their certifier', () async {
@@ -176,8 +276,7 @@ void main() {
         const ProductDraft(
           name: 'Hemp Cap',
           brandId: 'b1',
-          gtin: '8901234500057',
-          sku: 'TT-CAP-01',
+          variants: [VariantDraft(gtin: '8901234500057', sku: 'TT-CAP-01')],
           figures: FiguresDraft(
             carbonScoreGrams: 900,
             recyclabilityPercent: 70,

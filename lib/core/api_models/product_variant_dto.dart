@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:staka/core/api_models/sku_alias_dto.dart';
+
 part 'product_variant_dto.g.dart';
 
 /// Wire format of a product variant (V2-2).
@@ -11,6 +13,7 @@ class ProductVariantDto {
     required this.sku,
     this.size,
     this.colour,
+    this.aliases,
   });
 
   factory fromJson(Map<String, dynamic> json) =>
@@ -21,4 +24,7 @@ class ProductVariantDto {
   final String sku;
   final String? size;
   final String? colour;
+
+  /// Brand product reads only (V2-2): other shops' codes.
+  final List<SkuAliasDto>? aliases;
 }

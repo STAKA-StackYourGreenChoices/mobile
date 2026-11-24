@@ -38,8 +38,7 @@ void main() {
       ProductDraft(
         name: 'Mobile Live Cap',
         brandId: brand.id,
-        gtin: gtin,
-        sku: sku,
+        variants: [VariantDraft(gtin: gtin, sku: sku)],
         figures: const FiguresDraft(
           carbonScoreGrams: 900,
           recyclabilityPercent: 70,
@@ -57,8 +56,7 @@ void main() {
         ProductDraft(
           name: 'Mobile Live Cap II',
           brandId: brand.id,
-          gtin: gtin,
-          sku: sku,
+          variants: [VariantDraft(gtin: gtin, sku: sku)],
           description: 'Edited by the app.',
           figures: const FiguresDraft(
             carbonScoreGrams: 950,
@@ -78,8 +76,12 @@ void main() {
         ProductDraft(
           name: 'Clash',
           brandId: brand.id,
-          gtin: _uniqueGtin(prefix: '3'),
-          sku: sku,
+          variants: [
+            VariantDraft(
+              gtin: _uniqueGtin(prefix: '3'),
+              sku: sku,
+            ),
+          ],
         ),
       );
       final failure = (clash as Err<EditableProduct>).failure;

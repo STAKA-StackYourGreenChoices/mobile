@@ -27,7 +27,7 @@ class ProductTagPreview extends StatelessWidget {
       listenable: values,
       builder: (context, _) {
         final name = values.name.text.trim();
-        final gtin = values.gtin.text;
+        final gtin = values.previewGtin;
         final link = values.imageUrl.text.trim();
         final photo = _webLink.hasMatch(link)
             ? resolveImageUrl(link, webAppUrl: Env.webAppUrl)

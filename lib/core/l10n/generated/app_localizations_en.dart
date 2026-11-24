@@ -2758,4 +2758,123 @@ class AppLocalizationsEn extends AppLocalizations {
   String wardrobeFilterEmpty(String category) {
     return 'No $category in your wardrobe yet.';
   }
+
+  @override
+  String get fieldCategory => 'Type of piece';
+
+  @override
+  String get categoryHint => 'Shoppers can sort their wardrobe by it.';
+
+  @override
+  String get fieldStyleCode => 'Style code';
+
+  @override
+  String get styleCodeHint =>
+      'Optional. Your code for the style; each size and colour has its own SKU.';
+
+  @override
+  String get variantsSection => 'Sizes and colours';
+
+  @override
+  String get variantsHint =>
+      'Each size or colour has its own barcode and SKU. Add at least one.';
+
+  @override
+  String variantHeading(int number) {
+    return 'Size or colour $number';
+  }
+
+  @override
+  String get fieldSize => 'Size';
+
+  @override
+  String get sizeHint => 'Optional, e.g. M or 32/34.';
+
+  @override
+  String get fieldColour => 'Colour';
+
+  @override
+  String get colourHint => 'Optional, e.g. Navy.';
+
+  @override
+  String get addVariant => 'Add a size or colour';
+
+  @override
+  String get removeVariant => 'Remove';
+
+  @override
+  String removeVariantLabel(int number) {
+    return 'Remove size or colour $number';
+  }
+
+  @override
+  String get validationDuplicateBarcode =>
+      'Another size or colour already uses this barcode.';
+
+  @override
+  String get validationDuplicateSku =>
+      'Another size or colour already uses this SKU.';
+
+  @override
+  String otherShopCodes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Other shop codes ($count)',
+      zero: 'Other shop codes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get otherShopCodesSaveFirst =>
+      'Save the product first to add codes other shops use.';
+
+  @override
+  String get otherShopCodesTitle => 'Other shop codes';
+
+  @override
+  String otherShopCodesBody(String variant) {
+    return 'Codes other shops use for $variant, so their orders and receipts match it.';
+  }
+
+  @override
+  String get thisVariant => 'this size or colour';
+
+  @override
+  String get aliasSource => 'Shop';
+
+  @override
+  String get aliasSourceHint => 'e.g. Myntra';
+
+  @override
+  String get aliasCode => 'Their code';
+
+  @override
+  String get addAlias => 'Add code';
+
+  @override
+  String get addingAlias => 'Adding…';
+
+  @override
+  String removeAliasLabel(String source, String code) {
+    return 'Remove the $source code $code';
+  }
+
+  @override
+  String get noAliases => 'No other shop codes yet.';
+
+  @override
+  String get validationAliasSource => 'Enter the shop name';
+
+  @override
+  String get validationAliasCode => 'Enter the code';
+
+  @override
+  String get fileNeedsVariants =>
+      'Optional columns: style_code, size, colour, category. Rows with the same style_code become sizes or colours of one product.';
+
+  @override
+  String get fileNeedsCategories =>
+      'category is one of TOPS, BOTTOMS, DRESSES, OUTERWEAR, FOOTWEAR, ACCESSORIES or OTHER (the default).';
 }

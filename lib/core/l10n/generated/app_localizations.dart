@@ -4454,6 +4454,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No {category} in your wardrobe yet.'**
   String wardrobeFilterEmpty(String category);
+
+  /// No description provided for @fieldCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Type of piece'**
+  String get fieldCategory;
+
+  /// No description provided for @categoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers can sort their wardrobe by it.'**
+  String get categoryHint;
+
+  /// No description provided for @fieldStyleCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Style code'**
+  String get fieldStyleCode;
+
+  /// No description provided for @styleCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Your code for the style; each size and colour has its own SKU.'**
+  String get styleCodeHint;
+
+  /// No description provided for @variantsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Sizes and colours'**
+  String get variantsSection;
+
+  /// No description provided for @variantsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Each size or colour has its own barcode and SKU. Add at least one.'**
+  String get variantsHint;
+
+  /// No description provided for @variantHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Size or colour {number}'**
+  String variantHeading(int number);
+
+  /// No description provided for @fieldSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get fieldSize;
+
+  /// No description provided for @sizeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional, e.g. M or 32/34.'**
+  String get sizeHint;
+
+  /// No description provided for @fieldColour.
+  ///
+  /// In en, this message translates to:
+  /// **'Colour'**
+  String get fieldColour;
+
+  /// No description provided for @colourHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional, e.g. Navy.'**
+  String get colourHint;
+
+  /// No description provided for @addVariant.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a size or colour'**
+  String get addVariant;
+
+  /// No description provided for @removeVariant.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeVariant;
+
+  /// No description provided for @removeVariantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove size or colour {number}'**
+  String removeVariantLabel(int number);
+
+  /// No description provided for @validationDuplicateBarcode.
+  ///
+  /// In en, this message translates to:
+  /// **'Another size or colour already uses this barcode.'**
+  String get validationDuplicateBarcode;
+
+  /// No description provided for @validationDuplicateSku.
+  ///
+  /// In en, this message translates to:
+  /// **'Another size or colour already uses this SKU.'**
+  String get validationDuplicateSku;
+
+  /// No description provided for @otherShopCodes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Other shop codes} other{Other shop codes ({count})}}'**
+  String otherShopCodes(int count);
+
+  /// No description provided for @otherShopCodesSaveFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Save the product first to add codes other shops use.'**
+  String get otherShopCodesSaveFirst;
+
+  /// No description provided for @otherShopCodesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Other shop codes'**
+  String get otherShopCodesTitle;
+
+  /// No description provided for @otherShopCodesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes other shops use for {variant}, so their orders and receipts match it.'**
+  String otherShopCodesBody(String variant);
+
+  /// No description provided for @thisVariant.
+  ///
+  /// In en, this message translates to:
+  /// **'this size or colour'**
+  String get thisVariant;
+
+  /// No description provided for @aliasSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get aliasSource;
+
+  /// No description provided for @aliasSourceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Myntra'**
+  String get aliasSourceHint;
+
+  /// No description provided for @aliasCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Their code'**
+  String get aliasCode;
+
+  /// No description provided for @addAlias.
+  ///
+  /// In en, this message translates to:
+  /// **'Add code'**
+  String get addAlias;
+
+  /// No description provided for @addingAlias.
+  ///
+  /// In en, this message translates to:
+  /// **'Adding…'**
+  String get addingAlias;
+
+  /// No description provided for @removeAliasLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the {source} code {code}'**
+  String removeAliasLabel(String source, String code);
+
+  /// No description provided for @noAliases.
+  ///
+  /// In en, this message translates to:
+  /// **'No other shop codes yet.'**
+  String get noAliases;
+
+  /// No description provided for @validationAliasSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the shop name'**
+  String get validationAliasSource;
+
+  /// No description provided for @validationAliasCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code'**
+  String get validationAliasCode;
+
+  /// No description provided for @fileNeedsVariants.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional columns: style_code, size, colour, category. Rows with the same style_code become sizes or colours of one product.'**
+  String get fileNeedsVariants;
+
+  /// No description provided for @fileNeedsCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'category is one of TOPS, BOTTOMS, DRESSES, OUTERWEAR, FOOTWEAR, ACCESSORIES or OTHER (the default).'**
+  String get fileNeedsCategories;
 }
 
 class _AppLocalizationsDelegate

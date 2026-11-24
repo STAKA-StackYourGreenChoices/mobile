@@ -32,6 +32,33 @@ class ProductFormRules {
     _common.maxLength(64),
   ]);
 
+  Validator get styleCode =>
+      _common.labelledMaxLength(_l10n.fieldStyleCode, 64);
+
+  Validator get size => _common.labelledMaxLength(_l10n.fieldSize, 50);
+
+  Validator get colour => _common.labelledMaxLength(_l10n.fieldColour, 50);
+
+  /// [gtin], and not the same digits as another size/colour in [others].
+  Validator variantGtin(Iterable<String> others) => (value) {
+    final error = gtin(value);
+    if (error != null) return error;
+    final digits = (value ?? '').trim().padLeft(14, '0');
+    return others.any((other) => other.trim().padLeft(14, '0') == digits)
+        ? _l10n.validationDuplicateBarcode
+        : null;
+  };
+
+  /// [sku], and not the same as another size/colour in [others].
+  Validator variantSku(Iterable<String> others) => (value) {
+    final error = sku(value);
+    if (error != null) return error;
+    final text = (value ?? '').trim();
+    return others.any((other) => other.trim() == text)
+        ? _l10n.validationDuplicateSku
+        : null;
+  };
+
   Validator get description =>
       _common.labelledMaxLength(_l10n.fieldDescription, 2000);
 

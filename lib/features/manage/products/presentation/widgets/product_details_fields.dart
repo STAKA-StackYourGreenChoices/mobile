@@ -6,18 +6,18 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/brand_summary.dart';
 import 'package:staka/features/manage/products/presentation/forms/product_form_rules.dart';
 import 'package:staka/features/manage/products/presentation/forms/product_form_values.dart';
-import 'package:staka/features/manage/products/presentation/forms/product_save_errors.dart';
 import 'package:staka/features/manage/products/presentation/widgets/brand_picker_field.dart';
+import 'package:staka/features/manage/products/presentation/widgets/category_field.dart';
 import 'package:staka/shared/widgets/inputs/app_text_field.dart';
 
-/// The form's "Product" section: name, brand, barcode, SKU, description
-/// and photo link, with the website's hints and limits.
+/// The form's "Product" section: name, brand, type of piece, style code,
+/// description and photo link, with the website's hints and limits. The
+/// barcodes and SKUs are per size/colour (`VariantsFields`, V2-2).
 class ProductDetailsFields extends StatelessWidget {
   const new({
     required this.values,
     required this.rules,
     required this.brands,
-    required this.serverErrors,
     required this.onAddBrandPressed,
     this.isBrandLocked = false,
     super.key,
@@ -26,7 +26,6 @@ class ProductDetailsFields extends StatelessWidget {
   final ProductFormValues values;
   final ProductFormRules rules;
   final List<BrandSummary> brands;
-  final Map<ProductField, String> serverErrors;
   final VoidCallback? onAddBrandPressed;
   final bool isBrandLocked;
 
@@ -53,25 +52,15 @@ class ProductDetailsFields extends StatelessWidget {
           onAddBrandPressed: onAddBrandPressed,
           isLocked: isBrandLocked,
         ),
-        AppTextField(
-          label: l10n.fieldBarcode,
-          controller: values.gtin,
-          helperText: l10n.barcodeHint,
-          validator: rules.gtin,
-          errorText: serverErrors[ProductField.gtin],
-          keyboardType: TextInputType.number,
-          inputFormatters: [
-            FilteringTextInputFormatter.digitsOnly,
-            LengthLimitingTextInputFormatter(14),
-          ],
-          textInputAction: TextInputAction.next,
+        CategoryField(
+          value: values.category,
+          onChanged: (category) => values.category = category,
         ),
         AppTextField(
-          label: l10n.fieldSku,
-          controller: values.sku,
-          helperText: l10n.skuHint,
-          validator: rules.sku,
-          errorText: serverErrors[ProductField.sku],
+          label: l10n.fieldStyleCode,
+          controller: values.styleCode,
+          helperText: l10n.styleCodeHint,
+          validator: rules.styleCode,
           inputFormatters: [LengthLimitingTextInputFormatter(64)],
           textInputAction: TextInputAction.next,
         ),
