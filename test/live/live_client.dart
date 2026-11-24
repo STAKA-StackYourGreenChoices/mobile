@@ -11,8 +11,6 @@ import 'package:staka/core/network/interceptors/auth_interceptor.dart';
 import 'package:staka/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/domain/models/auth_session.dart';
-import 'package:staka/features/manage/brands/data/datasources/brand_editor_remote_data_source.dart';
-import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
 import 'package:staka/features/manage/claims/data/datasources/admin_claim_remote_data_source.dart';
 import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
 import 'package:staka/features/manage/products/data/datasources/admin_product_remote_data_source.dart';
@@ -75,10 +73,6 @@ class LiveClient {
       BrandsApi(dio),
       ProductEditorRemoteDataSource(dio, const AdminScope()),
     );
-    adminBrands = AdminBrandRepositoryImpl(
-      BrandsApi(dio),
-      BrandEditorRemoteDataSource(dio),
-    );
     adminClaims = AdminClaimRepositoryImpl(
       AdminClaimRemoteDataSource(dio, const AdminScope()),
     );
@@ -95,7 +89,6 @@ class LiveClient {
   late final ProductRepositoryImpl products;
   late final TagRepositoryImpl tags;
   late final AdminProductRepositoryImpl adminProducts;
-  late final AdminBrandRepositoryImpl adminBrands;
   late final AdminClaimRepositoryImpl adminClaims;
   late final SessionRepository session;
   int rejections = 0;

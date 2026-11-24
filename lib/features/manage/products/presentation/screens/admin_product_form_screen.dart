@@ -28,7 +28,7 @@ class AdminProductFormScreen extends ConsumerWidget {
   const new({required this.scope, this.productId, super.key});
 
   /// Admin (every brand) or one brand's team.
-  final ManageScope scope;
+  final BrandScope scope;
   final String? productId;
 
   @override
@@ -43,7 +43,7 @@ class AdminProductFormScreen extends ConsumerWidget {
         AppSnackbar.show(context, message: l10n.productAdded);
         // Like the website: carry on editing the new product.
         context.goNamed(
-          scope.productEditRoute.name,
+          AppRoute.brandProductEdit.name,
           pathParameters: {'id': next.value.product.id},
         );
       } else {
@@ -88,13 +88,7 @@ class AdminProductFormScreen extends ConsumerWidget {
                   )
                   .submit,
               onCancelPressed: () => _leave(context, scope),
-              onAddBrandPressed: scope.worksOnOneBrand
-                  ? null
-                  : () => context.goNamed(AppRoute.adminBrands.name),
-              fixedBrandId: switch (scope) {
-                BrandScope(:final brandId) => brandId,
-                AdminScope() => null,
-              },
+              fixedBrandId: scope.brandId,
             ),
           ],
         ),
@@ -102,8 +96,7 @@ class AdminProductFormScreen extends ConsumerWidget {
     );
   }
 
-  static void _leave(BuildContext context, ManageScope scope) =>
-      context.canPop()
+  static void _leave(BuildContext context, BrandScope scope) => context.canPop()
       ? context.pop()
       : context.goNamed(scope.productsRoute.name);
 }
@@ -112,7 +105,7 @@ class AdminProductFormScreen extends ConsumerWidget {
 class _Header extends StatelessWidget {
   const new({required this.scope, required this.product});
 
-  final ManageScope scope;
+  final BrandScope scope;
   final EditableProduct? product;
 
   @override

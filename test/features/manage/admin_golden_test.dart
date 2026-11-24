@@ -5,38 +5,72 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/sustainability_info.dart';
-import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
-import 'package:staka/features/manage/brands/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/brand_apply/domain/models/brand_application.dart';
+import 'package:staka/features/manage/brand_review/data/brand_review_repository_impl.dart';
+import 'package:staka/features/manage/brand_review/presentation/screens/admin_brand_screen.dart';
+import 'package:staka/features/manage/brand_review/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
+import 'package:staka/features/manage/claims/domain/models/claim.dart';
+import 'package:staka/features/manage/disputes/data/dispute_repository_impl.dart';
+import 'package:staka/features/manage/disputes/presentation/screens/admin_dispute_screen.dart';
+import 'package:staka/features/manage/disputes/presentation/screens/admin_disputes_screen.dart';
 import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 
-import '../../helpers/admin_brand_fakes.dart';
+import '../../helpers/admin_claim_fakes.dart';
 import '../../helpers/admin_product_fakes.dart';
+import '../../helpers/admin_review_fakes.dart';
 import '../../helpers/golden.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
 
-Widget _scoped(FakeAdminProductRepository repository, Widget screen) =>
+const _id = '11111111-2222-4333-8444-555555555555';
+
+final Claim _claim = claimFor(
+  1,
+  status: ClaimStatus.rejected,
+  rejectionReason: 'The receipt is from another shop.',
+);
+
+final _brands = FakeBrandReviewRepository(
+  lists: {
+    BrandApplicationStatus.pending: Ok([
+      reviewBrand(),
+      reviewBrand(id: 'b2', name: 'Nordic Loom', memberCount: null),
+    ]),
+  },
+);
+
+final _disputes = FakeDisputeRepository(
+  lists: {
+    DisputeStatus.open: Ok([disputeOf(_claim)]),
+  },
+);
+
+final _claims = FakeAdminClaimRepository(
+  details: {_claim.id: detailOf(_claim)},
+  receipts: {
+    _claim.id: Ok(ClaimReceipt(bytes: onePixelPng, mimeType: 'image/png')),
+  },
+);
+
+Widget _scoped(Widget screen, {FakeAdminProductRepository? products}) =>
     ProviderScope(
       overrides: [
-        adminProductRepositoryProvider.overrideWith((_, _) => repository),
+        adminProductRepositoryProvider.overrideWith(
+          (_, _) => products ?? FakeAdminProductRepository(),
+        ),
+        brandReviewRepositoryProvider.overrideWithValue(_brands),
+        disputeRepositoryProvider.overrideWithValue(_disputes),
+        adminClaimRepositoryProvider.overrideWith((_, _) => _claims),
       ],
       child: screen,
     );
-
-Widget _products(FakeAdminProductRepository repository) =>
-    _scoped(repository, const AdminProductsScreen(scope: AdminScope()));
-
-Widget _brands(FakeAdminBrandRepository repository) => ProviderScope(
-  overrides: [adminBrandRepositoryProvider.overrideWithValue(repository)],
-  child: const AdminBrandsScreen(),
-);
-
-const _id = '11111111-2222-4333-8444-555555555555';
 
 void main() {
   setUpAll(loadAppFonts);
@@ -53,7 +87,7 @@ void main() {
             recyclabilityPercent: 55,
             isVerified: false,
           ),
-        ),
+        ).copyWith(isHidden: true),
         productNamed(
           'Recycled Denim Jeans with a name long enough to be cut short',
           gtin: '08901234500033',
@@ -74,33 +108,40 @@ void main() {
     brands: Ok([brandSummary('b1', 'Terra Threads')]),
   );
 
-  final brandList = FakeAdminBrandRepository(
-    lists: [
-      Ok([
-        brandSummary(
-          'b1',
-          'Terra Threads',
-        ).copyWith(description: 'Organic cotton basics, made in Portugal.'),
-        brandSummary('b2', 'Nordic Loom').copyWith(productCount: 1),
-        brandSummary('b3', 'Field & Fold').copyWith(productCount: 0),
-      ]),
-    ],
-  );
-
   final cases = <String, (Widget Function(), double)>{
-    'brands': (() => _brands(brandList), 900),
-    'brands_empty': (() => _brands(FakeAdminBrandRepository()), 760),
-    'hub': (() => const AdminHomeScreen(), 760),
-    'products': (() => _products(list), 760),
-    'products_empty': (() => _products(FakeAdminProductRepository()), 760),
-    'product_new': (
-      () => _scoped(adding, const AdminProductFormScreen(scope: AdminScope())),
+    'admin_hub': (() => _scoped(const AdminHomeScreen()), 760),
+    'admin_products': (
+      () => _scoped(
+        const AdminProductsScreen(scope: AdminScope()),
+        products: list,
+      ),
+      760,
+    ),
+    'admin_products_empty': (
+      () => _scoped(const AdminProductsScreen(scope: AdminScope())),
+      760,
+    ),
+    'admin_brands': (() => _scoped(const AdminBrandsScreen()), 760),
+    'admin_brand_pending': (
+      () => _scoped(const AdminBrandScreen(brandId: 'b1')),
+      1300,
+    ),
+    'admin_disputes': (() => _scoped(const AdminDisputesScreen()), 760),
+    'admin_dispute': (
+      () => _scoped(const AdminDisputeScreen(disputeId: 'd1')),
+      1300,
+    ),
+    'brand_product_new': (
+      () => _scoped(
+        const AdminProductFormScreen(scope: BrandScope('b1')),
+        products: adding,
+      ),
       2300,
     ),
-    'product_edit': (
+    'brand_product_edit': (
       () => _scoped(
-        editing,
-        const AdminProductFormScreen(scope: AdminScope(), productId: _id),
+        const AdminProductFormScreen(scope: BrandScope('b1'), productId: _id),
+        products: editing,
       ),
       2500,
     ),
@@ -109,17 +150,28 @@ void main() {
   for (final MapEntry(key: name, value: (build, height)) in cases.entries) {
     for (final brightness in Brightness.values) {
       testWidgets(
-        'admin $name, ${brightness.name}',
+        '$name, ${brightness.name}',
         (tester) => withRealShadows(() async {
           usePhoneScreen(tester, height: height);
           await pumpThemed(tester, build(), brightness: brightness);
           await tester.pumpAndSettle();
+          if (name == 'admin_dispute') await _decodeImages(tester);
           await expectLater(
             find.byType(MaterialApp),
-            matchesGoldenFile('goldens/admin_${name}_${brightness.name}.png'),
+            matchesGoldenFile('goldens/${name}_${brightness.name}.png'),
           );
         }),
       );
     }
   }
+}
+
+/// Decodes the receipt photo for real (the fake clock never does), so the
+/// image has its size in every run, not only when an earlier test cached it.
+Future<void> _decodeImages(WidgetTester tester) async {
+  for (final element in find.byType(Image).evaluate()) {
+    final image = element.widget as Image;
+    await tester.runAsync(() => precacheImage(image.image, element));
+  }
+  await tester.pumpAndSettle();
 }

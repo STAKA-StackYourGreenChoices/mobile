@@ -3866,6 +3866,516 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A clear photo or PDF showing the shop, the date and this piece. {brand} checks it. {uploadsLeft}'**
   String receiptBodyForBrand(String brand, String uploadsLeft);
+
+  /// Admin products: under the heading (read-only, V2-12).
+  ///
+  /// In en, this message translates to:
+  /// **'Every brand\'s products. Brands add and edit their own; tap one to hide it from shoppers or show it again.'**
+  String get adminProductsReadOnlyDescription;
+
+  /// Admin products: empty catalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands add their products from their Brand tab. They show up here.'**
+  String get noProductsAdminBody;
+
+  /// Admin products: pill on a product hidden from shoppers.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get hiddenFromShoppers;
+
+  /// Hide product dialog: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide {name}?'**
+  String hideProductTitle(String name);
+
+  /// Hide product dialog: body.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers won\'t see it on STAKA until you show it again. {brand} still sees it in its Brand tab.'**
+  String hideProductBody(String brand);
+
+  /// Hide product dialog: confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide product'**
+  String get hideProduct;
+
+  /// Show product dialog: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Show {name} again?'**
+  String showProductTitle(String name);
+
+  /// Show product dialog: body.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers can find it on STAKA again.'**
+  String get showProductBody;
+
+  /// Show product dialog: confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Show product'**
+  String get showProduct;
+
+  /// Snackbar after hiding a product.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is hidden from shoppers.'**
+  String productHidden(String name);
+
+  /// Snackbar after showing a product again.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers can see {name} again.'**
+  String productShown(String name);
+
+  /// Reason or note sheet: too short.
+  ///
+  /// In en, this message translates to:
+  /// **'Write at least 3 characters.'**
+  String get noteTooShort;
+
+  /// Reason or note sheet: too long.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it to 500 characters.'**
+  String get noteTooLong;
+
+  /// Admin brands: under the heading (V2-12).
+  ///
+  /// In en, this message translates to:
+  /// **'Brands apply to run themselves on STAKA. Check each application and its business document, then approve it or turn it down. Pause a brand that breaks the rules.'**
+  String get adminBrandsReviewDescription;
+
+  /// Admin brands tab: applications waiting.
+  ///
+  /// In en, this message translates to:
+  /// **'To review'**
+  String get brandReviewPending;
+
+  /// Admin brands tab and pill: approved brands.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get brandReviewActive;
+
+  /// Admin brands tab and pill: suspended brands.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get brandReviewSuspended;
+
+  /// Admin brands tab and pill: rejected applications.
+  ///
+  /// In en, this message translates to:
+  /// **'Turned down'**
+  String get brandReviewRejected;
+
+  /// Admin brands: the status tabs, for screen readers.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand status'**
+  String get brandStatusLabel;
+
+  /// Admin brands: empty tab.
+  ///
+  /// In en, this message translates to:
+  /// **'{status, select, pending{No applications are waiting.} approved{No active brands yet.} suspended{No paused brands.} other{No turned-down applications.}}'**
+  String noBrandsInStatus(String status);
+
+  /// Admin brands: when a brand applied.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied {date}'**
+  String appliedOn(String date);
+
+  /// Admin brands: how many people run a brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No team yet} =1{1 person} other{{count} people}}'**
+  String brandMembers(int count);
+
+  /// Admin brand: the brand description.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutTheBrand;
+
+  /// Admin brand: application date heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied'**
+  String get appliedHeading;
+
+  /// Admin brand: members heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Team'**
+  String get teamHeading;
+
+  /// Admin brand: the application claims a listed brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Already on STAKA'**
+  String get listedBrandHeading;
+
+  /// Admin brand: what claiming a listed brand means.
+  ///
+  /// In en, this message translates to:
+  /// **'Says it owns a brand STAKA already lists. Approving gives its team that brand and its products.'**
+  String get claimsListedBrand;
+
+  /// Admin brand: opens the private document.
+  ///
+  /// In en, this message translates to:
+  /// **'View business document'**
+  String get viewBusinessDocument;
+
+  /// Admin brand: none sent.
+  ///
+  /// In en, this message translates to:
+  /// **'No business document was sent.'**
+  String get noBusinessDocument;
+
+  /// Brand document viewer: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Business document'**
+  String get businessDocumentTitle;
+
+  /// Brand document viewer: failed.
+  ///
+  /// In en, this message translates to:
+  /// **'The document couldn\'t be loaded.'**
+  String get documentUnavailable;
+
+  /// Admin brand: approve an application.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve brand'**
+  String get approveBrand;
+
+  /// Admin brand: reject an application.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn down'**
+  String get rejectBrand;
+
+  /// Reject brand sheet: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn down {brand}?'**
+  String rejectBrandTitle(String brand);
+
+  /// Reject brand sheet: body.
+  ///
+  /// In en, this message translates to:
+  /// **'Its owners see your reason and can fix the application and send it again.'**
+  String get rejectBrandBody;
+
+  /// Admin brand: suspend an active brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause brand'**
+  String get suspendBrand;
+
+  /// Suspend brand sheet: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause {brand}?'**
+  String suspendBrandTitle(String brand);
+
+  /// Suspend brand sheet: body.
+  ///
+  /// In en, this message translates to:
+  /// **'Its team can\'t use the Brand tab until you make it active again, and sees your reason. Its products stay visible to shoppers.'**
+  String get suspendBrandBody;
+
+  /// Admin brand: reinstate a paused brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Make active again'**
+  String get reinstateBrand;
+
+  /// Reject and suspend sheets: the field.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason the brand will see'**
+  String get reasonForBrand;
+
+  /// Admin brand: rejected, nothing to decide.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the brand to fix its application and send it again.'**
+  String get rejectedBrandWaits;
+
+  /// Snackbar after approving a brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} is approved. Its team can now run it.'**
+  String brandApproved(String brand);
+
+  /// Snackbar after rejecting a brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} was turned down. Its owners see your reason.'**
+  String brandRejected(String brand);
+
+  /// Snackbar after suspending a brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} is paused.'**
+  String brandSuspended(String brand);
+
+  /// Snackbar after reinstating a brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} is active again.'**
+  String brandReinstated(String brand);
+
+  /// Admin hub and page: shoppers asking STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'Disputes'**
+  String get adminDisputes;
+
+  /// Admin disputes: under the heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers who think a brand wrongly turned their receipt down. Read their message and the receipt, then keep the decision or approve it.'**
+  String get adminDisputesDescription;
+
+  /// Disputes tab: open.
+  ///
+  /// In en, this message translates to:
+  /// **'To decide'**
+  String get disputeOpen;
+
+  /// Disputes tab: the brand decision was kept.
+  ///
+  /// In en, this message translates to:
+  /// **'Kept'**
+  String get disputeUpheld;
+
+  /// Disputes tab: the receipt was approved after all.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get disputeOverturned;
+
+  /// Disputes: the status tabs, for screen readers.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispute status'**
+  String get disputeStatusLabel;
+
+  /// Disputes: empty tab.
+  ///
+  /// In en, this message translates to:
+  /// **'{status, select, open{No disputes are waiting.} upheld{No kept decisions yet.} other{No approved disputes yet.}}'**
+  String noDisputesInStatus(String status);
+
+  /// Disputes row: the piece and its brand.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} · {brand}'**
+  String disputeRowTitle(String product, String brand);
+
+  /// Disputes row when the API sends no claim.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt turned down by a brand'**
+  String get disputeRowUntitled;
+
+  /// Stands in for a shopper name the API did not send.
+  ///
+  /// In en, this message translates to:
+  /// **'A shopper'**
+  String get aShopper;
+
+  /// Disputes: who asked and when.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} asked {date}'**
+  String disputeAsked(String name, String date);
+
+  /// Dispute: heading over the message.
+  ///
+  /// In en, this message translates to:
+  /// **'What the shopper wrote'**
+  String get shopperWrote;
+
+  /// Dispute: heading over the brand's reason.
+  ///
+  /// In en, this message translates to:
+  /// **'Why {brand} turned it down'**
+  String brandReasonHeading(String brand);
+
+  /// Dispute: overturn the brand decision.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve the receipt'**
+  String get overturn;
+
+  /// Dispute: uphold the brand decision.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the decision'**
+  String get uphold;
+
+  /// Overturn sheet: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve this receipt?'**
+  String get overturnTitle;
+
+  /// Overturn sheet: body.
+  ///
+  /// In en, this message translates to:
+  /// **'The shopper becomes the verified owner and gets the points. {brand} and the shopper see your note.'**
+  String overturnBody(String brand);
+
+  /// Uphold sheet: title.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep {brand}\'s decision?'**
+  String upholdTitle(String brand);
+
+  /// Uphold sheet: body.
+  ///
+  /// In en, this message translates to:
+  /// **'The receipt stays turned down and the shopper can\'t ask again. They see your note.'**
+  String get upholdBody;
+
+  /// Dispute sheets: the field.
+  ///
+  /// In en, this message translates to:
+  /// **'Note the shopper will see'**
+  String get noteForShopper;
+
+  /// Snackbar after overturning.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved. The shopper is now the verified owner.'**
+  String get disputeOverturnedDone;
+
+  /// Snackbar after upholding.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision kept. The shopper sees your note.'**
+  String get disputeUpheldDone;
+
+  /// Dispute settled: overturned.
+  ///
+  /// In en, this message translates to:
+  /// **'You approved the receipt on {date}.'**
+  String overturnedOn(String date);
+
+  /// Dispute settled: overturned, no date.
+  ///
+  /// In en, this message translates to:
+  /// **'The receipt was approved.'**
+  String get overturnedUndated;
+
+  /// Dispute settled: upheld.
+  ///
+  /// In en, this message translates to:
+  /// **'The brand\'s decision was kept on {date}.'**
+  String upheldOn(String date);
+
+  /// Dispute settled: upheld, no date.
+  ///
+  /// In en, this message translates to:
+  /// **'The brand\'s decision was kept.'**
+  String get upheldUndated;
+
+  /// Dispute settled: the note.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: {note}'**
+  String noteSaid(String note);
+
+  /// Claims: the shopper asked STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'Disputed by the shopper'**
+  String get disputedByShopper;
+
+  /// Admin claim: the overrule panel heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Overrule {brand}'**
+  String overruleHeading(String brand);
+
+  /// Admin claim: pending, why to overrule.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} checks this claim. Decide here only when it is stuck, for example a paused brand or one with no team.'**
+  String overrulePendingHint(String brand);
+
+  /// Admin claim: decided, why to overrule.
+  ///
+  /// In en, this message translates to:
+  /// **'Change what {brand} decided only when it was clearly wrong. Your reason is recorded.'**
+  String overruleDecidedHint(String brand);
+
+  /// Admin claim: overrule to approve.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve instead'**
+  String get overruleApprove;
+
+  /// Admin claim: overrule to reject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject instead'**
+  String get overruleReject;
+
+  /// Overrule sheet: approve title.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve this claim?'**
+  String get overruleApproveTitle;
+
+  /// Overrule sheet: reject title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject this claim?'**
+  String get overruleRejectTitle;
+
+  /// Overrule sheet: body.
+  ///
+  /// In en, this message translates to:
+  /// **'{brand} and the shopper see your reason. It is recorded with your name.'**
+  String overruleBody(String brand);
+
+  /// Overrule sheet: the field.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get overruleReason;
+
+  /// Admin claims list: under the heading (V2-12).
+  ///
+  /// In en, this message translates to:
+  /// **'Every brand\'s claims. Brands approve or reject their own; overrule one only when it is stuck or clearly wrong.'**
+  String get adminClaimsReadOnlyDescription;
+
+  /// Admin hub: Brands row with how many wait.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No applications waiting.} =1{1 application is waiting.} other{{count} applications are waiting.}}'**
+  String adminBrandsWaiting(int count);
+
+  /// Admin hub: Disputes row with how many wait.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No disputes waiting.} =1{1 dispute is waiting.} other{{count} disputes are waiting.}}'**
+  String adminDisputesWaiting(int count);
 }
 
 class _AppLocalizationsDelegate

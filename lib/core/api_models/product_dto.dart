@@ -20,6 +20,7 @@ class ProductDto {
     this.description,
     this.imageUrl,
     this.sustainabilityInfo,
+    this.hidden,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$ProductDtoFromJson(json);
@@ -34,4 +35,7 @@ class ProductDto {
   final String? description;
   final String? imageUrl;
   final SustainabilityInfoDto? sustainabilityInfo;
+
+  /// Admin lists only (V2-12).
+  final bool? hidden;
 }

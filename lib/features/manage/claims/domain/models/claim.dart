@@ -36,6 +36,7 @@ class Claim {
     this.orderId,
     this.receiptMimeType,
     this.receiptAttempt,
+    this.isDisputed = false,
   });
 
   final String id;
@@ -51,6 +52,9 @@ class Claim {
 
   /// Which of the shopper's five uploads this is (receipts only).
   final int? receiptAttempt;
+
+  /// The shopper asked STAKA to look again and it hasn't answered yet.
+  final bool isDisputed;
   final ClaimUser user;
   final ClaimProduct product;
 

@@ -53,6 +53,10 @@ class AdminProductRepositoryImpl implements AdminProductRepository {
       });
 
   @override
+  Future<Result<void>> setHidden(String id, {required bool hidden}) =>
+      guardApi(() => _editor.setHidden(id, hidden: hidden));
+
+  @override
   Future<Result<List<BrandSummary>>> fetchBrands() => guardApi(() async {
     final brands = await _brands.fetchAll();
     return [for (final brand in brands) brand.toDomain()];

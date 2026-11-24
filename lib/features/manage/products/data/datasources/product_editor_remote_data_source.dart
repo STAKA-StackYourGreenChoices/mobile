@@ -33,6 +33,11 @@ class ProductEditorRemoteDataSource {
   Future<void> delete(String id) =>
       _dio.delete<void>(_scope.path('/products/$id'));
 
+  /// Admin moderation; always the admin path, whatever the scope.
+  Future<void> setHidden(String id, {required bool hidden}) => _dio.post<void>(
+    '/admin/products/${Uri.encodeComponent(id)}/${hidden ? 'hide' : 'unhide'}',
+  );
+
   Future<ProductDto> _product(
     Future<Response<Map<String, dynamic>>> request,
   ) async => ProductDto.fromJson((await request).data!);

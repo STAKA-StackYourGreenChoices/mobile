@@ -33,6 +33,9 @@ class FakeAdminClaimRepository implements AdminClaimRepository {
   final List<String> approved = [];
   final List<(String, String)> rejected = [];
 
+  /// (claim id, decision, reason) for each overrule.
+  final List<(String, ClaimStatus, String)> overruled = [];
+
   @override
   Future<Result<ClaimPage>> fetchClaims(ClaimStatus status, int page) async {
     final request = (status: status, page: page);
@@ -61,6 +64,16 @@ class FakeAdminClaimRepository implements AdminClaimRepository {
   @override
   Future<Result<ClaimDetail>> reject(String id, String reason) async {
     rejected.add((id, reason));
+    return _decisions.removeAt(0);
+  }
+
+  @override
+  Future<Result<ClaimDetail>> overrule(
+    String id, {
+    required ClaimStatus decision,
+    required String reason,
+  }) async {
+    overruled.add((id, decision, reason));
     return _decisions.removeAt(0);
   }
 }

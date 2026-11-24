@@ -65,10 +65,14 @@ void main() {
 
     await tester.tap(find.text('Admin'));
     await tester.pumpAndSettle();
-    // The hub: the website's admin nav.
-    for (final area in ['Products', 'Brands', 'Import', 'Claims']) {
+    // The hub (V2-12): brands, disputes, then read-only claims and
+    // products. Catalog editing and Import moved to the Brand tab.
+    for (final area in ['Brands', 'Disputes', 'Claims', 'Products']) {
       expect(find.text(area), findsOneWidget);
     }
+    expect(find.text('Import'), findsNothing);
+    expect(find.text('No applications waiting.'), findsOneWidget);
+    expect(find.text('No disputes waiting.'), findsOneWidget);
   });
 
   testWidgets('API down at launch: retry, then into the app', (tester) async {

@@ -19,6 +19,7 @@ extension ProductDtoMapper on ProductDto {
     description: description,
     imageUrl: resolveImageUrl(imageUrl, webAppUrl: webAppUrl),
     sustainabilityInfo: sustainabilityInfo?.toDomain(),
+    isHidden: hidden ?? false,
   );
 }
 

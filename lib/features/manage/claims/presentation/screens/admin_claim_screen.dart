@@ -13,7 +13,9 @@ import 'package:staka/features/manage/claims/presentation/state/claim_review_sta
 import 'package:staka/features/manage/claims/presentation/widgets/claim_decision_panel.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_facts.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_history.dart';
+import 'package:staka/features/manage/claims/presentation/widgets/claim_overrule_panel.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_receipt_preview.dart';
+import 'package:staka/features/manage/claims/presentation/widgets/disputed_pill.dart';
 import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/manage/shared/widgets/admin_not_found.dart';
@@ -78,7 +80,13 @@ class AdminClaimScreen extends ConsumerWidget {
                 pathParameters: {'id': claimId},
               ),
             ),
-            ClaimDecisionPanel(scope: scope, claim: detail.claim),
+            switch (scope) {
+              BrandScope() => ClaimDecisionPanel(
+                scope: scope,
+                claim: detail.claim,
+              ),
+              AdminScope() => ClaimOverrulePanel(claim: detail.claim),
+            },
             ClaimFacts(claim: detail.claim),
             if (detail.history.length > 1)
               ClaimHistory(history: detail.history, currentId: claimId),
@@ -134,6 +142,7 @@ class _Heading extends StatelessWidget {
             color: context.colors.inkMuted,
           ),
         ),
+        if (claim.isDisputed) const DisputedPill(),
       ],
     );
   }

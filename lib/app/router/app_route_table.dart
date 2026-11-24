@@ -23,10 +23,14 @@ import 'package:staka/features/brand_portal/presentation/screens/brand_home_scre
 import 'package:staka/features/brand_portal/presentation/screens/brand_settings_screen.dart';
 import 'package:staka/features/brand_portal/presentation/screens/brand_team_screen.dart';
 import 'package:staka/features/brand_portal/presentation/widgets/current_brand_builder.dart';
-import 'package:staka/features/manage/brands/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/manage/brand_review/presentation/screens/admin_brand_screen.dart';
+import 'package:staka/features/manage/brand_review/presentation/screens/admin_brands_screen.dart';
+import 'package:staka/features/manage/brand_review/presentation/screens/brand_document_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claim_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/admin_claims_screen.dart';
 import 'package:staka/features/manage/claims/presentation/screens/claim_receipt_screen.dart';
+import 'package:staka/features/manage/disputes/presentation/screens/admin_dispute_screen.dart';
+import 'package:staka/features/manage/disputes/presentation/screens/admin_disputes_screen.dart';
 import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen.dart';
 import 'package:staka/features/manage/import/presentation/screens/admin_import_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
@@ -134,34 +138,55 @@ final appRouteTable = <RouteBase>[
                   scope: _admin,
                   brandId: state.uri.queryParameters['brand'],
                 ),
-                children: [
-                  // 'new' before ':id', or it would be read as an id.
-                  _child(
-                    AppRoute.adminProducts,
-                    AppRoute.adminProductNew,
-                    (_, _) => const AdminProductFormScreen(scope: _admin),
-                  ),
-                  _child(
-                    AppRoute.adminProducts,
-                    AppRoute.adminProductEdit,
-                    (_, state) => AdminProductFormScreen(
-                      // A new id builds a new screen (after "Add product").
-                      key: ValueKey(state.pathParameters['id']),
-                      scope: _admin,
-                      productId: state.pathParameters['id'] ?? '',
-                    ),
-                  ),
-                ],
               ),
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminBrands,
                 (_, _) => const AdminBrandsScreen(),
+                children: [
+                  _child(
+                    AppRoute.adminBrands,
+                    AppRoute.adminBrand,
+                    (_, state) => AdminBrandScreen(
+                      key: ValueKey(state.pathParameters['id']),
+                      brandId: state.pathParameters['id'] ?? '',
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.adminBrand,
+                        AppRoute.adminBrandDocument,
+                        (_, state) => BrandDocumentScreen(
+                          brandId: state.pathParameters['id'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
               _child(
                 AppRoute.adminHome,
-                AppRoute.adminImport,
-                (_, _) => const AdminImportScreen(scope: _admin),
+                AppRoute.adminDisputes,
+                (_, _) => const AdminDisputesScreen(),
+                children: [
+                  _child(
+                    AppRoute.adminDisputes,
+                    AppRoute.adminDispute,
+                    (_, state) => AdminDisputeScreen(
+                      key: ValueKey(state.pathParameters['id']),
+                      disputeId: state.pathParameters['id'] ?? '',
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.adminDispute,
+                        AppRoute.adminDisputeReceipt,
+                        (_, state) => ClaimReceiptScreen(
+                          scope: _admin,
+                          claimId: state.pathParameters['claimId'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
               _child(
                 AppRoute.adminHome,

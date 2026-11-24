@@ -64,7 +64,7 @@ final class ClaimDecisionControllerProvider
 }
 
 String _$claimDecisionControllerHash() =>
-    r'687122afb999a8c3edc4a211793c9d120b7bc21b';
+    r'0d0cb83c14c673a1a7cce5036dc57949e13f5b38';
 
 /// Approve or reject one claim. Done holds the decision made.
 

@@ -6,7 +6,7 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/features/manage/import/domain/models/picked_csv.dart';
 
 import '../../helpers/admin_product_fakes.dart';
-import '../../helpers/auth_fakes.dart';
+import '../../helpers/brand_portal_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/import_fakes.dart';
 import '../../helpers/pump_app.dart';
@@ -14,7 +14,8 @@ import '../../helpers/pump_full_app.dart';
 
 const _tokens = AuthTokens(accessToken: 'a', refreshToken: 'r');
 
-/// Signs in as an admin and opens Admin → Import on a 360 × 800 phone.
+/// Signs in as Terra Threads' owner and opens Brand → Import on a
+/// 360 × 800 phone (V2-12: brands import their own catalog).
 Future<void> _openImport(
   WidgetTester tester, {
   FakeImportRepository? repository,
@@ -25,12 +26,19 @@ Future<void> _openImport(
   await pumpApp(
     tester,
     tokens: _tokens,
-    replies: [json(200, userJson(role: 'ADMIN'))],
+    replies: [
+      json(200, memberUserJson([membershipJson()])),
+    ],
     importRepository: repository,
     importFileActions: actions,
     adminProducts: products,
   );
-  await tester.tap(find.text('Admin'));
+  await tester.tap(
+    find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text('Brand'),
+    ),
+  );
   await tester.pumpAndSettle();
   await tester.tap(find.text('Import'));
   await tester.pumpAndSettle();

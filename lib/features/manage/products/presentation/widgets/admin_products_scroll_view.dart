@@ -35,8 +35,12 @@ class AdminProductsScrollView extends StatelessWidget {
   final Future<void> Function() onRefresh;
   final VoidCallback onLoadMore;
   final VoidCallback onRetry;
-  final VoidCallback onAddPressed;
-  final VoidCallback onImportPressed;
+
+  /// Null for an admin, who doesn't edit the catalog (V2-12).
+  final VoidCallback? onAddPressed;
+  final VoidCallback? onImportPressed;
+
+  /// A brand opens the product to edit it; an admin to hide or show it.
   final ValueChanged<Product> onProductPressed;
 
   /// About five 72 dp rows.

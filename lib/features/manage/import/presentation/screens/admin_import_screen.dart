@@ -25,7 +25,7 @@ class AdminImportScreen extends ConsumerWidget {
   const new({required this.scope, super.key});
 
   /// Admin (every brand) or one brand's team.
-  final ManageScope scope;
+  final BrandScope scope;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

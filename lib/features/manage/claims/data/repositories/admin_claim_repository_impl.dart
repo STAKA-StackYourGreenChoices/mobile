@@ -48,4 +48,12 @@ class AdminClaimRepositoryImpl implements AdminClaimRepository {
   @override
   Future<Result<ClaimDetail>> reject(String id, String reason) =>
       guardApi(() => _remote.reject(id, reason));
+
+  @override
+  Future<Result<ClaimDetail>> overrule(
+    String id, {
+    required ClaimStatus decision,
+    required String reason,
+  }) =>
+      guardApi(() => _remote.overrule(id, decision: decision, reason: reason));
 }

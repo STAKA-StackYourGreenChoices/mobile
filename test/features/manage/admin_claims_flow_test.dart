@@ -8,6 +8,7 @@ import 'package:staka/features/manage/claims/domain/models/claim.dart';
 
 import '../../helpers/admin_claim_fakes.dart';
 import '../../helpers/auth_fakes.dart';
+import '../../helpers/brand_portal_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
@@ -15,19 +16,32 @@ import '../../helpers/pump_full_app.dart';
 
 const _tokens = AuthTokens(accessToken: 'a', refreshToken: 'r');
 
-/// Signs in as an admin and opens Admin → Claims on a 360 × 800 phone.
+/// Signs in as an admin and opens Admin → Claims on a 360 × 800 phone;
+/// [asBrand]: as Terra Threads' owner, Brand → Claims (brands approve and
+/// reject their own claims since V2-12; admins overrule).
 Future<void> _openClaims(
   WidgetTester tester,
-  FakeAdminClaimRepository claims,
-) async {
+  FakeAdminClaimRepository claims, {
+  bool asBrand = false,
+}) async {
   usePhoneScreen(tester, height: 800);
   await pumpApp(
     tester,
     tokens: _tokens,
-    replies: [json(200, userJson(role: 'ADMIN'))],
+    replies: [
+      json(
+        200,
+        asBrand ? memberUserJson([membershipJson()]) : userJson(role: 'ADMIN'),
+      ),
+    ],
     adminClaims: claims,
   );
-  await tester.tap(find.text('Admin'));
+  await tester.tap(
+    find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text(asBrand ? 'Brand' : 'Admin'),
+    ),
+  );
   await tester.pumpAndSettle();
   await tester.ensureVisible(find.text('Claims'));
   await tester.pumpAndSettle();
@@ -63,10 +77,10 @@ FakeAdminClaimRepository _queueWith(
 
 Future<void> _openClaim(WidgetTester tester, Claim claim) async {
   if (claim.status != ClaimStatus.pending) {
-    await tester.tap(
+    await _tap(
+      tester,
       find.text(claim.status == ClaimStatus.approved ? 'Approved' : 'Rejected'),
     );
-    await tester.pumpAndSettle();
   }
   await tester.tap(find.text(claim.product.name));
   await tester.pumpAndSettle();
@@ -156,7 +170,7 @@ void main() {
       claim,
       decisions: [detailOf(claimFor(1, status: ClaimStatus.approved))],
     );
-    await _openClaims(tester, repository);
+    await _openClaims(tester, repository, asBrand: true);
     await _openClaim(tester, claim);
 
     await _tap(tester, find.text('Approve'));
@@ -178,7 +192,7 @@ void main() {
       claim,
       decisions: [detailOf(claimFor(1, status: ClaimStatus.rejected))],
     );
-    await _openClaims(tester, repository);
+    await _openClaims(tester, repository, asBrand: true);
     await _openClaim(tester, claim);
 
     await _tap(tester, find.text('Reject'));
@@ -201,7 +215,7 @@ void main() {
 
   testWidgets('the last upload is called out before rejecting', (tester) async {
     final claim = claimFor(1, receiptAttempt: 5);
-    await _openClaims(tester, _queueWith(claim));
+    await _openClaims(tester, _queueWith(claim), asBrand: true);
     await _openClaim(tester, claim);
 
     await _tap(tester, find.text('Reject'));
@@ -230,6 +244,7 @@ void main() {
           const Err(ConflictFailure([reason])),
         ],
       ),
+      asBrand: true,
     );
     await _openClaim(tester, claim);
 
@@ -328,5 +343,76 @@ void main() {
 
     expect(repository.requests.map((request) => request.page), [1, 2]);
     expect(find.text('Piece 25'), findsOneWidget);
+  });
+
+  group('admin overrule (V2-12)', () {
+    testWidgets('a pending claim: no Approve, but Approve instead or Reject '
+        'instead, with a reason', (tester) async {
+      final claim = claimFor(1);
+      final repository = _queueWith(
+        claim,
+        decisions: [detailOf(claimFor(1, status: ClaimStatus.approved))],
+      );
+      await _openClaims(tester, repository);
+      await _openClaim(tester, claim);
+
+      expect(find.text('Overrule Terra Threads'), findsOneWidget);
+      expect(find.text('Approve'), findsNothing);
+      expect(find.text('Reject instead'), findsOneWidget);
+      await _tap(tester, find.text('Approve instead'));
+      expect(find.text('Approve this claim?'), findsOneWidget);
+
+      await _tap(tester, find.widgetWithText(FilledButton, 'Approve'));
+      expect(find.text('Write at least 3 characters.'), findsOneWidget);
+      expect(repository.overruled, isEmpty);
+
+      await tester.enterText(
+        find.byType(TextFormField),
+        '  Brand has no team yet; the receipt is clear.  ',
+      );
+      await _tap(tester, find.widgetWithText(FilledButton, 'Approve'));
+
+      expect(repository.overruled, [
+        (
+          claim.id,
+          ClaimStatus.approved,
+          'Brand has no team yet; the receipt is clear.',
+        ),
+      ]);
+      expect(
+        find.text('Approved. The shopper is now the verified owner.'),
+        findsOneWidget,
+      );
+      expect(find.text('Ownership claims'), findsOneWidget);
+    });
+
+    testWidgets('an approved claim can only be rejected instead', (
+      tester,
+    ) async {
+      final claim = claimFor(1, status: ClaimStatus.approved);
+      await _openClaims(tester, _queueWith(claim));
+      await _openClaim(tester, claim);
+
+      expect(find.text('Reject instead'), findsOneWidget);
+      expect(find.text('Approve instead'), findsNothing);
+    });
+
+    testWidgets("refused: the API's reason stays in the sheet", (tester) async {
+      final claim = claimFor(1, status: ClaimStatus.rejected);
+      final repository = _queueWith(
+        claim,
+        decisions: [
+          const Err(ConflictFailure(['A dispute is open for this claim'])),
+        ],
+      );
+      await _openClaims(tester, repository);
+      await _openClaim(tester, claim);
+      await _tap(tester, find.text('Approve instead'));
+      await tester.enterText(find.byType(TextFormField), 'Clear receipt.');
+      await _tap(tester, find.widgetWithText(FilledButton, 'Approve'));
+
+      expect(find.text('A dispute is open for this claim'), findsOneWidget);
+      expect(find.text('Approve this claim?'), findsOneWidget);
+    });
   });
 }

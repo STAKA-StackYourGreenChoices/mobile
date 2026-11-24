@@ -19,4 +19,12 @@ abstract interface class AdminClaimRepository {
 
   /// [reason] (3 to 500 characters) is shown to the shopper.
   Future<Result<ClaimDetail>> reject(String id, String reason);
+
+  /// Admins only (V2-12): approve or reject whatever the brand decided,
+  /// with a [reason] (3 to 500) that is recorded.
+  Future<Result<ClaimDetail>> overrule(
+    String id, {
+    required ClaimStatus decision,
+    required String reason,
+  });
 }

@@ -2355,4 +2355,360 @@ class AppLocalizationsEn extends AppLocalizations {
   String receiptBodyForBrand(String brand, String uploadsLeft) {
     return 'A clear photo or PDF showing the shop, the date and this piece. $brand checks it. $uploadsLeft';
   }
+
+  @override
+  String get adminProductsReadOnlyDescription =>
+      'Every brand\'s products. Brands add and edit their own; tap one to hide it from shoppers or show it again.';
+
+  @override
+  String get noProductsAdminBody =>
+      'Brands add their products from their Brand tab. They show up here.';
+
+  @override
+  String get hiddenFromShoppers => 'Hidden';
+
+  @override
+  String hideProductTitle(String name) {
+    return 'Hide $name?';
+  }
+
+  @override
+  String hideProductBody(String brand) {
+    return 'Shoppers won\'t see it on STAKA until you show it again. $brand still sees it in its Brand tab.';
+  }
+
+  @override
+  String get hideProduct => 'Hide product';
+
+  @override
+  String showProductTitle(String name) {
+    return 'Show $name again?';
+  }
+
+  @override
+  String get showProductBody => 'Shoppers can find it on STAKA again.';
+
+  @override
+  String get showProduct => 'Show product';
+
+  @override
+  String productHidden(String name) {
+    return '$name is hidden from shoppers.';
+  }
+
+  @override
+  String productShown(String name) {
+    return 'Shoppers can see $name again.';
+  }
+
+  @override
+  String get noteTooShort => 'Write at least 3 characters.';
+
+  @override
+  String get noteTooLong => 'Keep it to 500 characters.';
+
+  @override
+  String get adminBrandsReviewDescription =>
+      'Brands apply to run themselves on STAKA. Check each application and its business document, then approve it or turn it down. Pause a brand that breaks the rules.';
+
+  @override
+  String get brandReviewPending => 'To review';
+
+  @override
+  String get brandReviewActive => 'Active';
+
+  @override
+  String get brandReviewSuspended => 'Paused';
+
+  @override
+  String get brandReviewRejected => 'Turned down';
+
+  @override
+  String get brandStatusLabel => 'Brand status';
+
+  @override
+  String noBrandsInStatus(String status) {
+    String _temp0 = intl.Intl.selectLogic(status, {
+      'pending': 'No applications are waiting.',
+      'approved': 'No active brands yet.',
+      'suspended': 'No paused brands.',
+      'other': 'No turned-down applications.',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String appliedOn(String date) {
+    return 'Applied $date';
+  }
+
+  @override
+  String brandMembers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count people',
+      one: '1 person',
+      zero: 'No team yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get aboutTheBrand => 'About';
+
+  @override
+  String get appliedHeading => 'Applied';
+
+  @override
+  String get teamHeading => 'Team';
+
+  @override
+  String get listedBrandHeading => 'Already on STAKA';
+
+  @override
+  String get claimsListedBrand =>
+      'Says it owns a brand STAKA already lists. Approving gives its team that brand and its products.';
+
+  @override
+  String get viewBusinessDocument => 'View business document';
+
+  @override
+  String get noBusinessDocument => 'No business document was sent.';
+
+  @override
+  String get businessDocumentTitle => 'Business document';
+
+  @override
+  String get documentUnavailable => 'The document couldn\'t be loaded.';
+
+  @override
+  String get approveBrand => 'Approve brand';
+
+  @override
+  String get rejectBrand => 'Turn down';
+
+  @override
+  String rejectBrandTitle(String brand) {
+    return 'Turn down $brand?';
+  }
+
+  @override
+  String get rejectBrandBody =>
+      'Its owners see your reason and can fix the application and send it again.';
+
+  @override
+  String get suspendBrand => 'Pause brand';
+
+  @override
+  String suspendBrandTitle(String brand) {
+    return 'Pause $brand?';
+  }
+
+  @override
+  String get suspendBrandBody =>
+      'Its team can\'t use the Brand tab until you make it active again, and sees your reason. Its products stay visible to shoppers.';
+
+  @override
+  String get reinstateBrand => 'Make active again';
+
+  @override
+  String get reasonForBrand => 'Reason the brand will see';
+
+  @override
+  String get rejectedBrandWaits =>
+      'Waiting for the brand to fix its application and send it again.';
+
+  @override
+  String brandApproved(String brand) {
+    return '$brand is approved. Its team can now run it.';
+  }
+
+  @override
+  String brandRejected(String brand) {
+    return '$brand was turned down. Its owners see your reason.';
+  }
+
+  @override
+  String brandSuspended(String brand) {
+    return '$brand is paused.';
+  }
+
+  @override
+  String brandReinstated(String brand) {
+    return '$brand is active again.';
+  }
+
+  @override
+  String get adminDisputes => 'Disputes';
+
+  @override
+  String get adminDisputesDescription =>
+      'Shoppers who think a brand wrongly turned their receipt down. Read their message and the receipt, then keep the decision or approve it.';
+
+  @override
+  String get disputeOpen => 'To decide';
+
+  @override
+  String get disputeUpheld => 'Kept';
+
+  @override
+  String get disputeOverturned => 'Approved';
+
+  @override
+  String get disputeStatusLabel => 'Dispute status';
+
+  @override
+  String noDisputesInStatus(String status) {
+    String _temp0 = intl.Intl.selectLogic(status, {
+      'open': 'No disputes are waiting.',
+      'upheld': 'No kept decisions yet.',
+      'other': 'No approved disputes yet.',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String disputeRowTitle(String product, String brand) {
+    return '$product · $brand';
+  }
+
+  @override
+  String get disputeRowUntitled => 'Receipt turned down by a brand';
+
+  @override
+  String get aShopper => 'A shopper';
+
+  @override
+  String disputeAsked(String name, String date) {
+    return '$name asked $date';
+  }
+
+  @override
+  String get shopperWrote => 'What the shopper wrote';
+
+  @override
+  String brandReasonHeading(String brand) {
+    return 'Why $brand turned it down';
+  }
+
+  @override
+  String get overturn => 'Approve the receipt';
+
+  @override
+  String get uphold => 'Keep the decision';
+
+  @override
+  String get overturnTitle => 'Approve this receipt?';
+
+  @override
+  String overturnBody(String brand) {
+    return 'The shopper becomes the verified owner and gets the points. $brand and the shopper see your note.';
+  }
+
+  @override
+  String upholdTitle(String brand) {
+    return 'Keep $brand\'s decision?';
+  }
+
+  @override
+  String get upholdBody =>
+      'The receipt stays turned down and the shopper can\'t ask again. They see your note.';
+
+  @override
+  String get noteForShopper => 'Note the shopper will see';
+
+  @override
+  String get disputeOverturnedDone =>
+      'Approved. The shopper is now the verified owner.';
+
+  @override
+  String get disputeUpheldDone => 'Decision kept. The shopper sees your note.';
+
+  @override
+  String overturnedOn(String date) {
+    return 'You approved the receipt on $date.';
+  }
+
+  @override
+  String get overturnedUndated => 'The receipt was approved.';
+
+  @override
+  String upheldOn(String date) {
+    return 'The brand\'s decision was kept on $date.';
+  }
+
+  @override
+  String get upheldUndated => 'The brand\'s decision was kept.';
+
+  @override
+  String noteSaid(String note) {
+    return 'Note: $note';
+  }
+
+  @override
+  String get disputedByShopper => 'Disputed by the shopper';
+
+  @override
+  String overruleHeading(String brand) {
+    return 'Overrule $brand';
+  }
+
+  @override
+  String overrulePendingHint(String brand) {
+    return '$brand checks this claim. Decide here only when it is stuck, for example a paused brand or one with no team.';
+  }
+
+  @override
+  String overruleDecidedHint(String brand) {
+    return 'Change what $brand decided only when it was clearly wrong. Your reason is recorded.';
+  }
+
+  @override
+  String get overruleApprove => 'Approve instead';
+
+  @override
+  String get overruleReject => 'Reject instead';
+
+  @override
+  String get overruleApproveTitle => 'Approve this claim?';
+
+  @override
+  String get overruleRejectTitle => 'Reject this claim?';
+
+  @override
+  String overruleBody(String brand) {
+    return '$brand and the shopper see your reason. It is recorded with your name.';
+  }
+
+  @override
+  String get overruleReason => 'Reason';
+
+  @override
+  String get adminClaimsReadOnlyDescription =>
+      'Every brand\'s claims. Brands approve or reject their own; overrule one only when it is stuck or clearly wrong.';
+
+  @override
+  String adminBrandsWaiting(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count applications are waiting.',
+      one: '1 application is waiting.',
+      zero: 'No applications waiting.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminDisputesWaiting(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count disputes are waiting.',
+      one: '1 dispute is waiting.',
+      zero: 'No disputes waiting.',
+    );
+    return '$_temp0';
+  }
 }

@@ -9,7 +9,7 @@ import 'package:staka/features/manage/products/domain/models/editable_product.da
 import 'package:staka/features/manage/products/presentation/widgets/product_form_header.dart';
 
 import '../../helpers/admin_product_fakes.dart';
-import '../../helpers/auth_fakes.dart';
+import '../../helpers/brand_portal_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
@@ -26,7 +26,8 @@ final Result<List<BrandSummary>> _brands = Ok([
   brandSummary('b2', 'Nordic Loom'),
 ]);
 
-/// Admin → Products, with [_tee] in the list and the given scripts.
+/// Brand → Products as Terra Threads' owner (V2-12: brands edit their own
+/// catalog), with [_tee] in the list and the given scripts.
 Future<FakeAdminProductRepository> _openProducts(
   WidgetTester tester, {
   Map<String, Result<EditableProduct>> products = const {},
@@ -44,10 +45,17 @@ Future<FakeAdminProductRepository> _openProducts(
   await pumpApp(
     tester,
     tokens: _tokens,
-    replies: [json(200, userJson(role: 'ADMIN'))],
+    replies: [
+      json(200, memberUserJson([membershipJson()])),
+    ],
     adminProducts: repository,
   );
-  await tester.tap(find.text('Admin'));
+  await tester.tap(
+    find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text('Brand'),
+    ),
+  );
   await tester.pumpAndSettle();
   await tester.tap(find.text('Products'));
   await tester.pumpAndSettle();
@@ -69,12 +77,6 @@ Future<void> _type(WidgetTester tester, String label, String text) async {
   await tester.ensureVisible(field.first);
   await tester.enterText(field.first, text);
   await tester.pump();
-}
-
-Future<void> _chooseBrand(WidgetTester tester, String name) async {
-  await _tap(tester, find.byType(DropdownButtonFormField<String>));
-  await tester.tap(find.text(name).last);
-  await tester.pumpAndSettle();
 }
 
 Future<FakeAdminProductRepository> _openTee(
@@ -118,7 +120,8 @@ void main() {
       expect(find.text(message), findsOneWidget);
     }
     expect(find.text('Required when figures are included'), findsNWidgets(2));
-    expect(find.text('Choose a brand'), findsWidgets);
+    // The brand is fixed to the brand whose tab this is.
+    expect(find.text('Choose a brand'), findsNothing);
     expect(repository.saved, isEmpty);
   });
 
@@ -139,7 +142,6 @@ void main() {
 
     await _type(tester, 'Name', 'Hemp Cap');
     expect(find.text('Hemp Cap'), findsWidgets); // the preview follows
-    await _chooseBrand(tester, 'Nordic Loom');
     await _type(tester, 'Barcode number', '8901234500057');
     await _type(tester, 'SKU', 'NL-CAP-01');
     await _tap(
@@ -155,7 +157,7 @@ void main() {
     expect(id, isNull);
     expect(
       (draft.name, draft.brandId, draft.gtin, draft.sku),
-      ('Hemp Cap', 'b2', '8901234500057', 'NL-CAP-01'),
+      ('Hemp Cap', 'b1', '8901234500057', 'NL-CAP-01'),
     );
     expect(
       (draft.description, draft.imageUrl, draft.figures),

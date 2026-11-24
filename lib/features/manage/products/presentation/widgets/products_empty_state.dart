@@ -17,12 +17,15 @@ class ProductsEmptyState extends StatelessWidget {
   });
 
   final bool isFiltered;
-  final VoidCallback onAddPressed;
-  final VoidCallback onImportPressed;
+
+  /// Null for an admin: brands add their own products.
+  final VoidCallback? onAddPressed;
+  final VoidCallback? onImportPressed;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final canAdd = onAddPressed != null && onImportPressed != null;
     return FeedbackMessage(
       icon: Icons.inventory_2_outlined,
       iconColor: context.colors.brandPrimary,
@@ -30,8 +33,12 @@ class ProductsEmptyState extends StatelessWidget {
         isFiltered ? l10n.noProductsMatchTitle : l10n.noProductsTitle,
         style: context.text.headingMedium,
       ),
-      message: isFiltered ? l10n.noProductsMatchBody : l10n.noProductsBody,
-      action: isFiltered
+      message: switch ((isFiltered, canAdd)) {
+        (true, _) => l10n.noProductsMatchBody,
+        (false, true) => l10n.noProductsBody,
+        (false, false) => l10n.noProductsAdminBody,
+      },
+      action: isFiltered || !canAdd
           ? null
           : Wrap(
               spacing: AppSpacing.xs,

@@ -8,12 +8,16 @@ import 'package:staka/features/manage/products/domain/models/product_page.dart';
 
 import '../../helpers/admin_product_fakes.dart';
 import '../../helpers/auth_fakes.dart';
+import '../../helpers/brand_portal_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/pump_full_app.dart';
 
 const _tokens = AuthTokens(accessToken: 'a', refreshToken: 'r');
+
+/// [productNamed]'s id for the tee (from its barcode).
+const _teeId = 'p-08901234500019';
 
 /// Signs in as an admin and opens Admin → Products on a 360 × 800 phone.
 Future<void> _openProducts(
@@ -28,6 +32,31 @@ Future<void> _openProducts(
     adminProducts: repository,
   );
   await tester.tap(find.text('Admin'));
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Products'));
+  await tester.pumpAndSettle();
+}
+
+/// Terra Threads' owner opens Brand → Products: the same list, editable.
+Future<void> _openBrandProducts(
+  WidgetTester tester,
+  FakeAdminProductRepository repository,
+) async {
+  usePhoneScreen(tester, height: 800);
+  await pumpApp(
+    tester,
+    tokens: _tokens,
+    replies: [
+      json(200, memberUserJson([membershipJson()])),
+    ],
+    adminProducts: repository,
+  );
+  await tester.tap(
+    find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text('Brand'),
+    ),
+  );
   await tester.pumpAndSettle();
   await tester.tap(find.text('Products'));
   await tester.pumpAndSettle();
@@ -59,11 +88,14 @@ void main() {
 
     expect(
       find.text(
-        "Everything shoppers can scan. A product's tag shows "
-        "exactly what's recorded here.",
+        "Every brand's products. Brands add and edit their own; tap one to "
+        'hide it from shoppers or show it again.',
       ),
       findsOneWidget,
     );
+    // Read-only for admins (V2-12).
+    expect(find.text('Add product'), findsNothing);
+    expect(find.text('Import CSV'), findsNothing);
     expect(find.text('Showing 1–2 of 2 products'), findsOneWidget);
     expect(find.text('Organic Cotton Tee'), findsOneWidget);
     expect(find.text('Terra Threads, 8901234500019'), findsOneWidget);
@@ -245,10 +277,23 @@ void main() {
     expect(repository.requests, hasLength(4));
   });
 
-  testWidgets('empty catalog: invited to add or import products', (
+  testWidgets('empty catalog, admin: brands add their own', (tester) async {
+    await _openProducts(tester, FakeAdminProductRepository());
+
+    expect(find.text('No products yet'), findsOneWidget);
+    expect(
+      find.text(
+        'Brands add their products from their Brand tab. They show up here.',
+      ),
+      findsOneWidget,
+    );
+    expect(find.text('Add product'), findsNothing);
+  });
+
+  testWidgets('empty catalog, brand: invited to add or import products', (
     tester,
   ) async {
-    await _openProducts(tester, FakeAdminProductRepository());
+    await _openBrandProducts(tester, FakeAdminProductRepository());
 
     expect(find.text('No products yet'), findsOneWidget);
     expect(
@@ -263,10 +308,10 @@ void main() {
     expect(find.text('Import CSV'), findsNWidgets(2));
   });
 
-  testWidgets('Add product, Import CSV and a row open their pages', (
+  testWidgets('brand: Add product, Import CSV and a row open their pages', (
     tester,
   ) async {
-    await _openProducts(
+    await _openBrandProducts(
       tester,
       FakeAdminProductRepository(
         pages: (_) => Ok(pageOf([productNamed('Organic Cotton Tee')])),
@@ -292,6 +337,71 @@ void main() {
     await tester.tap(find.text('Import CSV'));
     await tester.pumpAndSettle();
     expect(find.text('Up to 2 MB and 5,000 rows.'), findsOneWidget);
+  });
+
+  testWidgets('admin hides a product, then shows it again', (tester) async {
+    var hidden = false;
+    final repository = FakeAdminProductRepository(
+      pages: (_) => Ok(
+        pageOf([productNamed('Organic Cotton Tee').copyWith(isHidden: hidden)]),
+      ),
+      visibility: [const Ok(null), const Ok(null)],
+    );
+    await _openProducts(tester, repository);
+
+    await tester.tap(find.text('Organic Cotton Tee'));
+    await tester.pumpAndSettle();
+    expect(find.text('Hide Organic Cotton Tee?'), findsOneWidget);
+    expect(
+      find.text(
+        "Shoppers won't see it on STAKA until you show it again. "
+        'Terra Threads still sees it in its Brand tab.',
+      ),
+      findsOneWidget,
+    );
+    hidden = true;
+    await tester.tap(find.text('Hide product'));
+    await tester.pumpAndSettle();
+
+    expect(repository.visibilityChanges, [(_teeId, true)]);
+    expect(
+      find.text('Organic Cotton Tee is hidden from shoppers.'),
+      findsOneWidget,
+    );
+    expect(find.text('Hidden'), findsOneWidget);
+    expect(repository.requests, hasLength(2));
+
+    hidden = false;
+    await tester.tap(find.text('Organic Cotton Tee'));
+    await tester.pumpAndSettle();
+    expect(find.text('Show Organic Cotton Tee again?'), findsOneWidget);
+    await tester.tap(find.text('Show product'));
+    await tester.pumpAndSettle();
+
+    expect(repository.visibilityChanges, [(_teeId, true), (_teeId, false)]);
+    expect(find.text('Hidden'), findsNothing);
+  });
+
+  testWidgets("hiding refused: the API's reason stays in the dialog", (
+    tester,
+  ) async {
+    final repository = FakeAdminProductRepository(
+      pages: (_) => Ok(pageOf([productNamed('Organic Cotton Tee')])),
+      visibility: [
+        const Err(ForbiddenFailure(['Only admins can hide products'])),
+      ],
+    );
+    await _openProducts(tester, repository);
+    await tester.tap(find.text('Organic Cotton Tee'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Hide product'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Only admins can hide products'), findsOneWidget);
+    expect(find.text('Hide Organic Cotton Tee?'), findsOneWidget);
+    await tester.tap(find.text('Cancel'));
+    await tester.pumpAndSettle();
+    expect(find.text('Hidden'), findsNothing);
   });
 
   testWidgets('the list fails to load: the reason and Try again', (

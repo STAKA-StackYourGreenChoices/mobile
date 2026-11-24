@@ -20,4 +20,8 @@ abstract interface class AdminProductRepository {
 
   /// Refused with a conflict while shoppers hold tags for it.
   Future<Result<void>> deleteProduct(String id);
+
+  /// Admins only (V2-12): hides the product from shoppers, or shows it
+  /// again.
+  Future<Result<void>> setHidden(String id, {required bool hidden});
 }

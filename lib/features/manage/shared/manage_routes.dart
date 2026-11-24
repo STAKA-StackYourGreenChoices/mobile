@@ -10,21 +10,6 @@ extension ManageRoutes on ManageScope {
     BrandScope() => AppRoute.brandProducts,
   };
 
-  AppRoute get productNewRoute => switch (this) {
-    AdminScope() => AppRoute.adminProductNew,
-    BrandScope() => AppRoute.brandProductNew,
-  };
-
-  AppRoute get productEditRoute => switch (this) {
-    AdminScope() => AppRoute.adminProductEdit,
-    BrandScope() => AppRoute.brandProductEdit,
-  };
-
-  AppRoute get importRoute => switch (this) {
-    AdminScope() => AppRoute.adminImport,
-    BrandScope() => AppRoute.brandImport,
-  };
-
   AppRoute get claimsRoute => switch (this) {
     AdminScope() => AppRoute.adminClaims,
     BrandScope() => AppRoute.brandClaims,
@@ -39,8 +24,4 @@ extension ManageRoutes on ManageScope {
     AdminScope() => AppRoute.adminClaimReceipt,
     BrandScope() => AppRoute.brandClaimReceipt,
   };
-
-  /// A brand works on its own products only: no brand filter, no brand
-  /// choice in the product form, no Brands page.
-  bool get worksOnOneBrand => this is BrandScope;
 }

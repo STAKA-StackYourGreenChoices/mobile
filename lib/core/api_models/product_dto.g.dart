@@ -21,4 +21,5 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
       : SustainabilityInfoDto.fromJson(
           json['sustainabilityInfo'] as Map<String, dynamic>,
         ),
+  hidden: json['hidden'] as bool?,
 );

@@ -22,6 +22,7 @@ ClaimDto _$ClaimDtoFromJson(Map<String, dynamic> json) => ClaimDto(
   orderId: json['orderId'] as String?,
   receiptMimeType: json['receiptMimeType'] as String?,
   receiptAttempt: (json['receiptAttempt'] as num?)?.toInt(),
+  disputeStatus: ClaimDto._readDisputeStatus(json, 'disputeStatus') as String?,
 );
 
 ClaimUserDto _$ClaimUserDtoFromJson(Map<String, dynamic> json) => ClaimUserDto(

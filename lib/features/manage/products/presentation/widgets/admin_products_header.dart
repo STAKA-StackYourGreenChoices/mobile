@@ -6,7 +6,8 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 
 /// "Products", what they are, and the Import CSV / Add product actions:
-/// the website's `PageHeader` on `/admin/products`.
+/// the website's `PageHeader` on `/admin/products`. Without actions (an
+/// admin) it says the list is read-only.
 class AdminProductsHeader extends StatelessWidget {
   const new({
     required this.onAddPressed,
@@ -14,12 +15,13 @@ class AdminProductsHeader extends StatelessWidget {
     super.key,
   });
 
-  final VoidCallback onAddPressed;
-  final VoidCallback onImportPressed;
+  final VoidCallback? onAddPressed;
+  final VoidCallback? onImportPressed;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final canEdit = onAddPressed != null && onImportPressed != null;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -29,29 +31,33 @@ class AdminProductsHeader extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.xxs),
         Text(
-          l10n.adminProductsDescription,
+          canEdit
+              ? l10n.adminProductsDescription
+              : l10n.adminProductsReadOnlyDescription,
           style: context.text.bodyLarge.copyWith(
             color: context.colors.inkMuted,
           ),
         ),
-        const SizedBox(height: AppSpacing.md),
-        Wrap(
-          spacing: AppSpacing.xs,
-          runSpacing: AppSpacing.xs,
-          children: [
-            AppButton(
-              label: l10n.importCsv,
-              icon: Icons.upload_file_outlined,
-              variant: AppButtonVariant.secondary,
-              onPressed: onImportPressed,
-            ),
-            AppButton(
-              label: l10n.addProduct,
-              icon: Icons.add_rounded,
-              onPressed: onAddPressed,
-            ),
-          ],
-        ),
+        if (canEdit) ...[
+          const SizedBox(height: AppSpacing.md),
+          Wrap(
+            spacing: AppSpacing.xs,
+            runSpacing: AppSpacing.xs,
+            children: [
+              AppButton(
+                label: l10n.importCsv,
+                icon: Icons.upload_file_outlined,
+                variant: AppButtonVariant.secondary,
+                onPressed: onImportPressed,
+              ),
+              AppButton(
+                label: l10n.addProduct,
+                icon: Icons.add_rounded,
+                onPressed: onAddPressed,
+              ),
+            ],
+          ),
+        ],
       ],
     );
   }

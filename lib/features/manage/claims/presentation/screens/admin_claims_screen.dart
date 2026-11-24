@@ -35,7 +35,7 @@ class _AdminClaimsScreenState extends ConsumerState<AdminClaimsScreen> {
       isScrollable: false,
       body: ClaimsScrollView(
         description: switch (widget.scope) {
-          AdminScope() => context.l10n.adminClaimsDescription,
+          AdminScope() => context.l10n.adminClaimsReadOnlyDescription,
           BrandScope() => context.l10n.brandClaimsDescription,
         },
         status: _status,

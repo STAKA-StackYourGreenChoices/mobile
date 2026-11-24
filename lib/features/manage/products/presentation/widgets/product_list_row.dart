@@ -2,9 +2,11 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
+import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/product.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_thumbnail.dart';
 import 'package:staka/shared/formatters/gtin_format.dart';
+import 'package:staka/shared/widgets/data_display/status_pill.dart';
 import 'package:staka/shared/widgets/data_display/sustainability_badge.dart';
 
 /// One product on a phone: photo, name, "brand, barcode" and whether its
@@ -52,10 +54,17 @@ class ProductListRow extends StatelessWidget {
                   ],
                 ),
               ),
-              SustainabilityBadge(
-                info: product.sustainabilityInfo,
-                isCompact: true,
-              ),
+              if (product.isHidden)
+                StatusPill(
+                  icon: Icons.visibility_off_outlined,
+                  label: context.l10n.hiddenFromShoppers,
+                  color: context.colors.inkMuted,
+                )
+              else
+                SustainabilityBadge(
+                  info: product.sustainabilityInfo,
+                  isCompact: true,
+                ),
             ],
           ),
         ),

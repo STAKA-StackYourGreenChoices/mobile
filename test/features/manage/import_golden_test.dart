@@ -68,7 +68,7 @@ void main() {
                 ),
               ),
             ],
-            child: const AdminImportScreen(scope: AdminScope()),
+            child: const AdminImportScreen(scope: BrandScope('b1')),
           ),
           brightness: brightness,
         );

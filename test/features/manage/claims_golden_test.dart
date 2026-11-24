@@ -54,8 +54,9 @@ void main() {
 
   final cases = <String, (Widget, double, bool)>{
     'list': (const AdminClaimsScreen(scope: AdminScope()), 760, false),
+    // A brand reviews; an admin overrules (below).
     'review_reject': (
-      AdminClaimScreen(scope: const AdminScope(), claimId: pending.id),
+      AdminClaimScreen(scope: const BrandScope('b1'), claimId: pending.id),
       1700,
       true,
     ),

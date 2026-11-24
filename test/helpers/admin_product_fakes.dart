@@ -25,9 +25,11 @@ class FakeAdminProductRepository implements AdminProductRepository {
     this.products = const {},
     List<Result<EditableProduct>> saves = const [],
     List<Result<void>> deletes = const [],
+    List<Result<void>> visibility = const [],
   }) : _pages = pages ?? ((_) => Ok(pageOf(const []))),
        _saves = [...saves],
-       _deletes = [...deletes];
+       _deletes = [...deletes],
+       _visibility = [...visibility];
 
   final FutureOr<Result<ProductPage>> Function(PageRequest request) _pages;
   final Result<List<BrandSummary>> brands;
@@ -35,6 +37,10 @@ class FakeAdminProductRepository implements AdminProductRepository {
   final Map<String, Result<EditableProduct>> products;
   final List<Result<EditableProduct>> _saves;
   final List<Result<void>> _deletes;
+  final List<Result<void>> _visibility;
+
+  /// (product id, hidden) for each Hide / Show again sent.
+  final List<(String, bool)> visibilityChanges = [];
 
   /// (product id or null for a new one, what was sent).
   final List<(String?, ProductDraft)> saved = [];
@@ -52,6 +58,12 @@ class FakeAdminProductRepository implements AdminProductRepository {
 
   @override
   Future<Result<List<BrandSummary>>> fetchBrands() async => brands;
+
+  @override
+  Future<Result<void>> setHidden(String id, {required bool hidden}) async {
+    visibilityChanges.add((id, hidden));
+    return _visibility.removeAt(0);
+  }
 
   @override
   Future<Result<EditableProduct>> fetchProduct(String id) async =>

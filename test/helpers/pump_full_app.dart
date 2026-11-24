@@ -19,10 +19,12 @@ import 'package:staka/features/brand_apply/domain/repositories/brand_application
 import 'package:staka/features/brand_apply/presentation/state/brand_file_picker.dart';
 import 'package:staka/features/brand_portal/data/repositories/brand_portal_repository_impl.dart';
 import 'package:staka/features/brand_portal/domain/repositories/brand_portal_repository.dart';
-import 'package:staka/features/manage/brands/data/repositories/admin_brand_repository_impl.dart';
-import 'package:staka/features/manage/brands/domain/repositories/admin_brand_repository.dart';
+import 'package:staka/features/manage/brand_review/data/brand_review_repository_impl.dart';
+import 'package:staka/features/manage/brand_review/domain/repositories/brand_review_repository.dart';
 import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
 import 'package:staka/features/manage/claims/domain/repositories/admin_claim_repository.dart';
+import 'package:staka/features/manage/disputes/data/dispute_repository_impl.dart';
+import 'package:staka/features/manage/disputes/domain/admin_dispute.dart';
 import 'package:staka/features/manage/import/data/repositories/import_repository_impl.dart';
 import 'package:staka/features/manage/import/domain/repositories/import_repository.dart';
 import 'package:staka/features/manage/import/presentation/state/import_file_actions.dart';
@@ -38,9 +40,9 @@ import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 
-import 'admin_brand_fakes.dart';
 import 'admin_claim_fakes.dart';
 import 'admin_product_fakes.dart';
+import 'admin_review_fakes.dart';
 import 'auth_fakes.dart';
 import 'brand_apply_fakes.dart';
 import 'brand_portal_fakes.dart';
@@ -66,7 +68,8 @@ Future<InMemoryTokenStore> pumpApp(
   ReceiptPicker? receiptPicker,
   ShareActions? shareActions,
   AdminProductRepository? adminProducts,
-  AdminBrandRepository? adminBrands,
+  BrandReviewRepository? brandReview,
+  DisputeRepository? disputes,
   ImportRepository? importRepository,
   ImportFileActions? importFileActions,
   AdminClaimRepository? adminClaims,
@@ -105,8 +108,11 @@ Future<InMemoryTokenStore> pumpApp(
         adminProductRepositoryProvider.overrideWith(
           (_, _) => adminProducts ?? FakeAdminProductRepository(),
         ),
-        adminBrandRepositoryProvider.overrideWithValue(
-          adminBrands ?? FakeAdminBrandRepository(),
+        brandReviewRepositoryProvider.overrideWithValue(
+          brandReview ?? FakeBrandReviewRepository(),
+        ),
+        disputeRepositoryProvider.overrideWithValue(
+          disputes ?? FakeDisputeRepository(),
         ),
         importRepositoryProvider.overrideWith(
           (_, _) => importRepository ?? FakeImportRepository(),

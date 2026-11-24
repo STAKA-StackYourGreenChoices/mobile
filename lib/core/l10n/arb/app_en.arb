@@ -3194,5 +3194,496 @@
         "type": "String"
       }
     }
+  },
+  "adminProductsReadOnlyDescription": "Every brand's products. Brands add and edit their own; tap one to hide it from shoppers or show it again.",
+  "@adminProductsReadOnlyDescription": {
+    "description": "Admin products: under the heading (read-only, V2-12)."
+  },
+  "noProductsAdminBody": "Brands add their products from their Brand tab. They show up here.",
+  "@noProductsAdminBody": {
+    "description": "Admin products: empty catalog."
+  },
+  "hiddenFromShoppers": "Hidden",
+  "@hiddenFromShoppers": {
+    "description": "Admin products: pill on a product hidden from shoppers."
+  },
+  "hideProductTitle": "Hide {name}?",
+  "@hideProductTitle": {
+    "description": "Hide product dialog: title.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hideProductBody": "Shoppers won't see it on STAKA until you show it again. {brand} still sees it in its Brand tab.",
+  "@hideProductBody": {
+    "description": "Hide product dialog: body.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "hideProduct": "Hide product",
+  "@hideProduct": {
+    "description": "Hide product dialog: confirm."
+  },
+  "showProductTitle": "Show {name} again?",
+  "@showProductTitle": {
+    "description": "Show product dialog: title.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "showProductBody": "Shoppers can find it on STAKA again.",
+  "@showProductBody": {
+    "description": "Show product dialog: body."
+  },
+  "showProduct": "Show product",
+  "@showProduct": {
+    "description": "Show product dialog: confirm."
+  },
+  "productHidden": "{name} is hidden from shoppers.",
+  "@productHidden": {
+    "description": "Snackbar after hiding a product.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "productShown": "Shoppers can see {name} again.",
+  "@productShown": {
+    "description": "Snackbar after showing a product again.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noteTooShort": "Write at least 3 characters.",
+  "@noteTooShort": {
+    "description": "Reason or note sheet: too short."
+  },
+  "noteTooLong": "Keep it to 500 characters.",
+  "@noteTooLong": {
+    "description": "Reason or note sheet: too long."
+  },
+  "adminBrandsReviewDescription": "Brands apply to run themselves on STAKA. Check each application and its business document, then approve it or turn it down. Pause a brand that breaks the rules.",
+  "@adminBrandsReviewDescription": {
+    "description": "Admin brands: under the heading (V2-12)."
+  },
+  "brandReviewPending": "To review",
+  "@brandReviewPending": {
+    "description": "Admin brands tab: applications waiting."
+  },
+  "brandReviewActive": "Active",
+  "@brandReviewActive": {
+    "description": "Admin brands tab and pill: approved brands."
+  },
+  "brandReviewSuspended": "Paused",
+  "@brandReviewSuspended": {
+    "description": "Admin brands tab and pill: suspended brands."
+  },
+  "brandReviewRejected": "Turned down",
+  "@brandReviewRejected": {
+    "description": "Admin brands tab and pill: rejected applications."
+  },
+  "brandStatusLabel": "Brand status",
+  "@brandStatusLabel": {
+    "description": "Admin brands: the status tabs, for screen readers."
+  },
+  "noBrandsInStatus": "{status, select, pending{No applications are waiting.} approved{No active brands yet.} suspended{No paused brands.} other{No turned-down applications.}}",
+  "@noBrandsInStatus": {
+    "description": "Admin brands: empty tab.",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "appliedOn": "Applied {date}",
+  "@appliedOn": {
+    "description": "Admin brands: when a brand applied.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "brandMembers": "{count, plural, =0{No team yet} =1{1 person} other{{count} people}}",
+  "@brandMembers": {
+    "description": "Admin brands: how many people run a brand.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "aboutTheBrand": "About",
+  "@aboutTheBrand": {
+    "description": "Admin brand: the brand description."
+  },
+  "appliedHeading": "Applied",
+  "@appliedHeading": {
+    "description": "Admin brand: application date heading."
+  },
+  "teamHeading": "Team",
+  "@teamHeading": {
+    "description": "Admin brand: members heading."
+  },
+  "listedBrandHeading": "Already on STAKA",
+  "@listedBrandHeading": {
+    "description": "Admin brand: the application claims a listed brand."
+  },
+  "claimsListedBrand": "Says it owns a brand STAKA already lists. Approving gives its team that brand and its products.",
+  "@claimsListedBrand": {
+    "description": "Admin brand: what claiming a listed brand means."
+  },
+  "viewBusinessDocument": "View business document",
+  "@viewBusinessDocument": {
+    "description": "Admin brand: opens the private document."
+  },
+  "noBusinessDocument": "No business document was sent.",
+  "@noBusinessDocument": {
+    "description": "Admin brand: none sent."
+  },
+  "businessDocumentTitle": "Business document",
+  "@businessDocumentTitle": {
+    "description": "Brand document viewer: title."
+  },
+  "documentUnavailable": "The document couldn't be loaded.",
+  "@documentUnavailable": {
+    "description": "Brand document viewer: failed."
+  },
+  "approveBrand": "Approve brand",
+  "@approveBrand": {
+    "description": "Admin brand: approve an application."
+  },
+  "rejectBrand": "Turn down",
+  "@rejectBrand": {
+    "description": "Admin brand: reject an application."
+  },
+  "rejectBrandTitle": "Turn down {brand}?",
+  "@rejectBrandTitle": {
+    "description": "Reject brand sheet: title.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "rejectBrandBody": "Its owners see your reason and can fix the application and send it again.",
+  "@rejectBrandBody": {
+    "description": "Reject brand sheet: body."
+  },
+  "suspendBrand": "Pause brand",
+  "@suspendBrand": {
+    "description": "Admin brand: suspend an active brand."
+  },
+  "suspendBrandTitle": "Pause {brand}?",
+  "@suspendBrandTitle": {
+    "description": "Suspend brand sheet: title.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "suspendBrandBody": "Its team can't use the Brand tab until you make it active again, and sees your reason. Its products stay visible to shoppers.",
+  "@suspendBrandBody": {
+    "description": "Suspend brand sheet: body."
+  },
+  "reinstateBrand": "Make active again",
+  "@reinstateBrand": {
+    "description": "Admin brand: reinstate a paused brand."
+  },
+  "reasonForBrand": "Reason the brand will see",
+  "@reasonForBrand": {
+    "description": "Reject and suspend sheets: the field."
+  },
+  "rejectedBrandWaits": "Waiting for the brand to fix its application and send it again.",
+  "@rejectedBrandWaits": {
+    "description": "Admin brand: rejected, nothing to decide."
+  },
+  "brandApproved": "{brand} is approved. Its team can now run it.",
+  "@brandApproved": {
+    "description": "Snackbar after approving a brand.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandRejected": "{brand} was turned down. Its owners see your reason.",
+  "@brandRejected": {
+    "description": "Snackbar after rejecting a brand.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandSuspended": "{brand} is paused.",
+  "@brandSuspended": {
+    "description": "Snackbar after suspending a brand.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "brandReinstated": "{brand} is active again.",
+  "@brandReinstated": {
+    "description": "Snackbar after reinstating a brand.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "adminDisputes": "Disputes",
+  "@adminDisputes": {
+    "description": "Admin hub and page: shoppers asking STAKA to look again."
+  },
+  "adminDisputesDescription": "Shoppers who think a brand wrongly turned their receipt down. Read their message and the receipt, then keep the decision or approve it.",
+  "@adminDisputesDescription": {
+    "description": "Admin disputes: under the heading."
+  },
+  "disputeOpen": "To decide",
+  "@disputeOpen": {
+    "description": "Disputes tab: open."
+  },
+  "disputeUpheld": "Kept",
+  "@disputeUpheld": {
+    "description": "Disputes tab: the brand decision was kept."
+  },
+  "disputeOverturned": "Approved",
+  "@disputeOverturned": {
+    "description": "Disputes tab: the receipt was approved after all."
+  },
+  "disputeStatusLabel": "Dispute status",
+  "@disputeStatusLabel": {
+    "description": "Disputes: the status tabs, for screen readers."
+  },
+  "noDisputesInStatus": "{status, select, open{No disputes are waiting.} upheld{No kept decisions yet.} other{No approved disputes yet.}}",
+  "@noDisputesInStatus": {
+    "description": "Disputes: empty tab.",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "disputeRowTitle": "{product} · {brand}",
+  "@disputeRowTitle": {
+    "description": "Disputes row: the piece and its brand.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "disputeRowUntitled": "Receipt turned down by a brand",
+  "@disputeRowUntitled": {
+    "description": "Disputes row when the API sends no claim."
+  },
+  "aShopper": "A shopper",
+  "@aShopper": {
+    "description": "Stands in for a shopper name the API did not send."
+  },
+  "disputeAsked": "{name} asked {date}",
+  "@disputeAsked": {
+    "description": "Disputes: who asked and when.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "shopperWrote": "What the shopper wrote",
+  "@shopperWrote": {
+    "description": "Dispute: heading over the message."
+  },
+  "brandReasonHeading": "Why {brand} turned it down",
+  "@brandReasonHeading": {
+    "description": "Dispute: heading over the brand's reason.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "overturn": "Approve the receipt",
+  "@overturn": {
+    "description": "Dispute: overturn the brand decision."
+  },
+  "uphold": "Keep the decision",
+  "@uphold": {
+    "description": "Dispute: uphold the brand decision."
+  },
+  "overturnTitle": "Approve this receipt?",
+  "@overturnTitle": {
+    "description": "Overturn sheet: title."
+  },
+  "overturnBody": "The shopper becomes the verified owner and gets the points. {brand} and the shopper see your note.",
+  "@overturnBody": {
+    "description": "Overturn sheet: body.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "upholdTitle": "Keep {brand}'s decision?",
+  "@upholdTitle": {
+    "description": "Uphold sheet: title.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "upholdBody": "The receipt stays turned down and the shopper can't ask again. They see your note.",
+  "@upholdBody": {
+    "description": "Uphold sheet: body."
+  },
+  "noteForShopper": "Note the shopper will see",
+  "@noteForShopper": {
+    "description": "Dispute sheets: the field."
+  },
+  "disputeOverturnedDone": "Approved. The shopper is now the verified owner.",
+  "@disputeOverturnedDone": {
+    "description": "Snackbar after overturning."
+  },
+  "disputeUpheldDone": "Decision kept. The shopper sees your note.",
+  "@disputeUpheldDone": {
+    "description": "Snackbar after upholding."
+  },
+  "overturnedOn": "You approved the receipt on {date}.",
+  "@overturnedOn": {
+    "description": "Dispute settled: overturned.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "overturnedUndated": "The receipt was approved.",
+  "@overturnedUndated": {
+    "description": "Dispute settled: overturned, no date."
+  },
+  "upheldOn": "The brand's decision was kept on {date}.",
+  "@upheldOn": {
+    "description": "Dispute settled: upheld.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "upheldUndated": "The brand's decision was kept.",
+  "@upheldUndated": {
+    "description": "Dispute settled: upheld, no date."
+  },
+  "noteSaid": "Note: {note}",
+  "@noteSaid": {
+    "description": "Dispute settled: the note.",
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "disputedByShopper": "Disputed by the shopper",
+  "@disputedByShopper": {
+    "description": "Claims: the shopper asked STAKA to look again."
+  },
+  "overruleHeading": "Overrule {brand}",
+  "@overruleHeading": {
+    "description": "Admin claim: the overrule panel heading.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "overrulePendingHint": "{brand} checks this claim. Decide here only when it is stuck, for example a paused brand or one with no team.",
+  "@overrulePendingHint": {
+    "description": "Admin claim: pending, why to overrule.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "overruleDecidedHint": "Change what {brand} decided only when it was clearly wrong. Your reason is recorded.",
+  "@overruleDecidedHint": {
+    "description": "Admin claim: decided, why to overrule.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "overruleApprove": "Approve instead",
+  "@overruleApprove": {
+    "description": "Admin claim: overrule to approve."
+  },
+  "overruleReject": "Reject instead",
+  "@overruleReject": {
+    "description": "Admin claim: overrule to reject."
+  },
+  "overruleApproveTitle": "Approve this claim?",
+  "@overruleApproveTitle": {
+    "description": "Overrule sheet: approve title."
+  },
+  "overruleRejectTitle": "Reject this claim?",
+  "@overruleRejectTitle": {
+    "description": "Overrule sheet: reject title."
+  },
+  "overruleBody": "{brand} and the shopper see your reason. It is recorded with your name.",
+  "@overruleBody": {
+    "description": "Overrule sheet: body.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "overruleReason": "Reason",
+  "@overruleReason": {
+    "description": "Overrule sheet: the field."
+  },
+  "adminClaimsReadOnlyDescription": "Every brand's claims. Brands approve or reject their own; overrule one only when it is stuck or clearly wrong.",
+  "@adminClaimsReadOnlyDescription": {
+    "description": "Admin claims list: under the heading (V2-12)."
+  },
+  "adminBrandsWaiting": "{count, plural, =0{No applications waiting.} =1{1 application is waiting.} other{{count} applications are waiting.}}",
+  "@adminBrandsWaiting": {
+    "description": "Admin hub: Brands row with how many wait.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminDisputesWaiting": "{count, plural, =0{No disputes waiting.} =1{1 dispute is waiting.} other{{count} disputes are waiting.}}",
+  "@adminDisputesWaiting": {
+    "description": "Admin hub: Disputes row with how many wait.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   }
 }

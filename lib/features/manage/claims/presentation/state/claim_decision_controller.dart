@@ -27,6 +27,18 @@ class ClaimDecisionController extends _$ClaimDecisionController {
     (repository) => repository.reject(claimId, reason),
   );
 
+  /// Admins only: whatever the brand decided.
+  Future<void> overrule(ClaimStatus decision, String reason) => _decide(
+    decision,
+    (repository) =>
+        repository.overrule(claimId, decision: decision, reason: reason),
+  );
+
+  /// A closed sheet forgets its error.
+  void reset() {
+    if (state is! RequestSending) state = const RequestIdle();
+  }
+
   Future<void> _decide(
     ClaimStatus decision,
     Future<Result<ClaimDetail>> Function(AdminClaimRepository repository) call,

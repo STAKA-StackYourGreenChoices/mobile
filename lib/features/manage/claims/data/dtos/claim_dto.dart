@@ -25,6 +25,7 @@ class ClaimDto {
     this.orderId,
     this.receiptMimeType,
     this.receiptAttempt,
+    this.disputeStatus,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$ClaimDtoFromJson(json);
@@ -43,6 +44,16 @@ class ClaimDto {
   final ClaimUserDto user;
   final ClaimProductDto product;
 
+  /// `dispute.status` (V2-12): OPEN | UPHELD | OVERTURNED.
+  @JsonKey(readValue: _readDisputeStatus)
+  final String? disputeStatus;
+
+  static Object? _readDisputeStatus(Map<dynamic, dynamic> json, String _) =>
+      switch (json['dispute']) {
+        {'status': final Object? status} => status,
+        _ => null,
+      };
+
   Claim toDomain({String webAppUrl = Env.webAppUrl}) => Claim(
     id: id,
     method: claimMethodFromApi(method) ?? ClaimMethod.receipt,
@@ -55,6 +66,7 @@ class ClaimDto {
     hasReceipt: hasReceipt,
     receiptMimeType: receiptMimeType,
     receiptAttempt: receiptAttempt,
+    isDisputed: disputeStatus == 'OPEN',
     user: ClaimUser(id: user.id, name: user.name, email: user.email),
     product: ClaimProduct(
       id: product.id,

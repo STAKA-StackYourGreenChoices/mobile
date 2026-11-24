@@ -78,4 +78,21 @@ class AdminClaimRemoteDataSource {
     );
     return claimDetailFromJson(response.data!);
   }
+
+  /// `POST /admin/claims/:id/override`, then the claim again: the answer's
+  /// shape isn't in the contract.
+  Future<ClaimDetail> overrule(
+    String id, {
+    required ClaimStatus decision,
+    required String reason,
+  }) async {
+    await _dio.post<void>(
+      '/admin/claims/${Uri.encodeComponent(id)}/override',
+      data: {
+        'decision': decision == ClaimStatus.approved ? 'APPROVE' : 'REJECT',
+        'reason': reason,
+      },
+    );
+    return await detail(id);
+  }
 }

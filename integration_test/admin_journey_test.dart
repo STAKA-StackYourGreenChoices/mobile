@@ -5,27 +5,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/config/env.dart';
-import 'package:staka/features/manage/brands/presentation/widgets/brand_tile.dart';
 
 import 'helpers/device.dart';
 
 /// The admin side on a real phone against the real API, ending with a
 /// shopper sharing the tag the admin just verified:
-/// products (search, open), brands (add, edit, delete), import page,
-/// claims (review the receipt, approve), then share and stop sharing.
+/// products (search, open the hide dialog, cancel), the brands and
+/// disputes pages, claims (review the receipt, overrule: approve instead),
+/// then share and stop sharing. Since V2-12 (`feat/admin-brands-disputes`)
+/// this needs the V2 API (`/admin/brand-applications`, `/admin/disputes`,
+/// `/admin/claims/:id/override`).
 ///
-/// Only touches what it creates: a throwaway shopper, their claim and a
-/// throwaway brand. Needs `LIVE_ADMIN_EMAIL` / `LIVE_ADMIN_PASSWORD`.
+/// Only touches what it creates: a throwaway shopper and their claim.
+/// Needs `LIVE_ADMIN_EMAIL` / `LIVE_ADMIN_PASSWORD`.
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets(
-    'admin: catalog, brands, import, approve a receipt; shopper shares',
+    'admin: catalog, brands, disputes, overrule a receipt; shopper shares',
     (tester) async {
       final stamp = DateTime.now().microsecondsSinceEpoch;
       final shopperName = 'Device Shopper $stamp';
       final shopper = await _shopperWithPendingReceipt(shopperName);
-      final brandName = 'Device Brand $stamp';
 
       // Sign in as the admin.
       await launchSignedOut(tester);
@@ -44,47 +45,21 @@ void main() {
       await tester.enterText(find.byType(TextField), 'Organic Cotton');
       await tester.testTextInput.receiveAction(TextInputAction.search);
       await waitFor(tester, find.text('Terra Threads, $seededGtin'));
+      // Admins don't edit products; a tap offers to hide it. Cancel.
       await tapText(tester, 'Organic Cotton Tee');
-      await waitFor(tester, find.text('Delete product'));
-      await tester.pageBack();
+      await waitFor(tester, find.text('Hide Organic Cotton Tee?'));
+      await tapText(tester, 'Cancel');
       await waitFor(tester, find.text('Terra Threads, $seededGtin'));
       await tester.pageBack();
 
-      // Brands: add, edit, delete a throwaway brand.
+      // Brands and disputes: the pages load (deciding is left to fakes).
       await waitFor(tester, find.text('Brands'));
       await tapText(tester, 'Brands');
-      await waitFor(tester, find.text('Terra Threads'));
-      await tapOn(tester, find.text('Add brand').first);
-      await waitFor(tester, field('Brand name'));
-      await fill(tester, 'Brand name', brandName);
-      await tapOn(tester, find.widgetWithText(FilledButton, 'Add brand').last);
-      await waitFor(tester, find.text('Brand added'));
-      await scrollTo(tester, find.text(brandName));
-
-      Finder inTile(String text) => find.descendant(
-        of: find.ancestor(
-          of: find.text(brandName),
-          matching: find.byType(BrandTile),
-        ),
-        matching: find.text(text),
-      );
-      await tapOn(tester, inTile('Edit'));
-      await waitFor(tester, field('About the brand'));
-      await fill(tester, 'About the brand', 'Made on a phone, for a test.');
-      await tapButton(tester, 'Save changes');
-      await waitFor(tester, find.text('Brand updated'));
-      await scrollTo(tester, find.text('Made on a phone, for a test.'));
-      await tapOn(tester, inTile('Delete'));
-      await waitFor(tester, find.text('Delete brand'));
-      await tapText(tester, 'Delete brand');
-      await waitFor(tester, find.text('$brandName deleted'));
+      await waitFor(tester, find.text('To review'));
       await tester.pageBack();
-
-      // Import: the page and what the file needs (picking a file is the
-      // phone's own picker, checked by hand).
-      await waitFor(tester, find.text('Import'));
-      await tapText(tester, 'Import');
-      await waitFor(tester, find.text('Up to 2 MB and 5,000 rows.'));
+      await waitFor(tester, find.text('Disputes'));
+      await tapText(tester, 'Disputes');
+      await waitFor(tester, find.text('To decide'));
       await tester.pageBack();
 
       // Claims: find this run's receipt, look at it, approve it.
@@ -96,7 +71,13 @@ void main() {
       await tapOn(tester, row);
       await waitFor(tester, find.text('$shopperName: Organic Cotton Tee'));
       await waitFor(tester, find.text('Tap the image to open it full size.'));
-      await tapButton(tester, 'Approve');
+      await tapText(tester, 'Approve instead');
+      await waitFor(tester, find.text('Approve this claim?'));
+      await tester.enterText(
+        find.byType(EditableText).last,
+        'Checked on a phone, for a test.',
+      );
+      await tapOn(tester, find.widgetWithText(FilledButton, 'Approve').last);
       await waitFor(
         tester,
         find.text('Approved. The shopper is now the verified owner.'),
