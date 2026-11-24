@@ -20,14 +20,18 @@ import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 /// The website's `/products/[gtin]`, opened from Scan: the product's tag
 /// and figures, and adding it to the wardrobe, which opens the new tag.
 class ProductScreen extends ConsumerWidget {
-  const new({required this.gtin, super.key});
+  const new({required this.gtin, this.isScan = false, super.key});
 
   final String gtin;
+
+  /// Opened from the Scan tab (`?scan=1`), not from a tag.
+  final bool isScan;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final product = ref.watch(productControllerProvider(gtin));
+    final provider = productControllerProvider(gtin, isScan: isScan);
+    final product = ref.watch(provider);
     final adding = ref.watch(addToWardrobeControllerProvider(gtin));
 
     void openTag(String cardId, {bool isNew = false}) => context.goNamed(
@@ -49,9 +53,7 @@ class ProductScreen extends ConsumerWidget {
         ProductLoading() => const AppLoader(),
         ProductError(:final failure) => AppErrorState(
           failure: failure,
-          onRetryPressed: ref
-              .read(productControllerProvider(gtin).notifier)
-              .retry,
+          onRetryPressed: ref.read(provider.notifier).retry,
         ),
         ProductReady(
           lookup: ProductFound(:final product, :final ownedCardId),

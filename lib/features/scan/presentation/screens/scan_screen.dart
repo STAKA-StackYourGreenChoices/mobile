@@ -20,9 +20,11 @@ class ScanScreen extends ConsumerWidget {
     final l10n = context.l10n;
     final camera = ref.watch(scanCameraProvider);
 
+    // `scan=1`: the product screen reports the lookup as a scan (V2-5).
     void open(String gtin) => context.pushNamed(
       AppRoute.product.name,
       pathParameters: {'gtin': gtin},
+      queryParameters: const {'scan': '1'},
     );
 
     return AppScaffold(

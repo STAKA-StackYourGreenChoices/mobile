@@ -8,18 +8,24 @@ part of 'product_controller.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// The product for one scanned code.
+/// The product for one code. [isScan]: opened from the Scan tab, so the
+/// lookup's answer is reported as a scan (V2-5); the tag's "Product
+/// details" link opens the same screen without it.
 
 @ProviderFor(ProductController)
 final productControllerProvider = ProductControllerFamily._();
 
-/// The product for one scanned code.
+/// The product for one code. [isScan]: opened from the Scan tab, so the
+/// lookup's answer is reported as a scan (V2-5); the tag's "Product
+/// details" link opens the same screen without it.
 final class ProductControllerProvider
     extends $NotifierProvider<ProductController, ProductState> {
-  /// The product for one scanned code.
+  /// The product for one code. [isScan]: opened from the Scan tab, so the
+  /// lookup's answer is reported as a scan (V2-5); the tag's "Product
+  /// details" link opens the same screen without it.
   ProductControllerProvider._({
     required ProductControllerFamily super.from,
-    required String super.argument,
+    required (String, {bool isScan}) super.argument,
   }) : super(
          retry: null,
          name: r'productControllerProvider',
@@ -35,7 +41,7 @@ final class ProductControllerProvider
   String toString() {
     return r'productControllerProvider'
         ''
-        '($argument)';
+        '$argument';
   }
 
   @$internal
@@ -61,9 +67,11 @@ final class ProductControllerProvider
   }
 }
 
-String _$productControllerHash() => r'985fe7fbaf52b79b9b4e9201ebe33b4a2686f650';
+String _$productControllerHash() => r'54fe8b494b1438d60613714bac01410d335a169c';
 
-/// The product for one scanned code.
+/// The product for one code. [isScan]: opened from the Scan tab, so the
+/// lookup's answer is reported as a scan (V2-5); the tag's "Product
+/// details" link opens the same screen without it.
 
 final class ProductControllerFamily extends $Family
     with
@@ -72,7 +80,7 @@ final class ProductControllerFamily extends $Family
           ProductState,
           ProductState,
           ProductState,
-          String
+          (String, {bool isScan})
         > {
   ProductControllerFamily._()
     : super(
@@ -83,22 +91,27 @@ final class ProductControllerFamily extends $Family
         isAutoDispose: true,
       );
 
-  /// The product for one scanned code.
+  /// The product for one code. [isScan]: opened from the Scan tab, so the
+  /// lookup's answer is reported as a scan (V2-5); the tag's "Product
+  /// details" link opens the same screen without it.
 
-  ProductControllerProvider call(String gtin) =>
-      ProductControllerProvider._(argument: gtin, from: this);
+  ProductControllerProvider call(String gtin, {bool isScan = false}) =>
+      ProductControllerProvider._(argument: (gtin, isScan: isScan), from: this);
 
   @override
   String toString() => r'productControllerProvider';
 }
 
-/// The product for one scanned code.
+/// The product for one code. [isScan]: opened from the Scan tab, so the
+/// lookup's answer is reported as a scan (V2-5); the tag's "Product
+/// details" link opens the same screen without it.
 
 abstract class _$ProductController extends $Notifier<ProductState> {
-  late final _$args = ref.$arg as String;
-  String get gtin => _$args;
+  late final _$args = ref.$arg as (String, {bool isScan});
+  String get gtin => _$args.$1;
+  bool get isScan => _$args.isScan;
 
-  ProductState build(String gtin);
+  ProductState build(String gtin, {bool isScan = false});
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
@@ -111,6 +124,9 @@ abstract class _$ProductController extends $Notifier<ProductState> {
               Object?,
               Object?
             >;
-    return element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(
+      ref,
+      () => build(_$args.$1, isScan: _$args.isScan),
+    );
   }
 }

@@ -5,9 +5,14 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/sharing/share_image_api.dart';
 import 'package:staka/core/sharing/share_target.dart';
 
-/// Records each share click instead of posting it.
+/// Records each event instead of posting it.
 class FakeEventTracker implements EventTracker {
   final List<({ShareChannel channel, String? cardId})> shareClicks = [];
+  final List<({String gtin, bool known})> scans = [];
+
+  @override
+  void scanned(String gtin, {required bool known}) =>
+      scans.add((gtin: gtin, known: known));
 
   @override
   void shareClicked(ShareChannel channel, {String? cardId}) =>

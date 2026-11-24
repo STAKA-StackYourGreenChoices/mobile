@@ -117,6 +117,22 @@ void main() {
       ]);
     });
 
+    test('posts scans, known and unknown, with the code', () async {
+      final adapter = FakeHttpAdapter([json(202, null), json(202, null)]);
+      ApiEventTracker(
+          Dio(BaseOptions(baseUrl: 'http://api.test'))
+            ..httpClientAdapter = adapter,
+        )
+        ..scanned('08901234500019', known: true)
+        ..scanned('4006381333931', known: false);
+      await pumpEventQueue();
+
+      expect(adapter.requests.map((r) => r.data), [
+        {'type': 'SCAN', 'gtin': '08901234500019'},
+        {'type': 'SCAN_UNKNOWN', 'gtin': '4006381333931'},
+      ]);
+    });
+
     test('a failed event is dropped quietly', () async {
       final adapter = FakeHttpAdapter([json(500, null)]);
       ApiEventTracker(

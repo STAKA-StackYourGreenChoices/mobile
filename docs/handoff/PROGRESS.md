@@ -86,7 +86,11 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/catalog-variants` (V2-2): brand product form with type of piece, style code, sizes and colours (add/remove, at least one, no repeated codes), other shop codes sheet, 409 on the clashing row; import help lists the new columns
 - [ ] `feat/wardrobe-share`, `feat/share-channels`
 
+## V2 — M3 Engagement
+- [~] `feat/engagement-events` (V2-5): `SCAN` / `SCAN_UNKNOWN` from the Scan tab (fire-and-forget `POST /events`); `SHARE_CLICKED` came with V2-4
+
 ## Session log (newest first, one line each)
+- 2026-11-25 — `feat/engagement-events`: V2-5 scan events (`SCAN`, `SCAN_UNKNOWN`) on the V2-4 tracker. 518 tests pass; no golden changed. Fakes only.
 - 2026-11-25 — `feat/share-channels`: V2-4 channel row, image formats, QR sheet, share-click events (`core/analytics/` started). 513 tests pass; updated goldens share (tag panel), wardrobe_share_shared; new qr_sheet. M2 code done. Fakes only.
 - 2026-11-25 — `feat/wardrobe-share`: V2-3 wardrobe link with QR code + per-tag switch; `qr_flutter` added; share_actions moved to `core/sharing`, `ShareLinkActions` to `shared/widgets/sharing`. 505 tests pass; new goldens wardrobe_share_not_shared/shared; updated wardrobe_tags and wardrobe_filter (the new card). Fakes only.
 - 2026-11-24 — `feat/catalog-variants`: V2-2 brand product form (sizes and colours, other shop codes) + import help. 487 tests pass; brand_product_new/edit goldens updated. Fakes only.

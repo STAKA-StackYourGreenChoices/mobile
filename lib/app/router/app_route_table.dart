@@ -123,8 +123,10 @@ final appRouteTable = <RouteBase>[
               _child(
                 AppRoute.scan,
                 AppRoute.product,
-                (_, state) =>
-                    ProductScreen(gtin: state.pathParameters['gtin'] ?? ''),
+                (_, state) => ProductScreen(
+                  gtin: state.pathParameters['gtin'] ?? '',
+                  isScan: state.uri.queryParameters['scan'] == '1',
+                ),
               ),
             ],
           ),
