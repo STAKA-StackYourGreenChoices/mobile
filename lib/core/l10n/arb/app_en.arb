@@ -4177,5 +4177,55 @@
   "emailNotificationsBody": "Decisions and reward news to your inbox.",
   "accountSectionNotifications": "Notifications",
   "notificationSettingsTooltip": "Notification settings",
-  "accountNotificationsDetail": "Choose what STAKA sends you"
+  "accountNotificationsDetail": "Choose what STAKA sends you",
+  "analyticsTitle": "Analytics",
+  "adminAnalyticsDescription": "From scan to share, across every brand.",
+  "brandAnalyticsDescription": "How shoppers scan, verify and share your products.",
+  "analyticsAdminBody": "How shoppers move from a scan to a shared tag, across every brand.",
+  "analyticsBrandBody": "How shoppers move from a scan to a shared tag, for your products.",
+  "analyticsPeriodLabel": "Period",
+  "analyticsDays": "{days, plural, =1{1 day} other{{days} days}}",
+  "@analyticsDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "analyticsEmptyTitle": "Nothing in this period",
+  "analyticsEmptyBody": "No scans or shares yet. Try a longer period.",
+  "analyticsFunnelTitle": "From scan to share",
+  "analyticsFunnelBody": "Each step, and how many of the step before made it.",
+  "funnelScanned": "Scanned",
+  "funnelAdded": "Added to a wardrobe",
+  "funnelVerified": "Verified",
+  "funnelShared": "Shared",
+  "funnelViewed": "Viewed by others",
+  "analyticsFromStepBefore": "{percent}% of the step before",
+  "@analyticsFromStepBefore": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "analyticsChannelsTitle": "By channel",
+  "analyticsShares": "Shares",
+  "analyticsViews": "Views",
+  "analyticsNoneInPeriod": "None in this period.",
+  "analyticsTopProductsTitle": "Top products",
+  "analyticsProductFigures": "{scans} scans · {verified} verified · {shared} shared",
+  "@analyticsProductFigures": {
+    "placeholders": {
+      "scans": {
+        "type": "String"
+      },
+      "verified": {
+        "type": "String"
+      },
+      "shared": {
+        "type": "String"
+      }
+    }
+  }
 }

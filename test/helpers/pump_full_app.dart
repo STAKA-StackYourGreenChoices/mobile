@@ -24,6 +24,7 @@ import 'package:staka/features/brand_apply/domain/repositories/brand_application
 import 'package:staka/features/brand_apply/presentation/state/brand_file_picker.dart';
 import 'package:staka/features/brand_portal/data/repositories/brand_portal_repository_impl.dart';
 import 'package:staka/features/brand_portal/domain/repositories/brand_portal_repository.dart';
+import 'package:staka/features/manage/analytics/data/analytics_repository.dart';
 import 'package:staka/features/manage/brand_review/data/brand_review_repository_impl.dart';
 import 'package:staka/features/manage/brand_review/domain/repositories/brand_review_repository.dart';
 import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
@@ -51,6 +52,7 @@ import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repos
 import 'admin_claim_fakes.dart';
 import 'admin_product_fakes.dart';
 import 'admin_review_fakes.dart';
+import 'analytics_fakes.dart';
 import 'auth_fakes.dart';
 import 'brand_apply_fakes.dart';
 import 'brand_portal_fakes.dart';
@@ -94,6 +96,7 @@ Future<InMemoryTokenStore> pumpApp(
   BrandFilePicker? brandFilePicker,
   BrandPortalRepository? brandPortal,
   NotificationsRepository? notifications,
+  AnalyticsRepository? analytics,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -171,6 +174,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         notificationsRepositoryProvider.overrideWithValue(
           notifications ?? FakeNotificationsRepository(),
+        ),
+        analyticsRepositoryProvider.overrideWith(
+          (_, _) => analytics ?? FakeAnalyticsRepository(),
         ),
       ],
       child: const App(),

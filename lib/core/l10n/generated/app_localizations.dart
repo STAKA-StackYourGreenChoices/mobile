@@ -5150,6 +5150,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose what STAKA sends you'**
   String get accountNotificationsDetail;
+
+  /// No description provided for @analyticsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get analyticsTitle;
+
+  /// No description provided for @adminAnalyticsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'From scan to share, across every brand.'**
+  String get adminAnalyticsDescription;
+
+  /// No description provided for @brandAnalyticsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'How shoppers scan, verify and share your products.'**
+  String get brandAnalyticsDescription;
+
+  /// No description provided for @analyticsAdminBody.
+  ///
+  /// In en, this message translates to:
+  /// **'How shoppers move from a scan to a shared tag, across every brand.'**
+  String get analyticsAdminBody;
+
+  /// No description provided for @analyticsBrandBody.
+  ///
+  /// In en, this message translates to:
+  /// **'How shoppers move from a scan to a shared tag, for your products.'**
+  String get analyticsBrandBody;
+
+  /// No description provided for @analyticsPeriodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get analyticsPeriodLabel;
+
+  /// No description provided for @analyticsDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1 day} other{{days} days}}'**
+  String analyticsDays(int days);
+
+  /// No description provided for @analyticsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing in this period'**
+  String get analyticsEmptyTitle;
+
+  /// No description provided for @analyticsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No scans or shares yet. Try a longer period.'**
+  String get analyticsEmptyBody;
+
+  /// No description provided for @analyticsFunnelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'From scan to share'**
+  String get analyticsFunnelTitle;
+
+  /// No description provided for @analyticsFunnelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Each step, and how many of the step before made it.'**
+  String get analyticsFunnelBody;
+
+  /// No description provided for @funnelScanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanned'**
+  String get funnelScanned;
+
+  /// No description provided for @funnelAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to a wardrobe'**
+  String get funnelAdded;
+
+  /// No description provided for @funnelVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get funnelVerified;
+
+  /// No description provided for @funnelShared.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared'**
+  String get funnelShared;
+
+  /// No description provided for @funnelViewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Viewed by others'**
+  String get funnelViewed;
+
+  /// No description provided for @analyticsFromStepBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% of the step before'**
+  String analyticsFromStepBefore(int percent);
+
+  /// No description provided for @analyticsChannelsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'By channel'**
+  String get analyticsChannelsTitle;
+
+  /// No description provided for @analyticsShares.
+  ///
+  /// In en, this message translates to:
+  /// **'Shares'**
+  String get analyticsShares;
+
+  /// No description provided for @analyticsViews.
+  ///
+  /// In en, this message translates to:
+  /// **'Views'**
+  String get analyticsViews;
+
+  /// No description provided for @analyticsNoneInPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'None in this period.'**
+  String get analyticsNoneInPeriod;
+
+  /// No description provided for @analyticsTopProductsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Top products'**
+  String get analyticsTopProductsTitle;
+
+  /// No description provided for @analyticsProductFigures.
+  ///
+  /// In en, this message translates to:
+  /// **'{scans} scans · {verified} verified · {shared} shared'**
+  String analyticsProductFigures(String scans, String verified, String shared);
 }
 
 class _AppLocalizationsDelegate

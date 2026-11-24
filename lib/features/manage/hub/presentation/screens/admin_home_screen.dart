@@ -54,6 +54,12 @@ class AdminHomeScreen extends ConsumerWidget {
         l10n.adminProducts,
         l10n.adminProductsReadOnlyDescription,
       ),
+      (
+        AppRoute.adminAnalytics,
+        Icons.insights_outlined,
+        l10n.analyticsTitle,
+        l10n.adminAnalyticsDescription,
+      ),
     ];
     return AppScaffold(
       body: Column(

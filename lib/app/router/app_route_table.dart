@@ -23,6 +23,7 @@ import 'package:staka/features/brand_portal/presentation/screens/brand_home_scre
 import 'package:staka/features/brand_portal/presentation/screens/brand_settings_screen.dart';
 import 'package:staka/features/brand_portal/presentation/screens/brand_team_screen.dart';
 import 'package:staka/features/brand_portal/presentation/widgets/current_brand_builder.dart';
+import 'package:staka/features/manage/analytics/presentation/analytics_screen.dart';
 import 'package:staka/features/manage/brand_review/presentation/screens/admin_brand_screen.dart';
 import 'package:staka/features/manage/brand_review/presentation/screens/admin_brands_screen.dart';
 import 'package:staka/features/manage/brand_review/presentation/screens/brand_document_screen.dart';
@@ -151,6 +152,11 @@ final appRouteTable = <RouteBase>[
             AppRoute.adminHome,
             (_, _) => const AdminHomeScreen(),
             children: [
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminAnalytics,
+                (_, _) => const AnalyticsScreen(scope: _admin),
+              ),
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminProducts,
@@ -372,6 +378,13 @@ final appRouteTable = <RouteBase>[
                 AppRoute.brandImport,
                 (_, _) => CurrentBrandBuilder(
                   builder: (_, scope) => AdminImportScreen(scope: scope),
+                ),
+              ),
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandAnalytics,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (_, scope) => AnalyticsScreen(scope: scope),
                 ),
               ),
               _child(

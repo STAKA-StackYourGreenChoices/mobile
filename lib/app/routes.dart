@@ -37,6 +37,7 @@ enum AppRoute {
   activity('/wardrobe/activity'),
   notifications('/wardrobe/notifications'),
   adminProducts('/admin/products'),
+  adminAnalytics('/admin/analytics'),
   adminBrands('/admin/brands'),
   adminBrand('/admin/brands/:id'),
   adminBrandDocument('/admin/brands/:id/document'),
@@ -53,6 +54,7 @@ enum AppRoute {
   brandClaims('/brand/claims'),
   brandClaim('/brand/claims/:id'),
   brandClaimReceipt('/brand/claims/:id/receipt'),
+  brandAnalytics('/brand/analytics'),
   brandTeam('/brand/team'),
   brandSettings('/brand/settings');
 

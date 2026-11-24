@@ -51,7 +51,7 @@ final class NotificationsControllerProvider
 }
 
 String _$notificationsControllerHash() =>
-    r'43ad82f8b2e92329a5c8e43cffe82493aeae5f95';
+    r'ad0deb1d9d4e1935b30665cbcf48e7e16b0e7ed5';
 
 /// The notification inbox (V2-9), 20 at a time as the person scrolls.
 /// Opening one marks it read; "Mark all as read" reads them all. Both

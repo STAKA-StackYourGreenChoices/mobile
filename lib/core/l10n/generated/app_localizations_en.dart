@@ -3182,4 +3182,91 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountNotificationsDetail => 'Choose what STAKA sends you';
+
+  @override
+  String get analyticsTitle => 'Analytics';
+
+  @override
+  String get adminAnalyticsDescription =>
+      'From scan to share, across every brand.';
+
+  @override
+  String get brandAnalyticsDescription =>
+      'How shoppers scan, verify and share your products.';
+
+  @override
+  String get analyticsAdminBody =>
+      'How shoppers move from a scan to a shared tag, across every brand.';
+
+  @override
+  String get analyticsBrandBody =>
+      'How shoppers move from a scan to a shared tag, for your products.';
+
+  @override
+  String get analyticsPeriodLabel => 'Period';
+
+  @override
+  String analyticsDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get analyticsEmptyTitle => 'Nothing in this period';
+
+  @override
+  String get analyticsEmptyBody =>
+      'No scans or shares yet. Try a longer period.';
+
+  @override
+  String get analyticsFunnelTitle => 'From scan to share';
+
+  @override
+  String get analyticsFunnelBody =>
+      'Each step, and how many of the step before made it.';
+
+  @override
+  String get funnelScanned => 'Scanned';
+
+  @override
+  String get funnelAdded => 'Added to a wardrobe';
+
+  @override
+  String get funnelVerified => 'Verified';
+
+  @override
+  String get funnelShared => 'Shared';
+
+  @override
+  String get funnelViewed => 'Viewed by others';
+
+  @override
+  String analyticsFromStepBefore(int percent) {
+    return '$percent% of the step before';
+  }
+
+  @override
+  String get analyticsChannelsTitle => 'By channel';
+
+  @override
+  String get analyticsShares => 'Shares';
+
+  @override
+  String get analyticsViews => 'Views';
+
+  @override
+  String get analyticsNoneInPeriod => 'None in this period.';
+
+  @override
+  String get analyticsTopProductsTitle => 'Top products';
+
+  @override
+  String analyticsProductFigures(String scans, String verified, String shared) {
+    return '$scans scans · $verified verified · $shared shared';
+  }
 }

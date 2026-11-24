@@ -6,6 +6,7 @@ import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/tags/domain/models/card_stats.dart';
 import 'package:staka/shared/formatters/share_labels.dart';
+import 'package:staka/shared/widgets/data_display/value_bar.dart';
 
 /// "How your link is doing" on a shared tag (V2-5): views, visits to the
 /// brand, and views per channel as bars.
@@ -60,7 +61,7 @@ class TagStatsSection extends StatelessWidget {
             ),
           ),
           for (final (channel, views) in channels)
-            _ChannelBar(
+            ValueBar(
               label: channelName(channel, l10n),
               value: number.format(views),
               share: views / most,
@@ -92,56 +93,4 @@ class _Count extends StatelessWidget {
       ],
     ),
   );
-}
-
-/// A channel's name and views over a bar as long as its part of the most
-/// viewed channel's views.
-class _ChannelBar extends StatelessWidget {
-  const new({required this.label, required this.value, required this.share});
-
-  final String label;
-  final String value;
-
-  /// 0 to 1.
-  final double share;
-
-  static const _height = 6.0;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return MergeSemantics(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: AppSpacing.xxs,
-        children: [
-          Row(
-            children: [
-              Expanded(child: Text(label, style: context.text.bodyMedium)),
-              Text(value, style: context.text.label),
-            ],
-          ),
-          ExcludeSemantics(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(_height / 2),
-              child: SizedBox(
-                height: _height,
-                child: ColoredBox(
-                  color: colors.surfaceSunken,
-                  child: Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: FractionallySizedBox(
-                      widthFactor: share.clamp(0, 1),
-                      heightFactor: 1,
-                      child: ColoredBox(color: colors.brandPrimary),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

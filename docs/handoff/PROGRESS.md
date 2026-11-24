@@ -87,11 +87,13 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] `feat/wardrobe-share`, `feat/share-channels`
 
 ## V2 — M3 Engagement
+- [~] `feat/analytics` (V2-5): Analytics for Admin (brand filter) and Brand: period chips, funnel with drop-off, channels, top products
 - [~] `feat/notifications-inbox` (V2-9): bell with unread count on the wardrobe, inbox (paged, mark read, mark all, opens the target), Account → Notifications (push/email switches)
 - [~] `feat/impact-activity` (V2-5): wardrobe "Your impact" card, Activity screen (paged, opens tags), tag stats (views by channel, visits to the brand) while shared
 - [~] `feat/engagement-events` (V2-5): `SCAN` / `SCAN_UNKNOWN` from the Scan tab (fire-and-forget `POST /events`); `SHARE_CLICKED` came with V2-4
 
 ## Session log (newest first, one line each)
+- 2026-11-25 — `feat/analytics`: V2-5 Analytics screen for Admin and Brand. 567 tests pass; new golden analytics; updated admin_hub and brand_home (Analytics tile); tag_stats unchanged after moving its bar to `ValueBar`. Fakes only.
 - 2026-11-25 — `feat/notifications-inbox`: V2-9 bell, inbox, notification settings. 558 tests pass; new goldens notifications, notification_settings; updated wardrobe_impact (bell), account and account_phone_only (Notifications row). Fakes only.
 - 2026-11-25 — `feat/impact-activity`: V2-5 impact card, Activity screen, tag stats. 536 tests pass; new goldens wardrobe_impact, activity, tag_stats; no existing golden changed. Fakes only.
 - 2026-11-25 — `feat/engagement-events`: V2-5 scan events (`SCAN`, `SCAN_UNKNOWN`) on the V2-4 tracker. 518 tests pass; no golden changed. Fakes only.
