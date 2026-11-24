@@ -3269,4 +3269,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String analyticsProductFigures(String scans, String verified, String shared) {
     return '$scans scans · $verified verified · $shared shared';
   }
+
+  @override
+  String get openNotification => 'Open';
+
+  @override
+  String get pushAskTitle => 'Get a notification?';
+
+  @override
+  String get pushAskBody =>
+      'We\'ll tell you when your receipt has been checked, and when your tags get views or points.';
+
+  @override
+  String get pushAskYes => 'Yes, notify me';
+
+  @override
+  String get notNow => 'Not now';
+
+  @override
+  String get phonePushOffTitle => 'Notifications are off on this phone';
+
+  @override
+  String get phonePushOffAskBody =>
+      'Allow them to hear when a receipt is checked or your tags get views.';
+
+  @override
+  String get phonePushOffDeniedBody =>
+      'To get them, turn on notifications for STAKA in your phone\'s settings.';
+
+  @override
+  String get allowNotifications => 'Allow notifications';
 }

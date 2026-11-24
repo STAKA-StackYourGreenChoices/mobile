@@ -45,3 +45,10 @@ kotlin {
 flutter {
     source = "../.."
 }
+
+// Push (V2-9): Firebase reads android/app/google-services.json, which is
+// shared privately and never committed. Without it the app builds and runs
+// with push switched off.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}

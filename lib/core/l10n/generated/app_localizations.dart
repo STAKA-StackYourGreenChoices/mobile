@@ -5288,6 +5288,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{scans} scans · {verified} verified · {shared} shared'**
   String analyticsProductFigures(String scans, String verified, String shared);
+
+  /// No description provided for @openNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get openNotification;
+
+  /// No description provided for @pushAskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Get a notification?'**
+  String get pushAskTitle;
+
+  /// No description provided for @pushAskBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll tell you when your receipt has been checked, and when your tags get views or points.'**
+  String get pushAskBody;
+
+  /// No description provided for @pushAskYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, notify me'**
+  String get pushAskYes;
+
+  /// No description provided for @notNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get notNow;
+
+  /// No description provided for @phonePushOffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off on this phone'**
+  String get phonePushOffTitle;
+
+  /// No description provided for @phonePushOffAskBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow them to hear when a receipt is checked or your tags get views.'**
+  String get phonePushOffAskBody;
+
+  /// No description provided for @phonePushOffDeniedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'To get them, turn on notifications for STAKA in your phone\'s settings.'**
+  String get phonePushOffDeniedBody;
+
+  /// No description provided for @allowNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow notifications'**
+  String get allowNotifications;
 }
 
 class _AppLocalizationsDelegate

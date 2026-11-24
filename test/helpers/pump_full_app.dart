@@ -8,6 +8,8 @@ import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/notifications/notifications_repository.dart';
+import 'package:staka/core/push/device_repository.dart';
+import 'package:staka/core/push/push_messaging.dart';
 import 'package:staka/core/sharing/qr_png.dart';
 import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/core/sharing/share_image_api.dart';
@@ -60,6 +62,7 @@ import 'fake_http_adapter.dart';
 import 'import_fakes.dart';
 import 'notification_fakes.dart';
 import 'product_fakes.dart';
+import 'push_fakes.dart';
 import 'scan_fakes.dart';
 import 'sharing_fakes.dart';
 import 'tag_fakes.dart';
@@ -97,6 +100,8 @@ Future<InMemoryTokenStore> pumpApp(
   BrandPortalRepository? brandPortal,
   NotificationsRepository? notifications,
   AnalyticsRepository? analytics,
+  PushMessaging? push,
+  DeviceRepository? devices,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -177,6 +182,10 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         analyticsRepositoryProvider.overrideWith(
           (_, _) => analytics ?? FakeAnalyticsRepository(),
+        ),
+        pushMessagingProvider.overrideWithValue(push ?? FakePushMessaging()),
+        deviceRepositoryProvider.overrideWithValue(
+          devices ?? FakeDeviceRepository(),
         ),
       ],
       child: const App(),

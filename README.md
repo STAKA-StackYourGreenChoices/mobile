@@ -46,6 +46,14 @@ belongs here: they end up inside the app.
 | `WEB_APP_URL` | The STAKA website: catalog images, the story image, share links `/t/<slug>` | `http://localhost:3000` |
 | `APP_ENV` | `development`, `staging` or `production` | `development` |
 
+### Push notifications (`google-services.json`)
+
+Push uses Firebase Cloud Messaging. Put the team's
+`google-services.json` (from Arham, shared privately) at
+`android/app/google-services.json`. It is in `.gitignore`: never commit it.
+Without it the app still builds and runs; push is simply off (no permission
+question, nothing registered). Rebuild after adding it.
+
 Which address to use depends on where the app runs:
 
 | The app runs on | API_BASE_URL / WEB_APP_URL |

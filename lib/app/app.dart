@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart'
     show GlobalWidgetsLocalizations;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:staka/app/push/push_message_handler.dart';
 import 'package:staka/app/router/router.dart';
 import 'package:staka/app/session_resume_refresher.dart';
 import 'package:staka/core/design/app_theme.dart';
@@ -27,7 +28,8 @@ class App extends ConsumerWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: ref.watch(routerProvider),
-      builder: (_, child) => SessionResumeRefresher(child: child!),
+      builder: (_, child) =>
+          SessionResumeRefresher(child: PushMessageHandler(child: child!)),
     );
   }
 }

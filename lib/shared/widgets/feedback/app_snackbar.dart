@@ -12,6 +12,9 @@ abstract final class AppSnackbar {
     BuildContext context, {
     required String message,
     AlertTone tone = AlertTone.success,
+    IconData? icon,
+    String? actionLabel,
+    VoidCallback? onAction,
   }) {
     final messenger = ScaffoldMessenger.of(context)..hideCurrentSnackBar();
     final foreground = context.colors.surfaceBase;
@@ -20,9 +23,10 @@ abstract final class AppSnackbar {
         content: Row(
           children: [
             Icon(
-              tone == AlertTone.success
-                  ? Icons.check_circle_outline_rounded
-                  : Icons.error_outline_rounded,
+              icon ??
+                  (tone == AlertTone.success
+                      ? Icons.check_circle_outline_rounded
+                      : Icons.error_outline_rounded),
               color: foreground,
               size: AppSizes.iconInline,
             ),
@@ -30,6 +34,13 @@ abstract final class AppSnackbar {
             Expanded(child: Text(message)),
           ],
         ),
+        action: switch ((actionLabel, onAction)) {
+          (final label?, final onPressed?) => SnackBarAction(
+            label: label,
+            onPressed: onPressed,
+          ),
+          _ => null,
+        },
       ),
     );
   }

@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:go_router/go_router.dart';
+
 import 'package:staka/app/routes.dart';
 import 'package:staka/core/notifications/notification_models.dart';
 
@@ -55,4 +59,29 @@ NotificationDestination? notificationDestination(AppNotification n) {
     ),
     _ => null,
   };
+}
+
+/// Opens [destination]: on top of the current screen when [stack] and it's
+/// in the wardrobe, otherwise in its own tab. [selectBrand] picks the
+/// brand in the Brand tab first.
+void openNotificationDestination(
+  NotificationDestination destination, {
+  required GoRouter router,
+  required void Function(String brandId) selectBrand,
+  bool stack = true,
+}) {
+  if (destination.brandId case final brandId?) selectBrand(brandId);
+  if (stack && destination.isInWardrobe) {
+    unawaited(
+      router.pushNamed(
+        destination.route.name,
+        pathParameters: destination.pathParameters,
+      ),
+    );
+  } else {
+    router.goNamed(
+      destination.route.name,
+      pathParameters: destination.pathParameters,
+    );
+  }
 }

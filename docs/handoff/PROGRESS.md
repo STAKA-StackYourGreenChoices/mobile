@@ -87,12 +87,14 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [ ] `feat/wardrobe-share`, `feat/share-channels`
 
 ## V2 — M3 Engagement
+- [~] `feat/push-notifications` (V2-9): FCM token registration, permission after the first receipt and in settings, tap routing, foreground banner (not tried on the phone yet: needs `google-services.json`)
 - [~] `feat/analytics` (V2-5): Analytics for Admin (brand filter) and Brand: period chips, funnel with drop-off, channels, top products
 - [~] `feat/notifications-inbox` (V2-9): bell with unread count on the wardrobe, inbox (paged, mark read, mark all, opens the target), Account → Notifications (push/email switches)
 - [~] `feat/impact-activity` (V2-5): wardrobe "Your impact" card, Activity screen (paged, opens tags), tag stats (views by channel, visits to the brand) while shared
 - [~] `feat/engagement-events` (V2-5): `SCAN` / `SCAN_UNKNOWN` from the Scan tab (fire-and-forget `POST /events`); `SHARE_CLICKED` came with V2-4
 
 ## Session log (newest first, one line each)
+- 2026-11-25 — `feat/push-notifications`: V2-9 push. 585 tests pass; `flutter build apk --debug` OK without `google-services.json`; new golden phone_push_off; no existing golden changed. Packages added: firebase_core 5.2.0, firebase_messaging 17.1.0. Fakes only.
 - 2026-11-25 — `feat/analytics`: V2-5 Analytics screen for Admin and Brand. 567 tests pass; new golden analytics; updated admin_hub and brand_home (Analytics tile); tag_stats unchanged after moving its bar to `ValueBar`. Fakes only.
 - 2026-11-25 — `feat/notifications-inbox`: V2-9 bell, inbox, notification settings. 558 tests pass; new goldens notifications, notification_settings; updated wardrobe_impact (bell), account and account_phone_only (Notifications row). Fakes only.
 - 2026-11-25 — `feat/impact-activity`: V2-5 impact card, Activity screen, tag stats. 536 tests pass; new goldens wardrobe_impact, activity, tag_stats; no existing golden changed. Fakes only.

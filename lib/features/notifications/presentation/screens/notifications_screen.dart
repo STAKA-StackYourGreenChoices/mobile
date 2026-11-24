@@ -38,22 +38,11 @@ class NotificationsScreen extends ConsumerWidget {
       // Mark read without waiting: the tap should feel instant.
       unawaited(controller.open(notification));
       if (destination == null) return;
-      if (destination.brandId case final brandId?) {
-        ref.read(selectedBrandIdProvider.notifier).select(brandId);
-      }
-      if (destination.isInWardrobe) {
-        unawaited(
-          context.pushNamed(
-            destination.route.name,
-            pathParameters: destination.pathParameters,
-          ),
-        );
-      } else {
-        context.goNamed(
-          destination.route.name,
-          pathParameters: destination.pathParameters,
-        );
-      }
+      openNotificationDestination(
+        destination,
+        router: GoRouter.of(context),
+        selectBrand: ref.read(selectedBrandIdProvider.notifier).select,
+      );
     }
 
     return AppScaffold(

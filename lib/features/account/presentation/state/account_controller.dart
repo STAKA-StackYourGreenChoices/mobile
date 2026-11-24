@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:staka/core/auth/session_controller.dart';
+import 'package:staka/core/push/push_controller.dart';
 
 part 'account_controller.g.dart';
 
@@ -17,6 +18,8 @@ class AccountController extends _$AccountController {
     if (state) return;
     final session = ref.read(sessionControllerProvider.notifier);
     state = true;
+    // While the API still accepts the session: stop pushes to this phone.
+    await ref.read(pushControllerProvider.notifier).beforeSignOut();
     await session.signOut();
   }
 }

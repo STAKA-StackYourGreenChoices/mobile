@@ -47,7 +47,7 @@ final class AccountControllerProvider
   }
 }
 
-String _$accountControllerHash() => r'2934ba4445f1503428e52615e098cae4a8ce0be3';
+String _$accountControllerHash() => r'219ed19b99597c759db3279de660d03e5eecc420';
 
 /// The Account tab's one action. State is "signing out right now", so the
 /// button can show it while the API revokes the refresh token.

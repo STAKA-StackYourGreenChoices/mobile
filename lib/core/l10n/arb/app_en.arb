@@ -4227,5 +4227,14 @@
         "type": "String"
       }
     }
-  }
+  },
+  "openNotification": "Open",
+  "pushAskTitle": "Get a notification?",
+  "pushAskBody": "We'll tell you when your receipt has been checked, and when your tags get views or points.",
+  "pushAskYes": "Yes, notify me",
+  "notNow": "Not now",
+  "phonePushOffTitle": "Notifications are off on this phone",
+  "phonePushOffAskBody": "Allow them to hear when a receipt is checked or your tags get views.",
+  "phonePushOffDeniedBody": "To get them, turn on notifications for STAKA in your phone's settings.",
+  "allowNotifications": "Allow notifications"
 }

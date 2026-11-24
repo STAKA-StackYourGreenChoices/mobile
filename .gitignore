@@ -15,3 +15,6 @@ env/*.json
 
 # Golden-test diff output
 **/failures/
+
+# Firebase config for push (V2-9): shared privately, never committed.
+android/app/google-services.json

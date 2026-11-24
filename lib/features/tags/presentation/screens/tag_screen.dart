@@ -7,6 +7,7 @@ import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/digital_card.dart';
+import 'package:staka/core/push/push_controller.dart';
 import 'package:staka/core/sharing/share_target.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/tags/presentation/state/card_stats_provider.dart';
@@ -19,6 +20,7 @@ import 'package:staka/features/tags/presentation/state/tag_state.dart';
 import 'package:staka/features/tags/presentation/widgets/look_again_sheet.dart';
 import 'package:staka/features/tags/presentation/widgets/order_match_option.dart';
 import 'package:staka/features/tags/presentation/widgets/ownership_panel.dart';
+import 'package:staka/features/tags/presentation/widgets/push_ask_dialog.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_option.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_source_sheet.dart';
 import 'package:staka/features/tags/presentation/widgets/share_locked.dart';
@@ -52,9 +54,14 @@ class TagScreen extends ConsumerWidget {
           AppSnackbar.show(context, message: l10n.orderMatched);
         }
       })
-      ..listen(receiptControllerProvider(cardId), (_, next) {
-        if (next.request is RequestDone) {
-          AppSnackbar.show(context, message: l10n.receiptSent);
+      ..listen(receiptControllerProvider(cardId), (_, next) async {
+        if (next.request is! RequestDone) return;
+        AppSnackbar.show(context, message: l10n.receiptSent);
+        // V2-9: the moment a notification makes sense; asked only once.
+        final push = ref.read(pushControllerProvider.notifier);
+        if (ref.read(pushControllerProvider).canAsk &&
+            await showPushAskDialog(context)) {
+          await push.requestPermission();
         }
       });
 
