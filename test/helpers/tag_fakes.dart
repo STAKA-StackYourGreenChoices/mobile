@@ -22,12 +22,14 @@ class FakeTagRepository implements TagRepository {
     List<Result<ShareLink>> shares = const [],
     List<Result<void>> stops = const [],
     List<Result<Uint8List>> images = const [],
+    List<Result<void>> lookAgains = const [],
   }) : _cards = {for (final card in cards) card.id: card},
        _matches = [...matches],
        _uploads = [...uploads],
        _shares = [...shares],
        _stops = [...stops],
-       _images = [...images];
+       _images = [...images],
+       _lookAgains = [...lookAgains];
 
   final Map<String, DigitalCard> _cards;
   final List<Result<Ownership>> _matches;
@@ -35,7 +37,11 @@ class FakeTagRepository implements TagRepository {
   final List<Result<ShareLink>> _shares;
   final List<Result<void>> _stops;
   final List<Result<Uint8List>> _images;
+  final List<Result<void>> _lookAgains;
   final List<PickedReceipt> uploaded = [];
+
+  /// Messages sent with "Ask STAKA to look again".
+  final List<String> lookAgainMessages = [];
 
   @override
   Future<Result<DigitalCard>> fetchTag(String cardId) async =>
@@ -55,6 +61,12 @@ class FakeTagRepository implements TagRepository {
   ) async {
     uploaded.add(receipt);
     return _uploads.removeAt(0);
+  }
+
+  @override
+  Future<Result<void>> askToLookAgain(String cardId, String message) async {
+    lookAgainMessages.add(message);
+    return _lookAgains.removeAt(0);
   }
 
   @override

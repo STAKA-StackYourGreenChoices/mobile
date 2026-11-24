@@ -3008,5 +3008,191 @@
         "type": "int"
       }
     }
+  },
+  "verifiedByDeciderOn": "{decider} approved your receipt on {date}. It counts toward your wardrobe.",
+  "@verifiedByDeciderOn": {
+    "description": "Tag: verified by a receipt, naming who approved it (a brand or STAKA).",
+    "placeholders": {
+      "decider": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedByDecider": "{decider} approved your receipt. It counts toward your wardrobe.",
+  "@verifiedByDecider": {
+    "description": "Tag: verified by a receipt, undated.",
+    "placeholders": {
+      "decider": {
+        "type": "String"
+      }
+    }
+  },
+  "verifiedAfterLookAgain": "STAKA looked again and approved your receipt. It counts toward your wardrobe.",
+  "@verifiedAfterLookAgain": {
+    "description": "Tag: verified after the shopper asked STAKA to look again."
+  },
+  "pendingForBrand": "Sent {date}. Waiting for {brand} to check it; the result shows up here. {uploadsLeft}",
+  "@pendingForBrand": {
+    "description": "Tag: receipt waiting for the brand.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingForBrandUndated": "Waiting for {brand} to check it; the result shows up here. {uploadsLeft}",
+  "@pendingForBrandUndated": {
+    "description": "Tag: receipt waiting for the brand, undated.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "receiptRejectedBy": "{decider} couldn't accept this receipt: {reason}. {uploadsLeft}",
+  "@receiptRejectedBy": {
+    "description": "Tag: the last receipt was turned down, naming who decided.",
+    "placeholders": {
+      "decider": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedBodyBy": "All 5 receipt uploads for it were used. {decider} couldn't accept the last one: {reason}. You can still keep its tag.",
+  "@blockedBodyBy": {
+    "description": "Tag: blocked, naming who turned the last receipt down.",
+    "placeholders": {
+      "decider": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "theBrand": "the brand",
+  "@theBrand": {
+    "description": "Stands in for a brand name the API did not send, mid-sentence."
+  },
+  "lookAgainLede": "Think {brand} got it wrong? STAKA can check the receipt again.",
+  "@lookAgainLede": {
+    "description": "Tag: above Ask STAKA to look again.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "askStakaToLookAgain": "Ask STAKA to look again",
+  "@askStakaToLookAgain": {
+    "description": "Tag: button and sheet title after a brand rejected the receipt."
+  },
+  "lookAgainOpenTitle": "STAKA is looking at this",
+  "@lookAgainOpenTitle": {
+    "description": "Tag: the shopper asked STAKA to look again."
+  },
+  "lookAgainOpenBody": "We'll check your receipt and the reason {brand} gave. The result shows up here.",
+  "@lookAgainOpenBody": {
+    "description": "Tag: under STAKA is looking at this.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "lookAgainUpheldTitle": "STAKA looked again",
+  "@lookAgainUpheldTitle": {
+    "description": "Tag: STAKA kept the brand decision."
+  },
+  "lookAgainUpheld": "STAKA agrees with {brand}: {note}",
+  "@lookAgainUpheld": {
+    "description": "Tag: STAKA kept the brand decision, with STAKA's note.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      },
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "lookAgainUpheldNoNote": "STAKA agrees with {brand}.",
+  "@lookAgainUpheldNoNote": {
+    "description": "Tag: STAKA kept the brand decision, no note.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "lookAgainSheetBody": "Tell us why this receipt shows you bought {product}. STAKA reads your message with the receipt and the reason {brand} gave, then decides. You can ask once.",
+  "@lookAgainSheetBody": {
+    "description": "Ask STAKA sheet: under the title.",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "fieldLookAgainMessage": "Your message",
+  "@fieldLookAgainMessage": {
+    "description": "Ask STAKA sheet: message field."
+  },
+  "lookAgainHelper": "10 to 1,000 characters.",
+  "@lookAgainHelper": {
+    "description": "Ask STAKA sheet: under the message field."
+  },
+  "validationLookAgainShort": "Write at least 10 characters.",
+  "@validationLookAgainShort": {
+    "description": "Ask STAKA sheet: message too short."
+  },
+  "validationLookAgainLong": "Keep it to 1,000 characters.",
+  "@validationLookAgainLong": {
+    "description": "Ask STAKA sheet: message too long."
+  },
+  "sendToStaka": "Send to STAKA",
+  "@sendToStaka": {
+    "description": "Ask STAKA sheet: send button."
+  },
+  "sendingToStaka": "Sending…",
+  "@sendingToStaka": {
+    "description": "Ask STAKA sheet: send button while sending."
+  },
+  "lookAgainSent": "Sent. STAKA is looking at this.",
+  "@lookAgainSent": {
+    "description": "Snackbar after asking STAKA to look again."
+  },
+  "receiptBodyForBrand": "A clear photo or PDF showing the shop, the date and this piece. {brand} checks it. {uploadsLeft}",
+  "@receiptBodyForBrand": {
+    "description": "Tag: upload a receipt, when the API names the brand that checks it.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      },
+      "uploadsLeft": {
+        "type": "String"
+      }
+    }
   }
 }

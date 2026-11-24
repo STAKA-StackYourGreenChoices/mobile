@@ -51,6 +51,10 @@ class TagRepositoryImpl implements TagRepository {
   );
 
   @override
+  Future<Result<void>> askToLookAgain(String cardId, String message) =>
+      guardApi(() => _remote.askToLookAgain(cardId, message));
+
+  @override
   Future<Result<ShareLink>> share(String cardId) =>
       guardApi(() async => (await _sharing.share(cardId)).toDomain());
 

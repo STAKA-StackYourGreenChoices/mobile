@@ -19,6 +19,11 @@ abstract interface class TagRepository {
   /// verified or under review) carry the API's reason.
   Future<Result<Ownership>> uploadReceipt(String cardId, PickedReceipt receipt);
 
+  /// Asks STAKA to look again at the brand's rejection of the latest
+  /// receipt ([message] is 10–1000 characters). Once per claim:
+  /// `ConflictFailure` if it was already asked.
+  Future<Result<void>> askToLookAgain(String cardId, String message);
+
   /// Creates (or returns) the public link. `ConflictFailure` until the
   /// shopper is the verified owner.
   Future<Result<ShareLink>> share(String cardId);

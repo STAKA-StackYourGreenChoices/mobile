@@ -78,9 +78,11 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/brand-apply` (V2-12): Account → For brands → intro, 3-step application (claim a listed brand, files), status cards, edit and resubmit
 - [~] `feat/brand-portal` (V2-12): Brand tab + hub + switcher, paused banner, Team (invite, remove), Settings, brand Products/Import, Open the Brand tab from an approved application
 - [~] `feat/brand-claims` (V2-12): Claims row with the waiting count on the brand hub; brand claim list, review, receipt, approve, reject
-- [ ] `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
+- [~] `feat/claim-dispute` (V2-12): tag names who decided; Ask STAKA to look again (sheet, open, upheld, overturned)
+- [ ] `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-24 — `feat/claim-dispute`: who decided + Ask STAKA to look again on the tag. 441 tests pass; new goldens tag_brand_rejected, tag_look_again_open; no existing golden changed. Fakes only.
 - 2026-11-24 — `feat/brand-claims`: brand claim review from the Brand tab. 426 tests pass; brand_home goldens updated for the Claims row. Fakes only.
 - 2026-11-23 — `feat/brand-portal`: Brand tab, hub, switcher, Team, Settings. 422 tests pass; no existing golden changed. Fakes only.
 - 2026-11-23 — `feat/brand-apply`: brand sign-up form + application status. 396 tests pass; Account goldens updated for the new "For brands" section. Fakes only.

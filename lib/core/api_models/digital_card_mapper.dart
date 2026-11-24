@@ -28,6 +28,28 @@ extension OwnershipDtoMapper on OwnershipDto {
     verifiedAt: verifiedAt,
     pendingSince: pendingSince,
     lastRejectionReason: lastRejectionReason,
+    decidedBy: switch (decidedBy) {
+      'BRAND' => ClaimDecider.brand,
+      'ADMIN' => ClaimDecider.admin,
+      _ => null,
+    },
+    brandName: switch (brandName?.trim()) {
+      final name? when name.isNotEmpty => name,
+      _ => null,
+    },
+    dispute: switch (dispute) {
+      final dispute? => OwnershipDispute(
+        status: switch (dispute.status) {
+          'UPHELD' => DisputeStatus.upheld,
+          'OVERTURNED' => DisputeStatus.overturned,
+          // Unknown counts as still open: the app never offers a second
+          // request the API would refuse.
+          _ => DisputeStatus.open,
+        },
+        resolution: dispute.resolution,
+      ),
+      null => null,
+    },
   );
 }
 

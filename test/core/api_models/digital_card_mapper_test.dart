@@ -78,6 +78,52 @@ void main() {
     expect(card.ownership.isVerified, isFalse);
   });
 
+  test('who decided, the brand and the dispute (V2-12)', () {
+    Ownership read(Map<String, Object?> extra) => DigitalCardDto.fromJson(
+      _cardJson(
+        ownership: {
+          'status': 'REJECTED',
+          'receiptAttemptsUsed': 1,
+          'receiptAttemptsLeft': 4,
+          'lastRejectionReason': 'Blurry',
+          ...extra,
+        },
+      ),
+    ).toDomain(webAppUrl: 'http://web.test').ownership;
+
+    final brand = read({'decidedBy': 'BRAND', 'brandName': 'Terra Threads'});
+    expect(brand.decidedBy, ClaimDecider.brand);
+    expect(brand.brandName, 'Terra Threads');
+    expect(brand.dispute, isNull);
+    expect(brand.canAskToLookAgain, isTrue);
+
+    final upheld = read({
+      'decidedBy': 'BRAND',
+      'dispute': {'status': 'UPHELD', 'resolution': 'Wrong shop'},
+    });
+    expect(
+      upheld.dispute,
+      const OwnershipDispute(
+        status: DisputeStatus.upheld,
+        resolution: 'Wrong shop',
+      ),
+    );
+    expect(upheld.canAskToLookAgain, isFalse);
+
+    expect(
+      read({
+        'decidedBy': 'BRAND',
+        'dispute': {'status': 'SOMETHING_NEW'},
+      }).dispute?.status,
+      DisputeStatus.open,
+    );
+    expect(read({'decidedBy': 'ADMIN'}).canAskToLookAgain, isFalse);
+    final older = read({'decidedBy': 'ROBOT', 'brandName': '  '});
+    expect(older.decidedBy, isNull);
+    expect(older.brandName, isNull);
+    expect(older.canAskToLookAgain, isFalse);
+  });
+
   test('every API ownership status maps; unknown never claims more', () {
     expect(ownershipStatusFromApi('PENDING'), OwnershipStatus.pending);
     expect(ownershipStatusFromApi('REJECTED'), OwnershipStatus.rejected);

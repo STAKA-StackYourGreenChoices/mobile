@@ -3722,6 +3722,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, =0{Nothing waiting. Proofs of purchase for your products show up here.} =1{1 proof of purchase is waiting for you.} other{{count} proofs of purchase are waiting for you.}}'**
   String brandClaimsWaiting(int count);
+
+  /// Tag: verified by a receipt, naming who approved it (a brand or STAKA).
+  ///
+  /// In en, this message translates to:
+  /// **'{decider} approved your receipt on {date}. It counts toward your wardrobe.'**
+  String verifiedByDeciderOn(String decider, String date);
+
+  /// Tag: verified by a receipt, undated.
+  ///
+  /// In en, this message translates to:
+  /// **'{decider} approved your receipt. It counts toward your wardrobe.'**
+  String verifiedByDecider(String decider);
+
+  /// Tag: verified after the shopper asked STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA looked again and approved your receipt. It counts toward your wardrobe.'**
+  String get verifiedAfterLookAgain;
+
+  /// Tag: receipt waiting for the brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent {date}. Waiting for {brand} to check it; the result shows up here. {uploadsLeft}'**
+  String pendingForBrand(String date, String brand, String uploadsLeft);
+
+  /// Tag: receipt waiting for the brand, undated.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for {brand} to check it; the result shows up here. {uploadsLeft}'**
+  String pendingForBrandUndated(String brand, String uploadsLeft);
+
+  /// Tag: the last receipt was turned down, naming who decided.
+  ///
+  /// In en, this message translates to:
+  /// **'{decider} couldn\'t accept this receipt: {reason}. {uploadsLeft}'**
+  String receiptRejectedBy(String decider, String reason, String uploadsLeft);
+
+  /// Tag: blocked, naming who turned the last receipt down.
+  ///
+  /// In en, this message translates to:
+  /// **'All 5 receipt uploads for it were used. {decider} couldn\'t accept the last one: {reason}. You can still keep its tag.'**
+  String blockedBodyBy(String decider, String reason);
+
+  /// Stands in for a brand name the API did not send, mid-sentence.
+  ///
+  /// In en, this message translates to:
+  /// **'the brand'**
+  String get theBrand;
+
+  /// Tag: above Ask STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'Think {brand} got it wrong? STAKA can check the receipt again.'**
+  String lookAgainLede(String brand);
+
+  /// Tag: button and sheet title after a brand rejected the receipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask STAKA to look again'**
+  String get askStakaToLookAgain;
+
+  /// Tag: the shopper asked STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA is looking at this'**
+  String get lookAgainOpenTitle;
+
+  /// Tag: under STAKA is looking at this.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll check your receipt and the reason {brand} gave. The result shows up here.'**
+  String lookAgainOpenBody(String brand);
+
+  /// Tag: STAKA kept the brand decision.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA looked again'**
+  String get lookAgainUpheldTitle;
+
+  /// Tag: STAKA kept the brand decision, with STAKA's note.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA agrees with {brand}: {note}'**
+  String lookAgainUpheld(String brand, String note);
+
+  /// Tag: STAKA kept the brand decision, no note.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA agrees with {brand}.'**
+  String lookAgainUpheldNoNote(String brand);
+
+  /// Ask STAKA sheet: under the title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us why this receipt shows you bought {product}. STAKA reads your message with the receipt and the reason {brand} gave, then decides. You can ask once.'**
+  String lookAgainSheetBody(String product, String brand);
+
+  /// Ask STAKA sheet: message field.
+  ///
+  /// In en, this message translates to:
+  /// **'Your message'**
+  String get fieldLookAgainMessage;
+
+  /// Ask STAKA sheet: under the message field.
+  ///
+  /// In en, this message translates to:
+  /// **'10 to 1,000 characters.'**
+  String get lookAgainHelper;
+
+  /// Ask STAKA sheet: message too short.
+  ///
+  /// In en, this message translates to:
+  /// **'Write at least 10 characters.'**
+  String get validationLookAgainShort;
+
+  /// Ask STAKA sheet: message too long.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it to 1,000 characters.'**
+  String get validationLookAgainLong;
+
+  /// Ask STAKA sheet: send button.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to STAKA'**
+  String get sendToStaka;
+
+  /// Ask STAKA sheet: send button while sending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get sendingToStaka;
+
+  /// Snackbar after asking STAKA to look again.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent. STAKA is looking at this.'**
+  String get lookAgainSent;
+
+  /// Tag: upload a receipt, when the API names the brand that checks it.
+  ///
+  /// In en, this message translates to:
+  /// **'A clear photo or PDF showing the shop, the date and this piece. {brand} checks it. {uploadsLeft}'**
+  String receiptBodyForBrand(String brand, String uploadsLeft);
 }
 
 class _AppLocalizationsDelegate

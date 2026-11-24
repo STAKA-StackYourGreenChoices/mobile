@@ -20,10 +20,14 @@ class ReceiptOption extends StatelessWidget {
     this.fileError,
     this.alertMessage,
     this.isSending = false,
+    this.checkerName,
     super.key,
   });
 
   final int uploadsLeft;
+
+  /// The brand that checks receipts, when the API names it.
+  final String? checkerName;
   final PickedReceipt? file;
   final String? fileError;
   final String? alertMessage;
@@ -44,7 +48,13 @@ class ReceiptOption extends StatelessWidget {
       children: [
         Text(l10n.receiptTitle, style: context.text.label),
         Text(
-          l10n.receiptBody(l10n.uploadsLeft(uploadsLeft)),
+          switch (checkerName) {
+            final brand? => l10n.receiptBodyForBrand(
+              brand,
+              l10n.uploadsLeft(uploadsLeft),
+            ),
+            null => l10n.receiptBody(l10n.uploadsLeft(uploadsLeft)),
+          },
           style: context.text.bodySmall.copyWith(
             color: context.colors.inkMuted,
           ),

@@ -17,6 +17,7 @@ import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/tags/presentation/state/share_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_state.dart';
+import 'package:staka/features/tags/presentation/widgets/look_again_sheet.dart';
 import 'package:staka/features/tags/presentation/widgets/order_match_option.dart';
 import 'package:staka/features/tags/presentation/widgets/ownership_panel.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_option.dart';
@@ -84,6 +85,12 @@ class TagScreen extends ConsumerWidget {
               _OrderOption(cardId: cardId),
               _ReceiptOption(card: card),
             ],
+            onAskToLookAgainPressed: () async {
+              final sent = await showLookAgainSheet(context, card: card);
+              if (sent && context.mounted) {
+                AppSnackbar.show(context, message: l10n.lookAgainSent);
+              }
+            },
           ),
           sharePanel: card.ownership.isVerified
               ? _ShareSection(card: card)
@@ -140,6 +147,7 @@ class _ReceiptOption extends ConsumerWidget {
     };
     return ReceiptOption(
       uploadsLeft: card.ownership.receiptAttemptsLeft,
+      checkerName: card.ownership.brandName,
       file: receipt.file,
       isSending: receipt.request is RequestSending,
       // The API's reason for a rejected file belongs on the file.

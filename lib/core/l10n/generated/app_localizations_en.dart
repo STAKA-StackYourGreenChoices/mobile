@@ -2258,4 +2258,101 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String verifiedByDeciderOn(String decider, String date) {
+    return '$decider approved your receipt on $date. It counts toward your wardrobe.';
+  }
+
+  @override
+  String verifiedByDecider(String decider) {
+    return '$decider approved your receipt. It counts toward your wardrobe.';
+  }
+
+  @override
+  String get verifiedAfterLookAgain =>
+      'STAKA looked again and approved your receipt. It counts toward your wardrobe.';
+
+  @override
+  String pendingForBrand(String date, String brand, String uploadsLeft) {
+    return 'Sent $date. Waiting for $brand to check it; the result shows up here. $uploadsLeft';
+  }
+
+  @override
+  String pendingForBrandUndated(String brand, String uploadsLeft) {
+    return 'Waiting for $brand to check it; the result shows up here. $uploadsLeft';
+  }
+
+  @override
+  String receiptRejectedBy(String decider, String reason, String uploadsLeft) {
+    return '$decider couldn\'t accept this receipt: $reason. $uploadsLeft';
+  }
+
+  @override
+  String blockedBodyBy(String decider, String reason) {
+    return 'All 5 receipt uploads for it were used. $decider couldn\'t accept the last one: $reason. You can still keep its tag.';
+  }
+
+  @override
+  String get theBrand => 'the brand';
+
+  @override
+  String lookAgainLede(String brand) {
+    return 'Think $brand got it wrong? STAKA can check the receipt again.';
+  }
+
+  @override
+  String get askStakaToLookAgain => 'Ask STAKA to look again';
+
+  @override
+  String get lookAgainOpenTitle => 'STAKA is looking at this';
+
+  @override
+  String lookAgainOpenBody(String brand) {
+    return 'We\'ll check your receipt and the reason $brand gave. The result shows up here.';
+  }
+
+  @override
+  String get lookAgainUpheldTitle => 'STAKA looked again';
+
+  @override
+  String lookAgainUpheld(String brand, String note) {
+    return 'STAKA agrees with $brand: $note';
+  }
+
+  @override
+  String lookAgainUpheldNoNote(String brand) {
+    return 'STAKA agrees with $brand.';
+  }
+
+  @override
+  String lookAgainSheetBody(String product, String brand) {
+    return 'Tell us why this receipt shows you bought $product. STAKA reads your message with the receipt and the reason $brand gave, then decides. You can ask once.';
+  }
+
+  @override
+  String get fieldLookAgainMessage => 'Your message';
+
+  @override
+  String get lookAgainHelper => '10 to 1,000 characters.';
+
+  @override
+  String get validationLookAgainShort => 'Write at least 10 characters.';
+
+  @override
+  String get validationLookAgainLong => 'Keep it to 1,000 characters.';
+
+  @override
+  String get sendToStaka => 'Send to STAKA';
+
+  @override
+  String get sendingToStaka => 'Sending…';
+
+  @override
+  String get lookAgainSent => 'Sent. STAKA is looking at this.';
+
+  @override
+  String receiptBodyForBrand(String brand, String uploadsLeft) {
+    return 'A clear photo or PDF showing the shop, the date and this piece. $brand checks it. $uploadsLeft';
+  }
 }

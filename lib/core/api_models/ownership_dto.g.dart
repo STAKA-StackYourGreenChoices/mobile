@@ -18,4 +18,15 @@ OwnershipDto _$OwnershipDtoFromJson(Map<String, dynamic> json) => OwnershipDto(
       ? null
       : DateTime.parse(json['pendingSince'] as String),
   lastRejectionReason: json['lastRejectionReason'] as String?,
+  decidedBy: json['decidedBy'] as String?,
+  brandName: json['brandName'] as String?,
+  dispute: json['dispute'] == null
+      ? null
+      : OwnershipDisputeDto.fromJson(json['dispute'] as Map<String, dynamic>),
 );
+
+OwnershipDisputeDto _$OwnershipDisputeDtoFromJson(Map<String, dynamic> json) =>
+    OwnershipDisputeDto(
+      status: json['status'] as String,
+      resolution: json['resolution'] as String?,
+    );

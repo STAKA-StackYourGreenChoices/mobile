@@ -53,6 +53,35 @@ void main() {
       ),
       1700.0,
     ),
+    'brand_rejected': (
+      _tag(
+        const Ownership(
+          status: OwnershipStatus.rejected,
+          receiptAttemptsUsed: 1,
+          receiptAttemptsLeft: 4,
+          method: ClaimMethod.receipt,
+          lastRejectionReason: 'The shop name is cut off',
+          decidedBy: ClaimDecider.brand,
+          brandName: 'Terra Threads',
+        ),
+      ),
+      2300.0,
+    ),
+    'look_again_open': (
+      _tag(
+        const Ownership(
+          status: OwnershipStatus.blocked,
+          receiptAttemptsUsed: 5,
+          receiptAttemptsLeft: 0,
+          method: ClaimMethod.receipt,
+          lastRejectionReason: 'The shop name is cut off',
+          decidedBy: ClaimDecider.brand,
+          brandName: 'Terra Threads',
+          dispute: OwnershipDispute(status: DisputeStatus.open),
+        ),
+      ),
+      1900.0,
+    ),
   };
 
   for (final MapEntry(key: name, value: (screen, height)) in cases.entries) {

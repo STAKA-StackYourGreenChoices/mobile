@@ -39,4 +39,13 @@ class TagRemoteDataSource {
     );
     return OwnershipDto.fromJson(response.data!);
   }
+
+  /// Asks STAKA to look again at the brand's rejection. The answer (the
+  /// new dispute) isn't read: the app marks the request open itself.
+  Future<void> askToLookAgain(String cardId, String message) async {
+    await _dio.post<void>(
+      '/digital-cards/${Uri.encodeComponent(cardId)}/ownership/dispute',
+      data: {'message': message},
+    );
+  }
 }
