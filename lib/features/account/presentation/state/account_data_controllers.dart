@@ -1,14 +1,13 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/core/time/clock.dart';
 import 'package:staka/features/account/data/repositories/account_repository_impl.dart';
 import 'package:staka/features/account/presentation/state/delete_account_state.dart';
 import 'package:staka/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:staka/features/auth/presentation/state/otp_request_state.dart';
-import 'package:staka/features/tags/presentation/state/share_actions.dart';
 
 part 'account_data_controllers.g.dart';
 

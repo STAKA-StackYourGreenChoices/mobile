@@ -61,7 +61,7 @@ final class TagControllerProvider
   }
 }
 
-String _$tagControllerHash() => r'9a5e98eabe50812d79ada50c8884352f655fc916';
+String _$tagControllerHash() => r'59ea4abc23678891d2050e6d833a5fcf16995011';
 
 /// One of the shopper's tags, kept up to date as they prove ownership.
 

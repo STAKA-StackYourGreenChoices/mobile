@@ -3,18 +3,19 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/app/routes.dart';
+import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/error/error_mapper.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/digital_card.dart';
+import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/core/state/request_state.dart';
 import 'package:staka/core/utils/public_tag_url.dart';
 import 'package:staka/features/tags/presentation/state/order_match_controller.dart';
 import 'package:staka/features/tags/presentation/state/receipt_controller.dart';
-import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/tags/presentation/state/share_controller.dart';
+import 'package:staka/features/tags/presentation/state/show_in_wardrobe_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_controller.dart';
 import 'package:staka/features/tags/presentation/state/tag_state.dart';
 import 'package:staka/features/tags/presentation/widgets/look_again_sheet.dart';
@@ -22,7 +23,6 @@ import 'package:staka/features/tags/presentation/widgets/order_match_option.dart
 import 'package:staka/features/tags/presentation/widgets/ownership_panel.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_option.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_source_sheet.dart';
-import 'package:staka/features/tags/presentation/widgets/share_link_actions.dart';
 import 'package:staka/features/tags/presentation/widgets/share_locked.dart';
 import 'package:staka/features/tags/presentation/widgets/share_panel.dart';
 import 'package:staka/features/tags/presentation/widgets/tag_view.dart';
@@ -32,6 +32,7 @@ import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 import 'package:staka/shared/widgets/feedback/app_snackbar.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
+import 'package:staka/shared/widgets/sharing/share_link_actions.dart';
 
 /// One of the shopper's tags (the website's `/tags/[id]`): the tag, and
 /// proving ownership by order or receipt, and sharing it once proven.
@@ -245,6 +246,51 @@ class _ShareSection extends ConsumerWidget {
         },
         onStop: controller.stop,
       ),
+      footer: _ShowInWardrobeSwitch(card: card),
+    );
+  }
+}
+
+/// "Show in my public wardrobe" (V2-3), under the tag's own link.
+class _ShowInWardrobeSwitch extends ConsumerWidget {
+  const new({required this.card});
+
+  final DigitalCard card;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final provider = showInWardrobeControllerProvider(card.id);
+    final request = ref.watch(provider);
+
+    ref.listen(provider, (_, next) {
+      if (next case RequestFailed(:final failure)) {
+        AppSnackbar.show(
+          context,
+          message: messageForFailure(failure, l10n),
+          tone: AlertTone.error,
+        );
+      }
+    });
+
+    return Column(
+      children: [
+        const Divider(),
+        SwitchListTile(
+          value: card.showInWardrobe,
+          onChanged: request is RequestSending
+              ? null
+              : (show) => ref.read(provider.notifier).set(show: show),
+          contentPadding: EdgeInsets.zero,
+          title: Text(l10n.showInWardrobe, style: context.text.bodyLarge),
+          subtitle: Text(
+            l10n.showInWardrobeBody,
+            style: context.text.bodySmall.copyWith(
+              color: context.colors.inkMuted,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

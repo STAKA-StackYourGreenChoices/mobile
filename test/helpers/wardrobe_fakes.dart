@@ -1,3 +1,4 @@
+import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/brand.dart';
 import 'package:staka/core/models/digital_card.dart';
@@ -5,9 +6,11 @@ import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/product.dart';
 import 'package:staka/core/models/product_variant.dart';
+import 'package:staka/core/models/share_link.dart';
 import 'package:staka/core/models/sustainability_info.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
+import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repository.dart';
 
 /// Answers from scripts. The last scripted answer repeats, so refreshes
 /// keep working; with no script the wardrobe is empty.
@@ -31,6 +34,50 @@ class FakeWardrobeRepository implements WardrobeRepository {
   @override
   Future<Result<ResendOutcome>> resendVerification() async =>
       _resends.removeAt(0);
+}
+
+/// The wardrobe link (V2-3): [current] until a create or stop changes it.
+/// Scripted failures answer before the link is touched.
+class FakeWardrobeShareRepository implements WardrobeShareRepository {
+  new({
+    this.current,
+    List<Failure> fetchFailures = const [],
+    List<Result<ShareLink>> shares = const [],
+    List<Result<void>> stops = const [],
+  }) : _fetchFailures = [...fetchFailures],
+       _shares = [...shares],
+       _stops = [...stops];
+
+  ShareLink? current;
+  final List<Failure> _fetchFailures;
+  final List<Result<ShareLink>> _shares;
+  final List<Result<void>> _stops;
+  int fetches = 0;
+  int creates = 0;
+  int stopsSent = 0;
+
+  @override
+  Future<Result<ShareLink?>> fetchShare() async {
+    fetches++;
+    if (_fetchFailures.isNotEmpty) return Err(_fetchFailures.removeAt(0));
+    return Ok(current);
+  }
+
+  @override
+  Future<Result<ShareLink>> share() async {
+    creates++;
+    final result = _shares.removeAt(0);
+    if (result case Ok(:final value)) current = value;
+    return result;
+  }
+
+  @override
+  Future<Result<void>> stopSharing() async {
+    stopsSent++;
+    final result = _stops.removeAt(0);
+    if (result is Ok) current = null;
+    return result;
+  }
 }
 
 final _date = DateTime.utc(2026, 11, 14);

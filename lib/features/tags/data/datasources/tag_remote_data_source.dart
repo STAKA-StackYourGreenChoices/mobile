@@ -17,6 +17,19 @@ class TagRemoteDataSource {
     return DigitalCardDto.fromJson(response.data!);
   }
 
+  /// `PATCH /digital-cards/:id` (V2-3): shown on the public wardrobe or
+  /// not.
+  Future<DigitalCardDto> setShowInWardrobe(
+    String cardId, {
+    required bool show,
+  }) async {
+    final response = await _dio.patch<Map<String, dynamic>>(
+      '/digital-cards/${Uri.encodeComponent(cardId)}',
+      data: {'showInWardrobe': show},
+    );
+    return DigitalCardDto.fromJson(response.data!);
+  }
+
   Future<OwnershipDto> matchOrder(String cardId) async {
     final response = await _dio.post<Map<String, dynamic>>(
       '/digital-cards/${Uri.encodeComponent(cardId)}/ownership/order-match',

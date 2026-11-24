@@ -22,5 +22,8 @@ abstract class DigitalCard with _$DigitalCard {
 
     /// The size/colour the shopper scanned (V2-2), when the API knows it.
     ProductVariant? variant,
+
+    /// Shown on the public wardrobe page while it is shared (V2-3).
+    @Default(true) bool showInWardrobe,
   }) = _DigitalCard;
 }

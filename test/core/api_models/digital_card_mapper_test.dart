@@ -217,4 +217,16 @@ void main() {
       expect(ProductCategory.fromApi(null), ProductCategory.other);
     });
   });
+
+  test('a card is on the public wardrobe unless the API says not', () {
+    final shown = DigitalCardDto.fromJson(_cardJson())
+        .toDomain(webAppUrl: 'http://web.test');
+    final hidden = DigitalCardDto.fromJson({
+      ..._cardJson(),
+      'showInWardrobe': false,
+    }).toDomain(webAppUrl: 'http://web.test');
+
+    expect(shown.showInWardrobe, isTrue);
+    expect(hidden.showInWardrobe, isFalse);
+  });
 }

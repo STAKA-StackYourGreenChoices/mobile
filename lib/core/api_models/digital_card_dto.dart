@@ -19,6 +19,7 @@ class DigitalCardDto {
     this.share,
     this.variant,
     this.variantId,
+    this.showInWardrobe,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$DigitalCardDtoFromJson(json);
@@ -34,6 +35,9 @@ class DigitalCardDto {
   /// (looked up in the product's variants).
   final ProductVariantDto? variant;
   final String? variantId;
+
+  /// V2-3; absent from an older API means shown.
+  final bool? showInWardrobe;
 }
 
 /// Only what the API shows on a tag: never email or contact details.

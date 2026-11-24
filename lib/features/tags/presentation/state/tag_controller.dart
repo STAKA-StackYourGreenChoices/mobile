@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:staka/core/cards/cards_revision.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/share_link.dart';
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
@@ -32,6 +33,12 @@ class TagController extends _$TagController {
     if (state case TagReady(:final card)) {
       state = TagReady(card.copyWith(ownership: ownership));
     }
+    ref.read(cardsRevisionProvider.notifier).bump();
+  }
+
+  /// The API's answer to a change on the tag itself (V2-3).
+  void applyCard(DigitalCard card) {
+    if (state is TagReady) state = TagReady(card);
     ref.read(cardsRevisionProvider.notifier).bump();
   }
 

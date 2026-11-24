@@ -39,6 +39,15 @@ class TagRepositoryImpl implements TagRepository {
       guardApi(() async => (await _remote.fetchTag(cardId)).toDomain());
 
   @override
+  Future<Result<DigitalCard>> setShowInWardrobe(
+    String cardId, {
+    required bool show,
+  }) => guardApi(
+    () async =>
+        (await _remote.setShowInWardrobe(cardId, show: show)).toDomain(),
+  );
+
+  @override
   Future<Result<Ownership>> matchOrder(String cardId) =>
       guardApi(() async => (await _remote.matchOrder(cardId)).toDomain());
 

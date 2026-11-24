@@ -2877,4 +2877,59 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get fileNeedsCategories =>
       'category is one of TOPS, BOTTOMS, DRESSES, OUTERWEAR, FOOTWEAR, ACCESSORIES or OTHER (the default).';
+
+  @override
+  String get wardrobeShareCardTitle => 'Share your wardrobe';
+
+  @override
+  String get wardrobeShareCardBody =>
+      'One link to every verified piece you own.';
+
+  @override
+  String get wardrobeShareTitle => 'Share your wardrobe';
+
+  @override
+  String get wardrobeShareBody =>
+      'Anyone with the link sees your verified pieces and your first name. Never your email. Pieces still waiting for proof stay private.';
+
+  @override
+  String get wardrobeShareHideHint =>
+      'To leave a piece out, open its tag and turn off Show in my public wardrobe.';
+
+  @override
+  String get createWardrobeLink => 'Create wardrobe link';
+
+  @override
+  String get wardrobeQrLabel => 'QR code for your wardrobe link';
+
+  @override
+  String get wardrobeQrHint => 'Let someone scan this to open your wardrobe.';
+
+  @override
+  String sharedSince(String date) {
+    return 'Shared since $date';
+  }
+
+  @override
+  String get wardrobeShareText => 'My verified wardrobe on STAKA.';
+
+  @override
+  String get wardrobeShareSubject => 'My wardrobe on STAKA';
+
+  @override
+  String get stopSharingWardrobeTitle => 'Stop sharing your wardrobe?';
+
+  @override
+  String get stopSharingWardrobeBody =>
+      'The link stops working for everyone, including posts that already use it. Your tag links keep working. You can share again later with a new link.';
+
+  @override
+  String get wardrobeLinkReady => 'Wardrobe link ready';
+
+  @override
+  String get showInWardrobe => 'Show in my public wardrobe';
+
+  @override
+  String get showInWardrobeBody =>
+      'When you share your wardrobe, this piece is on it.';
 }

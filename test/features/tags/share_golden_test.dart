@@ -4,9 +4,9 @@ library;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/design/app_spacing.dart';
-import 'package:staka/features/tags/presentation/widgets/share_link_actions.dart';
 import 'package:staka/features/tags/presentation/widgets/share_locked.dart';
 import 'package:staka/features/tags/presentation/widgets/share_panel.dart';
+import 'package:staka/shared/widgets/sharing/share_link_actions.dart';
 
 import '../../helpers/golden.dart';
 import '../../helpers/pump_app.dart';

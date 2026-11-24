@@ -8,6 +8,7 @@ import 'package:staka/features/wardrobe/presentation/state/wardrobe_state.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/tag_section_header.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_category_filter.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_header.dart';
+import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_share_card.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_tag_item.dart';
 import 'package:staka/shared/formatters/product_labels.dart';
 import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
@@ -16,6 +17,7 @@ import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 /// the empty-state invitation or the Verified / Waiting for proof groups.
 /// Tags are built lazily (guide §7.1 rule 6); pull down to refresh. With
 /// two or more kinds of piece, chips filter the groups by kind (V2-2).
+/// With a verified piece, a card offers to share the wardrobe (V2-3).
 class WardrobeScrollView extends StatelessWidget {
   const new({
     required this.state,
@@ -26,6 +28,7 @@ class WardrobeScrollView extends StatelessWidget {
     this.banner,
     this.category,
     this.onCategorySelected,
+    this.onSharePressed,
     super.key,
   });
 
@@ -40,6 +43,9 @@ class WardrobeScrollView extends StatelessWidget {
   /// The kind of piece shown; null shows everything.
   final ProductCategory? category;
   final ValueChanged<ProductCategory?>? onCategorySelected;
+
+  /// Opens the wardrobe share screen; null hides the card.
+  final VoidCallback? onSharePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +94,16 @@ class WardrobeScrollView extends StatelessWidget {
               ),
             )
           else ...[
+            if ((onSharePressed, data.verified.isNotEmpty) case (
+              final onPressed?,
+              true,
+            ))
+              SliverPadding(
+                padding: const EdgeInsets.only(top: AppSpacing.lg),
+                sliver: SliverToBoxAdapter(
+                  child: WardrobeShareCard(onPressed: onPressed),
+                ),
+              ),
             if (hasFilter)
               SliverPadding(
                 padding: const EdgeInsets.only(top: AppSpacing.lg),

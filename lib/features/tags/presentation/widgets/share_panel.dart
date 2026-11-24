@@ -1,12 +1,11 @@
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/tags/presentation/state/share_controller.dart';
-import 'package:staka/features/tags/presentation/widgets/share_link_actions.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
+import 'package:staka/shared/widgets/sharing/share_link_actions.dart';
 
 /// "Share this tag": create the public link, then copy or share it, share
 /// the story image, see the public page, or stop sharing — the website's
@@ -18,6 +17,7 @@ class SharePanel extends StatelessWidget {
     this.url,
     this.busy = ShareBusy.none,
     this.errorMessage,
+    this.footer,
     super.key,
   });
 
@@ -29,6 +29,9 @@ class SharePanel extends StatelessWidget {
 
   /// What to do with the link once it exists.
   final ShareLinkCallbacks linkActions;
+
+  /// Below the link, e.g. "Show in my public wardrobe" (V2-3).
+  final Widget? footer;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +49,11 @@ class SharePanel extends StatelessWidget {
             switch (url) {
               final link? => ShareLinkActions(
                 url: link,
-                busy: busy,
                 callbacks: linkActions,
+                stopTitle: l10n.stopSharingTitle,
+                stopBody: l10n.stopSharingBody,
+                isPreparingImage: busy == ShareBusy.preparingImage,
+                isStopping: busy == ShareBusy.stopping,
               ),
               null => AppButton(
                 label: l10n.createShareLink,
@@ -57,6 +63,7 @@ class SharePanel extends StatelessWidget {
                 onPressed: onCreatePressed,
               ),
             },
+            ?footer,
           ],
         ),
       ),

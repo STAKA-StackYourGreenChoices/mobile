@@ -17,7 +17,8 @@ mixin _$DigitalCard {
 
  String get id; DateTime get createdAt; String get ownerName; Product get product; Ownership get ownership;/// Present while the tag is publicly shared.
  ShareLink? get share;/// The size/colour the shopper scanned (V2-2), when the API knows it.
- ProductVariant? get variant;
+ ProductVariant? get variant;/// Shown on the public wardrobe page while it is shared (V2-3).
+ bool get showInWardrobe;
 /// Create a copy of DigitalCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,20 +30,20 @@ $DigitalCardCopyWith<DigitalCard> get copyWith => _$DigitalCardCopyWithImpl<Digi
 @override
 bool operator ==(Object other) {
   final _this = this as DigitalCard;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DigitalCard&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.ownerName, _this.ownerName) || other.ownerName == _this.ownerName)&&(identical(other.product, _this.product) || other.product == _this.product)&&(identical(other.ownership, _this.ownership) || other.ownership == _this.ownership)&&(identical(other.share, _this.share) || other.share == _this.share)&&(identical(other.variant, _this.variant) || other.variant == _this.variant));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DigitalCard&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.ownerName, _this.ownerName) || other.ownerName == _this.ownerName)&&(identical(other.product, _this.product) || other.product == _this.product)&&(identical(other.ownership, _this.ownership) || other.ownership == _this.ownership)&&(identical(other.share, _this.share) || other.share == _this.share)&&(identical(other.variant, _this.variant) || other.variant == _this.variant)&&(identical(other.showInWardrobe, _this.showInWardrobe) || other.showInWardrobe == _this.showInWardrobe));
 }
 
 
 @override
 int get hashCode {
   final _this = this as DigitalCard;
-  return Object.hash(runtimeType,_this.id,_this.createdAt,_this.ownerName,_this.product,_this.ownership,_this.share,_this.variant);
+  return Object.hash(runtimeType,_this.id,_this.createdAt,_this.ownerName,_this.product,_this.ownership,_this.share,_this.variant,_this.showInWardrobe);
 }
 
 @override
 String toString() {
   final _this = this as DigitalCard;
-  return 'DigitalCard(id: ${_this.id}, createdAt: ${_this.createdAt}, ownerName: ${_this.ownerName}, product: ${_this.product}, ownership: ${_this.ownership}, share: ${_this.share}, variant: ${_this.variant})';
+  return 'DigitalCard(id: ${_this.id}, createdAt: ${_this.createdAt}, ownerName: ${_this.ownerName}, product: ${_this.product}, ownership: ${_this.ownership}, share: ${_this.share}, variant: ${_this.variant}, showInWardrobe: ${_this.showInWardrobe})';
 }
 
 
@@ -53,7 +54,7 @@ abstract mixin class $DigitalCardCopyWith<$Res>  {
   factory $DigitalCardCopyWith(DigitalCard value, $Res Function(DigitalCard) _then) = _$DigitalCardCopyWithImpl;
 @useResult
 $Res call({
- String id, DateTime createdAt, String ownerName, Product product, Ownership ownership, ShareLink? share, ProductVariant? variant
+ String id, DateTime createdAt, String ownerName, Product product, Ownership ownership, ShareLink? share, ProductVariant? variant, bool showInWardrobe
 });
 
 
@@ -70,7 +71,7 @@ class _$DigitalCardCopyWithImpl<$Res>
 
 /// Create a copy of DigitalCard
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? createdAt = null,Object? ownerName = null,Object? product = null,Object? ownership = null,Object? share = freezed,Object? variant = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? createdAt = null,Object? ownerName = null,Object? product = null,Object? ownership = null,Object? share = freezed,Object? variant = freezed,Object? showInWardrobe = null,}) {
   return _then(DigitalCard(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
@@ -79,7 +80,8 @@ as String,product: null == product ? _self.product : product // ignore: cast_nul
 as Product,ownership: null == ownership ? _self.ownership : ownership // ignore: cast_nullable_to_non_nullable
 as Ownership,share: freezed == share ? _self.share : share // ignore: cast_nullable_to_non_nullable
 as ShareLink?,variant: freezed == variant ? _self.variant : variant // ignore: cast_nullable_to_non_nullable
-as ProductVariant?,
+as ProductVariant?,showInWardrobe: null == showInWardrobe ? _self.showInWardrobe : showInWardrobe // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 /// Create a copy of DigitalCard
@@ -206,10 +208,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant,  bool showInWardrobe)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DigitalCard() when $default != null:
-return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant);case _:
+return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant,_that.showInWardrobe);case _:
   return orElse();
 
 }
@@ -227,10 +229,10 @@ return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.own
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant,  bool showInWardrobe)  $default,) {final _that = this;
 switch (_that) {
 case _DigitalCard():
-return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant);case _:
+return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant,_that.showInWardrobe);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -247,10 +249,10 @@ return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.own
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  DateTime createdAt,  String ownerName,  Product product,  Ownership ownership,  ShareLink? share,  ProductVariant? variant,  bool showInWardrobe)?  $default,) {final _that = this;
 switch (_that) {
 case _DigitalCard() when $default != null:
-return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant);case _:
+return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.ownership,_that.share,_that.variant,_that.showInWardrobe);case _:
   return null;
 
 }
@@ -262,7 +264,7 @@ return $default(_that.id,_that.createdAt,_that.ownerName,_that.product,_that.own
 
 
 class _DigitalCard implements DigitalCard {
-  const _DigitalCard({required this.id, required this.createdAt, required this.ownerName, required this.product, required this.ownership, this.share, this.variant});
+  const _DigitalCard({required this.id, required this.createdAt, required this.ownerName, required this.product, required this.ownership, this.share, this.variant, this.showInWardrobe = true});
   
 
 @override final  String id;
@@ -274,6 +276,8 @@ class _DigitalCard implements DigitalCard {
 @override final  ShareLink? share;
 /// The size/colour the shopper scanned (V2-2), when the API knows it.
 @override final  ProductVariant? variant;
+/// Shown on the public wardrobe page while it is shared (V2-3).
+@override@JsonKey() final  bool showInWardrobe;
 
 /// Create a copy of DigitalCard
 /// with the given fields replaced by the non-null parameter values.
@@ -285,18 +289,18 @@ _$DigitalCardCopyWith<_DigitalCard> get copyWith => __$DigitalCardCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DigitalCard&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.ownerName, ownerName) || other.ownerName == ownerName)&&(identical(other.product, product) || other.product == product)&&(identical(other.ownership, ownership) || other.ownership == ownership)&&(identical(other.share, share) || other.share == share)&&(identical(other.variant, variant) || other.variant == variant));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DigitalCard&&(identical(other.id, id) || other.id == id)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.ownerName, ownerName) || other.ownerName == ownerName)&&(identical(other.product, product) || other.product == product)&&(identical(other.ownership, ownership) || other.ownership == ownership)&&(identical(other.share, share) || other.share == share)&&(identical(other.variant, variant) || other.variant == variant)&&(identical(other.showInWardrobe, showInWardrobe) || other.showInWardrobe == showInWardrobe));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,createdAt,ownerName,product,ownership,share,variant);
+    return Object.hash(runtimeType,id,createdAt,ownerName,product,ownership,share,variant,showInWardrobe);
 }
 
 @override
 String toString() {
-    return 'DigitalCard(id: $id, createdAt: $createdAt, ownerName: $ownerName, product: $product, ownership: $ownership, share: $share, variant: $variant)';
+    return 'DigitalCard(id: $id, createdAt: $createdAt, ownerName: $ownerName, product: $product, ownership: $ownership, share: $share, variant: $variant, showInWardrobe: $showInWardrobe)';
 }
 
 
@@ -307,7 +311,7 @@ abstract mixin class _$DigitalCardCopyWith<$Res> implements $DigitalCardCopyWith
   factory _$DigitalCardCopyWith(_DigitalCard value, $Res Function(_DigitalCard) _then) = __$DigitalCardCopyWithImpl;
 @override @useResult
 $Res call({
- String id, DateTime createdAt, String ownerName, Product product, Ownership ownership, ShareLink? share, ProductVariant? variant
+ String id, DateTime createdAt, String ownerName, Product product, Ownership ownership, ShareLink? share, ProductVariant? variant, bool showInWardrobe
 });
 
 
@@ -324,7 +328,7 @@ class __$DigitalCardCopyWithImpl<$Res>
 
 /// Create a copy of DigitalCard
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? createdAt = null,Object? ownerName = null,Object? product = null,Object? ownership = null,Object? share = freezed,Object? variant = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? createdAt = null,Object? ownerName = null,Object? product = null,Object? ownership = null,Object? share = freezed,Object? variant = freezed,Object? showInWardrobe = null,}) {
   return _then(_DigitalCard(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
@@ -333,7 +337,8 @@ as String,product: null == product ? _self.product : product // ignore: cast_nul
 as Product,ownership: null == ownership ? _self.ownership : ownership // ignore: cast_nullable_to_non_nullable
 as Ownership,share: freezed == share ? _self.share : share // ignore: cast_nullable_to_non_nullable
 as ShareLink?,variant: freezed == variant ? _self.variant : variant // ignore: cast_nullable_to_non_nullable
-as ProductVariant?,
+as ProductVariant?,showInWardrobe: null == showInWardrobe ? _self.showInWardrobe : showInWardrobe // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

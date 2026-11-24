@@ -7,10 +7,10 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/share_link.dart';
+import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 import 'package:staka/features/tags/presentation/state/receipt_picker.dart';
-import 'package:staka/features/tags/presentation/state/share_actions.dart';
 
 /// Serves tags by id (anything else is "not in your wardrobe") and answers
 /// order matches and receipt uploads from scripts.
@@ -23,13 +23,15 @@ class FakeTagRepository implements TagRepository {
     List<Result<void>> stops = const [],
     List<Result<Uint8List>> images = const [],
     List<Result<void>> lookAgains = const [],
+    List<Failure> wardrobeToggleFailures = const [],
   }) : _cards = {for (final card in cards) card.id: card},
        _matches = [...matches],
        _uploads = [...uploads],
        _shares = [...shares],
        _stops = [...stops],
        _images = [...images],
-       _lookAgains = [...lookAgains];
+       _lookAgains = [...lookAgains],
+       _toggleFailures = [...wardrobeToggleFailures];
 
   final Map<String, DigitalCard> _cards;
   final List<Result<Ownership>> _matches;
@@ -38,6 +40,10 @@ class FakeTagRepository implements TagRepository {
   final List<Result<void>> _stops;
   final List<Result<Uint8List>> _images;
   final List<Result<void>> _lookAgains;
+  final List<Failure> _toggleFailures;
+
+  /// Each "Show in my public wardrobe" change sent, in order.
+  final List<bool> wardrobeToggles = [];
   final List<PickedReceipt> uploaded = [];
 
   /// Messages sent with "Ask STAKA to look again".
@@ -78,6 +84,19 @@ class FakeTagRepository implements TagRepository {
   @override
   Future<Result<Uint8List>> fetchStoryImage(String slug) async =>
       _images.removeAt(0);
+
+  /// Answers with the stored card changed, unless a failure is scripted.
+  @override
+  Future<Result<DigitalCard>> setShowInWardrobe(
+    String cardId, {
+    required bool show,
+  }) async {
+    wardrobeToggles.add(show);
+    if (_toggleFailures.isNotEmpty) return Err(_toggleFailures.removeAt(0));
+    final card = _cards[cardId]!.copyWith(showInWardrobe: show);
+    _cards[cardId] = card;
+    return Ok(card);
+  }
 }
 
 /// Hands back [receipt] whatever source is chosen (null: "cancelled").

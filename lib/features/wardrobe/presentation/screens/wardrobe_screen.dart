@@ -70,6 +70,7 @@ class WardrobeScreen extends ConsumerWidget {
             AppRoute.tag.name,
             pathParameters: {'id': card.id},
           ),
+          onSharePressed: () => context.pushNamed(AppRoute.wardrobeShare.name),
           // A phone-only account has no email to confirm.
           banner: switch (session.user) {
             User(emailVerified: false, :final String email) =>

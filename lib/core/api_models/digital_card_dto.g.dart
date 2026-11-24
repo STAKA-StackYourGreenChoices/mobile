@@ -22,6 +22,7 @@ DigitalCardDto _$DigitalCardDtoFromJson(Map<String, dynamic> json) =>
           ? null
           : ProductVariantDto.fromJson(json['variant'] as Map<String, dynamic>),
       variantId: json['variantId'] as String?,
+      showInWardrobe: json['showInWardrobe'] as bool?,
     );
 
 CardUserDto _$CardUserDtoFromJson(Map<String, dynamic> json) =>

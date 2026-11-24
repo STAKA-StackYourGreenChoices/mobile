@@ -6,6 +6,7 @@ import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
+import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/core/time/clock.dart';
 import 'package:staka/features/account/data/repositories/account_repository_impl.dart';
 import 'package:staka/features/account/domain/repositories/account_repository.dart';
@@ -36,9 +37,10 @@ import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 import 'package:staka/features/tags/presentation/state/receipt_picker.dart';
-import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
+import 'package:staka/features/wardrobe/data/repositories/wardrobe_share_repository_impl.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
+import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repository.dart';
 
 import 'admin_claim_fakes.dart';
 import 'admin_product_fakes.dart';
@@ -63,6 +65,7 @@ Future<InMemoryTokenStore> pumpApp(
   List<FakeReply> replies = const [],
   AuthRepository? auth,
   WardrobeRepository? wardrobe,
+  WardrobeShareRepository? wardrobeShare,
   ProductRepository? products,
   TagRepository? tags,
   ReceiptPicker? receiptPicker,
@@ -94,6 +97,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         wardrobeRepositoryProvider.overrideWithValue(
           wardrobe ?? FakeWardrobeRepository(),
+        ),
+        wardrobeShareRepositoryProvider.overrideWithValue(
+          wardrobeShare ?? FakeWardrobeShareRepository(),
         ),
         productRepositoryProvider.overrideWithValue(
           products ?? FakeProductRepository(),

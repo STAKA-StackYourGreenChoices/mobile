@@ -21,6 +21,7 @@ extension DigitalCardDtoMapper on DigitalCardDto {
       variant:
           variant?.toDomain() ??
           product.variants.where((v) => v.id == variantId).firstOrNull,
+      showInWardrobe: showInWardrobe ?? true,
     );
   }
 }

@@ -28,6 +28,7 @@ dependencies:
   material_ui: ^1.11.0
   mobile_scanner: ^7.5.0
   pdfx: ^2.11.0
+  qr_flutter: ^4.1.0
   riverpod_annotation: ^4.0.8
   share_plus: ^13.3.1
   url_launcher: ^6.3.3

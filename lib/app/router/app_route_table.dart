@@ -40,6 +40,7 @@ import 'package:staka/features/products/presentation/screens/product_screen.dart
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
+import 'package:staka/features/wardrobe/presentation/screens/wardrobe_share_screen.dart';
 
 /// The Admin tab works on every brand (V2-12 adds a Brand tab with
 /// `BrandScope`).
@@ -103,6 +104,11 @@ final appRouteTable = <RouteBase>[
                   cardId: state.pathParameters['id'] ?? '',
                   isJustAdded: state.uri.queryParameters['added'] == '1',
                 ),
+              ),
+              _child(
+                AppRoute.wardrobe,
+                AppRoute.wardrobeShare,
+                (_, _) => const WardrobeShareScreen(),
               ),
             ],
           ),

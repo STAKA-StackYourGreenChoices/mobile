@@ -3,7 +3,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
-import 'package:staka/features/tags/presentation/state/share_controller.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 
 /// Callbacks for a live share link. The share ones get where the share
@@ -12,32 +11,43 @@ class ShareLinkCallbacks {
   const new({
     required this.onCopy,
     required this.onShare,
-    required this.onStoryImage,
     required this.onOpen,
     required this.onStop,
+    this.onStoryImage,
   });
 
   final VoidCallback onCopy;
   final ValueChanged<Rect?> onShare;
-  final ValueChanged<Rect?> onStoryImage;
+
+  /// Null hides the story image (a whole wardrobe has none).
+  final ValueChanged<Rect?>? onStoryImage;
   final VoidCallback onOpen;
 
   /// Called after the shopper confirms.
   final VoidCallback onStop;
 }
 
-/// The link and everything that can be done with it.
+/// The link and everything that can be done with it: a tag's link and
+/// the whole wardrobe's (V2-3).
 class ShareLinkActions extends StatelessWidget {
   const new({
     required this.url,
-    required this.busy,
     required this.callbacks,
+    required this.stopTitle,
+    required this.stopBody,
+    this.isPreparingImage = false,
+    this.isStopping = false,
     super.key,
   });
 
   final String url;
-  final ShareBusy busy;
   final ShareLinkCallbacks callbacks;
+  final bool isPreparingImage;
+  final bool isStopping;
+
+  /// The stop-sharing confirmation.
+  final String stopTitle;
+  final String stopBody;
 
   @override
   Widget build(BuildContext context) {
@@ -67,16 +77,17 @@ class ShareLinkActions extends StatelessWidget {
           ],
         ),
         const Divider(),
-        _WithOrigin(
-          builder: (origin) => AppButton(
-            label: l10n.storyImage,
-            loadingLabel: l10n.preparingImage,
-            icon: Icons.photo_outlined,
-            variant: AppButtonVariant.ghost,
-            isLoading: busy == ShareBusy.preparingImage,
-            onPressed: () => callbacks.onStoryImage(origin()),
+        if (callbacks.onStoryImage case final onStoryImage?)
+          _WithOrigin(
+            builder: (origin) => AppButton(
+              label: l10n.storyImage,
+              loadingLabel: l10n.preparingImage,
+              icon: Icons.photo_outlined,
+              variant: AppButtonVariant.ghost,
+              isLoading: isPreparingImage,
+              onPressed: () => onStoryImage(origin()),
+            ),
           ),
-        ),
         AppButton(
           label: l10n.seeWhatOthersSee,
           icon: Icons.open_in_new_rounded,
@@ -87,7 +98,7 @@ class ShareLinkActions extends StatelessWidget {
           label: l10n.stopSharing,
           loadingLabel: l10n.stoppingSharing,
           variant: AppButtonVariant.quietDestructive,
-          isLoading: busy == ShareBusy.stopping,
+          isLoading: isStopping,
           onPressed: () => _confirmStop(context),
         ),
       ],
@@ -99,8 +110,8 @@ class ShareLinkActions extends StatelessWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(l10n.stopSharingTitle),
-        content: Text(l10n.stopSharingBody),
+        title: Text(stopTitle),
+        content: Text(stopBody),
         actions: [
           AppButton(
             label: l10n.keepSharing,

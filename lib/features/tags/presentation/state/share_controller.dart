@@ -2,11 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
-import 'package:staka/features/tags/presentation/state/share_actions.dart';
 import 'package:staka/features/tags/presentation/state/tag_controller.dart';
 
 part 'share_controller.g.dart';

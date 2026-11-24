@@ -10,6 +10,12 @@ abstract interface class TagRepository {
   /// One of the shopper's tags. `NotFoundFailure` if it isn't theirs.
   Future<Result<DigitalCard>> fetchTag(String cardId);
 
+  /// Shows the piece on the public wardrobe page, or hides it (V2-3).
+  Future<Result<DigitalCard>> setShowInWardrobe(
+    String cardId, {
+    required bool show,
+  });
+
   /// Looks for a paid order that includes this piece. `NotFoundFailure`
   /// means there is none.
   Future<Result<Ownership>> matchOrder(String cardId);

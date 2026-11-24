@@ -4646,6 +4646,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'category is one of TOPS, BOTTOMS, DRESSES, OUTERWEAR, FOOTWEAR, ACCESSORIES or OTHER (the default).'**
   String get fileNeedsCategories;
+
+  /// V2-3: wardrobe card that opens the wardrobe share screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your wardrobe'**
+  String get wardrobeShareCardTitle;
+
+  /// V2-3: wardrobe share card, under the title.
+  ///
+  /// In en, this message translates to:
+  /// **'One link to every verified piece you own.'**
+  String get wardrobeShareCardBody;
+
+  /// V2-3: wardrobe share screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your wardrobe'**
+  String get wardrobeShareTitle;
+
+  /// V2-3: what the public wardrobe page shows.
+  ///
+  /// In en, this message translates to:
+  /// **'Anyone with the link sees your verified pieces and your first name. Never your email. Pieces still waiting for proof stay private.'**
+  String get wardrobeShareBody;
+
+  /// V2-3: how to hide one piece; quotes the switch label showInWardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'To leave a piece out, open its tag and turn off Show in my public wardrobe.'**
+  String get wardrobeShareHideHint;
+
+  /// V2-3: button that shares the wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Create wardrobe link'**
+  String get createWardrobeLink;
+
+  /// V2-3: screen-reader label for the QR code.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code for your wardrobe link'**
+  String get wardrobeQrLabel;
+
+  /// V2-3: under the QR code.
+  ///
+  /// In en, this message translates to:
+  /// **'Let someone scan this to open your wardrobe.'**
+  String get wardrobeQrHint;
+
+  /// V2-3: when the wardrobe link was created.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared since {date}'**
+  String sharedSince(String date);
+
+  /// V2-3: text sent with the wardrobe link in the share sheet.
+  ///
+  /// In en, this message translates to:
+  /// **'My verified wardrobe on STAKA.'**
+  String get wardrobeShareText;
+
+  /// V2-3: subject sent with the wardrobe link (email apps).
+  ///
+  /// In en, this message translates to:
+  /// **'My wardrobe on STAKA'**
+  String get wardrobeShareSubject;
+
+  /// V2-3: confirmation before the wardrobe link is turned off.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop sharing your wardrobe?'**
+  String get stopSharingWardrobeTitle;
+
+  /// V2-3: what stopping the wardrobe link does.
+  ///
+  /// In en, this message translates to:
+  /// **'The link stops working for everyone, including posts that already use it. Your tag links keep working. You can share again later with a new link.'**
+  String get stopSharingWardrobeBody;
+
+  /// V2-3: snackbar after the wardrobe link is created.
+  ///
+  /// In en, this message translates to:
+  /// **'Wardrobe link ready'**
+  String get wardrobeLinkReady;
+
+  /// V2-3: switch on a verified tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Show in my public wardrobe'**
+  String get showInWardrobe;
+
+  /// V2-3: under the Show in my public wardrobe switch.
+  ///
+  /// In en, this message translates to:
+  /// **'When you share your wardrobe, this piece is on it.'**
+  String get showInWardrobeBody;
 }
 
 class _AppLocalizationsDelegate
