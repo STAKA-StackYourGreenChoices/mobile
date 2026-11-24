@@ -12,6 +12,7 @@ import 'package:staka/core/state/request_state.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
 import 'package:staka/features/wardrobe/presentation/state/verify_email_controller.dart';
 import 'package:staka/features/wardrobe/presentation/state/wardrobe_controller.dart';
+import 'package:staka/features/wardrobe/presentation/state/wardrobe_filter.dart';
 import 'package:staka/features/wardrobe/presentation/state/wardrobe_state.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/verify_email_banner.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_scroll_view.dart';
@@ -60,6 +61,10 @@ class WardrobeScreen extends ConsumerWidget {
               ? l10n.welcomeName(session.user.firstName)
               : l10n.wardrobeTitle,
           onRefresh: controller.refresh,
+          category: ref.watch(wardrobeCategoryFilterProvider),
+          onCategorySelected: ref
+              .read(wardrobeCategoryFilterProvider.notifier)
+              .select,
           onScanPressed: () => context.goNamed(AppRoute.scan.name),
           onTagPressed: (card) => context.pushNamed(
             AppRoute.tag.name,

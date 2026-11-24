@@ -4,8 +4,10 @@ import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/product.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/features/products/presentation/widgets/figures_explained.dart';
 import 'package:staka/features/products/presentation/widgets/product_heading.dart';
+import 'package:staka/shared/formatters/product_labels.dart';
 import 'package:staka/shared/widgets/data_display/hang_tag/hang_tag.dart';
 import 'package:staka/shared/widgets/data_display/tag_image.dart';
 
@@ -35,7 +37,7 @@ class ProductFoundView extends StatelessWidget {
               final url? => TagImage(url),
               null => null,
             },
-            gtin: product.gtin,
+            gtin: product.shownGtin,
             size: HangTagSize.lg,
             hasSwing: true,
           ),
@@ -43,6 +45,11 @@ class ProductFoundView extends StatelessWidget {
         ProductHeading(
           brandName: brand.name,
           productName: product.name,
+          variantDetails: variantDetails(product.matchedVariant, context.l10n),
+          categoryName: switch (product.category) {
+            ProductCategory.other => null,
+            final category => categoryName(category, context.l10n),
+          },
           description: product.description,
         ),
         action,

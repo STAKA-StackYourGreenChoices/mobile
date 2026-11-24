@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/product.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/models/share_link.dart';
 
 part 'digital_card.freezed.dart';
@@ -18,5 +19,8 @@ abstract class DigitalCard with _$DigitalCard {
 
     /// Present while the tag is publicly shared.
     ShareLink? share,
+
+    /// The size/colour the shopper scanned (V2-2), when the API knows it.
+    ProductVariant? variant,
   }) = _DigitalCard;
 }

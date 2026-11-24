@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:staka/core/api_models/brand_dto.dart';
+import 'package:staka/core/api_models/product_variant_dto.dart';
 import 'package:staka/core/api_models/sustainability_info_dto.dart';
 
 part 'product_dto.g.dart';
@@ -21,6 +22,10 @@ class ProductDto {
     this.imageUrl,
     this.sustainabilityInfo,
     this.hidden,
+    this.category,
+    this.styleCode,
+    this.variants,
+    this.matchedVariant,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$ProductDtoFromJson(json);
@@ -38,4 +43,12 @@ class ProductDto {
 
   /// Admin lists only (V2-12).
   final bool? hidden;
+
+  /// V2-2: `TOPS`, `BOTTOMS`, … or `OTHER`.
+  final String? category;
+  final String? styleCode;
+  final List<ProductVariantDto>? variants;
+
+  /// Product lookups by barcode only (V2-2).
+  final ProductVariantDto? matchedVariant;
 }

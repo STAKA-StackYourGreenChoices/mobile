@@ -10,6 +10,7 @@ import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 
@@ -59,6 +60,24 @@ void main() {
       ],
       false,
     ),
+    'filter': (
+      [
+        cardFor(
+          id: '1',
+          name: 'Organic Cotton Tee',
+          status: OwnershipStatus.verified,
+          category: ProductCategory.tops,
+          variant: navyM,
+        ),
+        cardFor(
+          id: '2',
+          name: 'Recycled Denim Jeans',
+          status: OwnershipStatus.pending,
+          category: ProductCategory.bottoms,
+        ),
+      ],
+      true,
+    ),
     'empty': (<DigitalCard>[], true),
   };
 
@@ -67,7 +86,7 @@ void main() {
       testWidgets(
         'wardrobe $name, ${brightness.name}',
         (tester) => withRealShadows(() async {
-          usePhoneScreen(tester, height: name == 'tags' ? 1700 : 760);
+          usePhoneScreen(tester, height: name == 'empty' ? 760 : 1700);
           await pumpThemed(
             tester,
             _wardrobe(cards, emailVerified: verified),

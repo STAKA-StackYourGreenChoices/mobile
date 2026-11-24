@@ -1,17 +1,21 @@
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/core/design/app_spacing.dart';
+import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/digital_card.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/features/wardrobe/presentation/state/wardrobe_state.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/tag_section_header.dart';
+import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_category_filter.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_header.dart';
 import 'package:staka/features/wardrobe/presentation/widgets/wardrobe_tag_item.dart';
+import 'package:staka/shared/formatters/product_labels.dart';
 import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 
 /// The wardrobe's scrolling content: optional banner, header, then either
 /// the empty-state invitation or the Verified / Waiting for proof groups.
-/// Tags are built lazily (guide §7.1 rule 6); pull down to refresh.
+/// Tags are built lazily (guide §7.1 rule 6); pull down to refresh. With
+/// two or more kinds of piece, chips filter the groups by kind (V2-2).
 class WardrobeScrollView extends StatelessWidget {
   const new({
     required this.state,
@@ -20,6 +24,8 @@ class WardrobeScrollView extends StatelessWidget {
     required this.onScanPressed,
     required this.onTagPressed,
     this.banner,
+    this.category,
+    this.onCategorySelected,
     super.key,
   });
 
@@ -31,6 +37,10 @@ class WardrobeScrollView extends StatelessWidget {
   final ValueChanged<DigitalCard> onTagPressed;
   final Widget? banner;
 
+  /// The kind of piece shown; null shows everything.
+  final ProductCategory? category;
+  final ValueChanged<ProductCategory?>? onCategorySelected;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -38,6 +48,13 @@ class WardrobeScrollView extends StatelessWidget {
       final WardrobeData data => data,
       _ => null,
     };
+    final categories = data?.categories ?? const <ProductCategory>[];
+    final hasFilter = categories.length > 1 && onCategorySelected != null;
+    // A filter whose pieces are all gone shows everything again.
+    final selected = hasFilter && categories.contains(category)
+        ? category
+        : null;
+    final shown = data?.only(selected);
     return RefreshIndicator(
       onRefresh: onRefresh,
       child: CustomScrollView(
@@ -71,21 +88,41 @@ class WardrobeScrollView extends StatelessWidget {
               ),
             )
           else ...[
+            if (hasFilter)
+              SliverPadding(
+                padding: const EdgeInsets.only(top: AppSpacing.lg),
+                sliver: SliverToBoxAdapter(
+                  child: WardrobeCategoryFilter(
+                    categories: categories,
+                    selected: selected,
+                    onSelected: onCategorySelected!,
+                  ),
+                ),
+              ),
+            if (shown != null && shown.total == 0 && selected != null)
+              SliverToBoxAdapter(
+                child: Text(
+                  l10n.wardrobeFilterEmpty(categoryName(selected, l10n)),
+                  style: context.text.bodyLarge.copyWith(
+                    color: context.colors.inkMuted,
+                  ),
+                ),
+              ),
             ..._section(
               TagSectionHeader(
                 title: l10n.sectionVerified,
-                count: data.verified.length,
+                count: shown!.verified.length,
                 description: l10n.sectionVerifiedBody,
               ),
-              data.verified,
+              shown.verified,
             ),
             ..._section(
               TagSectionHeader(
                 title: l10n.sectionWaiting,
-                count: data.waiting.length,
+                count: shown.waiting.length,
                 description: l10n.sectionWaitingBody,
               ),
-              data.waiting,
+              shown.waiting,
             ),
           ],
         ],

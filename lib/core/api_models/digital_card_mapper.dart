@@ -9,14 +9,20 @@ import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/share_link.dart';
 
 extension DigitalCardDtoMapper on DigitalCardDto {
-  DigitalCard toDomain({String webAppUrl = Env.webAppUrl}) => DigitalCard(
-    id: id,
-    createdAt: createdAt,
-    ownerName: user.name,
-    product: product.toDomain(webAppUrl: webAppUrl),
-    ownership: ownership.toDomain(),
-    share: share?.toDomain(),
-  );
+  DigitalCard toDomain({String webAppUrl = Env.webAppUrl}) {
+    final product = this.product.toDomain(webAppUrl: webAppUrl);
+    return DigitalCard(
+      id: id,
+      createdAt: createdAt,
+      ownerName: user.name,
+      product: product,
+      ownership: ownership.toDomain(),
+      share: share?.toDomain(),
+      variant:
+          variant?.toDomain() ??
+          product.variants.where((v) => v.id == variantId).firstOrNull,
+    );
+  }
 }
 
 extension OwnershipDtoMapper on OwnershipDto {

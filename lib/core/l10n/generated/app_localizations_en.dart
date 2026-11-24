@@ -2711,4 +2711,51 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get categoryTops => 'Tops';
+
+  @override
+  String get categoryBottoms => 'Bottoms';
+
+  @override
+  String get categoryDresses => 'Dresses';
+
+  @override
+  String get categoryOuterwear => 'Outerwear';
+
+  @override
+  String get categoryFootwear => 'Footwear';
+
+  @override
+  String get categoryAccessories => 'Accessories';
+
+  @override
+  String get categoryOther => 'Other';
+
+  @override
+  String variantSize(String size) {
+    return 'Size $size';
+  }
+
+  @override
+  String variantDetails(String first, String second) {
+    return '$first · $second';
+  }
+
+  @override
+  String categoryLabel(String category) {
+    return 'Type: $category';
+  }
+
+  @override
+  String get wardrobeFilterAll => 'All';
+
+  @override
+  String get wardrobeFilterLabel => 'Show pieces by type';
+
+  @override
+  String wardrobeFilterEmpty(String category) {
+    return 'No $category in your wardrobe yet.';
+  }
 }

@@ -17,7 +17,11 @@ mixin _$Product {
 
  String get id; String get gtin; String get sku; String get name; Brand get brand; DateTime get createdAt; DateTime get updatedAt; String? get description; String? get imageUrl; SustainabilityInfo? get sustainabilityInfo;/// Hidden from shoppers by a STAKA admin (V2-12 moderation). Only
 /// admin lists send it.
- bool get isHidden;
+ bool get isHidden;/// What kind of piece it is (V2-2).
+ ProductCategory get category;/// The brand's own code for the style (V2-2).
+ String? get styleCode;/// Every size/colour (V2-2); empty from an older API.
+ List<ProductVariant> get variants;/// The variant whose barcode was scanned (product lookups only).
+ ProductVariant? get matchedVariant;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,20 +33,20 @@ $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as
 @override
 bool operator ==(Object other) {
   final _this = this as Product;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.gtin, _this.gtin) || other.gtin == _this.gtin)&&(identical(other.sku, _this.sku) || other.sku == _this.sku)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.sustainabilityInfo, _this.sustainabilityInfo) || other.sustainabilityInfo == _this.sustainabilityInfo)&&(identical(other.isHidden, _this.isHidden) || other.isHidden == _this.isHidden));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.gtin, _this.gtin) || other.gtin == _this.gtin)&&(identical(other.sku, _this.sku) || other.sku == _this.sku)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.brand, _this.brand) || other.brand == _this.brand)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.sustainabilityInfo, _this.sustainabilityInfo) || other.sustainabilityInfo == _this.sustainabilityInfo)&&(identical(other.isHidden, _this.isHidden) || other.isHidden == _this.isHidden)&&(identical(other.category, _this.category) || other.category == _this.category)&&(identical(other.styleCode, _this.styleCode) || other.styleCode == _this.styleCode)&&const DeepCollectionEquality().equals(other.variants, _this.variants)&&(identical(other.matchedVariant, _this.matchedVariant) || other.matchedVariant == _this.matchedVariant));
 }
 
 
 @override
 int get hashCode {
   final _this = this as Product;
-  return Object.hash(runtimeType,_this.id,_this.gtin,_this.sku,_this.name,_this.brand,_this.createdAt,_this.updatedAt,_this.description,_this.imageUrl,_this.sustainabilityInfo,_this.isHidden);
+  return Object.hash(runtimeType,_this.id,_this.gtin,_this.sku,_this.name,_this.brand,_this.createdAt,_this.updatedAt,_this.description,_this.imageUrl,_this.sustainabilityInfo,_this.isHidden,_this.category,_this.styleCode,const DeepCollectionEquality().hash(_this.variants),_this.matchedVariant);
 }
 
 @override
 String toString() {
   final _this = this as Product;
-  return 'Product(id: ${_this.id}, gtin: ${_this.gtin}, sku: ${_this.sku}, name: ${_this.name}, brand: ${_this.brand}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt}, description: ${_this.description}, imageUrl: ${_this.imageUrl}, sustainabilityInfo: ${_this.sustainabilityInfo}, isHidden: ${_this.isHidden})';
+  return 'Product(id: ${_this.id}, gtin: ${_this.gtin}, sku: ${_this.sku}, name: ${_this.name}, brand: ${_this.brand}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt}, description: ${_this.description}, imageUrl: ${_this.imageUrl}, sustainabilityInfo: ${_this.sustainabilityInfo}, isHidden: ${_this.isHidden}, category: ${_this.category}, styleCode: ${_this.styleCode}, variants: ${_this.variants}, matchedVariant: ${_this.matchedVariant})';
 }
 
 
@@ -53,11 +57,11 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String id, String gtin, String sku, String name, Brand brand, DateTime createdAt, DateTime updatedAt, String? description, String? imageUrl, SustainabilityInfo? sustainabilityInfo, bool isHidden
+ String id, String gtin, String sku, String name, Brand brand, DateTime createdAt, DateTime updatedAt, String? description, String? imageUrl, SustainabilityInfo? sustainabilityInfo, bool isHidden, ProductCategory category, String? styleCode, List<ProductVariant> variants, ProductVariant? matchedVariant
 });
 
 
-$BrandCopyWith<$Res> get brand;$SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo;
+$BrandCopyWith<$Res> get brand;$SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo;$ProductVariantCopyWith<$Res>? get matchedVariant;
 
 }
 /// @nodoc
@@ -70,7 +74,7 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? gtin = null,Object? sku = null,Object? name = null,Object? brand = null,Object? createdAt = null,Object? updatedAt = null,Object? description = freezed,Object? imageUrl = freezed,Object? sustainabilityInfo = freezed,Object? isHidden = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? gtin = null,Object? sku = null,Object? name = null,Object? brand = null,Object? createdAt = null,Object? updatedAt = null,Object? description = freezed,Object? imageUrl = freezed,Object? sustainabilityInfo = freezed,Object? isHidden = null,Object? category = null,Object? styleCode = freezed,Object? variants = null,Object? matchedVariant = freezed,}) {
   return _then(Product(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,gtin: null == gtin ? _self.gtin : gtin // ignore: cast_nullable_to_non_nullable
@@ -83,7 +87,11 @@ as DateTime,description: freezed == description ? _self.description : descriptio
 as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String?,sustainabilityInfo: freezed == sustainabilityInfo ? _self.sustainabilityInfo : sustainabilityInfo // ignore: cast_nullable_to_non_nullable
 as SustainabilityInfo?,isHidden: null == isHidden ? _self.isHidden : isHidden // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as ProductCategory,styleCode: freezed == styleCode ? _self.styleCode : styleCode // ignore: cast_nullable_to_non_nullable
+as String?,variants: null == variants ? _self.variants : variants // ignore: cast_nullable_to_non_nullable
+as List<ProductVariant>,matchedVariant: freezed == matchedVariant ? _self.matchedVariant : matchedVariant // ignore: cast_nullable_to_non_nullable
+as ProductVariant?,
   ));
 }
 /// Create a copy of Product
@@ -106,6 +114,18 @@ $SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo {
 
   return $SustainabilityInfoCopyWith<$Res>(_self.sustainabilityInfo!, (value) {
     return _then(_self.copyWith(sustainabilityInfo: value));
+  });
+}/// Create a copy of Product
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCopyWith<$Res>? get matchedVariant {
+    if (_self.matchedVariant == null) {
+    return null;
+  }
+
+  return $ProductVariantCopyWith<$Res>(_self.matchedVariant!, (value) {
+    return _then(_self.copyWith(matchedVariant: value));
   });
 }
 }
@@ -189,10 +209,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden,  ProductCategory category,  String? styleCode,  List<ProductVariant> variants,  ProductVariant? matchedVariant)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden);case _:
+return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden,_that.category,_that.styleCode,_that.variants,_that.matchedVariant);case _:
   return orElse();
 
 }
@@ -210,10 +230,10 @@ return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.creat
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden,  ProductCategory category,  String? styleCode,  List<ProductVariant> variants,  ProductVariant? matchedVariant)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
-return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden);case _:
+return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden,_that.category,_that.styleCode,_that.variants,_that.matchedVariant);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -230,10 +250,10 @@ return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.creat
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String gtin,  String sku,  String name,  Brand brand,  DateTime createdAt,  DateTime updatedAt,  String? description,  String? imageUrl,  SustainabilityInfo? sustainabilityInfo,  bool isHidden,  ProductCategory category,  String? styleCode,  List<ProductVariant> variants,  ProductVariant? matchedVariant)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden);case _:
+return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.createdAt,_that.updatedAt,_that.description,_that.imageUrl,_that.sustainabilityInfo,_that.isHidden,_that.category,_that.styleCode,_that.variants,_that.matchedVariant);case _:
   return null;
 
 }
@@ -244,8 +264,8 @@ return $default(_that.id,_that.gtin,_that.sku,_that.name,_that.brand,_that.creat
 /// @nodoc
 
 
-class _Product implements Product {
-  const _Product({required this.id, required this.gtin, required this.sku, required this.name, required this.brand, required this.createdAt, required this.updatedAt, this.description, this.imageUrl, this.sustainabilityInfo, this.isHidden = false});
+class _Product extends Product {
+  const _Product({required this.id, required this.gtin, required this.sku, required this.name, required this.brand, required this.createdAt, required this.updatedAt, this.description, this.imageUrl, this.sustainabilityInfo, this.isHidden = false, this.category = ProductCategory.other, this.styleCode,  List<ProductVariant> variants = const <ProductVariant>[], this.matchedVariant}): _variants = variants,super._();
   
 
 @override final  String id;
@@ -261,6 +281,21 @@ class _Product implements Product {
 /// Hidden from shoppers by a STAKA admin (V2-12 moderation). Only
 /// admin lists send it.
 @override@JsonKey() final  bool isHidden;
+/// What kind of piece it is (V2-2).
+@override@JsonKey() final  ProductCategory category;
+/// The brand's own code for the style (V2-2).
+@override final  String? styleCode;
+/// Every size/colour (V2-2); empty from an older API.
+ final  List<ProductVariant> _variants;
+/// Every size/colour (V2-2); empty from an older API.
+@override@JsonKey() List<ProductVariant> get variants {
+  if (_variants is EqualUnmodifiableListView) return _variants;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_variants);
+}
+
+/// The variant whose barcode was scanned (product lookups only).
+@override final  ProductVariant? matchedVariant;
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
@@ -272,18 +307,18 @@ _$ProductCopyWith<_Product> get copyWith => __$ProductCopyWithImpl<_Product>(thi
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.gtin, gtin) || other.gtin == gtin)&&(identical(other.sku, sku) || other.sku == sku)&&(identical(other.name, name) || other.name == name)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.description, description) || other.description == description)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.sustainabilityInfo, sustainabilityInfo) || other.sustainabilityInfo == sustainabilityInfo)&&(identical(other.isHidden, isHidden) || other.isHidden == isHidden));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.gtin, gtin) || other.gtin == gtin)&&(identical(other.sku, sku) || other.sku == sku)&&(identical(other.name, name) || other.name == name)&&(identical(other.brand, brand) || other.brand == brand)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.description, description) || other.description == description)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.sustainabilityInfo, sustainabilityInfo) || other.sustainabilityInfo == sustainabilityInfo)&&(identical(other.isHidden, isHidden) || other.isHidden == isHidden)&&(identical(other.category, category) || other.category == category)&&(identical(other.styleCode, styleCode) || other.styleCode == styleCode)&&const DeepCollectionEquality().equals(other.variants, _variants)&&(identical(other.matchedVariant, matchedVariant) || other.matchedVariant == matchedVariant));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,gtin,sku,name,brand,createdAt,updatedAt,description,imageUrl,sustainabilityInfo,isHidden);
+    return Object.hash(runtimeType,id,gtin,sku,name,brand,createdAt,updatedAt,description,imageUrl,sustainabilityInfo,isHidden,category,styleCode,const DeepCollectionEquality().hash(_variants),matchedVariant);
 }
 
 @override
 String toString() {
-    return 'Product(id: $id, gtin: $gtin, sku: $sku, name: $name, brand: $brand, createdAt: $createdAt, updatedAt: $updatedAt, description: $description, imageUrl: $imageUrl, sustainabilityInfo: $sustainabilityInfo, isHidden: $isHidden)';
+    return 'Product(id: $id, gtin: $gtin, sku: $sku, name: $name, brand: $brand, createdAt: $createdAt, updatedAt: $updatedAt, description: $description, imageUrl: $imageUrl, sustainabilityInfo: $sustainabilityInfo, isHidden: $isHidden, category: $category, styleCode: $styleCode, variants: $variants, matchedVariant: $matchedVariant)';
 }
 
 
@@ -294,11 +329,11 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String gtin, String sku, String name, Brand brand, DateTime createdAt, DateTime updatedAt, String? description, String? imageUrl, SustainabilityInfo? sustainabilityInfo, bool isHidden
+ String id, String gtin, String sku, String name, Brand brand, DateTime createdAt, DateTime updatedAt, String? description, String? imageUrl, SustainabilityInfo? sustainabilityInfo, bool isHidden, ProductCategory category, String? styleCode, List<ProductVariant> variants, ProductVariant? matchedVariant
 });
 
 
-@override $BrandCopyWith<$Res> get brand;@override $SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo;
+@override $BrandCopyWith<$Res> get brand;@override $SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo;@override $ProductVariantCopyWith<$Res>? get matchedVariant;
 
 }
 /// @nodoc
@@ -311,7 +346,7 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? gtin = null,Object? sku = null,Object? name = null,Object? brand = null,Object? createdAt = null,Object? updatedAt = null,Object? description = freezed,Object? imageUrl = freezed,Object? sustainabilityInfo = freezed,Object? isHidden = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? gtin = null,Object? sku = null,Object? name = null,Object? brand = null,Object? createdAt = null,Object? updatedAt = null,Object? description = freezed,Object? imageUrl = freezed,Object? sustainabilityInfo = freezed,Object? isHidden = null,Object? category = null,Object? styleCode = freezed,Object? variants = null,Object? matchedVariant = freezed,}) {
   return _then(_Product(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,gtin: null == gtin ? _self.gtin : gtin // ignore: cast_nullable_to_non_nullable
@@ -324,7 +359,11 @@ as DateTime,description: freezed == description ? _self.description : descriptio
 as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String?,sustainabilityInfo: freezed == sustainabilityInfo ? _self.sustainabilityInfo : sustainabilityInfo // ignore: cast_nullable_to_non_nullable
 as SustainabilityInfo?,isHidden: null == isHidden ? _self.isHidden : isHidden // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as ProductCategory,styleCode: freezed == styleCode ? _self.styleCode : styleCode // ignore: cast_nullable_to_non_nullable
+as String?,variants: null == variants ? _self._variants : variants // ignore: cast_nullable_to_non_nullable
+as List<ProductVariant>,matchedVariant: freezed == matchedVariant ? _self.matchedVariant : matchedVariant // ignore: cast_nullable_to_non_nullable
+as ProductVariant?,
   ));
 }
 
@@ -348,6 +387,18 @@ $SustainabilityInfoCopyWith<$Res>? get sustainabilityInfo {
 
   return $SustainabilityInfoCopyWith<$Res>(_self.sustainabilityInfo!, (value) {
     return _then(_self.copyWith(sustainabilityInfo: value));
+  });
+}/// Create a copy of Product
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCopyWith<$Res>? get matchedVariant {
+    if (_self.matchedVariant == null) {
+    return null;
+  }
+
+  return $ProductVariantCopyWith<$Res>(_self.matchedVariant!, (value) {
+    return _then(_self.copyWith(matchedVariant: value));
   });
 }
 }

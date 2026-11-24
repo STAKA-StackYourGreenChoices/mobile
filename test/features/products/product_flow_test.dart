@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/models/sustainability_info.dart';
 import 'package:staka/features/products/domain/models/product_lookup.dart';
 
@@ -207,5 +208,35 @@ void main() {
       ),
       findsOneWidget,
     );
+  });
+
+  testWidgets('a variant barcode: its size, colour, code and kind (V2-2)', (
+    tester,
+  ) async {
+    await _openProduct(
+      tester,
+      _with(
+        ProductFound(
+          productNamed('Organic Cotton Tee').copyWith(
+            category: ProductCategory.tops,
+            variants: [navyM],
+            matchedVariant: navyM,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Size M · Navy'), findsOneWidget);
+    expect(find.bySemanticsLabel('Type: Tops'), findsOneWidget);
+    // The tag shows the scanned variant's barcode, not the primary one.
+    expect(find.textContaining('8901234500057'), findsWidgets);
+    expect(find.textContaining('8901234500019'), findsNothing);
+  });
+
+  testWidgets('no kind set: no chip, no size line', (tester) async {
+    await _openProduct(tester, _with(ProductFound(productNamed('Tee'))));
+
+    expect(find.text('Other'), findsNothing);
+    expect(find.textContaining('Size'), findsNothing);
   });
 }

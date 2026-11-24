@@ -80,9 +80,11 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/brand-claims` (V2-12): Claims row with the waiting count on the brand hub; brand claim list, review, receipt, approve, reject
 - [~] `feat/claim-dispute` (V2-12): tag names who decided; Ask STAKA to look again (sheet, open, upheld, overturned)
 - [~] `feat/admin-brands-disputes` (V2-12): Admin tab hub (Brands, Disputes, Claims, Products); brand review (approve, turn down, pause, make active, document); disputes (approve the receipt / keep the decision with a note); claims read-only + Overrule; products read-only + Hide/Show. Product add/edit/import moved to the Brand tab
-- [ ] `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
+- [~] `feat/product-variants` (V2-2): variant + category models; product page shows the scanned size/colour, barcode and a category chip; tag and wardrobe show the scanned size/colour; wardrobe filter chips by kind
+- [ ] `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-24 — `feat/product-variants`: V2-2 shopper side (size/colour, category chip, wardrobe filter). 475 tests pass; new goldens product_variant, wardrobe_filter; no existing golden changed. Fakes only.
 - 2026-11-24 — `feat/admin-brands-disputes`: Admin tab for V2-12 (brand review, disputes, overrule, hide products). 460 tests pass; goldens listed in the commit. Fixed: the dispute sheet's controller was disposed before submit (the panel now watches it). Fakes only.
 - 2026-11-24 — `feat/claim-dispute`: who decided + Ask STAKA to look again on the tag. 441 tests pass; new goldens tag_brand_rejected, tag_look_again_open; no existing golden changed. Fakes only.
 - 2026-11-24 — `feat/brand-claims`: brand claim review from the Brand tab. 426 tests pass; brand_home goldens updated for the Claims row. Fakes only.

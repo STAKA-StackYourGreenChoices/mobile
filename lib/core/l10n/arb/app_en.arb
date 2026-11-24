@@ -3685,5 +3685,52 @@
         "type": "int"
       }
     }
+  },
+  "categoryTops": "Tops",
+  "categoryBottoms": "Bottoms",
+  "categoryDresses": "Dresses",
+  "categoryOuterwear": "Outerwear",
+  "categoryFootwear": "Footwear",
+  "categoryAccessories": "Accessories",
+  "categoryOther": "Other",
+  "variantSize": "Size {size}",
+  "@variantSize": {
+    "description": "A product variant's size, e.g. Size M.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "variantDetails": "{first} · {second}",
+  "@variantDetails": {
+    "description": "Size and colour together, e.g. Size M · Navy.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "second": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryLabel": "Type: {category}",
+  "@categoryLabel": {
+    "description": "Screen reader label for a product's category chip.",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "wardrobeFilterAll": "All",
+  "wardrobeFilterLabel": "Show pieces by type",
+  "wardrobeFilterEmpty": "No {category} in your wardrobe yet.",
+  "@wardrobeFilterEmpty": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:staka/core/api_models/digital_card_dto.dart';
 import 'package:staka/core/api_models/digital_card_mapper.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/ownership_status.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/utils/image_url.dart';
 
 /// The shape `DigitalCardsService.present` sends: absent, not null, fields.
@@ -155,6 +156,65 @@ void main() {
       expect(resolveImageUrl(brandPhoto, webAppUrl: web), brandPhoto);
       expect(resolveImageUrl(null, webAppUrl: web), isNull);
       expect(resolveImageUrl('', webAppUrl: web), isNull);
+    });
+  });
+
+  group('variants (V2-2)', () {
+    const variant = {
+      'id': 'v2',
+      'gtin': '08901234500057',
+      'sku': 'TT-TEE-NAVY-M',
+      'size': 'M',
+      'colour': 'Navy',
+    };
+    Map<String, Object?> withVariants(Map<String, Object?> extra) {
+      final json = _cardJson();
+      return {
+        ...json,
+        'product': {
+          ...json['product']! as Map<String, Object?>,
+          'category': 'TOPS',
+          'styleCode': '  ',
+          'variants': [
+            {'id': 'v1', 'gtin': '08901234500019', 'sku': 'TT-TEE-01'},
+            variant,
+          ],
+          'matchedVariant': variant,
+        },
+        ...extra,
+      };
+    }
+
+    test('product variants, category and the scanned variant', () {
+      final card = DigitalCardDto.fromJson(withVariants({'variant': variant}))
+          .toDomain();
+
+      expect(card.product.category, ProductCategory.tops);
+      expect(card.product.styleCode, isNull); // blank counts as absent
+      expect([for (final v in card.product.variants) v.id], ['v1', 'v2']);
+      expect(card.product.variants.first.size, isNull);
+      expect(card.product.matchedVariant?.colour, 'Navy');
+      expect(card.product.shownGtin, '08901234500057');
+      expect(card.variant?.size, 'M');
+    });
+
+    test('only a variantId: found in the product variants', () {
+      final card = DigitalCardDto.fromJson(withVariants({'variantId': 'v2'}))
+          .toDomain();
+      expect(card.variant?.sku, 'TT-TEE-NAVY-M');
+    });
+
+    test('an older API: no variants, category Other, primary barcode', () {
+      final card = DigitalCardDto.fromJson(_cardJson()).toDomain();
+      expect(card.product.variants, isEmpty);
+      expect(card.product.category, ProductCategory.other);
+      expect(card.product.shownGtin, '08901234500019');
+      expect(card.variant, isNull);
+    });
+
+    test('an unknown category counts as Other', () {
+      expect(ProductCategory.fromApi('HATS'), ProductCategory.other);
+      expect(ProductCategory.fromApi(null), ProductCategory.other);
     });
   });
 }

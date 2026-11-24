@@ -18,6 +18,10 @@ DigitalCardDto _$DigitalCardDtoFromJson(Map<String, dynamic> json) =>
       share: json['share'] == null
           ? null
           : ShareLinkDto.fromJson(json['share'] as Map<String, dynamic>),
+      variant: json['variant'] == null
+          ? null
+          : ProductVariantDto.fromJson(json['variant'] as Map<String, dynamic>),
+      variantId: json['variantId'] as String?,
     );
 
 CardUserDto _$CardUserDtoFromJson(Map<String, dynamic> json) =>

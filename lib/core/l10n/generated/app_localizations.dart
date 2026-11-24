@@ -4376,6 +4376,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count, plural, =0{No disputes waiting.} =1{1 dispute is waiting.} other{{count} disputes are waiting.}}'**
   String adminDisputesWaiting(int count);
+
+  /// No description provided for @categoryTops.
+  ///
+  /// In en, this message translates to:
+  /// **'Tops'**
+  String get categoryTops;
+
+  /// No description provided for @categoryBottoms.
+  ///
+  /// In en, this message translates to:
+  /// **'Bottoms'**
+  String get categoryBottoms;
+
+  /// No description provided for @categoryDresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Dresses'**
+  String get categoryDresses;
+
+  /// No description provided for @categoryOuterwear.
+  ///
+  /// In en, this message translates to:
+  /// **'Outerwear'**
+  String get categoryOuterwear;
+
+  /// No description provided for @categoryFootwear.
+  ///
+  /// In en, this message translates to:
+  /// **'Footwear'**
+  String get categoryFootwear;
+
+  /// No description provided for @categoryAccessories.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessories'**
+  String get categoryAccessories;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get categoryOther;
+
+  /// A product variant's size, e.g. Size M.
+  ///
+  /// In en, this message translates to:
+  /// **'Size {size}'**
+  String variantSize(String size);
+
+  /// Size and colour together, e.g. Size M · Navy.
+  ///
+  /// In en, this message translates to:
+  /// **'{first} · {second}'**
+  String variantDetails(String first, String second);
+
+  /// Screen reader label for a product's category chip.
+  ///
+  /// In en, this message translates to:
+  /// **'Type: {category}'**
+  String categoryLabel(String category);
+
+  /// No description provided for @wardrobeFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get wardrobeFilterAll;
+
+  /// No description provided for @wardrobeFilterLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Show pieces by type'**
+  String get wardrobeFilterLabel;
+
+  /// No description provided for @wardrobeFilterEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No {category} in your wardrobe yet.'**
+  String wardrobeFilterEmpty(String category);
 }
 
 class _AppLocalizationsDelegate

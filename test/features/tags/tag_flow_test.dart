@@ -288,4 +288,21 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Scan a product'), findsOneWidget);
   });
+
+  testWidgets('the tag says which size and colour was scanned (V2-2)', (
+    tester,
+  ) async {
+    await _openTag(
+      tester,
+      cardFor(
+        id: 'c1',
+        name: _name,
+        ownership: _ownership(OwnershipStatus.unverified),
+        variant: navyM,
+      ),
+    );
+
+    expect(find.text('Size M · Navy'), findsOneWidget);
+    expect(find.textContaining('8901234500057'), findsWidgets);
+  });
 }

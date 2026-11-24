@@ -22,4 +22,14 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
           json['sustainabilityInfo'] as Map<String, dynamic>,
         ),
   hidden: json['hidden'] as bool?,
+  category: json['category'] as String?,
+  styleCode: json['styleCode'] as String?,
+  variants: (json['variants'] as List<dynamic>?)
+      ?.map((e) => ProductVariantDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  matchedVariant: json['matchedVariant'] == null
+      ? null
+      : ProductVariantDto.fromJson(
+          json['matchedVariant'] as Map<String, dynamic>,
+        ),
 );

@@ -47,7 +47,7 @@ class TagView extends StatelessWidget {
               final url? => TagImage(url),
               null => null,
             },
-            gtin: product.gtin,
+            gtin: card.variant?.gtin ?? product.gtin,
             ownerName: card.ownerName,
             isOwnerVerified: card.ownership.isVerified,
             size: HangTagSize.lg,

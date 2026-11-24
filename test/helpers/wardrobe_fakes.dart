@@ -4,6 +4,7 @@ import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/product.dart';
+import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/models/sustainability_info.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
@@ -40,6 +41,8 @@ DigitalCard cardFor({
   OwnershipStatus status = OwnershipStatus.unverified,
   bool hasFigures = true,
   Ownership? ownership,
+  ProductCategory category = ProductCategory.other,
+  ProductVariant? variant,
 }) => DigitalCard(
   id: id,
   createdAt: _date,
@@ -52,6 +55,7 @@ DigitalCard cardFor({
     brand: const Brand(id: 'b1', name: 'Terra Threads'),
     createdAt: _date,
     updatedAt: _date,
+    category: category,
     sustainabilityInfo: hasFigures
         ? const SustainabilityInfo(
             carbonScoreGrams: 2100,
@@ -64,4 +68,14 @@ DigitalCard cardFor({
   ownership:
       ownership ??
       Ownership(status: status, receiptAttemptsUsed: 0, receiptAttemptsLeft: 5),
+  variant: variant,
+);
+
+/// Size M in navy, with its own barcode.
+const ProductVariant navyM = ProductVariant(
+  id: 'v-navy-m',
+  gtin: '08901234500057',
+  sku: 'TT-TEE-NAVY-M',
+  size: 'M',
+  colour: 'Navy',
 );
