@@ -66,7 +66,7 @@ class LiveClient {
     );
     tags = TagRepositoryImpl(
       TagRemoteDataSource(dio),
-      ShareRemoteDataSource(dio, Dio()),
+      ShareRemoteDataSource(dio),
     );
     adminProducts = AdminProductRepositoryImpl(
       AdminProductRemoteDataSource(dio, const AdminScope()),

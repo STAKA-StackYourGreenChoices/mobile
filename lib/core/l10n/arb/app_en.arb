@@ -996,14 +996,6 @@
   "@linkCopied": {
     "description": "Same as the website's share panel."
   },
-  "shareEllipsis": "Share…",
-  "@shareEllipsis": {
-    "description": "Opens the phone's share sheet. Same as the website's share panel."
-  },
-  "storyImage": "Image for Instagram stories",
-  "@storyImage": {
-    "description": "Same as the website's share panel. On the phone it opens the share sheet with the image."
-  },
   "preparingImage": "Preparing image…",
   "@preparingImage": {
     "description": "While the story image downloads."
@@ -3827,14 +3819,6 @@
   "@createWardrobeLink": {
     "description": "V2-3: button that shares the wardrobe."
   },
-  "wardrobeQrLabel": "QR code for your wardrobe link",
-  "@wardrobeQrLabel": {
-    "description": "V2-3: screen-reader label for the QR code."
-  },
-  "wardrobeQrHint": "Let someone scan this to open your wardrobe.",
-  "@wardrobeQrHint": {
-    "description": "V2-3: under the QR code."
-  },
   "sharedSince": "Shared since {date}",
   "@sharedSince": {
     "description": "V2-3: when the wardrobe link was created.",
@@ -3872,5 +3856,49 @@
   "showInWardrobeBody": "When you share your wardrobe, this piece is on it.",
   "@showInWardrobeBody": {
     "description": "V2-3: under the Show in my public wardrobe switch."
+  },
+  "channelWhatsApp": "WhatsApp",
+  "@channelWhatsApp": {
+    "description": "V2-4: channel row button; the app name, not translated."
+  },
+  "channelInstagram": "Instagram",
+  "@channelInstagram": {
+    "description": "V2-4: channel row button that shares the 9:16 story image; short so it fits under the round button."
+  },
+  "channelQr": "QR code",
+  "@channelQr": {
+    "description": "V2-4: channel row button and the QR sheet title."
+  },
+  "channelMore": "More",
+  "@channelMore": {
+    "description": "V2-4: channel row button that opens the phone share sheet."
+  },
+  "shareImagesTitle": "Images to post",
+  "@shareImagesTitle": {
+    "description": "V2-4: heading above the image format buttons."
+  },
+  "storyImageFormat": "Story (9:16)",
+  "@storyImageFormat": {
+    "description": "V2-4: tall image for stories."
+  },
+  "postImageFormat": "Post (1:1)",
+  "@postImageFormat": {
+    "description": "V2-4: square image for feed posts."
+  },
+  "qrCodeLabel": "QR code for this link",
+  "@qrCodeLabel": {
+    "description": "V2-4: screen-reader label for the QR code."
+  },
+  "qrCodeHint": "Let someone scan this with their phone camera to open the link.",
+  "@qrCodeHint": {
+    "description": "V2-4: under the QR code in the sheet."
+  },
+  "saveQrImage": "Save or send image",
+  "@saveQrImage": {
+    "description": "V2-4: opens the share sheet with the QR code as a PNG (Save to Photos, Files, chats)."
+  },
+  "channelInstagramStory": "Instagram story",
+  "@channelInstagramStory": {
+    "description": "V2-4: screen-reader name of the Instagram button."
   }
 }

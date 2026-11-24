@@ -1,18 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/share_link.dart';
+import 'package:staka/core/sharing/share_target.dart';
 import 'package:staka/core/utils/public_wardrobe_url.dart';
 
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/pump_full_app.dart';
+import '../../helpers/sharing_fakes.dart';
 import '../../helpers/tag_fakes.dart';
 import '../../helpers/wardrobe_fakes.dart';
 
@@ -34,6 +35,8 @@ Future<void> _openWardrobe(
   List<DigitalCard>? cards,
   FakeWardrobeShareRepository? share,
   FakeShareActions? actions,
+  FakeEventTracker? tracker,
+  FakeShareImageApi? images,
 }) async {
   usePhoneScreen(tester, height: 3000);
   await pumpApp(
@@ -47,6 +50,8 @@ Future<void> _openWardrobe(
     ),
     wardrobeShare: share,
     shareActions: actions,
+    eventTracker: tracker,
+    shareImages: images,
   );
 }
 
@@ -55,8 +60,16 @@ Future<void> _openShare(
   WidgetTester tester, {
   FakeWardrobeShareRepository? share,
   FakeShareActions? actions,
+  FakeEventTracker? tracker,
+  FakeShareImageApi? images,
 }) async {
-  await _openWardrobe(tester, share: share, actions: actions);
+  await _openWardrobe(
+    tester,
+    share: share,
+    actions: actions,
+    tracker: tracker,
+    images: images,
+  );
   await tester.tap(find.text('Share your wardrobe'));
   await tester.pumpAndSettle();
 }
@@ -68,19 +81,20 @@ void main() {
     expect(find.text('Share your wardrobe'), findsNothing);
   });
 
-  testWidgets('create the link: QR code, date and the link', (tester) async {
+  testWidgets('create the link: the date, the link and its channels', (
+    tester,
+  ) async {
     final share = FakeWardrobeShareRepository(shares: [Ok(_link)]);
     await _openShare(tester, share: share);
 
-    expect(find.byType(QrImageView), findsNothing);
     await tester.tap(find.text('Create wardrobe link'));
     await tester.pumpAndSettle();
 
     expect(share.creates, 1);
     expect(find.text('Wardrobe link ready'), findsOneWidget);
     expect(find.text(_url), findsOneWidget);
-    expect(find.byType(QrImageView), findsOneWidget);
-    expect(find.bySemanticsLabel('QR code for your wardrobe link'), findsOne);
+    expect(find.text('WhatsApp'), findsOneWidget);
+    expect(find.text('QR code'), findsOneWidget);
     expect(find.text('Shared since 15 Nov 2026'), findsOneWidget);
   });
 
@@ -88,24 +102,38 @@ void main() {
     tester,
   ) async {
     final actions = FakeShareActions();
+    final tracker = FakeEventTracker();
+    final images = FakeShareImageApi();
     await _openShare(
       tester,
       share: FakeWardrobeShareRepository(current: _link),
       actions: actions,
+      tracker: tracker,
+      images: images,
     );
 
     await tester.tap(find.text('Copy link'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Share…'));
+    await tester.tap(find.text('More'));
+    await tester.tap(find.text('Post (1:1)'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('See what others see'));
     await tester.pumpAndSettle();
 
-    expect(actions.copied, [_url]);
+    expect(actions.copied, ['$_url?ch=copy']);
     expect(find.text('Link copied'), findsOneWidget);
-    expect(actions.sharedTexts, ['My verified wardrobe on STAKA. $_url']);
+    expect(actions.sharedTexts, [
+      'My verified wardrobe on STAKA. $_url?ch=other',
+    ]);
+    expect(images.fetched, ['$_url/square']);
+    expect(actions.sharedImages, ['staka-w4rdr0be-square.png']);
     expect(actions.opened, [_url]);
-    // A whole wardrobe has no story image.
-    expect(find.text('Image for Instagram stories'), findsNothing);
+    // A wardrobe has no card id.
+    expect(tracker.shareClicks, [
+      (channel: ShareChannel.copy, cardId: null),
+      (channel: ShareChannel.other, cardId: null),
+      (channel: ShareChannel.other, cardId: null),
+    ]);
   });
 
   testWidgets('stop sharing after confirming', (tester) async {

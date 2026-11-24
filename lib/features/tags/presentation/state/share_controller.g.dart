@@ -8,15 +8,18 @@ part of 'share_controller.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Creating and stopping a tag's public link, and sharing its story image.
+/// Creating and stopping a tag's public link. The channels and images are
+/// `ShareChannelsController` (core/sharing, V2-4).
 
 @ProviderFor(ShareController)
 final shareControllerProvider = ShareControllerFamily._();
 
-/// Creating and stopping a tag's public link, and sharing its story image.
+/// Creating and stopping a tag's public link. The channels and images are
+/// `ShareChannelsController` (core/sharing, V2-4).
 final class ShareControllerProvider
     extends $NotifierProvider<ShareController, ShareState> {
-  /// Creating and stopping a tag's public link, and sharing its story image.
+  /// Creating and stopping a tag's public link. The channels and images are
+  /// `ShareChannelsController` (core/sharing, V2-4).
   ShareControllerProvider._({
     required ShareControllerFamily super.from,
     required String super.argument,
@@ -61,9 +64,10 @@ final class ShareControllerProvider
   }
 }
 
-String _$shareControllerHash() => r'0ed1f93e2047e182c3304563e8073cd29b53df4c';
+String _$shareControllerHash() => r'a0663457bd21f975b19afc3ae2484958b95a7fb7';
 
-/// Creating and stopping a tag's public link, and sharing its story image.
+/// Creating and stopping a tag's public link. The channels and images are
+/// `ShareChannelsController` (core/sharing, V2-4).
 
 final class ShareControllerFamily extends $Family
     with
@@ -83,7 +87,8 @@ final class ShareControllerFamily extends $Family
         isAutoDispose: true,
       );
 
-  /// Creating and stopping a tag's public link, and sharing its story image.
+  /// Creating and stopping a tag's public link. The channels and images are
+  /// `ShareChannelsController` (core/sharing, V2-4).
 
   ShareControllerProvider call(String cardId) =>
       ShareControllerProvider._(argument: cardId, from: this);
@@ -92,7 +97,8 @@ final class ShareControllerFamily extends $Family
   String toString() => r'shareControllerProvider';
 }
 
-/// Creating and stopping a tag's public link, and sharing its story image.
+/// Creating and stopping a tag's public link. The channels and images are
+/// `ShareChannelsController` (core/sharing, V2-4).
 
 abstract class _$ShareController extends $Notifier<ShareState> {
   late final _$args = ref.$arg as String;

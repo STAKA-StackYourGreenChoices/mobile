@@ -1318,18 +1318,6 @@ abstract class AppLocalizations {
   /// **'Link copied'**
   String get linkCopied;
 
-  /// Opens the phone's share sheet. Same as the website's share panel.
-  ///
-  /// In en, this message translates to:
-  /// **'Share…'**
-  String get shareEllipsis;
-
-  /// Same as the website's share panel. On the phone it opens the share sheet with the image.
-  ///
-  /// In en, this message translates to:
-  /// **'Image for Instagram stories'**
-  String get storyImage;
-
   /// While the story image downloads.
   ///
   /// In en, this message translates to:
@@ -4683,18 +4671,6 @@ abstract class AppLocalizations {
   /// **'Create wardrobe link'**
   String get createWardrobeLink;
 
-  /// V2-3: screen-reader label for the QR code.
-  ///
-  /// In en, this message translates to:
-  /// **'QR code for your wardrobe link'**
-  String get wardrobeQrLabel;
-
-  /// V2-3: under the QR code.
-  ///
-  /// In en, this message translates to:
-  /// **'Let someone scan this to open your wardrobe.'**
-  String get wardrobeQrHint;
-
   /// V2-3: when the wardrobe link was created.
   ///
   /// In en, this message translates to:
@@ -4742,6 +4718,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'When you share your wardrobe, this piece is on it.'**
   String get showInWardrobeBody;
+
+  /// V2-4: channel row button; the app name, not translated.
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp'**
+  String get channelWhatsApp;
+
+  /// V2-4: channel row button that shares the 9:16 story image; short so it fits under the round button.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get channelInstagram;
+
+  /// V2-4: channel row button and the QR sheet title.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code'**
+  String get channelQr;
+
+  /// V2-4: channel row button that opens the phone share sheet.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get channelMore;
+
+  /// V2-4: heading above the image format buttons.
+  ///
+  /// In en, this message translates to:
+  /// **'Images to post'**
+  String get shareImagesTitle;
+
+  /// V2-4: tall image for stories.
+  ///
+  /// In en, this message translates to:
+  /// **'Story (9:16)'**
+  String get storyImageFormat;
+
+  /// V2-4: square image for feed posts.
+  ///
+  /// In en, this message translates to:
+  /// **'Post (1:1)'**
+  String get postImageFormat;
+
+  /// V2-4: screen-reader label for the QR code.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code for this link'**
+  String get qrCodeLabel;
+
+  /// V2-4: under the QR code in the sheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Let someone scan this with their phone camera to open the link.'**
+  String get qrCodeHint;
+
+  /// V2-4: opens the share sheet with the QR code as a PNG (Save to Photos, Files, chats).
+  ///
+  /// In en, this message translates to:
+  /// **'Save or send image'**
+  String get saveQrImage;
+
+  /// V2-4: screen-reader name of the Instagram button.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram story'**
+  String get channelInstagramStory;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
@@ -8,12 +6,15 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/share_link.dart';
+import 'package:staka/core/sharing/share_target.dart';
 import 'package:staka/core/utils/public_tag_url.dart';
+import 'package:staka/shared/widgets/sharing/qr_code_sheet.dart';
 
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/pump_full_app.dart';
+import '../../helpers/sharing_fakes.dart';
 import '../../helpers/tag_fakes.dart';
 import '../../helpers/wardrobe_fakes.dart';
 
@@ -33,6 +34,9 @@ Future<void> _openTag(
   DigitalCard card, {
   FakeTagRepository? tags,
   FakeShareActions? actions,
+  FakeEventTracker? tracker,
+  FakeShareImageApi? images,
+  FakeQrPng? qrPng,
 }) async {
   usePhoneScreen(tester, height: 3000);
   await pumpApp(
@@ -46,6 +50,9 @@ Future<void> _openTag(
     ),
     tags: tags ?? FakeTagRepository(cards: [card]),
     shareActions: actions,
+    eventTracker: tracker,
+    shareImages: images,
+    qrPng: qrPng,
   );
   await tester.tap(find.text(_name).first);
   await tester.pumpAndSettle();
@@ -74,62 +81,124 @@ void main() {
     expect(find.text('Share link ready'), findsOneWidget);
   });
 
-  testWidgets('copy, share and open hand the link to the phone', (
-    tester,
-  ) async {
+  testWidgets('every channel adds ?ch= and reports the click', (tester) async {
     final actions = FakeShareActions();
-    await _openTag(tester, _verified(share: _link), actions: actions);
+    final tracker = FakeEventTracker();
+    await _openTag(
+      tester,
+      _verified(share: _link),
+      actions: actions,
+      tracker: tracker,
+    );
 
+    await tester.tap(find.text('WhatsApp'));
     await tester.tap(find.text('Copy link'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Share…'));
+    await tester.tap(find.text('More'));
     await tester.tap(find.text('See what others see'));
     await tester.pumpAndSettle();
 
-    expect(actions.copied, [_url]);
-    expect(find.text('Link copied'), findsOneWidget);
-    expect(actions.sharedTexts, [
-      'I own this $_name, verified on STAKA. $_url',
+    const text = 'I own this $_name, verified on STAKA.';
+    expect(actions.opened, [
+      'https://wa.me/?text=${Uri.encodeComponent('$text $_url?ch=whatsapp')}',
+      // Opening the public page is not a share.
+      _url,
     ]);
-    expect(actions.opened, [_url]);
+    expect(actions.copied, ['$_url?ch=copy']);
+    expect(find.text('Link copied'), findsOneWidget);
+    expect(actions.sharedTexts, ['$text $_url?ch=other']);
+    expect(tracker.shareClicks, [
+      (channel: ShareChannel.whatsapp, cardId: 'c1'),
+      (channel: ShareChannel.copy, cardId: 'c1'),
+      (channel: ShareChannel.other, cardId: 'c1'),
+    ]);
   });
 
-  testWidgets('story image: fetched, then given to the share sheet', (
+  testWidgets('Instagram story, Story and Post: downloaded, then shared', (
     tester,
   ) async {
-    final card = _verified(share: _link);
     final actions = FakeShareActions();
+    final tracker = FakeEventTracker();
+    final images = FakeShareImageApi();
     await _openTag(
       tester,
-      card,
+      _verified(share: _link),
       actions: actions,
-      tags: FakeTagRepository(cards: [card], images: [Ok(Uint8List(8))]),
+      tracker: tracker,
+      images: images,
     );
 
-    await tester.tap(find.text('Image for Instagram stories'));
+    await tester.tap(find.text('Instagram'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Story (9:16)'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Post (1:1)'));
     await tester.pumpAndSettle();
 
-    expect(actions.sharedImages, ['staka-abc123.png']);
+    expect(images.fetched, ['$_url/story', '$_url/story', '$_url/square']);
+    expect(actions.sharedImages, [
+      'staka-abc123-story.png',
+      'staka-abc123-story.png',
+      'staka-abc123-square.png',
+    ]);
+    expect(actions.sharedImageTexts.map((t) => t.split('?').last), [
+      'ch=instagram',
+      'ch=other',
+      'ch=other',
+    ]);
+    expect(tracker.shareClicks.map((c) => c.channel), [
+      ShareChannel.instagram,
+      ShareChannel.other,
+      ShareChannel.other,
+    ]);
   });
 
-  testWidgets('story image unavailable: says why', (tester) async {
-    final card = _verified(share: _link);
+  testWidgets('an image that cannot be fetched says why', (tester) async {
+    final actions = FakeShareActions();
+    final tracker = FakeEventTracker();
     await _openTag(
       tester,
-      card,
-      tags: FakeTagRepository(
-        cards: [card],
-        images: [const Err(NetworkFailure())],
-      ),
+      _verified(share: _link),
+      actions: actions,
+      tracker: tracker,
+      images: FakeShareImageApi([const Err(NetworkFailure())]),
     );
 
-    await tester.tap(find.text('Image for Instagram stories'));
+    await tester.tap(find.text('Instagram'));
     await tester.pumpAndSettle();
 
     expect(
       find.textContaining("STAKA's server isn't reachable"),
       findsOneWidget,
     );
+    expect(actions.sharedImages, isEmpty);
+    expect(tracker.shareClicks, isEmpty);
+  });
+
+  testWidgets('QR code: shown in a sheet, saved as an image', (tester) async {
+    final actions = FakeShareActions();
+    final tracker = FakeEventTracker();
+    final qrPng = FakeQrPng();
+    await _openTag(
+      tester,
+      _verified(share: _link),
+      actions: actions,
+      tracker: tracker,
+      qrPng: qrPng,
+    );
+
+    await tester.tap(find.text('QR code'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(QrCodeSheet), findsOneWidget);
+    expect(find.bySemanticsLabel('QR code for this link'), findsOneWidget);
+    expect(tracker.shareClicks.map((c) => c.channel), [ShareChannel.qr]);
+
+    await tester.tap(find.text('Save or send image'));
+    await tester.pumpAndSettle();
+
+    expect(qrPng.rendered, ['$_url?ch=qr']);
+    expect(actions.sharedImages, ['staka-abc123-qr.png']);
   });
 
   testWidgets('no app can open the link: says so', (tester) async {

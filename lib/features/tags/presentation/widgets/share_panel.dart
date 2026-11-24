@@ -5,30 +5,25 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/tags/presentation/state/share_controller.dart';
 import 'package:staka/shared/widgets/buttons/app_button.dart';
 import 'package:staka/shared/widgets/feedback/app_form_alert.dart';
-import 'package:staka/shared/widgets/sharing/share_link_actions.dart';
 
-/// "Share this tag": create the public link, then copy or share it, share
-/// the story image, see the public page, or stop sharing — the website's
-/// `SharePanel` for a verified piece.
+/// "Share this tag": create the public link, then everything the
+/// [linkSection] offers (channels, images, the public page, stop) — the
+/// website's `SharePanel` for a verified piece.
 class SharePanel extends StatelessWidget {
   const new({
     required this.onCreatePressed,
-    required this.linkActions,
-    this.url,
+    this.linkSection,
     this.busy = ShareBusy.none,
     this.errorMessage,
     this.footer,
     super.key,
   });
 
-  /// The public link while the tag is shared; null when it isn't.
-  final String? url;
+  /// The link and its actions while the tag is shared; null when it isn't.
+  final Widget? linkSection;
   final ShareBusy busy;
   final String? errorMessage;
   final VoidCallback onCreatePressed;
-
-  /// What to do with the link once it exists.
-  final ShareLinkCallbacks linkActions;
 
   /// Below the link, e.g. "Show in my public wardrobe" (V2-3).
   final Widget? footer;
@@ -46,15 +41,8 @@ class SharePanel extends StatelessWidget {
             const _ShareHeading(),
             if (errorMessage case final message?)
               AppFormAlert(message: message, tone: AlertTone.error),
-            switch (url) {
-              final link? => ShareLinkActions(
-                url: link,
-                callbacks: linkActions,
-                stopTitle: l10n.stopSharingTitle,
-                stopBody: l10n.stopSharingBody,
-                isPreparingImage: busy == ShareBusy.preparingImage,
-                isStopping: busy == ShareBusy.stopping,
-              ),
+            switch (linkSection) {
+              final section? => section,
               null => AppButton(
                 label: l10n.createShareLink,
                 loadingLabel: l10n.creatingLink,

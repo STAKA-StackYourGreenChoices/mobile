@@ -740,12 +740,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get linkCopied => 'Link copied';
 
   @override
-  String get shareEllipsis => 'Share…';
-
-  @override
-  String get storyImage => 'Image for Instagram stories';
-
-  @override
   String get preparingImage => 'Preparing image…';
 
   @override
@@ -2900,12 +2894,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createWardrobeLink => 'Create wardrobe link';
 
   @override
-  String get wardrobeQrLabel => 'QR code for your wardrobe link';
-
-  @override
-  String get wardrobeQrHint => 'Let someone scan this to open your wardrobe.';
-
-  @override
   String sharedSince(String date) {
     return 'Shared since $date';
   }
@@ -2932,4 +2920,38 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get showInWardrobeBody =>
       'When you share your wardrobe, this piece is on it.';
+
+  @override
+  String get channelWhatsApp => 'WhatsApp';
+
+  @override
+  String get channelInstagram => 'Instagram';
+
+  @override
+  String get channelQr => 'QR code';
+
+  @override
+  String get channelMore => 'More';
+
+  @override
+  String get shareImagesTitle => 'Images to post';
+
+  @override
+  String get storyImageFormat => 'Story (9:16)';
+
+  @override
+  String get postImageFormat => 'Post (1:1)';
+
+  @override
+  String get qrCodeLabel => 'QR code for this link';
+
+  @override
+  String get qrCodeHint =>
+      'Let someone scan this with their phone camera to open the link.';
+
+  @override
+  String get saveQrImage => 'Save or send image';
+
+  @override
+  String get channelInstagramStory => 'Instagram story';
 }

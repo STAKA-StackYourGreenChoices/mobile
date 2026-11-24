@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/models/share_link.dart';
+import 'package:staka/core/sharing/share_channels_controller.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_share_screen.dart';
 import 'package:staka/shared/widgets/sharing/share_link_actions.dart';
 
@@ -12,8 +13,8 @@ import '../../helpers/golden.dart';
 import '../../helpers/pump_app.dart';
 
 final _callbacks = ShareLinkCallbacks(
-  onCopy: () {},
-  onShare: (_) {},
+  onChannel: (_, _) {},
+  onImage: (_, _) {},
   onOpen: () {},
   onStop: () {},
 );
@@ -41,7 +42,13 @@ void main() {
               share: share,
               errorMessage: error,
               onCreatePressed: () {},
-              linkActions: _callbacks,
+              linkSection: ShareLinkActions(
+                url: 'https://staka.example/w/w4rdr0be',
+                callbacks: _callbacks,
+                stopTitle: 'Stop sharing your wardrobe?',
+                stopBody: 'The link stops working for everyone.',
+                preparing: SharePreparing.square,
+              ),
             ),
           ),
           brightness: brightness,

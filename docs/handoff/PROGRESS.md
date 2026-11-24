@@ -81,11 +81,13 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/claim-dispute` (V2-12): tag names who decided; Ask STAKA to look again (sheet, open, upheld, overturned)
 - [~] `feat/admin-brands-disputes` (V2-12): Admin tab hub (Brands, Disputes, Claims, Products); brand review (approve, turn down, pause, make active, document); disputes (approve the receipt / keep the decision with a note); claims read-only + Overrule; products read-only + Hide/Show. Product add/edit/import moved to the Brand tab
 - [~] `feat/product-variants` (V2-2): variant + category models; product page shows the scanned size/colour, barcode and a category chip; tag and wardrobe show the scanned size/colour; wardrobe filter chips by kind
+- [~] `feat/share-channels` (V2-4): channel row (WhatsApp, Instagram, Copy link, QR code, More) with `?ch=` on both share screens, Story 9:16 and Post 1:1 images, QR sheet savable as PNG, `SHARE_CLICKED` events
 - [~] `feat/wardrobe-share` (V2-3): Share your wardrobe card (with a verified piece), share screen (create, QR code, copy, share sheet, see what others see, stop with confirm), Show in my public wardrobe switch on verified tags
 - [~] `feat/catalog-variants` (V2-2): brand product form with type of piece, style code, sizes and colours (add/remove, at least one, no repeated codes), other shop codes sheet, 409 on the clashing row; import help lists the new columns
 - [ ] `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-25 — `feat/share-channels`: V2-4 channel row, image formats, QR sheet, share-click events (`core/analytics/` started). 513 tests pass; updated goldens share (tag panel), wardrobe_share_shared; new qr_sheet. M2 code done. Fakes only.
 - 2026-11-25 — `feat/wardrobe-share`: V2-3 wardrobe link with QR code + per-tag switch; `qr_flutter` added; share_actions moved to `core/sharing`, `ShareLinkActions` to `shared/widgets/sharing`. 505 tests pass; new goldens wardrobe_share_not_shared/shared; updated wardrobe_tags and wardrobe_filter (the new card). Fakes only.
 - 2026-11-24 — `feat/catalog-variants`: V2-2 brand product form (sizes and colours, other shop codes) + import help. 487 tests pass; brand_product_new/edit goldens updated. Fakes only.
 - 2026-11-24 — `feat/product-variants`: V2-2 shopper side (size/colour, category chip, wardrobe filter). 475 tests pass; new goldens product_variant, wardrobe_filter; no existing golden changed. Fakes only.

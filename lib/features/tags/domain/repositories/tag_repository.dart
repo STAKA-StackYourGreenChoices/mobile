@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
@@ -36,7 +34,4 @@ abstract interface class TagRepository {
 
   /// Turns the link off for good; sharing again issues a new one.
   Future<Result<void>> stopSharing(String cardId);
-
-  /// The story image the website renders for a shared tag (PNG bytes).
-  Future<Result<Uint8List>> fetchStoryImage(String slug);
 }

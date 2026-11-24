@@ -1,17 +1,14 @@
-import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
-import 'package:staka/core/sharing/share_actions.dart';
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/presentation/state/tag_controller.dart';
 
 part 'share_controller.g.dart';
 
 /// What the share panel is busy with, one thing at a time.
-enum ShareBusy { none, creating, stopping, preparingImage }
+enum ShareBusy { none, creating, stopping }
 
 /// The last outcome the panel should tell the shopper about.
 enum ShareOutcome { none, created, stopped }
@@ -29,7 +26,8 @@ class ShareState {
   final Failure? failure;
 }
 
-/// Creating and stopping a tag's public link, and sharing its story image.
+/// Creating and stopping a tag's public link. The channels and images are
+/// `ShareChannelsController` (core/sharing, V2-4).
 @riverpod
 class ShareController extends _$ShareController {
   @override
@@ -59,31 +57,5 @@ class ShareController extends _$ShareController {
       Ok() => const ShareState(outcome: ShareOutcome.stopped),
       Err(:final failure) => ShareState(failure: failure),
     };
-  }
-
-  /// Fetches the website's story image and hands it to the share sheet,
-  /// from which the shopper can post it to Instagram stories.
-  Future<void> shareStoryImage({
-    required String slug,
-    required String text,
-    Rect? origin,
-  }) async {
-    if (state.busy != ShareBusy.none) return;
-    final actions = ref.read(shareActionsProvider);
-    state = const ShareState(busy: ShareBusy.preparingImage);
-    final result = await ref.read(tagRepositoryProvider).fetchStoryImage(slug);
-    if (!ref.mounted) return;
-    state = switch (result) {
-      Ok() => const ShareState(),
-      Err(:final failure) => ShareState(failure: failure),
-    };
-    if (result case Ok(:final value)) {
-      await actions.shareImage(
-        png: value,
-        fileName: 'staka-$slug.png',
-        text: text,
-        origin: origin,
-      );
-    }
   }
 }

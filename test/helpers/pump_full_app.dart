@@ -2,11 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:staka/app/app.dart';
+import 'package:staka/core/analytics/event_tracker.dart';
 import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
+import 'package:staka/core/sharing/qr_png.dart';
 import 'package:staka/core/sharing/share_actions.dart';
+import 'package:staka/core/sharing/share_image_api.dart';
 import 'package:staka/core/time/clock.dart';
 import 'package:staka/features/account/data/repositories/account_repository_impl.dart';
 import 'package:staka/features/account/domain/repositories/account_repository.dart';
@@ -52,6 +55,7 @@ import 'fake_http_adapter.dart';
 import 'import_fakes.dart';
 import 'product_fakes.dart';
 import 'scan_fakes.dart';
+import 'sharing_fakes.dart';
 import 'tag_fakes.dart';
 import 'wardrobe_fakes.dart';
 
@@ -70,6 +74,9 @@ Future<InMemoryTokenStore> pumpApp(
   TagRepository? tags,
   ReceiptPicker? receiptPicker,
   ShareActions? shareActions,
+  EventTracker? eventTracker,
+  ShareImageApi? shareImages,
+  FakeQrPng? qrPng,
   AdminProductRepository? adminProducts,
   BrandReviewRepository? brandReview,
   DisputeRepository? disputes,
@@ -111,6 +118,13 @@ Future<InMemoryTokenStore> pumpApp(
         shareActionsProvider.overrideWithValue(
           shareActions ?? FakeShareActions(),
         ),
+        eventTrackerProvider.overrideWithValue(
+          eventTracker ?? FakeEventTracker(),
+        ),
+        shareImageApiProvider.overrideWithValue(
+          shareImages ?? FakeShareImageApi(),
+        ),
+        qrPngRendererProvider.overrideWithValue((qrPng ?? FakeQrPng()).call),
         adminProductRepositoryProvider.overrideWith(
           (_, _) => adminProducts ?? FakeAdminProductRepository(),
         ),

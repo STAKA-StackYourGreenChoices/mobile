@@ -21,7 +21,6 @@ class FakeTagRepository implements TagRepository {
     List<Result<Ownership>> uploads = const [],
     List<Result<ShareLink>> shares = const [],
     List<Result<void>> stops = const [],
-    List<Result<Uint8List>> images = const [],
     List<Result<void>> lookAgains = const [],
     List<Failure> wardrobeToggleFailures = const [],
   }) : _cards = {for (final card in cards) card.id: card},
@@ -29,7 +28,6 @@ class FakeTagRepository implements TagRepository {
        _uploads = [...uploads],
        _shares = [...shares],
        _stops = [...stops],
-       _images = [...images],
        _lookAgains = [...lookAgains],
        _toggleFailures = [...wardrobeToggleFailures];
 
@@ -38,7 +36,6 @@ class FakeTagRepository implements TagRepository {
   final List<Result<Ownership>> _uploads;
   final List<Result<ShareLink>> _shares;
   final List<Result<void>> _stops;
-  final List<Result<Uint8List>> _images;
   final List<Result<void>> _lookAgains;
   final List<Failure> _toggleFailures;
 
@@ -81,10 +78,6 @@ class FakeTagRepository implements TagRepository {
   @override
   Future<Result<void>> stopSharing(String cardId) async => _stops.removeAt(0);
 
-  @override
-  Future<Result<Uint8List>> fetchStoryImage(String slug) async =>
-      _images.removeAt(0);
-
   /// Answers with the stored card changed, unless a failure is scripted.
   @override
   Future<Result<DigitalCard>> setShowInWardrobe(
@@ -124,6 +117,9 @@ class FakeShareActions implements ShareActions {
   final List<String> copied = [];
   final List<String> sharedTexts = [];
   final List<String> sharedImages = [];
+
+  /// The text sent with each image, link included.
+  final List<String> sharedImageTexts = [];
   final List<({String fileName, String mimeType, String text})> sharedFiles =
       [];
   final List<String> opened = [];
@@ -145,7 +141,10 @@ class FakeShareActions implements ShareActions {
     required String fileName,
     required String text,
     Rect? origin,
-  }) async => sharedImages.add(fileName);
+  }) async {
+    sharedImages.add(fileName);
+    sharedImageTexts.add(text);
+  }
 
   @override
   Future<void> shareFile({

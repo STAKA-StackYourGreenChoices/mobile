@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:staka/core/api_models/digital_card_mapper.dart';
@@ -19,12 +17,9 @@ part 'tag_repository_impl.g.dart';
 @riverpod
 TagRepository tagRepository(Ref ref) {
   final api = ref.watch(dioProvider);
-  // Not built here: this provider is disposed as soon as a read finishes,
-  // and closing its own client then broke the story image download.
-  final web = ref.watch(webDioProvider);
   return TagRepositoryImpl(
     TagRemoteDataSource(api),
-    ShareRemoteDataSource(api, web),
+    ShareRemoteDataSource(api),
   );
 }
 
@@ -70,8 +65,4 @@ class TagRepositoryImpl implements TagRepository {
   @override
   Future<Result<void>> stopSharing(String cardId) =>
       guardApi(() => _sharing.stopSharing(cardId));
-
-  @override
-  Future<Result<Uint8List>> fetchStoryImage(String slug) =>
-      guardApi(() => _sharing.fetchStoryImage(slug));
 }
