@@ -9,6 +9,7 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/sharing/share_target.dart';
 import 'package:staka/core/state/request_state.dart';
+import 'package:staka/features/tags/presentation/state/card_stats_provider.dart';
 import 'package:staka/features/tags/presentation/state/order_match_controller.dart';
 import 'package:staka/features/tags/presentation/state/receipt_controller.dart';
 import 'package:staka/features/tags/presentation/state/share_controller.dart';
@@ -22,6 +23,7 @@ import 'package:staka/features/tags/presentation/widgets/receipt_option.dart';
 import 'package:staka/features/tags/presentation/widgets/receipt_source_sheet.dart';
 import 'package:staka/features/tags/presentation/widgets/share_locked.dart';
 import 'package:staka/features/tags/presentation/widgets/share_panel.dart';
+import 'package:staka/features/tags/presentation/widgets/tag_stats_section.dart';
 import 'package:staka/features/tags/presentation/widgets/tag_view.dart';
 import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
@@ -209,7 +211,17 @@ class _ShareSection extends ConsumerWidget {
         ),
         null => null,
       },
-      footer: _ShowInWardrobeSwitch(card: card),
+      footer: Column(
+        children: [
+          // Views and clicks only exist while the tag is shared (V2-5).
+          if (card.share != null)
+            switch (ref.watch(cardStatsProvider(card.id))) {
+              AsyncData(value: final stats?) => TagStatsSection(stats: stats),
+              _ => const SizedBox.shrink(),
+            },
+          _ShowInWardrobeSwitch(card: card),
+        ],
+      ),
     );
   }
 }

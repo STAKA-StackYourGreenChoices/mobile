@@ -8,7 +8,9 @@ import 'package:staka/core/models/product.dart';
 import 'package:staka/core/models/product_variant.dart';
 import 'package:staka/core/models/share_link.dart';
 import 'package:staka/core/models/sustainability_info.dart';
+import 'package:staka/features/wardrobe/domain/models/impact.dart';
 import 'package:staka/features/wardrobe/domain/models/resend_outcome.dart';
+import 'package:staka/features/wardrobe/domain/repositories/impact_repository.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repository.dart';
 
@@ -79,6 +81,42 @@ class FakeWardrobeShareRepository implements WardrobeShareRepository {
     return result;
   }
 }
+
+/// Impact and activity (V2-5). With no script the impact can't be loaded
+/// (so the wardrobe shows no card, as with an older API) and the activity
+/// is empty. Activity pages are answered by page number.
+class FakeImpactRepository implements ImpactRepository {
+  new({
+    this.impact = const Err(NotFoundFailure([])),
+    Map<int, Result<ActivityPage>> activity = const {},
+  }) : _activity = {...activity};
+
+  Result<Impact> impact;
+  final Map<int, Result<ActivityPage>> _activity;
+  int impactLoads = 0;
+  final List<int> activityPages = [];
+
+  @override
+  Future<Result<Impact>> fetchImpact() async {
+    impactLoads++;
+    return impact;
+  }
+
+  @override
+  Future<Result<ActivityPage>> fetchActivity(int page) async {
+    activityPages.add(page);
+    return _activity[page] ?? const Ok(ActivityPage(items: [], total: 0));
+  }
+}
+
+const Impact sampleImpact = Impact(
+  pieces: 4,
+  verifiedPieces: 3,
+  sharedPieces: 2,
+  totalViews: 128,
+  carbonGramsOwned: 8400,
+  points: 150,
+);
 
 final _date = DateTime.utc(2026, 11, 14);
 

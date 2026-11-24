@@ -2954,4 +2954,168 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get channelInstagramStory => 'Instagram story';
+
+  @override
+  String get impactTitle => 'Your impact';
+
+  @override
+  String get impactPieces => 'Pieces';
+
+  @override
+  String get impactVerified => 'Verified';
+
+  @override
+  String get impactShared => 'Shared';
+
+  @override
+  String get impactViews => 'Views';
+
+  @override
+  String get impactFootprint => 'Footprint owned';
+
+  @override
+  String get impactPoints => 'Points';
+
+  @override
+  String get seeYourActivity => 'See your activity';
+
+  @override
+  String get activityTitle => 'Activity';
+
+  @override
+  String get activityBody => 'What happened with your pieces, newest first.';
+
+  @override
+  String get activityEmptyTitle => 'Nothing here yet';
+
+  @override
+  String get activityEmptyBody =>
+      'Scan, add and share pieces, and it all shows up here.';
+
+  @override
+  String get aPiece => 'a piece';
+
+  @override
+  String activityScan(String product) {
+    return 'Scanned $product';
+  }
+
+  @override
+  String get activityScanUnknown => 'Scanned a product STAKA doesn\'t know yet';
+
+  @override
+  String activityCardAdded(String product) {
+    return 'Added $product to your wardrobe';
+  }
+
+  @override
+  String activityVerified(String product) {
+    return '$product was verified as yours';
+  }
+
+  @override
+  String activityRejected(String product) {
+    return 'Proof for $product wasn\'t accepted';
+  }
+
+  @override
+  String activityShared(String product) {
+    return 'Shared $product';
+  }
+
+  @override
+  String get activityWardrobeShared => 'Shared your wardrobe';
+
+  @override
+  String activityShareStopped(String product) {
+    return 'Stopped sharing $product';
+  }
+
+  @override
+  String get activityWardrobeShareStopped => 'Stopped sharing your wardrobe';
+
+  @override
+  String activityLinkSent(String product) {
+    return 'Sent the link to $product';
+  }
+
+  @override
+  String get activityWardrobeLinkSent => 'Sent your wardrobe link';
+
+  @override
+  String activityTagViewed(String product) {
+    return 'Someone viewed $product';
+  }
+
+  @override
+  String get activityWardrobeViewed => 'Someone viewed your wardrobe';
+
+  @override
+  String activityEmbedViewed(String product) {
+    return '$product was viewed on another website';
+  }
+
+  @override
+  String activityBrandLinkClicked(String product) {
+    return 'Someone visited the brand from $product';
+  }
+
+  @override
+  String get activityPointsEarned => 'Earned points';
+
+  @override
+  String get activityVoucherRedeemed => 'Redeemed a voucher';
+
+  @override
+  String get activityOther => 'Account activity';
+
+  @override
+  String activityVia(String channel) {
+    return 'via $channel';
+  }
+
+  @override
+  String pointsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count points',
+      one: '1 point',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get channelFacebook => 'Facebook';
+
+  @override
+  String get channelX => 'X';
+
+  @override
+  String get channelLinkedIn => 'LinkedIn';
+
+  @override
+  String get channelCopiedLink => 'Copied link';
+
+  @override
+  String get channelEmbed => 'Website embed';
+
+  @override
+  String get channelOther => 'Other';
+
+  @override
+  String get tagStatsTitle => 'How your link is doing';
+
+  @override
+  String get tagStatsViews => 'Views';
+
+  @override
+  String get tagStatsClicks => 'Visits to the brand';
+
+  @override
+  String get tagStatsByChannel => 'Views by where you shared it';
+
+  @override
+  String get tagStatsNoViews =>
+      'No views yet. They show here once people open your link.';
 }

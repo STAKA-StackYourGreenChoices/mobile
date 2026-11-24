@@ -4784,6 +4784,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Instagram story'**
   String get channelInstagramStory;
+
+  /// V2-5: wardrobe impact card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Your impact'**
+  String get impactTitle;
+
+  /// V2-5: impact figure label.
+  ///
+  /// In en, this message translates to:
+  /// **'Pieces'**
+  String get impactPieces;
+
+  /// V2-5: impact figure label.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get impactVerified;
+
+  /// V2-5: impact figure label.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared'**
+  String get impactShared;
+
+  /// V2-5: impact figure label: views of public tags and the wardrobe.
+  ///
+  /// In en, this message translates to:
+  /// **'Views'**
+  String get impactViews;
+
+  /// V2-5: impact figure label: carbon footprint of the owned pieces.
+  ///
+  /// In en, this message translates to:
+  /// **'Footprint owned'**
+  String get impactFootprint;
+
+  /// V2-5: impact figure label.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get impactPoints;
+
+  /// V2-5: impact card link to the Activity screen.
+  ///
+  /// In en, this message translates to:
+  /// **'See your activity'**
+  String get seeYourActivity;
+
+  /// V2-5: Activity screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get activityTitle;
+
+  /// V2-5: Activity screen intro.
+  ///
+  /// In en, this message translates to:
+  /// **'What happened with your pieces, newest first.'**
+  String get activityBody;
+
+  /// V2-5: Activity empty state title.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet'**
+  String get activityEmptyTitle;
+
+  /// V2-5: Activity empty state body.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan, add and share pieces, and it all shows up here.'**
+  String get activityEmptyBody;
+
+  /// V2-5: stands in for a product name the activity entry does not give.
+  ///
+  /// In en, this message translates to:
+  /// **'a piece'**
+  String get aPiece;
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanned {product}'**
+  String activityScan(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanned a product STAKA doesn\'t know yet'**
+  String get activityScanUnknown;
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Added {product} to your wardrobe'**
+  String activityCardAdded(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} was verified as yours'**
+  String activityVerified(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Proof for {product} wasn\'t accepted'**
+  String activityRejected(String product);
+
+  /// V2-5: activity entry: a tag link was created.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared {product}'**
+  String activityShared(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared your wardrobe'**
+  String get activityWardrobeShared;
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped sharing {product}'**
+  String activityShareStopped(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped sharing your wardrobe'**
+  String get activityWardrobeShareStopped;
+
+  /// V2-5: activity entry: a share button was used.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent the link to {product}'**
+  String activityLinkSent(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent your wardrobe link'**
+  String get activityWardrobeLinkSent;
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Someone viewed {product}'**
+  String activityTagViewed(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Someone viewed your wardrobe'**
+  String get activityWardrobeViewed;
+
+  /// V2-5: activity entry: an embed was viewed.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} was viewed on another website'**
+  String activityEmbedViewed(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Someone visited the brand from {product}'**
+  String activityBrandLinkClicked(String product);
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Earned points'**
+  String get activityPointsEarned;
+
+  /// V2-5: activity entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeemed a voucher'**
+  String get activityVoucherRedeemed;
+
+  /// V2-5: activity entry of a type the app does not know.
+  ///
+  /// In en, this message translates to:
+  /// **'Account activity'**
+  String get activityOther;
+
+  /// V2-5: how a link was shared or opened.
+  ///
+  /// In en, this message translates to:
+  /// **'via {channel}'**
+  String activityVia(String channel);
+
+  /// V2-5: a number of points.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 point} other{{count} points}}'**
+  String pointsCount(int count);
+
+  /// V2-5: share channel name.
+  ///
+  /// In en, this message translates to:
+  /// **'Facebook'**
+  String get channelFacebook;
+
+  /// V2-5: share channel name (the former Twitter).
+  ///
+  /// In en, this message translates to:
+  /// **'X'**
+  String get channelX;
+
+  /// V2-5: share channel name.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get channelLinkedIn;
+
+  /// V2-5: share channel name: the link was copied and pasted somewhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied link'**
+  String get channelCopiedLink;
+
+  /// V2-5: share channel name.
+  ///
+  /// In en, this message translates to:
+  /// **'Website embed'**
+  String get channelEmbed;
+
+  /// V2-5: share channel name: the share sheet or an unknown place.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get channelOther;
+
+  /// V2-5: tag stats heading in the share card.
+  ///
+  /// In en, this message translates to:
+  /// **'How your link is doing'**
+  String get tagStatsTitle;
+
+  /// V2-5: tag stats figure.
+  ///
+  /// In en, this message translates to:
+  /// **'Views'**
+  String get tagStatsViews;
+
+  /// V2-5: tag stats figure: taps from the public page to the brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Visits to the brand'**
+  String get tagStatsClicks;
+
+  /// V2-5: above the per-channel bars.
+  ///
+  /// In en, this message translates to:
+  /// **'Views by where you shared it'**
+  String get tagStatsByChannel;
+
+  /// V2-5: tag stats with no views.
+  ///
+  /// In en, this message translates to:
+  /// **'No views yet. They show here once people open your link.'**
+  String get tagStatsNoViews;
 }
 
 class _AppLocalizationsDelegate

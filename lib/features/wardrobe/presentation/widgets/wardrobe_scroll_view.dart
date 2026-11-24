@@ -29,6 +29,7 @@ class WardrobeScrollView extends StatelessWidget {
     this.category,
     this.onCategorySelected,
     this.onSharePressed,
+    this.impact,
     super.key,
   });
 
@@ -46,6 +47,9 @@ class WardrobeScrollView extends StatelessWidget {
 
   /// Opens the wardrobe share screen; null hides the card.
   final VoidCallback? onSharePressed;
+
+  /// "Your impact" (V2-5), under the header once the wardrobe has pieces.
+  final Widget? impact;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +98,11 @@ class WardrobeScrollView extends StatelessWidget {
               ),
             )
           else ...[
+            if (impact case final impact?)
+              SliverPadding(
+                padding: const EdgeInsets.only(top: AppSpacing.lg),
+                sliver: SliverToBoxAdapter(child: impact),
+              ),
             if ((onSharePressed, data.verified.isNotEmpty) case (
               final onPressed?,
               true,

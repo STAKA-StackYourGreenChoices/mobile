@@ -39,6 +39,7 @@ import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
+import 'package:staka/features/wardrobe/presentation/screens/activity_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_share_screen.dart';
 
@@ -109,6 +110,11 @@ final appRouteTable = <RouteBase>[
                 AppRoute.wardrobe,
                 AppRoute.wardrobeShare,
                 (_, _) => const WardrobeShareScreen(),
+              ),
+              _child(
+                AppRoute.wardrobe,
+                AppRoute.activity,
+                (_, _) => const ActivityScreen(),
               ),
             ],
           ),

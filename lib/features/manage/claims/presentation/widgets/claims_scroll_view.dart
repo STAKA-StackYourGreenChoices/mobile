@@ -1,5 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
@@ -7,10 +6,10 @@ import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/manage/claims/presentation/state/claim_list_state.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_row.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_status_tabs.dart';
-import 'package:staka/features/manage/shared/widgets/load_more_footer.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 import 'package:staka/shared/widgets/feedback/feedback_message.dart';
+import 'package:staka/shared/widgets/feedback/load_more_footer.dart';
 
 /// The claims page as one scroll: heading, status tabs, then the claims of
 /// the selected status, more loading when about five rows remain.

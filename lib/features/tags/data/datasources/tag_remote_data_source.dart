@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-
 import 'package:staka/core/api_models/digital_card_dto.dart';
 import 'package:staka/core/api_models/ownership_dto.dart';
+import 'package:staka/features/tags/domain/models/card_stats.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 
 /// `GET /digital-cards/:id` and the ownership claims under it.
@@ -28,6 +28,14 @@ class TagRemoteDataSource {
       data: {'showInWardrobe': show},
     );
     return DigitalCardDto.fromJson(response.data!);
+  }
+
+  /// `GET /me/cards/:id/stats` (V2-5).
+  Future<CardStats> fetchStats(String cardId) async {
+    final response = await _dio.get<Map<String, dynamic>>(
+      '/me/cards/${Uri.encodeComponent(cardId)}/stats',
+    );
+    return CardStats.fromJson(response.data!);
   }
 
   Future<OwnershipDto> matchOrder(String cardId) async {

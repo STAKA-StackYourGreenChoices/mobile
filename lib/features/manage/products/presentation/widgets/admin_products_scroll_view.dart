@@ -8,9 +8,9 @@ import 'package:staka/features/manage/products/presentation/widgets/admin_produc
 import 'package:staka/features/manage/products/presentation/widgets/product_filters.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_list_row.dart';
 import 'package:staka/features/manage/products/presentation/widgets/products_empty_state.dart';
-import 'package:staka/features/manage/shared/widgets/load_more_footer.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
+import 'package:staka/shared/widgets/feedback/load_more_footer.dart';
 
 /// The products page as one scroll: header, filters, then the list. Rows
 /// are built lazily and the next 20 load when about five rows remain

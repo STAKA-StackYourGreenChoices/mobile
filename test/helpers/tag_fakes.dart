@@ -8,6 +8,7 @@ import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/share_link.dart';
 import 'package:staka/core/sharing/share_actions.dart';
+import 'package:staka/features/tags/domain/models/card_stats.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 import 'package:staka/features/tags/presentation/state/receipt_picker.dart';
@@ -23,6 +24,7 @@ class FakeTagRepository implements TagRepository {
     List<Result<void>> stops = const [],
     List<Result<void>> lookAgains = const [],
     List<Failure> wardrobeToggleFailures = const [],
+    this.stats = const Err(NotFoundFailure([])),
   }) : _cards = {for (final card in cards) card.id: card},
        _matches = [...matches],
        _uploads = [...uploads],
@@ -38,6 +40,12 @@ class FakeTagRepository implements TagRepository {
   final List<Result<void>> _stops;
   final List<Result<void>> _lookAgains;
   final List<Failure> _toggleFailures;
+
+  /// The tag stats (V2-5); by default they can't be loaded, so none show.
+  final Result<CardStats> stats;
+
+  @override
+  Future<Result<CardStats>> fetchStats(String cardId) async => stats;
 
   /// Each "Show in my public wardrobe" change sent, in order.
   final List<bool> wardrobeToggles = [];

@@ -3900,5 +3900,252 @@
   "channelInstagramStory": "Instagram story",
   "@channelInstagramStory": {
     "description": "V2-4: screen-reader name of the Instagram button."
+  },
+  "impactTitle": "Your impact",
+  "@impactTitle": {
+    "description": "V2-5: wardrobe impact card title."
+  },
+  "impactPieces": "Pieces",
+  "@impactPieces": {
+    "description": "V2-5: impact figure label."
+  },
+  "impactVerified": "Verified",
+  "@impactVerified": {
+    "description": "V2-5: impact figure label."
+  },
+  "impactShared": "Shared",
+  "@impactShared": {
+    "description": "V2-5: impact figure label."
+  },
+  "impactViews": "Views",
+  "@impactViews": {
+    "description": "V2-5: impact figure label: views of public tags and the wardrobe."
+  },
+  "impactFootprint": "Footprint owned",
+  "@impactFootprint": {
+    "description": "V2-5: impact figure label: carbon footprint of the owned pieces."
+  },
+  "impactPoints": "Points",
+  "@impactPoints": {
+    "description": "V2-5: impact figure label."
+  },
+  "seeYourActivity": "See your activity",
+  "@seeYourActivity": {
+    "description": "V2-5: impact card link to the Activity screen."
+  },
+  "activityTitle": "Activity",
+  "@activityTitle": {
+    "description": "V2-5: Activity screen title."
+  },
+  "activityBody": "What happened with your pieces, newest first.",
+  "@activityBody": {
+    "description": "V2-5: Activity screen intro."
+  },
+  "activityEmptyTitle": "Nothing here yet",
+  "@activityEmptyTitle": {
+    "description": "V2-5: Activity empty state title."
+  },
+  "activityEmptyBody": "Scan, add and share pieces, and it all shows up here.",
+  "@activityEmptyBody": {
+    "description": "V2-5: Activity empty state body."
+  },
+  "aPiece": "a piece",
+  "@aPiece": {
+    "description": "V2-5: stands in for a product name the activity entry does not give."
+  },
+  "activityScan": "Scanned {product}",
+  "@activityScan": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityScanUnknown": "Scanned a product STAKA doesn't know yet",
+  "@activityScanUnknown": {
+    "description": "V2-5: activity entry."
+  },
+  "activityCardAdded": "Added {product} to your wardrobe",
+  "@activityCardAdded": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityVerified": "{product} was verified as yours",
+  "@activityVerified": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityRejected": "Proof for {product} wasn't accepted",
+  "@activityRejected": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityShared": "Shared {product}",
+  "@activityShared": {
+    "description": "V2-5: activity entry: a tag link was created.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityWardrobeShared": "Shared your wardrobe",
+  "@activityWardrobeShared": {
+    "description": "V2-5: activity entry."
+  },
+  "activityShareStopped": "Stopped sharing {product}",
+  "@activityShareStopped": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityWardrobeShareStopped": "Stopped sharing your wardrobe",
+  "@activityWardrobeShareStopped": {
+    "description": "V2-5: activity entry."
+  },
+  "activityLinkSent": "Sent the link to {product}",
+  "@activityLinkSent": {
+    "description": "V2-5: activity entry: a share button was used.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityWardrobeLinkSent": "Sent your wardrobe link",
+  "@activityWardrobeLinkSent": {
+    "description": "V2-5: activity entry."
+  },
+  "activityTagViewed": "Someone viewed {product}",
+  "@activityTagViewed": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityWardrobeViewed": "Someone viewed your wardrobe",
+  "@activityWardrobeViewed": {
+    "description": "V2-5: activity entry."
+  },
+  "activityEmbedViewed": "{product} was viewed on another website",
+  "@activityEmbedViewed": {
+    "description": "V2-5: activity entry: an embed was viewed.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityBrandLinkClicked": "Someone visited the brand from {product}",
+  "@activityBrandLinkClicked": {
+    "description": "V2-5: activity entry.",
+    "placeholders": {
+      "product": {
+        "type": "String",
+        "example": "Organic Cotton Tee"
+      }
+    }
+  },
+  "activityPointsEarned": "Earned points",
+  "@activityPointsEarned": {
+    "description": "V2-5: activity entry."
+  },
+  "activityVoucherRedeemed": "Redeemed a voucher",
+  "@activityVoucherRedeemed": {
+    "description": "V2-5: activity entry."
+  },
+  "activityOther": "Account activity",
+  "@activityOther": {
+    "description": "V2-5: activity entry of a type the app does not know."
+  },
+  "activityVia": "via {channel}",
+  "@activityVia": {
+    "description": "V2-5: how a link was shared or opened.",
+    "placeholders": {
+      "channel": {
+        "type": "String",
+        "example": "WhatsApp"
+      }
+    }
+  },
+  "pointsCount": "{count, plural, =1{1 point} other{{count} points}}",
+  "@pointsCount": {
+    "description": "V2-5: a number of points.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "channelFacebook": "Facebook",
+  "@channelFacebook": {
+    "description": "V2-5: share channel name."
+  },
+  "channelX": "X",
+  "@channelX": {
+    "description": "V2-5: share channel name (the former Twitter)."
+  },
+  "channelLinkedIn": "LinkedIn",
+  "@channelLinkedIn": {
+    "description": "V2-5: share channel name."
+  },
+  "channelCopiedLink": "Copied link",
+  "@channelCopiedLink": {
+    "description": "V2-5: share channel name: the link was copied and pasted somewhere."
+  },
+  "channelEmbed": "Website embed",
+  "@channelEmbed": {
+    "description": "V2-5: share channel name."
+  },
+  "channelOther": "Other",
+  "@channelOther": {
+    "description": "V2-5: share channel name: the share sheet or an unknown place."
+  },
+  "tagStatsTitle": "How your link is doing",
+  "@tagStatsTitle": {
+    "description": "V2-5: tag stats heading in the share card."
+  },
+  "tagStatsViews": "Views",
+  "@tagStatsViews": {
+    "description": "V2-5: tag stats figure."
+  },
+  "tagStatsClicks": "Visits to the brand",
+  "@tagStatsClicks": {
+    "description": "V2-5: tag stats figure: taps from the public page to the brand."
+  },
+  "tagStatsByChannel": "Views by where you shared it",
+  "@tagStatsByChannel": {
+    "description": "V2-5: above the per-channel bars."
+  },
+  "tagStatsNoViews": "No views yet. They show here once people open your link.",
+  "@tagStatsNoViews": {
+    "description": "V2-5: tag stats with no views."
   }
 }

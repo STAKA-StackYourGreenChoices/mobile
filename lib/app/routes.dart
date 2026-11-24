@@ -33,6 +33,7 @@ enum AppRoute {
   product('/scan/product/:gtin'),
   tag('/wardrobe/tag/:id'),
   wardrobeShare('/wardrobe/share'),
+  activity('/wardrobe/activity'),
   adminProducts('/admin/products'),
   adminBrands('/admin/brands'),
   adminBrand('/admin/brands/:id'),

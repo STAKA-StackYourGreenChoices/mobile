@@ -2,11 +2,15 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/share_link.dart';
+import 'package:staka/features/tags/domain/models/card_stats.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 
 abstract interface class TagRepository {
   /// One of the shopper's tags. `NotFoundFailure` if it isn't theirs.
   Future<Result<DigitalCard>> fetchTag(String cardId);
+
+  /// Views and clicks of the tag's public link (V2-5).
+  Future<Result<CardStats>> fetchStats(String cardId);
 
   /// Shows the piece on the public wardrobe page, or hides it (V2-3).
   Future<Result<DigitalCard>> setShowInWardrobe(

@@ -40,8 +40,10 @@ import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 import 'package:staka/features/tags/presentation/state/receipt_picker.dart';
+import 'package:staka/features/wardrobe/data/repositories/impact_repository_impl.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_share_repository_impl.dart';
+import 'package:staka/features/wardrobe/domain/repositories/impact_repository.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_repository.dart';
 import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repository.dart';
 
@@ -70,6 +72,7 @@ Future<InMemoryTokenStore> pumpApp(
   AuthRepository? auth,
   WardrobeRepository? wardrobe,
   WardrobeShareRepository? wardrobeShare,
+  ImpactRepository? impact,
   ProductRepository? products,
   TagRepository? tags,
   ReceiptPicker? receiptPicker,
@@ -107,6 +110,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         wardrobeShareRepositoryProvider.overrideWithValue(
           wardrobeShare ?? FakeWardrobeShareRepository(),
+        ),
+        impactRepositoryProvider.overrideWithValue(
+          impact ?? FakeImpactRepository(),
         ),
         productRepositoryProvider.overrideWithValue(
           products ?? FakeProductRepository(),

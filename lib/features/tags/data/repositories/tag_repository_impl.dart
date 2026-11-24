@@ -9,6 +9,7 @@ import 'package:staka/core/network/dio_client.dart';
 import 'package:staka/core/network/guard_api.dart';
 import 'package:staka/features/tags/data/datasources/share_remote_data_source.dart';
 import 'package:staka/features/tags/data/datasources/tag_remote_data_source.dart';
+import 'package:staka/features/tags/domain/models/card_stats.dart';
 import 'package:staka/features/tags/domain/models/picked_receipt.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
 
@@ -32,6 +33,10 @@ class TagRepositoryImpl implements TagRepository {
   @override
   Future<Result<DigitalCard>> fetchTag(String cardId) =>
       guardApi(() async => (await _remote.fetchTag(cardId)).toDomain());
+
+  @override
+  Future<Result<CardStats>> fetchStats(String cardId) =>
+      guardApi(() => _remote.fetchStats(cardId));
 
   @override
   Future<Result<DigitalCard>> setShowInWardrobe(

@@ -67,7 +67,7 @@ final class ProductControllerProvider
   }
 }
 
-String _$productControllerHash() => r'54fe8b494b1438d60613714bac01410d335a169c';
+String _$productControllerHash() => r'9d69a8ccf438a4ad59bc32d714d0acd9d4fbd412';
 
 /// The product for one code. [isScan]: opened from the Scan tab, so the
 /// lookup's answer is reported as a scan (V2-5); the tag's "Product

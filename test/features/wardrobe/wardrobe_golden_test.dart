@@ -11,6 +11,7 @@ import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/digital_card.dart';
 import 'package:staka/core/models/ownership_status.dart';
 import 'package:staka/core/models/product_variant.dart';
+import 'package:staka/features/wardrobe/data/repositories/impact_repository_impl.dart';
 import 'package:staka/features/wardrobe/data/repositories/wardrobe_repository_impl.dart';
 import 'package:staka/features/wardrobe/presentation/screens/wardrobe_screen.dart';
 
@@ -20,26 +21,34 @@ import '../../helpers/golden.dart';
 import '../../helpers/pump_app.dart';
 import '../../helpers/wardrobe_fakes.dart';
 
-Widget _wardrobe(List<DigitalCard> cards, {required bool emailVerified}) =>
-    ProviderScope(
-      overrides: [
-        sessionRepositoryProvider.overrideWithValue(
-          SessionRepository(
-            Dio(BaseOptions(baseUrl: 'http://api.test'))
-              ..httpClientAdapter = FakeHttpAdapter([
-                json(200, userJson(emailVerified: emailVerified)),
-              ]),
-            InMemoryTokenStore(
-              const AuthTokens(accessToken: 'a', refreshToken: 'r'),
-            ),
-          ),
+Widget _wardrobe(
+  List<DigitalCard> cards, {
+  required bool emailVerified,
+  bool withImpact = false,
+}) => ProviderScope(
+  overrides: [
+    sessionRepositoryProvider.overrideWithValue(
+      SessionRepository(
+        Dio(BaseOptions(baseUrl: 'http://api.test'))
+          ..httpClientAdapter = FakeHttpAdapter([
+            json(200, userJson(emailVerified: emailVerified)),
+          ]),
+        InMemoryTokenStore(
+          const AuthTokens(accessToken: 'a', refreshToken: 'r'),
         ),
-        wardrobeRepositoryProvider.overrideWithValue(
-          FakeWardrobeRepository(cards: [Ok(cards)]),
-        ),
-      ],
-      child: const WardrobeScreen(),
-    );
+      ),
+    ),
+    wardrobeRepositoryProvider.overrideWithValue(
+      FakeWardrobeRepository(cards: [Ok(cards)]),
+    ),
+    impactRepositoryProvider.overrideWithValue(
+      withImpact
+          ? FakeImpactRepository(impact: const Ok(sampleImpact))
+          : FakeImpactRepository(),
+    ),
+  ],
+  child: const WardrobeScreen(),
+);
 
 void main() {
   setUpAll(loadAppFonts);
@@ -79,6 +88,17 @@ void main() {
       true,
     ),
     'empty': (<DigitalCard>[], true),
+    // V2-5: the impact summary under the header.
+    'impact': (
+      [
+        cardFor(
+          id: '1',
+          name: 'Organic Cotton Tee',
+          status: OwnershipStatus.verified,
+        ),
+      ],
+      true,
+    ),
   };
 
   for (final MapEntry(key: name, value: (cards, verified)) in cases.entries) {
@@ -89,7 +109,11 @@ void main() {
           usePhoneScreen(tester, height: name == 'empty' ? 760 : 1700);
           await pumpThemed(
             tester,
-            _wardrobe(cards, emailVerified: verified),
+            _wardrobe(
+              cards,
+              emailVerified: verified,
+              withImpact: name == 'impact',
+            ),
             brightness: brightness,
           );
           await tester.pumpAndSettle();
