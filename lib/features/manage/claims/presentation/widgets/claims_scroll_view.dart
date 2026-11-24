@@ -16,6 +16,7 @@ import 'package:staka/shared/widgets/feedback/feedback_message.dart';
 /// the selected status, more loading when about five rows remain.
 class ClaimsScrollView extends StatelessWidget {
   const new({
+    required this.description,
     required this.status,
     required this.state,
     required this.onStatusSelected,
@@ -26,6 +27,8 @@ class ClaimsScrollView extends StatelessWidget {
     super.key,
   });
 
+  /// Under the heading: what claims are, for this side.
+  final String description;
   final ClaimStatus status;
   final ClaimListState state;
   final ValueChanged<ClaimStatus> onStatusSelected;
@@ -77,7 +80,7 @@ class ClaimsScrollView extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.xxs),
                   Text(
-                    l10n.adminClaimsDescription,
+                    description,
                     style: context.text.bodyLarge.copyWith(
                       color: context.colors.inkMuted,
                     ),

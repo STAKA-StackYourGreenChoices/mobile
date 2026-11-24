@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:staka/app/routes.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
@@ -15,6 +14,7 @@ import 'package:staka/features/manage/claims/presentation/widgets/claim_decision
 import 'package:staka/features/manage/claims/presentation/widgets/claim_facts.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_history.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_receipt_preview.dart';
+import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/manage/shared/widgets/admin_not_found.dart';
 import 'package:staka/shared/formatters/date_format.dart';
@@ -47,7 +47,7 @@ class AdminClaimScreen extends ConsumerWidget {
             ? l10n.claimApproved
             : l10n.claimRejected,
       );
-      context.goNamed(AppRoute.adminClaims.name);
+      context.goNamed(scope.claimsRoute.name);
     });
 
     return AppScaffold(
@@ -57,7 +57,7 @@ class AdminClaimScreen extends ConsumerWidget {
         ClaimReviewLoading() => const AppLoader(),
         ClaimReviewNotFound() => AdminNotFound(
           backLabel: l10n.adminClaims,
-          onBackPressed: () => context.goNamed(AppRoute.adminClaims.name),
+          onBackPressed: () => context.goNamed(scope.claimsRoute.name),
         ),
         ClaimReviewFailed(:final failure) => AppErrorState(
           failure: failure,
@@ -74,7 +74,7 @@ class AdminClaimScreen extends ConsumerWidget {
               scope: scope,
               claim: detail.claim,
               onOpenPressed: () => context.goNamed(
-                AppRoute.adminClaimReceipt.name,
+                scope.claimReceiptRoute.name,
                 pathParameters: {'id': claimId},
               ),
             ),

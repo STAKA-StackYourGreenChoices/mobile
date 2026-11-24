@@ -3704,6 +3704,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your brand isn\'t ready yet. Try again in a moment.'**
   String get brandNotReadyYet;
+
+  /// Brand claims list: under the heading.
+  ///
+  /// In en, this message translates to:
+  /// **'Shoppers who bought your products send a receipt. Approve it when it shows they bought this product: they become its verified owner. Order matches are approved automatically.'**
+  String get brandClaimsDescription;
+
+  /// Brand hub: Claims row when the count is unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the proofs of purchase for your products.'**
+  String get brandClaimsHubDescription;
+
+  /// Brand hub: Claims row with how many wait.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing waiting. Proofs of purchase for your products show up here.} =1{1 proof of purchase is waiting for you.} other{{count} proofs of purchase are waiting for you.}}'**
+  String brandClaimsWaiting(int count);
 }
 
 class _AppLocalizationsDelegate

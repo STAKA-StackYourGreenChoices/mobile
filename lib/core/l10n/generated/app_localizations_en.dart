@@ -2237,4 +2237,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get brandNotReadyYet =>
       'Your brand isn\'t ready yet. Try again in a moment.';
+
+  @override
+  String get brandClaimsDescription =>
+      'Shoppers who bought your products send a receipt. Approve it when it shows they bought this product: they become its verified owner. Order matches are approved automatically.';
+
+  @override
+  String get brandClaimsHubDescription =>
+      'Check the proofs of purchase for your products.';
+
+  @override
+  String brandClaimsWaiting(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count proofs of purchase are waiting for you.',
+      one: '1 proof of purchase is waiting for you.',
+      zero:
+          'Nothing waiting. Proofs of purchase for your products show up here.',
+    );
+    return '$_temp0';
+  }
 }

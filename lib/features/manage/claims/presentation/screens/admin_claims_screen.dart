@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:staka/app/routes.dart';
+import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/manage/claims/presentation/state/admin_claims_controller.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claims_scroll_view.dart';
+import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
@@ -33,6 +34,10 @@ class _AdminClaimsScreenState extends ConsumerState<AdminClaimsScreen> {
       showAppBar: true,
       isScrollable: false,
       body: ClaimsScrollView(
+        description: switch (widget.scope) {
+          AdminScope() => context.l10n.adminClaimsDescription,
+          BrandScope() => context.l10n.brandClaimsDescription,
+        },
         status: _status,
         state: ref.watch(list),
         onStatusSelected: (status) => setState(() => _status = status),
@@ -40,7 +45,7 @@ class _AdminClaimsScreenState extends ConsumerState<AdminClaimsScreen> {
         onRetry: controller.retry,
         onLoadMore: controller.loadMore,
         onClaimPressed: (claim) => context.goNamed(
-          AppRoute.adminClaim.name,
+          widget.scope.claimRoute.name,
           pathParameters: {'id': claim.id},
         ),
       ),

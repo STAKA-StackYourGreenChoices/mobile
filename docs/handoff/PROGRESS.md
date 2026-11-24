@@ -77,9 +77,11 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [x] `refactor/manage-scope` (V2-12): `features/admin` → `features/manage`, `ManageScope` threaded through data sources, providers and screens; no behaviour change, goldens unchanged (only moved)
 - [~] `feat/brand-apply` (V2-12): Account → For brands → intro, 3-step application (claim a listed brand, files), status cards, edit and resubmit
 - [~] `feat/brand-portal` (V2-12): Brand tab + hub + switcher, paused banner, Team (invite, remove), Settings, brand Products/Import, Open the Brand tab from an approved application
-- [ ] `feat/brand-claims`, `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
+- [~] `feat/brand-claims` (V2-12): Claims row with the waiting count on the brand hub; brand claim list, review, receipt, approve, reject
+- [ ] `feat/claim-dispute`, `feat/admin-brands-disputes`, `feat/product-variants`, `feat/catalog-variants`, `feat/wardrobe-share`, `feat/share-channels`
 
 ## Session log (newest first, one line each)
+- 2026-11-24 — `feat/brand-claims`: brand claim review from the Brand tab. 426 tests pass; brand_home goldens updated for the Claims row. Fakes only.
 - 2026-11-23 — `feat/brand-portal`: Brand tab, hub, switcher, Team, Settings. 422 tests pass; no existing golden changed. Fakes only.
 - 2026-11-23 — `feat/brand-apply`: brand sign-up form + application status. 396 tests pass; Account goldens updated for the new "For brands" section. Fakes only.
 - 2026-11-23 — M2 started: `refactor/manage-scope` (admin code → `features/manage/` with `ManageScope`). 377 tests pass, no golden changed.

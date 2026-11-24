@@ -286,6 +286,38 @@ final appRouteTable = <RouteBase>[
               ),
               _child(
                 AppRoute.brandHome,
+                AppRoute.brandClaims,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (_, scope) => AdminClaimsScreen(scope: scope),
+                ),
+                children: [
+                  _child(
+                    AppRoute.brandClaims,
+                    AppRoute.brandClaim,
+                    (_, state) => CurrentBrandBuilder(
+                      key: ValueKey(state.pathParameters['id']),
+                      builder: (_, scope) => AdminClaimScreen(
+                        scope: scope,
+                        claimId: state.pathParameters['id'] ?? '',
+                      ),
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.brandClaim,
+                        AppRoute.brandClaimReceipt,
+                        (_, state) => CurrentBrandBuilder(
+                          builder: (_, scope) => ClaimReceiptScreen(
+                            scope: scope,
+                            claimId: state.pathParameters['id'] ?? '',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              _child(
+                AppRoute.brandHome,
                 AppRoute.brandImport,
                 (_, _) => CurrentBrandBuilder(
                   builder: (_, scope) => AdminImportScreen(scope: scope),

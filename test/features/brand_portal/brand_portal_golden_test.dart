@@ -13,7 +13,10 @@ import 'package:staka/features/brand_portal/data/repositories/brand_portal_repos
 import 'package:staka/features/brand_portal/presentation/screens/brand_home_screen.dart';
 import 'package:staka/features/brand_portal/presentation/screens/brand_settings_screen.dart';
 import 'package:staka/features/brand_portal/presentation/screens/brand_team_screen.dart';
+import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
+import 'package:staka/features/manage/claims/domain/models/claim.dart';
 
+import '../../helpers/admin_claim_fakes.dart';
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/brand_portal_fakes.dart';
 import '../../helpers/fake_http_adapter.dart';
@@ -40,6 +43,11 @@ Widget _signedIn(Widget screen, List<Map<String, Object?>> brands) =>
             InMemoryTokenStore(
               const AuthTokens(accessToken: 'a', refreshToken: 'r'),
             ),
+          ),
+        ),
+        adminClaimRepositoryProvider.overrideWith(
+          (_, _) => FakeAdminClaimRepository(
+            pages: (_) => const Ok(ClaimPage(items: [], total: 3)),
           ),
         ),
         brandPortalRepositoryProvider.overrideWithValue(

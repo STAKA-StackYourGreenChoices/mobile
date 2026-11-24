@@ -25,6 +25,21 @@ extension ManageRoutes on ManageScope {
     BrandScope() => AppRoute.brandImport,
   };
 
+  AppRoute get claimsRoute => switch (this) {
+    AdminScope() => AppRoute.adminClaims,
+    BrandScope() => AppRoute.brandClaims,
+  };
+
+  AppRoute get claimRoute => switch (this) {
+    AdminScope() => AppRoute.adminClaim,
+    BrandScope() => AppRoute.brandClaim,
+  };
+
+  AppRoute get claimReceiptRoute => switch (this) {
+    AdminScope() => AppRoute.adminClaimReceipt,
+    BrandScope() => AppRoute.brandClaimReceipt,
+  };
+
   /// A brand works on its own products only: no brand filter, no brand
   /// choice in the product form, no Brands page.
   bool get worksOnOneBrand => this is BrandScope;

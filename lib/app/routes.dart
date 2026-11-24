@@ -44,6 +44,9 @@ enum AppRoute {
   brandProductNew('/brand/products/new'),
   brandProductEdit('/brand/products/:id'),
   brandImport('/brand/import'),
+  brandClaims('/brand/claims'),
+  brandClaim('/brand/claims/:id'),
+  brandClaimReceipt('/brand/claims/:id/receipt'),
   brandTeam('/brand/team'),
   brandSettings('/brand/settings');
 

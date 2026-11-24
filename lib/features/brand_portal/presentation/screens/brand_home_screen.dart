@@ -10,12 +10,15 @@ import 'package:staka/features/brand_portal/presentation/state/current_brand.dar
 import 'package:staka/features/brand_portal/presentation/widgets/brand_header.dart';
 import 'package:staka/features/brand_portal/presentation/widgets/brand_suspended_banner.dart';
 import 'package:staka/features/brand_portal/presentation/widgets/brand_switcher_sheet.dart';
+import 'package:staka/features/manage/claims/presentation/state/pending_claim_count_provider.dart';
 import 'package:staka/features/manage/hub/presentation/widgets/admin_section_tile.dart';
+import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
 /// The Brand tab (V2-12): the current brand, a switcher when the person
-/// belongs to several, and what its team can do there. Team and Settings
-/// are owners-only changes; a paused brand shows why and nothing else.
+/// belongs to several, and what its team can do there, claims first (with
+/// how many wait). Settings is for owners; a paused brand shows why and
+/// nothing else.
 class BrandHomeScreen extends ConsumerWidget {
   const new({super.key});
 
@@ -38,7 +41,20 @@ class BrandHomeScreen extends ConsumerWidget {
       ref.read(selectedBrandIdProvider.notifier).select(picked.id);
     }
 
+    // A paused brand's claims are locked: nothing to count.
+    final pending = brand.isSuspended
+        ? null
+        : ref.watch(pendingClaimCountProvider(BrandScope(brand.id)));
     final sections = [
+      (
+        AppRoute.brandClaims,
+        Icons.receipt_long_outlined,
+        l10n.adminClaims,
+        switch (pending) {
+          AsyncData(value: final count?) => l10n.brandClaimsWaiting(count),
+          _ => l10n.brandClaimsHubDescription,
+        },
+      ),
       (
         AppRoute.brandProducts,
         Icons.inventory_2_outlined,
