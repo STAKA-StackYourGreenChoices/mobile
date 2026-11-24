@@ -3299,4 +3299,134 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allowNotifications => 'Allow notifications';
+
+  @override
+  String get navRewards => 'Rewards';
+
+  @override
+  String get rewardsTitle => 'Rewards';
+
+  @override
+  String get rewardsBody =>
+      'Points for proving and sharing what you own, to swap for vouchers from brands on STAKA.';
+
+  @override
+  String get pointsBalanceLabel => 'Your points';
+
+  @override
+  String pointsUnit(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'points',
+      one: 'point',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pointsExpireOn(int count, String date) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count points expire on $date',
+      one: '1 point expires on $date',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get pointsSeeHistory => 'See your points history';
+
+  @override
+  String get howToEarn => 'How to earn';
+
+  @override
+  String earnDailyCap(int cap) {
+    return 'Up to $cap points a day';
+  }
+
+  @override
+  String get pointsSmallPrint =>
+      'Points expire 12 months after you earn them. They can\'t be cashed out, bought or passed on.';
+
+  @override
+  String get earnPieceVerified => 'Prove a piece is yours';
+
+  @override
+  String get earnFirstShare => 'Share a verified piece for the first time';
+
+  @override
+  String get earnWardrobeShared => 'Share your wardrobe';
+
+  @override
+  String get earnViews => 'Every 10 views of a shared tag';
+
+  @override
+  String get earnPhoneVerified => 'Add and verify your phone number';
+
+  @override
+  String get pointsOther => 'Points';
+
+  @override
+  String pointsForVerified(String product) {
+    return '$product was verified';
+  }
+
+  @override
+  String pointsForShare(String product) {
+    return 'You shared $product';
+  }
+
+  @override
+  String get pointsForWardrobeShare => 'You shared your wardrobe';
+
+  @override
+  String pointsForViews(String product) {
+    return '10 more views of $product';
+  }
+
+  @override
+  String get pointsForPhone => 'You verified your phone number';
+
+  @override
+  String pointsUsedFor(String reward) {
+    return 'Used for $reward';
+  }
+
+  @override
+  String get pointsUsedForReward => 'Used for a reward';
+
+  @override
+  String pointsTakenBack(String product) {
+    return 'Taken back: $product is no longer verified';
+  }
+
+  @override
+  String get pointsExpired => 'Points expired';
+
+  @override
+  String get pointsAdjusted => 'Adjusted by STAKA';
+
+  @override
+  String pointsExpiresOn(String date) {
+    return 'expires $date';
+  }
+
+  @override
+  String get pointsHistoryTitle => 'Points history';
+
+  @override
+  String get pointsHistoryEmptyTitle => 'No points yet';
+
+  @override
+  String get pointsHistoryEmptyBody =>
+      'Prove a piece is yours or share it to earn your first points.';
+
+  @override
+  String get adminBrandPortal => 'Your brand';
+
+  @override
+  String get adminBrandPortalDescription =>
+      'Claims, products, rewards and team of the brands you belong to.';
 }

@@ -5342,6 +5342,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Allow notifications'**
   String get allowNotifications;
+
+  /// No description provided for @navRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards'**
+  String get navRewards;
+
+  /// No description provided for @rewardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards'**
+  String get rewardsTitle;
+
+  /// No description provided for @rewardsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Points for proving and sharing what you own, to swap for vouchers from brands on STAKA.'**
+  String get rewardsBody;
+
+  /// No description provided for @pointsBalanceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your points'**
+  String get pointsBalanceLabel;
+
+  /// No description provided for @pointsUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{point} other{points}}'**
+  String pointsUnit(int count);
+
+  /// No description provided for @pointsExpireOn.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 point expires on {date}} other{{count} points expire on {date}}}'**
+  String pointsExpireOn(int count, String date);
+
+  /// No description provided for @pointsSeeHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'See your points history'**
+  String get pointsSeeHistory;
+
+  /// No description provided for @howToEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'How to earn'**
+  String get howToEarn;
+
+  /// No description provided for @earnDailyCap.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {cap} points a day'**
+  String earnDailyCap(int cap);
+
+  /// No description provided for @pointsSmallPrint.
+  ///
+  /// In en, this message translates to:
+  /// **'Points expire 12 months after you earn them. They can\'t be cashed out, bought or passed on.'**
+  String get pointsSmallPrint;
+
+  /// No description provided for @earnPieceVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Prove a piece is yours'**
+  String get earnPieceVerified;
+
+  /// No description provided for @earnFirstShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share a verified piece for the first time'**
+  String get earnFirstShare;
+
+  /// No description provided for @earnWardrobeShared.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your wardrobe'**
+  String get earnWardrobeShared;
+
+  /// No description provided for @earnViews.
+  ///
+  /// In en, this message translates to:
+  /// **'Every 10 views of a shared tag'**
+  String get earnViews;
+
+  /// No description provided for @earnPhoneVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Add and verify your phone number'**
+  String get earnPhoneVerified;
+
+  /// No description provided for @pointsOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get pointsOther;
+
+  /// No description provided for @pointsForVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'{product} was verified'**
+  String pointsForVerified(String product);
+
+  /// No description provided for @pointsForShare.
+  ///
+  /// In en, this message translates to:
+  /// **'You shared {product}'**
+  String pointsForShare(String product);
+
+  /// No description provided for @pointsForWardrobeShare.
+  ///
+  /// In en, this message translates to:
+  /// **'You shared your wardrobe'**
+  String get pointsForWardrobeShare;
+
+  /// No description provided for @pointsForViews.
+  ///
+  /// In en, this message translates to:
+  /// **'10 more views of {product}'**
+  String pointsForViews(String product);
+
+  /// No description provided for @pointsForPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'You verified your phone number'**
+  String get pointsForPhone;
+
+  /// No description provided for @pointsUsedFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for {reward}'**
+  String pointsUsedFor(String reward);
+
+  /// No description provided for @pointsUsedForReward.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for a reward'**
+  String get pointsUsedForReward;
+
+  /// No description provided for @pointsTakenBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken back: {product} is no longer verified'**
+  String pointsTakenBack(String product);
+
+  /// No description provided for @pointsExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Points expired'**
+  String get pointsExpired;
+
+  /// No description provided for @pointsAdjusted.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjusted by STAKA'**
+  String get pointsAdjusted;
+
+  /// No description provided for @pointsExpiresOn.
+  ///
+  /// In en, this message translates to:
+  /// **'expires {date}'**
+  String pointsExpiresOn(String date);
+
+  /// No description provided for @pointsHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Points history'**
+  String get pointsHistoryTitle;
+
+  /// No description provided for @pointsHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No points yet'**
+  String get pointsHistoryEmptyTitle;
+
+  /// No description provided for @pointsHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Prove a piece is yours or share it to earn your first points.'**
+  String get pointsHistoryEmptyBody;
+
+  /// No description provided for @adminBrandPortal.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brand'**
+  String get adminBrandPortal;
+
+  /// No description provided for @adminBrandPortalDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Claims, products, rewards and team of the brands you belong to.'**
+  String get adminBrandPortalDescription;
 }
 
 class _AppLocalizationsDelegate

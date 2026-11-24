@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:staka/app/routes.dart';
+import 'package:staka/core/auth/session_controller.dart';
+import 'package:staka/core/auth/session_state.dart';
 import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
@@ -23,6 +25,12 @@ class AdminHomeScreen extends ConsumerWidget {
     final l10n = context.l10n;
     final brands = ref.watch(pendingBrandCountProvider);
     final disputes = ref.watch(openDisputeCountProvider);
+    // Admins who also run a brand have no Brand tab (five tabs at most).
+    final hasBrand = ref.watch(
+      sessionControllerProvider.select(
+        (session) => session is SignedIn && session.user.hasBrandPortal,
+      ),
+    );
     final sections = [
       (
         AppRoute.adminBrands,
@@ -60,6 +68,13 @@ class AdminHomeScreen extends ConsumerWidget {
         l10n.analyticsTitle,
         l10n.adminAnalyticsDescription,
       ),
+      if (hasBrand)
+        (
+          AppRoute.brandHome,
+          Icons.storefront_outlined,
+          l10n.adminBrandPortal,
+          l10n.adminBrandPortalDescription,
+        ),
     ];
     return AppScaffold(
       body: Column(

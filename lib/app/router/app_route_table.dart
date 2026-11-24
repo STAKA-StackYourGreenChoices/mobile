@@ -40,6 +40,8 @@ import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/notifications/presentation/screens/notification_settings_screen.dart';
 import 'package:staka/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
+import 'package:staka/features/rewards/presentation/screens/points_history_screen.dart';
+import 'package:staka/features/rewards/presentation/screens/rewards_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
 import 'package:staka/features/wardrobe/presentation/screens/activity_screen.dart';
@@ -400,6 +402,22 @@ final appRouteTable = <RouteBase>[
                 (_, _) => CurrentBrandBuilder(
                   builder: (brand, _) => BrandSettingsScreen(brand: brand),
                 ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      // Branch 5 (V2-6), after the others so their indexes stay.
+      StatefulShellBranch(
+        routes: [
+          _route(
+            AppRoute.rewards,
+            (_, _) => const RewardsScreen(),
+            children: [
+              _child(
+                AppRoute.rewards,
+                AppRoute.rewardsHistory,
+                (_, _) => const PointsHistoryScreen(),
               ),
             ],
           ),

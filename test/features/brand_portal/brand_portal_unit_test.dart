@@ -73,16 +73,27 @@ void main() {
       expect(routingKeyOf(member), isNot(routingKeyOf(shopper)));
     });
 
-    test('the tab shows between Scan and Admin, for members only', () {
+    test('the tab shows after Rewards, for members only', () {
       expect(visibleTabs(isAdmin: false, hasBrandPortal: false), [
         ShellTab.wardrobe,
         ShellTab.scan,
+        ShellTab.rewards,
         ShellTab.account,
       ]);
+      expect(visibleTabs(isAdmin: false, hasBrandPortal: true), [
+        ShellTab.wardrobe,
+        ShellTab.scan,
+        ShellTab.rewards,
+        ShellTab.brand,
+        ShellTab.account,
+      ]);
+    });
+
+    test('an admin in a brand gets Admin only: five tabs at most', () {
       expect(visibleTabs(isAdmin: true, hasBrandPortal: true), [
         ShellTab.wardrobe,
         ShellTab.scan,
-        ShellTab.brand,
+        ShellTab.rewards,
         ShellTab.admin,
         ShellTab.account,
       ]);

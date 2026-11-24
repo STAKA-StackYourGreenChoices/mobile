@@ -314,9 +314,16 @@ void main() {
       );
     });
 
-    test('rewards, unknown targets and missing ids go nowhere', () {
-      for (final n in [
+    test('rewards open the Rewards tab', () {
+      final rewards = notificationDestination(
         notificationFor('n1', target: NotificationTarget.rewards),
+      )!;
+      expect(rewards.route, AppRoute.rewards);
+      expect(rewards.isInWardrobe, isFalse);
+    });
+
+    test('vouchers, unknown targets and missing ids go nowhere', () {
+      for (final n in [
         notificationFor('n2', target: NotificationTarget.voucher),
         notificationFor('n3', target: NotificationTarget.none),
         notificationFor('n4', targetId: null),

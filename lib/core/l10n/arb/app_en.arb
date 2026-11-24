@@ -4236,5 +4236,103 @@
   "phonePushOffTitle": "Notifications are off on this phone",
   "phonePushOffAskBody": "Allow them to hear when a receipt is checked or your tags get views.",
   "phonePushOffDeniedBody": "To get them, turn on notifications for STAKA in your phone's settings.",
-  "allowNotifications": "Allow notifications"
+  "allowNotifications": "Allow notifications",
+  "navRewards": "Rewards",
+  "rewardsTitle": "Rewards",
+  "rewardsBody": "Points for proving and sharing what you own, to swap for vouchers from brands on STAKA.",
+  "pointsBalanceLabel": "Your points",
+  "pointsUnit": "{count, plural, =1{point} other{points}}",
+  "@pointsUnit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pointsExpireOn": "{count, plural, =1{1 point expires on {date}} other{{count} points expire on {date}}}",
+  "@pointsExpireOn": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsSeeHistory": "See your points history",
+  "howToEarn": "How to earn",
+  "earnDailyCap": "Up to {cap} points a day",
+  "@earnDailyCap": {
+    "placeholders": {
+      "cap": {
+        "type": "int"
+      }
+    }
+  },
+  "pointsSmallPrint": "Points expire 12 months after you earn them. They can't be cashed out, bought or passed on.",
+  "earnPieceVerified": "Prove a piece is yours",
+  "earnFirstShare": "Share a verified piece for the first time",
+  "earnWardrobeShared": "Share your wardrobe",
+  "earnViews": "Every 10 views of a shared tag",
+  "earnPhoneVerified": "Add and verify your phone number",
+  "pointsOther": "Points",
+  "pointsForVerified": "{product} was verified",
+  "@pointsForVerified": {
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsForShare": "You shared {product}",
+  "@pointsForShare": {
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsForWardrobeShare": "You shared your wardrobe",
+  "pointsForViews": "10 more views of {product}",
+  "@pointsForViews": {
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsForPhone": "You verified your phone number",
+  "pointsUsedFor": "Used for {reward}",
+  "@pointsUsedFor": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsUsedForReward": "Used for a reward",
+  "pointsTakenBack": "Taken back: {product} is no longer verified",
+  "@pointsTakenBack": {
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsExpired": "Points expired",
+  "pointsAdjusted": "Adjusted by STAKA",
+  "pointsExpiresOn": "expires {date}",
+  "@pointsExpiresOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pointsHistoryTitle": "Points history",
+  "pointsHistoryEmptyTitle": "No points yet",
+  "pointsHistoryEmptyBody": "Prove a piece is yours or share it to earn your first points.",
+  "adminBrandPortal": "Your brand",
+  "adminBrandPortalDescription": "Claims, products, rewards and team of the brands you belong to."
 }

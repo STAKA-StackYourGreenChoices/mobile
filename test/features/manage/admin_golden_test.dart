@@ -1,9 +1,11 @@
 @Tags(['golden'])
 library;
 
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:staka/core/auth/session_repository.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/models/ownership.dart';
 import 'package:staka/core/models/product_variant.dart';
@@ -28,6 +30,8 @@ import 'package:staka/features/manage/shared/manage_scope.dart';
 import '../../helpers/admin_claim_fakes.dart';
 import '../../helpers/admin_product_fakes.dart';
 import '../../helpers/admin_review_fakes.dart';
+import '../../helpers/auth_fakes.dart';
+import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/golden.dart';
 import '../../helpers/product_fakes.dart';
 import '../../helpers/pump_app.dart';
@@ -65,6 +69,13 @@ final _claims = FakeAdminClaimRepository(
 Widget _scoped(Widget screen, {FakeAdminProductRepository? products}) =>
     ProviderScope(
       overrides: [
+        // The hub reads the session (an admin's own brand); signed out here.
+        sessionRepositoryProvider.overrideWithValue(
+          SessionRepository(
+            Dio()..httpClientAdapter = FakeHttpAdapter([]),
+            InMemoryTokenStore(),
+          ),
+        ),
         adminProductRepositoryProvider.overrideWith(
           (_, _) => products ?? FakeAdminProductRepository(),
         ),

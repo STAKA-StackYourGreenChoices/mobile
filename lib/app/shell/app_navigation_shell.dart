@@ -26,7 +26,9 @@ class AppNavigationShell extends ConsumerWidget {
       ),
     );
     final tabs = visibleTabs(isAdmin: isAdmin, hasBrandPortal: hasBrandPortal);
-    final selected = tabs.indexWhere((tab) => tab.branch == shell.currentIndex);
+    var selected = tabs.indexWhere((tab) => tab.branch == shell.currentIndex);
+    // An admin in their brand's hub: no Brand tab, so Admin stays lit.
+    if (selected < 0) selected = tabs.indexOf(ShellTab.admin);
 
     return Scaffold(
       body: shell,

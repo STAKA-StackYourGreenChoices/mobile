@@ -7,7 +7,8 @@ enum TabAudience { everyone, brandMembers, admins }
 
 /// One bottom-bar tab. [branch] is its index in the router's shell route,
 /// which is fixed; the visible order (this enum's) skips Brand for people
-/// without an approved brand and Admin for non-admins.
+/// without an approved brand (and for admins, who open it from the Admin
+/// hub) and Admin for non-admins.
 enum ShellTab {
   wardrobe(
     0,
@@ -21,6 +22,7 @@ enum ShellTab {
     Icons.qr_code_scanner_rounded,
     TabAudience.everyone,
   ),
+  rewards(5, Icons.redeem_outlined, Icons.redeem_rounded, TabAudience.everyone),
   brand(
     4,
     Icons.storefront_outlined,
@@ -50,6 +52,7 @@ enum ShellTab {
   String label(AppLocalizations l10n) => switch (this) {
     ShellTab.wardrobe => l10n.navWardrobe,
     ShellTab.scan => l10n.navScan,
+    ShellTab.rewards => l10n.navRewards,
     ShellTab.brand => l10n.navBrand,
     ShellTab.admin => l10n.navAdmin,
     ShellTab.account => l10n.navAccount,
@@ -63,7 +66,8 @@ List<ShellTab> visibleTabs({
   for (final tab in ShellTab.values)
     if (switch (tab.audience) {
       TabAudience.everyone => true,
-      TabAudience.brandMembers => hasBrandPortal,
+      // At most five tabs: an admin reaches their brand from the Admin hub.
+      TabAudience.brandMembers => hasBrandPortal && !isAdmin,
       TabAudience.admins => isAdmin,
     })
       tab,

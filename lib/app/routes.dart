@@ -17,6 +17,7 @@ enum AppRoute {
   // Signed in: bottom-bar tabs.
   wardrobe('/wardrobe'),
   scan('/scan'),
+  rewards('/rewards'),
   account('/account'),
   adminHome('/admin'),
   brandHome('/brand'),
@@ -35,6 +36,7 @@ enum AppRoute {
   tag('/wardrobe/tag/:id'),
   wardrobeShare('/wardrobe/share'),
   activity('/wardrobe/activity'),
+  rewardsHistory('/rewards/history'),
   notifications('/wardrobe/notifications'),
   adminProducts('/admin/products'),
   adminAnalytics('/admin/analytics'),
