@@ -36,10 +36,14 @@ import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen
 import 'package:staka/features/manage/import/presentation/screens/admin_import_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
+import 'package:staka/features/manage/rewards/presentation/screens/admin_rewards_screen.dart';
 import 'package:staka/features/manage/rewards/presentation/screens/brand_reward_form_screen.dart';
 import 'package:staka/features/manage/rewards/presentation/screens/brand_reward_screen.dart';
 import 'package:staka/features/manage/rewards/presentation/screens/brand_rewards_screen.dart';
+import 'package:staka/features/manage/rewards/presentation/screens/reward_rules_screen.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
+import 'package:staka/features/manage/users/presentation/admin_user_screen.dart';
+import 'package:staka/features/manage/users/presentation/admin_users_screen.dart';
 import 'package:staka/features/notifications/presentation/screens/notification_settings_screen.dart';
 import 'package:staka/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
@@ -158,6 +162,30 @@ final appRouteTable = <RouteBase>[
             AppRoute.adminHome,
             (_, _) => const AdminHomeScreen(),
             children: [
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminRewards,
+                (_, _) => const AdminRewardsScreen(),
+              ),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminRewardRules,
+                (_, _) => const RewardRulesScreen(),
+              ),
+              _child(
+                AppRoute.adminHome,
+                AppRoute.adminUsers,
+                (_, _) => const AdminUsersScreen(),
+                children: [
+                  _child(
+                    AppRoute.adminUsers,
+                    AppRoute.adminUser,
+                    (_, state) => AdminUserScreen(
+                      userId: state.pathParameters['id'] ?? '',
+                    ),
+                  ),
+                ],
+              ),
               _child(
                 AppRoute.adminHome,
                 AppRoute.adminAnalytics,

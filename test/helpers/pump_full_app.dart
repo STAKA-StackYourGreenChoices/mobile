@@ -38,7 +38,9 @@ import 'package:staka/features/manage/import/domain/repositories/import_reposito
 import 'package:staka/features/manage/import/presentation/state/import_file_actions.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
+import 'package:staka/features/manage/rewards/data/admin_rewards_repository.dart';
 import 'package:staka/features/manage/rewards/data/brand_rewards_repository.dart';
+import 'package:staka/features/manage/users/data/admin_users_repository.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/products/domain/repositories/product_repository.dart';
 import 'package:staka/features/rewards/data/points_repository.dart';
@@ -57,6 +59,7 @@ import 'package:staka/features/wardrobe/domain/repositories/wardrobe_share_repos
 import 'admin_claim_fakes.dart';
 import 'admin_product_fakes.dart';
 import 'admin_review_fakes.dart';
+import 'admin_rewards_fakes.dart';
 import 'analytics_fakes.dart';
 import 'auth_fakes.dart';
 import 'brand_apply_fakes.dart';
@@ -107,6 +110,8 @@ Future<InMemoryTokenStore> pumpApp(
   NotificationsRepository? notifications,
   AnalyticsRepository? analytics,
   BrandRewardsRepository? brandRewards,
+  AdminRewardsRepository? adminRewards,
+  AdminUsersRepository? adminUsers,
   PushMessaging? push,
   DeviceRepository? devices,
   PointsRepository? points,
@@ -188,6 +193,12 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         notificationsRepositoryProvider.overrideWithValue(
           notifications ?? FakeNotificationsRepository(),
+        ),
+        adminRewardsRepositoryProvider.overrideWithValue(
+          adminRewards ?? FakeAdminRewardsRepository(),
+        ),
+        adminUsersRepositoryProvider.overrideWithValue(
+          adminUsers ?? FakeAdminUsersRepository(),
         ),
         brandRewardsRepositoryProvider.overrideWithValue(
           brandRewards ?? FakeBrandRewardsRepository(),

@@ -4582,5 +4582,103 @@
   "openEarlierClaim": "Open the earlier claim",
   "claimSortLabel": "Order",
   "claimSortNewest": "Newest",
-  "claimSortScore": "Best match"
+  "claimSortScore": "Best match",
+  "adminRewardsDescription": "Every brand's rewards. Brands run their own; switch one off only when it shouldn't be offered.",
+  "@adminRewardsDescription": {
+    "description": "V2-7: Admin → Rewards."
+  },
+  "adminRewardsHubDescription": "See every brand's rewards and switch one off.",
+  "noRewardsYetTitle": "No rewards yet",
+  "noRewardsYetBody": "Brands add rewards from their Brand tab.",
+  "switchOff": "Switch off",
+  "switchOffRewardTitle": "Switch this reward off?",
+  "switchOffRewardBody": "{title} from {brand} leaves the Rewards tab. Codes already handed out still work, and the brand can see it's off.",
+  "@switchOffRewardBody": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardSwitchedOff": "Reward switched off",
+  "rewardRulesTitle": "Reward rules",
+  "@rewardRulesTitle": {
+    "description": "V2-6: Admin → Reward rules."
+  },
+  "rewardRulesDescription": "How many points each action earns. Changes apply to points earned from now on.",
+  "rewardRulesHubDescription": "Points for each action and daily limits.",
+  "rulePointsLabel": "Points",
+  "rulePointsInvalid": "Enter a whole number from 0 to 1,000.",
+  "ruleDailyCapLabel": "Daily limit",
+  "ruleDailyCapHint": "Most points a shopper can earn this way in a day. Empty for no limit.",
+  "ruleCapInvalid": "Enter a whole number of 1 or more, or leave it empty.",
+  "ruleActiveLabel": "Earn points for this",
+  "adminUsersTitle": "Users",
+  "@adminUsersTitle": {
+    "description": "V2-6: Admin → Users."
+  },
+  "adminUsersHubDescription": "Find a shopper to see and adjust their points.",
+  "adminUsersSearchHint": "Name, email or phone",
+  "adminUsersSearch": "Search",
+  "adminUsersIdleTitle": "Find a shopper",
+  "adminUsersIdleBody": "Search by name, email or phone number.",
+  "adminUsersNoneTitle": "No one found",
+  "adminUsersNoneBody": "Nobody matches \"{query}\". Check the spelling or try their email.",
+  "@adminUsersNoneBody": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "adminUsersMore": "Showing {shown} of {total}. Search more exactly to find someone else.",
+  "@adminUsersMore": {
+    "placeholders": {
+      "shown": {
+        "type": "int"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "adjustPoints": "Adjust points",
+  "pointsAdjustedDone": "Points adjusted",
+  "latestPoints": "Latest points",
+  "adjustPointsConfirmTitle": "Adjust points?",
+  "adjustPointsConfirmAdd": "Give {points} to {name}? They see your note in their history.",
+  "@adjustPointsConfirmAdd": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adjustPointsConfirmRemove": "Take {points} from {name}? They see your note in their history.",
+  "@adjustPointsConfirmRemove": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adjustAdd": "Give",
+  "adjustRemove": "Take away",
+  "adjustAmountLabel": "How many points",
+  "adjustNoteLabel": "Note",
+  "adjustNoteHint": "Why, in words the shopper understands. 3 to 200 characters.",
+  "adjustNoteInvalid": "Write a note of 3 to 200 characters.",
+  "shopperBalanceLabel": "Points balance",
+  "@shopperBalanceLabel": {
+    "description": "Admin → user page: label above the shopper's balance."
+  }
 }

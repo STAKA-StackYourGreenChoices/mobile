@@ -3811,4 +3811,139 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get claimSortScore => 'Best match';
+
+  @override
+  String get adminRewardsDescription =>
+      'Every brand\'s rewards. Brands run their own; switch one off only when it shouldn\'t be offered.';
+
+  @override
+  String get adminRewardsHubDescription =>
+      'See every brand\'s rewards and switch one off.';
+
+  @override
+  String get noRewardsYetTitle => 'No rewards yet';
+
+  @override
+  String get noRewardsYetBody => 'Brands add rewards from their Brand tab.';
+
+  @override
+  String get switchOff => 'Switch off';
+
+  @override
+  String get switchOffRewardTitle => 'Switch this reward off?';
+
+  @override
+  String switchOffRewardBody(String title, String brand) {
+    return '$title from $brand leaves the Rewards tab. Codes already handed out still work, and the brand can see it\'s off.';
+  }
+
+  @override
+  String get rewardSwitchedOff => 'Reward switched off';
+
+  @override
+  String get rewardRulesTitle => 'Reward rules';
+
+  @override
+  String get rewardRulesDescription =>
+      'How many points each action earns. Changes apply to points earned from now on.';
+
+  @override
+  String get rewardRulesHubDescription =>
+      'Points for each action and daily limits.';
+
+  @override
+  String get rulePointsLabel => 'Points';
+
+  @override
+  String get rulePointsInvalid => 'Enter a whole number from 0 to 1,000.';
+
+  @override
+  String get ruleDailyCapLabel => 'Daily limit';
+
+  @override
+  String get ruleDailyCapHint =>
+      'Most points a shopper can earn this way in a day. Empty for no limit.';
+
+  @override
+  String get ruleCapInvalid =>
+      'Enter a whole number of 1 or more, or leave it empty.';
+
+  @override
+  String get ruleActiveLabel => 'Earn points for this';
+
+  @override
+  String get adminUsersTitle => 'Users';
+
+  @override
+  String get adminUsersHubDescription =>
+      'Find a shopper to see and adjust their points.';
+
+  @override
+  String get adminUsersSearchHint => 'Name, email or phone';
+
+  @override
+  String get adminUsersSearch => 'Search';
+
+  @override
+  String get adminUsersIdleTitle => 'Find a shopper';
+
+  @override
+  String get adminUsersIdleBody => 'Search by name, email or phone number.';
+
+  @override
+  String get adminUsersNoneTitle => 'No one found';
+
+  @override
+  String adminUsersNoneBody(String query) {
+    return 'Nobody matches \"$query\". Check the spelling or try their email.';
+  }
+
+  @override
+  String adminUsersMore(int shown, String total) {
+    return 'Showing $shown of $total. Search more exactly to find someone else.';
+  }
+
+  @override
+  String get adjustPoints => 'Adjust points';
+
+  @override
+  String get pointsAdjustedDone => 'Points adjusted';
+
+  @override
+  String get latestPoints => 'Latest points';
+
+  @override
+  String get adjustPointsConfirmTitle => 'Adjust points?';
+
+  @override
+  String adjustPointsConfirmAdd(String points, String name) {
+    return 'Give $points to $name? They see your note in their history.';
+  }
+
+  @override
+  String adjustPointsConfirmRemove(String points, String name) {
+    return 'Take $points from $name? They see your note in their history.';
+  }
+
+  @override
+  String get adjustAdd => 'Give';
+
+  @override
+  String get adjustRemove => 'Take away';
+
+  @override
+  String get adjustAmountLabel => 'How many points';
+
+  @override
+  String get adjustNoteLabel => 'Note';
+
+  @override
+  String get adjustNoteHint =>
+      'Why, in words the shopper understands. 3 to 200 characters.';
+
+  @override
+  String get adjustNoteInvalid => 'Write a note of 3 to 200 characters.';
+
+  @override
+  String get shopperBalanceLabel => 'Points balance';
 }

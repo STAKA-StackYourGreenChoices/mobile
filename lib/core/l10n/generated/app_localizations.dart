@@ -6128,6 +6128,240 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Best match'**
   String get claimSortScore;
+
+  /// V2-7: Admin → Rewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Every brand\'s rewards. Brands run their own; switch one off only when it shouldn\'t be offered.'**
+  String get adminRewardsDescription;
+
+  /// No description provided for @adminRewardsHubDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'See every brand\'s rewards and switch one off.'**
+  String get adminRewardsHubDescription;
+
+  /// No description provided for @noRewardsYetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No rewards yet'**
+  String get noRewardsYetTitle;
+
+  /// No description provided for @noRewardsYetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands add rewards from their Brand tab.'**
+  String get noRewardsYetBody;
+
+  /// No description provided for @switchOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch off'**
+  String get switchOff;
+
+  /// No description provided for @switchOffRewardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch this reward off?'**
+  String get switchOffRewardTitle;
+
+  /// No description provided for @switchOffRewardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} from {brand} leaves the Rewards tab. Codes already handed out still work, and the brand can see it\'s off.'**
+  String switchOffRewardBody(String title, String brand);
+
+  /// No description provided for @rewardSwitchedOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward switched off'**
+  String get rewardSwitchedOff;
+
+  /// V2-6: Admin → Reward rules.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward rules'**
+  String get rewardRulesTitle;
+
+  /// No description provided for @rewardRulesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'How many points each action earns. Changes apply to points earned from now on.'**
+  String get rewardRulesDescription;
+
+  /// No description provided for @rewardRulesHubDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Points for each action and daily limits.'**
+  String get rewardRulesHubDescription;
+
+  /// No description provided for @rulePointsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get rulePointsLabel;
+
+  /// No description provided for @rulePointsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number from 0 to 1,000.'**
+  String get rulePointsInvalid;
+
+  /// No description provided for @ruleDailyCapLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily limit'**
+  String get ruleDailyCapLabel;
+
+  /// No description provided for @ruleDailyCapHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Most points a shopper can earn this way in a day. Empty for no limit.'**
+  String get ruleDailyCapHint;
+
+  /// No description provided for @ruleCapInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number of 1 or more, or leave it empty.'**
+  String get ruleCapInvalid;
+
+  /// No description provided for @ruleActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn points for this'**
+  String get ruleActiveLabel;
+
+  /// V2-6: Admin → Users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get adminUsersTitle;
+
+  /// No description provided for @adminUsersHubDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a shopper to see and adjust their points.'**
+  String get adminUsersHubDescription;
+
+  /// No description provided for @adminUsersSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Name, email or phone'**
+  String get adminUsersSearchHint;
+
+  /// No description provided for @adminUsersSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get adminUsersSearch;
+
+  /// No description provided for @adminUsersIdleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a shopper'**
+  String get adminUsersIdleTitle;
+
+  /// No description provided for @adminUsersIdleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, email or phone number.'**
+  String get adminUsersIdleBody;
+
+  /// No description provided for @adminUsersNoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No one found'**
+  String get adminUsersNoneTitle;
+
+  /// No description provided for @adminUsersNoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody matches \"{query}\". Check the spelling or try their email.'**
+  String adminUsersNoneBody(String query);
+
+  /// No description provided for @adminUsersMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing {shown} of {total}. Search more exactly to find someone else.'**
+  String adminUsersMore(int shown, String total);
+
+  /// No description provided for @adjustPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust points'**
+  String get adjustPoints;
+
+  /// No description provided for @pointsAdjustedDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Points adjusted'**
+  String get pointsAdjustedDone;
+
+  /// No description provided for @latestPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest points'**
+  String get latestPoints;
+
+  /// No description provided for @adjustPointsConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust points?'**
+  String get adjustPointsConfirmTitle;
+
+  /// No description provided for @adjustPointsConfirmAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Give {points} to {name}? They see your note in their history.'**
+  String adjustPointsConfirmAdd(String points, String name);
+
+  /// No description provided for @adjustPointsConfirmRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Take {points} from {name}? They see your note in their history.'**
+  String adjustPointsConfirmRemove(String points, String name);
+
+  /// No description provided for @adjustAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Give'**
+  String get adjustAdd;
+
+  /// No description provided for @adjustRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Take away'**
+  String get adjustRemove;
+
+  /// No description provided for @adjustAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'How many points'**
+  String get adjustAmountLabel;
+
+  /// No description provided for @adjustNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get adjustNoteLabel;
+
+  /// No description provided for @adjustNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Why, in words the shopper understands. 3 to 200 characters.'**
+  String get adjustNoteHint;
+
+  /// No description provided for @adjustNoteInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a note of 3 to 200 characters.'**
+  String get adjustNoteInvalid;
+
+  /// Admin → user page: label above the shopper's balance.
+  ///
+  /// In en, this message translates to:
+  /// **'Points balance'**
+  String get shopperBalanceLabel;
 }
 
 class _AppLocalizationsDelegate

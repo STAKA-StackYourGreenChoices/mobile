@@ -63,6 +63,24 @@ class AdminHomeScreen extends ConsumerWidget {
         l10n.adminProductsReadOnlyDescription,
       ),
       (
+        AppRoute.adminRewards,
+        Icons.redeem_outlined,
+        l10n.brandRewardsTitle,
+        l10n.adminRewardsHubDescription,
+      ),
+      (
+        AppRoute.adminRewardRules,
+        Icons.stars_outlined,
+        l10n.rewardRulesTitle,
+        l10n.rewardRulesHubDescription,
+      ),
+      (
+        AppRoute.adminUsers,
+        Icons.people_outline_rounded,
+        l10n.adminUsersTitle,
+        l10n.adminUsersHubDescription,
+      ),
+      (
         AppRoute.adminAnalytics,
         Icons.insights_outlined,
         l10n.analyticsTitle,
