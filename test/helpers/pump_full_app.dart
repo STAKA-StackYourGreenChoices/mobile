@@ -38,6 +38,7 @@ import 'package:staka/features/manage/import/domain/repositories/import_reposito
 import 'package:staka/features/manage/import/presentation/state/import_file_actions.dart';
 import 'package:staka/features/manage/products/data/repositories/admin_product_repository_impl.dart';
 import 'package:staka/features/manage/products/domain/repositories/admin_product_repository.dart';
+import 'package:staka/features/manage/rewards/data/brand_rewards_repository.dart';
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/products/domain/repositories/product_repository.dart';
 import 'package:staka/features/rewards/data/points_repository.dart';
@@ -60,6 +61,7 @@ import 'analytics_fakes.dart';
 import 'auth_fakes.dart';
 import 'brand_apply_fakes.dart';
 import 'brand_portal_fakes.dart';
+import 'brand_rewards_fakes.dart';
 import 'fake_http_adapter.dart';
 import 'import_fakes.dart';
 import 'notification_fakes.dart';
@@ -104,6 +106,7 @@ Future<InMemoryTokenStore> pumpApp(
   BrandPortalRepository? brandPortal,
   NotificationsRepository? notifications,
   AnalyticsRepository? analytics,
+  BrandRewardsRepository? brandRewards,
   PushMessaging? push,
   DeviceRepository? devices,
   PointsRepository? points,
@@ -185,6 +188,9 @@ Future<InMemoryTokenStore> pumpApp(
         ),
         notificationsRepositoryProvider.overrideWithValue(
           notifications ?? FakeNotificationsRepository(),
+        ),
+        brandRewardsRepositoryProvider.overrideWithValue(
+          brandRewards ?? FakeBrandRewardsRepository(),
         ),
         analyticsRepositoryProvider.overrideWith(
           (_, _) => analytics ?? FakeAnalyticsRepository(),

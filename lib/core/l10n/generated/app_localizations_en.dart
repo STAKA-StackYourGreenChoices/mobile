@@ -3553,4 +3553,188 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get vouchersEmptyBody =>
       'Vouchers you swap points for show up here with their codes.';
+
+  @override
+  String get brandRewardsTitle => 'Rewards';
+
+  @override
+  String get brandRewardsDescription =>
+      'Vouchers shoppers swap their STAKA points for, and the codes behind them.';
+
+  @override
+  String get brandRewardsTabs => 'Reward status';
+
+  @override
+  String get brandRewardsActive => 'Active';
+
+  @override
+  String get brandRewardsEnded => 'Ended or off';
+
+  @override
+  String get newReward => 'New reward';
+
+  @override
+  String get editReward => 'Edit reward';
+
+  @override
+  String get noActiveRewardsTitle => 'No active rewards';
+
+  @override
+  String get noActiveRewardsBody =>
+      'Add a voucher for shoppers to swap their points for, then upload its codes.';
+
+  @override
+  String get noEndedRewardsTitle => 'Nothing ended yet';
+
+  @override
+  String get noEndedRewardsBody =>
+      'Rewards that end or are switched off show here.';
+
+  @override
+  String get rewardStatusOff => 'Off';
+
+  @override
+  String get rewardStatusEnded => 'Ended';
+
+  @override
+  String rewardStatusScheduled(String date) {
+    return 'Starts $date';
+  }
+
+  @override
+  String get rewardStatusLive => 'Live';
+
+  @override
+  String rewardRunsFrom(String date) {
+    return 'From $date';
+  }
+
+  @override
+  String rewardRunsFromTo(String start, String end) {
+    return '$start to $end';
+  }
+
+  @override
+  String get fieldRewardTitle => 'Title';
+
+  @override
+  String get rewardTitleHint =>
+      'What shoppers see in the list, e.g. ₹200 off your next order.';
+
+  @override
+  String get fieldRewardValue => 'Value';
+
+  @override
+  String get rewardValueHint => 'Short, e.g. ₹200 off or Free shipping.';
+
+  @override
+  String get fieldPointsCost => 'Points it costs';
+
+  @override
+  String get fieldRewardDescription => 'Description';
+
+  @override
+  String get fieldRewardTerms => 'Terms';
+
+  @override
+  String get rewardTermsHint =>
+      'Minimum order, where it works, what it can\'t be used with.';
+
+  @override
+  String get fieldStartsOn => 'Starts on';
+
+  @override
+  String get fieldEndsOn => 'Ends on';
+
+  @override
+  String get noEndDate => 'No end date';
+
+  @override
+  String get clearEndDate => 'Remove end date';
+
+  @override
+  String get rewardActiveLabel => 'Show to shoppers';
+
+  @override
+  String get rewardActiveDescription =>
+      'Off hides it from the Rewards tab. Codes already handed out still work.';
+
+  @override
+  String get rewardTitleRequired => 'Enter a title.';
+
+  @override
+  String get rewardValueRequired => 'Enter what it\'s worth.';
+
+  @override
+  String get pointsCostInvalid => 'Enter a whole number from 1 to 100,000.';
+
+  @override
+  String get endBeforeStart => 'The end date must be after the start date.';
+
+  @override
+  String get rewardCreated => 'Reward added. Upload its codes next.';
+
+  @override
+  String get rewardStatsTitle => 'Voucher codes';
+
+  @override
+  String get rewardCodesLeft => 'Left';
+
+  @override
+  String get rewardCodesTotal => 'Uploaded';
+
+  @override
+  String get rewardRedeemedCount => 'Redeemed';
+
+  @override
+  String get noCodesLeft =>
+      'No codes left: shoppers see this reward as out of stock until you upload more.';
+
+  @override
+  String get uploadCodesTitle => 'Upload codes';
+
+  @override
+  String get uploadCodesBody =>
+      'A CSV with one code per row: code, then an optional expires_at date (YYYY-MM-DD). Codes already uploaded are skipped.';
+
+  @override
+  String uploadingCodes(String name) {
+    return 'Uploading $name…';
+  }
+
+  @override
+  String codesAdded(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString codes added.',
+      one: '1 code added.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String codesDuplicates(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString duplicates skipped.',
+      one: '1 duplicate skipped.',
+      zero: 'No duplicates.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String csvEmptyFile(String name) {
+    return '$name is empty.';
+  }
 }

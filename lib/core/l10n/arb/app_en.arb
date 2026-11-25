@@ -4435,5 +4435,109 @@
   "historyTabVouchers": "My vouchers",
   "historyTitle": "History",
   "vouchersEmptyTitle": "No vouchers yet",
-  "vouchersEmptyBody": "Vouchers you swap points for show up here with their codes."
+  "vouchersEmptyBody": "Vouchers you swap points for show up here with their codes.",
+  "brandRewardsTitle": "Rewards",
+  "@brandRewardsTitle": {
+    "description": "V2-7: the Brand tab area for the brand's own rewards."
+  },
+  "brandRewardsDescription": "Vouchers shoppers swap their STAKA points for, and the codes behind them.",
+  "brandRewardsTabs": "Reward status",
+  "brandRewardsActive": "Active",
+  "brandRewardsEnded": "Ended or off",
+  "newReward": "New reward",
+  "editReward": "Edit reward",
+  "noActiveRewardsTitle": "No active rewards",
+  "noActiveRewardsBody": "Add a voucher for shoppers to swap their points for, then upload its codes.",
+  "noEndedRewardsTitle": "Nothing ended yet",
+  "noEndedRewardsBody": "Rewards that end or are switched off show here.",
+  "rewardStatusOff": "Off",
+  "rewardStatusEnded": "Ended",
+  "rewardStatusScheduled": "Starts {date}",
+  "@rewardStatusScheduled": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardStatusLive": "Live",
+  "rewardRunsFrom": "From {date}",
+  "@rewardRunsFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardRunsFromTo": "{start} to {end}",
+  "@rewardRunsFromTo": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "fieldRewardTitle": "Title",
+  "rewardTitleHint": "What shoppers see in the list, e.g. ₹200 off your next order.",
+  "fieldRewardValue": "Value",
+  "rewardValueHint": "Short, e.g. ₹200 off or Free shipping.",
+  "fieldPointsCost": "Points it costs",
+  "fieldRewardDescription": "Description",
+  "fieldRewardTerms": "Terms",
+  "rewardTermsHint": "Minimum order, where it works, what it can't be used with.",
+  "fieldStartsOn": "Starts on",
+  "fieldEndsOn": "Ends on",
+  "noEndDate": "No end date",
+  "clearEndDate": "Remove end date",
+  "rewardActiveLabel": "Show to shoppers",
+  "rewardActiveDescription": "Off hides it from the Rewards tab. Codes already handed out still work.",
+  "rewardTitleRequired": "Enter a title.",
+  "rewardValueRequired": "Enter what it's worth.",
+  "pointsCostInvalid": "Enter a whole number from 1 to 100,000.",
+  "endBeforeStart": "The end date must be after the start date.",
+  "rewardCreated": "Reward added. Upload its codes next.",
+  "rewardStatsTitle": "Voucher codes",
+  "rewardCodesLeft": "Left",
+  "rewardCodesTotal": "Uploaded",
+  "rewardRedeemedCount": "Redeemed",
+  "noCodesLeft": "No codes left: shoppers see this reward as out of stock until you upload more.",
+  "uploadCodesTitle": "Upload codes",
+  "uploadCodesBody": "A CSV with one code per row: code, then an optional expires_at date (YYYY-MM-DD). Codes already uploaded are skipped.",
+  "uploadingCodes": "Uploading {name}…",
+  "@uploadingCodes": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "codesAdded": "{count, plural, =1{1 code added.} other{{count} codes added.}}",
+  "@codesAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "codesDuplicates": "{count, plural, =0{No duplicates.} =1{1 duplicate skipped.} other{{count} duplicates skipped.}}",
+  "@codesDuplicates": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "csvEmptyFile": "{name} is empty.",
+  "@csvEmptyFile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

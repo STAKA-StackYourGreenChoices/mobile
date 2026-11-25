@@ -89,6 +89,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 ## V2 — M3 Engagement
 - [~] `feat/rewards-points` (V2-6): Rewards tab (balance, expiring, how to earn), points history; admin+brand gets Admin only with "Your brand" on the hub
 - [~] `feat/rewards-catalog` (V2-7): vouchers grid, reward detail, redeem with confirm and Idempotency-Key, code with Copy, My vouchers tab
+- [~] `feat/brand-rewards` (V2-7): Brand → Rewards list, new/edit form, code stats, voucher-code CSV upload
 - [~] `feat/push-notifications` (V2-9): FCM token registration, permission after the first receipt and in settings, tap routing, foreground banner (not tried on the phone yet: needs `google-services.json`)
 - [~] `feat/analytics` (V2-5): Analytics for Admin (brand filter) and Brand: period chips, funnel with drop-off, channels, top products
 - [~] `feat/notifications-inbox` (V2-9): bell with unread count on the wardrobe, inbox (paged, mark read, mark all, opens the target), Account → Notifications (push/email switches)
@@ -97,6 +98,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 
 ## Session log (newest first, one line each)
 - 2026-11-25 — `feat/rewards-points`: V2-6 Rewards tab and points history. 600 tests pass; new goldens rewards, points_history; no existing golden changed. Fakes only.
+- 2026-11-25 — `feat/brand-rewards`: V2-7 brand rewards. 638 tests pass; updated golden brand_home (light/dark: new Rewards tile); new goldens brand_rewards, brand_reward, brand_reward_form. Fakes only.
 - 2026-11-25 — `feat/rewards-catalog`: V2-7 vouchers grid, detail, redeem, My vouchers. 622 tests pass; updated golden rewards (light/dark: the grid); new goldens reward_detail, reward_redeemed, my_vouchers. Fakes only.
 - 2026-11-25 — `feat/push-notifications`: V2-9 push. 585 tests pass; `flutter build apk --debug` OK without `google-services.json`; new golden phone_push_off; no existing golden changed. Packages added: firebase_core 5.2.0, firebase_messaging 17.1.0. Fakes only.
 - 2026-11-25 — `feat/analytics`: V2-5 Analytics screen for Admin and Brand. 567 tests pass; new golden analytics; updated admin_hub and brand_home (Analytics tile); tag_stats unchanged after moving its bar to `ValueBar`. Fakes only.

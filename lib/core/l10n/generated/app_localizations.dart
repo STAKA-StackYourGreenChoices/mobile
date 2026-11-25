@@ -5714,6 +5714,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Vouchers you swap points for show up here with their codes.'**
   String get vouchersEmptyBody;
+
+  /// V2-7: the Brand tab area for the brand's own rewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards'**
+  String get brandRewardsTitle;
+
+  /// No description provided for @brandRewardsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Vouchers shoppers swap their STAKA points for, and the codes behind them.'**
+  String get brandRewardsDescription;
+
+  /// No description provided for @brandRewardsTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward status'**
+  String get brandRewardsTabs;
+
+  /// No description provided for @brandRewardsActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get brandRewardsActive;
+
+  /// No description provided for @brandRewardsEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Ended or off'**
+  String get brandRewardsEnded;
+
+  /// No description provided for @newReward.
+  ///
+  /// In en, this message translates to:
+  /// **'New reward'**
+  String get newReward;
+
+  /// No description provided for @editReward.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit reward'**
+  String get editReward;
+
+  /// No description provided for @noActiveRewardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No active rewards'**
+  String get noActiveRewardsTitle;
+
+  /// No description provided for @noActiveRewardsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a voucher for shoppers to swap their points for, then upload its codes.'**
+  String get noActiveRewardsBody;
+
+  /// No description provided for @noEndedRewardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing ended yet'**
+  String get noEndedRewardsTitle;
+
+  /// No description provided for @noEndedRewardsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards that end or are switched off show here.'**
+  String get noEndedRewardsBody;
+
+  /// No description provided for @rewardStatusOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get rewardStatusOff;
+
+  /// No description provided for @rewardStatusEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Ended'**
+  String get rewardStatusEnded;
+
+  /// No description provided for @rewardStatusScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Starts {date}'**
+  String rewardStatusScheduled(String date);
+
+  /// No description provided for @rewardStatusLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get rewardStatusLive;
+
+  /// No description provided for @rewardRunsFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {date}'**
+  String rewardRunsFrom(String date);
+
+  /// No description provided for @rewardRunsFromTo.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} to {end}'**
+  String rewardRunsFromTo(String start, String end);
+
+  /// No description provided for @fieldRewardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get fieldRewardTitle;
+
+  /// No description provided for @rewardTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What shoppers see in the list, e.g. ₹200 off your next order.'**
+  String get rewardTitleHint;
+
+  /// No description provided for @fieldRewardValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get fieldRewardValue;
+
+  /// No description provided for @rewardValueHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Short, e.g. ₹200 off or Free shipping.'**
+  String get rewardValueHint;
+
+  /// No description provided for @fieldPointsCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Points it costs'**
+  String get fieldPointsCost;
+
+  /// No description provided for @fieldRewardDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get fieldRewardDescription;
+
+  /// No description provided for @fieldRewardTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
+  String get fieldRewardTerms;
+
+  /// No description provided for @rewardTermsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum order, where it works, what it can\'t be used with.'**
+  String get rewardTermsHint;
+
+  /// No description provided for @fieldStartsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Starts on'**
+  String get fieldStartsOn;
+
+  /// No description provided for @fieldEndsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends on'**
+  String get fieldEndsOn;
+
+  /// No description provided for @noEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'No end date'**
+  String get noEndDate;
+
+  /// No description provided for @clearEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove end date'**
+  String get clearEndDate;
+
+  /// No description provided for @rewardActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Show to shoppers'**
+  String get rewardActiveLabel;
+
+  /// No description provided for @rewardActiveDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Off hides it from the Rewards tab. Codes already handed out still work.'**
+  String get rewardActiveDescription;
+
+  /// No description provided for @rewardTitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a title.'**
+  String get rewardTitleRequired;
+
+  /// No description provided for @rewardValueRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter what it\'s worth.'**
+  String get rewardValueRequired;
+
+  /// No description provided for @pointsCostInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number from 1 to 100,000.'**
+  String get pointsCostInvalid;
+
+  /// No description provided for @endBeforeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'The end date must be after the start date.'**
+  String get endBeforeStart;
+
+  /// No description provided for @rewardCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward added. Upload its codes next.'**
+  String get rewardCreated;
+
+  /// No description provided for @rewardStatsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voucher codes'**
+  String get rewardStatsTitle;
+
+  /// No description provided for @rewardCodesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get rewardCodesLeft;
+
+  /// No description provided for @rewardCodesTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded'**
+  String get rewardCodesTotal;
+
+  /// No description provided for @rewardRedeemedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeemed'**
+  String get rewardRedeemedCount;
+
+  /// No description provided for @noCodesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'No codes left: shoppers see this reward as out of stock until you upload more.'**
+  String get noCodesLeft;
+
+  /// No description provided for @uploadCodesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload codes'**
+  String get uploadCodesTitle;
+
+  /// No description provided for @uploadCodesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A CSV with one code per row: code, then an optional expires_at date (YYYY-MM-DD). Codes already uploaded are skipped.'**
+  String get uploadCodesBody;
+
+  /// No description provided for @uploadingCodes.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading {name}…'**
+  String uploadingCodes(String name);
+
+  /// No description provided for @codesAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 code added.} other{{count} codes added.}}'**
+  String codesAdded(int count);
+
+  /// No description provided for @codesDuplicates.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No duplicates.} =1{1 duplicate skipped.} other{{count} duplicates skipped.}}'**
+  String codesDuplicates(int count);
+
+  /// No description provided for @csvEmptyFile.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is empty.'**
+  String csvEmptyFile(String name);
 }
 
 class _AppLocalizationsDelegate

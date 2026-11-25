@@ -36,6 +36,9 @@ import 'package:staka/features/manage/hub/presentation/screens/admin_home_screen
 import 'package:staka/features/manage/import/presentation/screens/admin_import_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_product_form_screen.dart';
 import 'package:staka/features/manage/products/presentation/screens/admin_products_screen.dart';
+import 'package:staka/features/manage/rewards/presentation/screens/brand_reward_form_screen.dart';
+import 'package:staka/features/manage/rewards/presentation/screens/brand_reward_screen.dart';
+import 'package:staka/features/manage/rewards/presentation/screens/brand_rewards_screen.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 import 'package:staka/features/notifications/presentation/screens/notification_settings_screen.dart';
 import 'package:staka/features/notifications/presentation/screens/notifications_screen.dart';
@@ -389,6 +392,46 @@ final appRouteTable = <RouteBase>[
                 (_, _) => CurrentBrandBuilder(
                   builder: (_, scope) => AnalyticsScreen(scope: scope),
                 ),
+              ),
+              _child(
+                AppRoute.brandHome,
+                AppRoute.brandRewards,
+                (_, _) => CurrentBrandBuilder(
+                  builder: (brand, _) => BrandRewardsScreen(brandId: brand.id),
+                ),
+                children: [
+                  // Before `:id`, so "new" isn't read as an id.
+                  _child(
+                    AppRoute.brandRewards,
+                    AppRoute.brandRewardNew,
+                    (_, _) => CurrentBrandBuilder(
+                      builder: (brand, _) =>
+                          BrandRewardFormScreen(brandId: brand.id),
+                    ),
+                  ),
+                  _child(
+                    AppRoute.brandRewards,
+                    AppRoute.brandReward,
+                    (_, state) => CurrentBrandBuilder(
+                      builder: (brand, _) => BrandRewardScreen(
+                        brandId: brand.id,
+                        rewardId: state.pathParameters['id'] ?? '',
+                      ),
+                    ),
+                    children: [
+                      _child(
+                        AppRoute.brandReward,
+                        AppRoute.brandRewardEdit,
+                        (_, state) => CurrentBrandBuilder(
+                          builder: (brand, _) => BrandRewardFormScreen(
+                            brandId: brand.id,
+                            rewardId: state.pathParameters['id'] ?? '',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
               _child(
                 AppRoute.brandHome,

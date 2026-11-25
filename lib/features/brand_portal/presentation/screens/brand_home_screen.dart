@@ -68,6 +68,12 @@ class BrandHomeScreen extends ConsumerWidget {
         l10n.brandImportDescription,
       ),
       (
+        AppRoute.brandRewards,
+        Icons.redeem_outlined,
+        l10n.brandRewardsTitle,
+        l10n.brandRewardsDescription,
+      ),
+      (
         AppRoute.brandAnalytics,
         Icons.insights_outlined,
         l10n.analyticsTitle,

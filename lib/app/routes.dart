@@ -59,6 +59,10 @@ enum AppRoute {
   brandClaim('/brand/claims/:id'),
   brandClaimReceipt('/brand/claims/:id/receipt'),
   brandAnalytics('/brand/analytics'),
+  brandRewards('/brand/rewards'),
+  brandRewardNew('/brand/rewards/new'),
+  brandReward('/brand/rewards/:id'),
+  brandRewardEdit('/brand/rewards/:id/edit'),
   brandTeam('/brand/team'),
   brandSettings('/brand/settings');
 
