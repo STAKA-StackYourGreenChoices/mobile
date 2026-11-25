@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/cards/cards_revision.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
+import 'package:staka/core/rewards/points.dart';
 import 'package:staka/core/rewards/points_revision.dart';
 import 'package:staka/features/rewards/data/points_repository.dart';
-import 'package:staka/features/rewards/domain/points.dart';
 
 part 'points_controllers.g.dart';
 

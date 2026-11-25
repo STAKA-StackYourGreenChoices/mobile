@@ -6,8 +6,8 @@ import 'package:staka/core/auth/auth_tokens.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/network/dio_client.dart';
+import 'package:staka/core/rewards/points.dart';
 import 'package:staka/features/rewards/data/points_repository.dart';
-import 'package:staka/features/rewards/domain/points.dart';
 
 import '../../helpers/auth_fakes.dart';
 import '../../helpers/brand_portal_fakes.dart';

@@ -82,3 +82,48 @@ class EarnRule {
   /// At most this many a day, e.g. for views.
   final int? dailyCap;
 }
+
+int _int(Object? value) => (value as num?)?.toInt() ?? 0;
+
+/// `{balance, expiringSoon: {points, on} or null, entries: {items, total}}`
+/// (`GET /me/points`, and the admin's view of one shopper).
+PointsPage pointsPageFromJson(Map<String, dynamic> body) {
+  final expiring = body['expiringSoon'] as Map<String, dynamic>?;
+  final entries = switch (body['entries']) {
+    {'items': final List<dynamic> items} => items,
+    final List<dynamic> items => items,
+    _ => const <dynamic>[],
+  };
+  final on = expiring?['on'] as String?;
+  return PointsPage(
+    balance: _int(body['balance']),
+    expiringPoints: _int(expiring?['points']),
+    expiringOn: on == null ? null : DateTime.parse(on),
+    entries: [
+      for (final entry in entries)
+        pointsEntryFromJson(entry as Map<String, dynamic>),
+    ],
+    total: switch (body['entries']) {
+      {'total': final num total} => total.toInt(),
+      _ => entries.length,
+    },
+  );
+}
+
+/// `{delta, reason, createdAt, expiresAt?, note?, card?: {product: {name}},
+/// reward?: {title}}`.
+PointsEntry pointsEntryFromJson(Map<String, dynamic> json) {
+  final card = json['card'] as Map<String, dynamic>?;
+  final product = card?['product'] as Map<String, dynamic>?;
+  final reward = json['reward'] as Map<String, dynamic>?;
+  final expiresAt = json['expiresAt'] as String?;
+  return PointsEntry(
+    delta: _int(json['delta']),
+    reason: PointsReason.fromApi(json['reason'] as String?),
+    at: DateTime.parse(json['createdAt'] as String),
+    expiresAt: expiresAt == null ? null : DateTime.parse(expiresAt),
+    productName: product?['name'] as String?,
+    rewardTitle: reward?['title'] as String?,
+    note: json['note'] as String?,
+  );
+}

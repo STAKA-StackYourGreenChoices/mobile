@@ -8,7 +8,7 @@ import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/l10n/l10n.dart';
-import 'package:staka/features/rewards/domain/points.dart';
+import 'package:staka/core/rewards/points.dart';
 import 'package:staka/features/rewards/domain/reward.dart';
 import 'package:staka/features/rewards/presentation/state/points_controllers.dart';
 import 'package:staka/features/rewards/presentation/state/rewards_controllers.dart';
