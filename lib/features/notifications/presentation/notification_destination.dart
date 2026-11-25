@@ -15,9 +15,8 @@ typedef NotificationDestination = ({
   String? brandId,
 });
 
-/// Null when the notification leads nowhere the app has yet (vouchers
-/// arrive with V2-7) or its link is incomplete: it is then only
-/// marked read.
+/// Null when the notification leads nowhere the app has or its link is
+/// incomplete: it is then only marked read.
 NotificationDestination? notificationDestination(AppNotification n) {
   final id = n.targetId;
   return switch (n.target) {
@@ -53,6 +52,12 @@ NotificationDestination? notificationDestination(AppNotification n) {
     ),
     NotificationTarget.rewards => (
       route: AppRoute.rewards,
+      pathParameters: const {},
+      isInWardrobe: false,
+      brandId: null,
+    ),
+    NotificationTarget.voucher => (
+      route: AppRoute.rewardVouchers,
       pathParameters: const {},
       isInWardrobe: false,
       brandId: null,

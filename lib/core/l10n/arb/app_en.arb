@@ -4100,7 +4100,8 @@
     "description": "V2-5: a number of points.",
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "int",
+        "format": "decimalPattern"
       }
     }
   },
@@ -4334,5 +4335,105 @@
   "pointsHistoryEmptyTitle": "No points yet",
   "pointsHistoryEmptyBody": "Prove a piece is yours or share it to earn your first points.",
   "adminBrandPortal": "Your brand",
-  "adminBrandPortalDescription": "Claims, products, rewards and team of the brands you belong to."
+  "adminBrandPortalDescription": "Claims, products, rewards and team of the brands you belong to.",
+  "rewardsCatalogTitle": "Swap your points",
+  "@rewardsCatalogTitle": {
+    "description": "V2-7: heading above the vouchers on the Rewards tab."
+  },
+  "rewardsCatalogEmptyTitle": "No vouchers right now",
+  "rewardsCatalogEmptyBody": "Brands add new ones often. Your points keep until they expire.",
+  "rewardOutOfStock": "Out of stock",
+  "rewardNeedMore": "{count, plural, =1{1 more point} other{{count} more points}}",
+  "@rewardNeedMore": {
+    "description": "V2-7: how far the shopper is from a voucher.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "rewardEndsOn": "Ends {date}",
+  "@rewardEndsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAt": "At {brand}",
+  "@rewardAt": {
+    "description": "V2-7: the brand a voucher is for.",
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardTerms": "Terms",
+  "rewardRedeem": "Redeem",
+  "rewardRedeeming": "Redeeming…",
+  "rewardConfirmTitle": "Use your points?",
+  "rewardConfirmBody": "Use {points} for {value} at {brand}? You can't undo this.",
+  "@rewardConfirmBody": {
+    "description": "V2-7: points is pointsCount, value the brand's own text.",
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardConfirmYes": "Use points",
+  "rewardDoneTitle": "Your voucher is ready",
+  "rewardDoneBody": "Use this code at checkout with {brand}. It's also kept in My vouchers.",
+  "@rewardDoneBody": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "voucherCopy": "Copy code",
+  "voucherCopied": "Code copied",
+  "voucherUseBy": "Use by {date}",
+  "@voucherUseBy": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "voucherGotOn": "Got on {date}",
+  "@voucherGotOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "voucherCodeLabel": "Code {code}",
+  "@voucherCodeLabel": {
+    "description": "V2-7: for screen readers, before the voucher code.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "redeemNotEnough": "You don't have enough points for this one yet.",
+  "redeemOutOfStock": "This one just ran out. Pick another voucher.",
+  "redeemEnded": "This voucher has ended.",
+  "rewardEndedTitle": "Voucher ended",
+  "rewardEndedBody": "The brand has ended this voucher. Have a look at the others on the Rewards tab.",
+  "historyTabPoints": "Points",
+  "historyTabVouchers": "My vouchers",
+  "historyTitle": "History",
+  "vouchersEmptyTitle": "No vouchers yet",
+  "vouchersEmptyBody": "Vouchers you swap points for show up here with their codes."
 }

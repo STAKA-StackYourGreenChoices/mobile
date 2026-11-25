@@ -5534,6 +5534,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Claims, products, rewards and team of the brands you belong to.'**
   String get adminBrandPortalDescription;
+
+  /// V2-7: heading above the vouchers on the Rewards tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap your points'**
+  String get rewardsCatalogTitle;
+
+  /// No description provided for @rewardsCatalogEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vouchers right now'**
+  String get rewardsCatalogEmptyTitle;
+
+  /// No description provided for @rewardsCatalogEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands add new ones often. Your points keep until they expire.'**
+  String get rewardsCatalogEmptyBody;
+
+  /// No description provided for @rewardOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get rewardOutOfStock;
+
+  /// V2-7: how far the shopper is from a voucher.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 more point} other{{count} more points}}'**
+  String rewardNeedMore(int count);
+
+  /// No description provided for @rewardEndsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends {date}'**
+  String rewardEndsOn(String date);
+
+  /// V2-7: the brand a voucher is for.
+  ///
+  /// In en, this message translates to:
+  /// **'At {brand}'**
+  String rewardAt(String brand);
+
+  /// No description provided for @rewardTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
+  String get rewardTerms;
+
+  /// No description provided for @rewardRedeem.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeem'**
+  String get rewardRedeem;
+
+  /// No description provided for @rewardRedeeming.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeeming…'**
+  String get rewardRedeeming;
+
+  /// No description provided for @rewardConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your points?'**
+  String get rewardConfirmTitle;
+
+  /// V2-7: points is pointsCount, value the brand's own text.
+  ///
+  /// In en, this message translates to:
+  /// **'Use {points} for {value} at {brand}? You can\'t undo this.'**
+  String rewardConfirmBody(String points, String value, String brand);
+
+  /// No description provided for @rewardConfirmYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Use points'**
+  String get rewardConfirmYes;
+
+  /// No description provided for @rewardDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your voucher is ready'**
+  String get rewardDoneTitle;
+
+  /// No description provided for @rewardDoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this code at checkout with {brand}. It\'s also kept in My vouchers.'**
+  String rewardDoneBody(String brand);
+
+  /// No description provided for @voucherCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy code'**
+  String get voucherCopy;
+
+  /// No description provided for @voucherCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Code copied'**
+  String get voucherCopied;
+
+  /// No description provided for @voucherUseBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Use by {date}'**
+  String voucherUseBy(String date);
+
+  /// No description provided for @voucherGotOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Got on {date}'**
+  String voucherGotOn(String date);
+
+  /// V2-7: for screen readers, before the voucher code.
+  ///
+  /// In en, this message translates to:
+  /// **'Code {code}'**
+  String voucherCodeLabel(String code);
+
+  /// No description provided for @redeemNotEnough.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have enough points for this one yet.'**
+  String get redeemNotEnough;
+
+  /// No description provided for @redeemOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'This one just ran out. Pick another voucher.'**
+  String get redeemOutOfStock;
+
+  /// No description provided for @redeemEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'This voucher has ended.'**
+  String get redeemEnded;
+
+  /// No description provided for @rewardEndedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voucher ended'**
+  String get rewardEndedTitle;
+
+  /// No description provided for @rewardEndedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The brand has ended this voucher. Have a look at the others on the Rewards tab.'**
+  String get rewardEndedBody;
+
+  /// No description provided for @historyTabPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get historyTabPoints;
+
+  /// No description provided for @historyTabVouchers.
+  ///
+  /// In en, this message translates to:
+  /// **'My vouchers'**
+  String get historyTabVouchers;
+
+  /// No description provided for @historyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get historyTitle;
+
+  /// No description provided for @vouchersEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vouchers yet'**
+  String get vouchersEmptyTitle;
+
+  /// No description provided for @vouchersEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Vouchers you swap points for show up here with their codes.'**
+  String get vouchersEmptyBody;
 }
 
 class _AppLocalizationsDelegate

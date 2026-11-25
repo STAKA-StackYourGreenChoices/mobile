@@ -41,6 +41,7 @@ import 'package:staka/features/notifications/presentation/screens/notification_s
 import 'package:staka/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:staka/features/products/presentation/screens/product_screen.dart';
 import 'package:staka/features/rewards/presentation/screens/points_history_screen.dart';
+import 'package:staka/features/rewards/presentation/screens/reward_detail_screen.dart';
 import 'package:staka/features/rewards/presentation/screens/rewards_screen.dart';
 import 'package:staka/features/scan/presentation/screens/scan_screen.dart';
 import 'package:staka/features/tags/presentation/screens/tag_screen.dart';
@@ -418,6 +419,18 @@ final appRouteTable = <RouteBase>[
                 AppRoute.rewards,
                 AppRoute.rewardsHistory,
                 (_, _) => const PointsHistoryScreen(),
+              ),
+              _child(
+                AppRoute.rewards,
+                AppRoute.rewardVouchers,
+                (_, _) => const PointsHistoryScreen(showVouchers: true),
+              ),
+              _child(
+                AppRoute.rewards,
+                AppRoute.rewardDetail,
+                (_, state) => RewardDetailScreen(
+                  rewardId: state.pathParameters['id'] ?? '',
+                ),
               ),
             ],
           ),

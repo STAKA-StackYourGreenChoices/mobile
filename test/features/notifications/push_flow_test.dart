@@ -244,13 +244,13 @@ void main() {
 
       push.receive(
         const PushMessage(
-          title: 'Your voucher expires soon',
-          data: {'target': 'voucher'},
+          title: 'Something new',
+          data: {'target': 'somethingNew'},
         ),
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Your voucher expires soon'), findsOneWidget);
+      expect(find.text('Something new'), findsOneWidget);
       expect(find.text('Open'), findsNothing);
     });
 

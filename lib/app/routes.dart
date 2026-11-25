@@ -37,6 +37,8 @@ enum AppRoute {
   wardrobeShare('/wardrobe/share'),
   activity('/wardrobe/activity'),
   rewardsHistory('/rewards/history'),
+  rewardVouchers('/rewards/vouchers'),
+  rewardDetail('/rewards/reward/:id'),
   notifications('/wardrobe/notifications'),
   adminProducts('/admin/products'),
   adminAnalytics('/admin/analytics'),

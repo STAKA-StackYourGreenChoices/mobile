@@ -322,9 +322,16 @@ void main() {
       expect(rewards.isInWardrobe, isFalse);
     });
 
-    test('vouchers, unknown targets and missing ids go nowhere', () {
+    test('vouchers open My vouchers in the Rewards tab', () {
+      final vouchers = notificationDestination(
+        notificationFor('n1', target: NotificationTarget.voucher),
+      )!;
+      expect(vouchers.route, AppRoute.rewardVouchers);
+      expect(vouchers.isInWardrobe, isFalse);
+    });
+
+    test('unknown targets and missing ids go nowhere', () {
       for (final n in [
-        notificationFor('n2', target: NotificationTarget.voucher),
         notificationFor('n3', target: NotificationTarget.none),
         notificationFor('n4', targetId: null),
         notificationFor('n5', target: NotificationTarget.brandClaim),

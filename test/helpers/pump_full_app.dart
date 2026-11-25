@@ -41,6 +41,7 @@ import 'package:staka/features/manage/products/domain/repositories/admin_product
 import 'package:staka/features/products/data/repositories/product_repository_impl.dart';
 import 'package:staka/features/products/domain/repositories/product_repository.dart';
 import 'package:staka/features/rewards/data/points_repository.dart';
+import 'package:staka/features/rewards/data/rewards_repository.dart';
 import 'package:staka/features/scan/presentation/state/scan_camera_provider.dart';
 import 'package:staka/features/tags/data/repositories/tag_repository_impl.dart';
 import 'package:staka/features/tags/domain/repositories/tag_repository.dart';
@@ -65,6 +66,7 @@ import 'notification_fakes.dart';
 import 'points_fakes.dart';
 import 'product_fakes.dart';
 import 'push_fakes.dart';
+import 'rewards_fakes.dart';
 import 'scan_fakes.dart';
 import 'sharing_fakes.dart';
 import 'tag_fakes.dart';
@@ -105,6 +107,7 @@ Future<InMemoryTokenStore> pumpApp(
   PushMessaging? push,
   DeviceRepository? devices,
   PointsRepository? points,
+  RewardsRepository? rewards,
 }) async {
   final store = InMemoryTokenStore(tokens);
   final dio = Dio(BaseOptions(baseUrl: 'http://api.test'))
@@ -189,6 +192,9 @@ Future<InMemoryTokenStore> pumpApp(
         pushMessagingProvider.overrideWithValue(push ?? FakePushMessaging()),
         deviceRepositoryProvider.overrideWithValue(
           devices ?? FakeDeviceRepository(),
+        ),
+        rewardsRepositoryProvider.overrideWithValue(
+          rewards ?? FakeRewardsRepository(),
         ),
         pointsRepositoryProvider.overrideWithValue(
           points ?? FakePointsRepository(),

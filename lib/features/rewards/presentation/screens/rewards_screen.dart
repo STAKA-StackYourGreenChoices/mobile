@@ -9,14 +9,18 @@ import 'package:staka/core/error/failure.dart';
 import 'package:staka/core/error/result.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/rewards/domain/points.dart';
+import 'package:staka/features/rewards/domain/reward.dart';
 import 'package:staka/features/rewards/presentation/state/points_controllers.dart';
+import 'package:staka/features/rewards/presentation/state/rewards_controllers.dart';
 import 'package:staka/features/rewards/presentation/widgets/points_widgets.dart';
+import 'package:staka/features/rewards/presentation/widgets/reward_widgets.dart';
+import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
 
-/// The Rewards tab (V2-6): the points balance, what expires next, how to
-/// earn more, and the history. Vouchers to spend them on come with V2-7.
+/// The Rewards tab: the points balance, what expires next, the history
+/// (V2-6), the vouchers to swap them for (V2-7), and how to earn more.
 class RewardsScreen extends ConsumerWidget {
   const new({super.key});
 
@@ -30,15 +34,25 @@ class RewardsScreen extends ConsumerWidget {
           AsyncData(:final value) => value,
           _ => null,
         },
+        catalog: switch (ref.watch(rewardsCatalogProvider)) {
+          AsyncData(:final value) => value,
+          _ => null,
+        },
         rules: ref.watch(earnRulesProvider).value,
         onRefresh: () async {
           ref
             ..invalidate(earnRulesProvider)
+            ..invalidate(rewardsCatalogProvider)
             ..invalidate(pointsOverviewProvider);
           await ref.read(pointsOverviewProvider.future);
         },
         onRetry: () => ref.invalidate(pointsOverviewProvider),
+        onCatalogRetry: () => ref.invalidate(rewardsCatalogProvider),
         onHistoryPressed: () => context.goNamed(AppRoute.rewardsHistory.name),
+        onRewardPressed: (reward) => context.goNamed(
+          AppRoute.rewardDetail.name,
+          pathParameters: {'id': reward.id},
+        ),
       ),
     );
   }
@@ -50,6 +64,9 @@ class RewardsScrollView extends StatelessWidget {
     required this.onRefresh,
     required this.onRetry,
     required this.onHistoryPressed,
+    required this.onCatalogRetry,
+    required this.onRewardPressed,
+    this.catalog,
     this.rules,
     super.key,
   });
@@ -62,6 +79,11 @@ class RewardsScrollView extends StatelessWidget {
   final Future<void> Function() onRefresh;
   final VoidCallback onRetry;
   final VoidCallback onHistoryPressed;
+
+  /// The vouchers; null while loading.
+  final Result<List<Reward>>? catalog;
+  final VoidCallback onCatalogRetry;
+  final ValueChanged<Reward> onRewardPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +119,40 @@ class RewardsScrollView extends StatelessWidget {
               onHistoryPressed: onHistoryPressed,
             ),
           },
+          const SizedBox(height: AppSpacing.lg),
+          Semantics(
+            header: true,
+            child: Text(
+              l10n.rewardsCatalogTitle,
+              style: context.text.headingMedium,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          switch (catalog) {
+            null => const Padding(
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
+              child: AppLoader(),
+            ),
+            Err(:final Failure failure) => AppErrorState(
+              failure: failure,
+              onRetryPressed: onCatalogRetry,
+            ),
+            Ok(value: []) => AppEmptyState(
+              icon: Icons.redeem_outlined,
+              title: l10n.rewardsCatalogEmptyTitle,
+              message: l10n.rewardsCatalogEmptyBody,
+            ),
+            Ok(:final value) => RewardsGrid(
+              rewards: value,
+              balance: switch (overview) {
+                Ok(:final value) => value.balance,
+                _ => null,
+              },
+              onRewardPressed: onRewardPressed,
+            ),
+          },
           if (rules case final rules? when rules.isNotEmpty) ...[
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpacing.lg),
             EarnRulesCard(rules: rules),
           ],
           const SizedBox(height: AppSpacing.lg),

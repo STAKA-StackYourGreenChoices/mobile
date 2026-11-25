@@ -3076,10 +3076,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String pointsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count points',
+      other: '$countString points',
       one: '1 point',
     );
     return '$_temp0';
@@ -3429,4 +3433,124 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get adminBrandPortalDescription =>
       'Claims, products, rewards and team of the brands you belong to.';
+
+  @override
+  String get rewardsCatalogTitle => 'Swap your points';
+
+  @override
+  String get rewardsCatalogEmptyTitle => 'No vouchers right now';
+
+  @override
+  String get rewardsCatalogEmptyBody =>
+      'Brands add new ones often. Your points keep until they expire.';
+
+  @override
+  String get rewardOutOfStock => 'Out of stock';
+
+  @override
+  String rewardNeedMore(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString more points',
+      one: '1 more point',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String rewardEndsOn(String date) {
+    return 'Ends $date';
+  }
+
+  @override
+  String rewardAt(String brand) {
+    return 'At $brand';
+  }
+
+  @override
+  String get rewardTerms => 'Terms';
+
+  @override
+  String get rewardRedeem => 'Redeem';
+
+  @override
+  String get rewardRedeeming => 'Redeeming…';
+
+  @override
+  String get rewardConfirmTitle => 'Use your points?';
+
+  @override
+  String rewardConfirmBody(String points, String value, String brand) {
+    return 'Use $points for $value at $brand? You can\'t undo this.';
+  }
+
+  @override
+  String get rewardConfirmYes => 'Use points';
+
+  @override
+  String get rewardDoneTitle => 'Your voucher is ready';
+
+  @override
+  String rewardDoneBody(String brand) {
+    return 'Use this code at checkout with $brand. It\'s also kept in My vouchers.';
+  }
+
+  @override
+  String get voucherCopy => 'Copy code';
+
+  @override
+  String get voucherCopied => 'Code copied';
+
+  @override
+  String voucherUseBy(String date) {
+    return 'Use by $date';
+  }
+
+  @override
+  String voucherGotOn(String date) {
+    return 'Got on $date';
+  }
+
+  @override
+  String voucherCodeLabel(String code) {
+    return 'Code $code';
+  }
+
+  @override
+  String get redeemNotEnough =>
+      'You don\'t have enough points for this one yet.';
+
+  @override
+  String get redeemOutOfStock => 'This one just ran out. Pick another voucher.';
+
+  @override
+  String get redeemEnded => 'This voucher has ended.';
+
+  @override
+  String get rewardEndedTitle => 'Voucher ended';
+
+  @override
+  String get rewardEndedBody =>
+      'The brand has ended this voucher. Have a look at the others on the Rewards tab.';
+
+  @override
+  String get historyTabPoints => 'Points';
+
+  @override
+  String get historyTabVouchers => 'My vouchers';
+
+  @override
+  String get historyTitle => 'History';
+
+  @override
+  String get vouchersEmptyTitle => 'No vouchers yet';
+
+  @override
+  String get vouchersEmptyBody =>
+      'Vouchers you swap points for show up here with their codes.';
 }
