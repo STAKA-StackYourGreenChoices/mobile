@@ -23,6 +23,8 @@ ClaimDto _$ClaimDtoFromJson(Map<String, dynamic> json) => ClaimDto(
   receiptMimeType: json['receiptMimeType'] as String?,
   receiptAttempt: (json['receiptAttempt'] as num?)?.toInt(),
   disputeStatus: ClaimDto._readDisputeStatus(json, 'disputeStatus') as String?,
+  score: (json['score'] as num?)?.toInt(),
+  isDuplicate: json['isDuplicate'] as bool?,
 );
 
 ClaimUserDto _$ClaimUserDtoFromJson(Map<String, dynamic> json) => ClaimUserDto(

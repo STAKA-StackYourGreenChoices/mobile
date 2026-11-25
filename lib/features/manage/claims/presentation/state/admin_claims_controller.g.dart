@@ -65,7 +65,7 @@ final class AdminClaimsControllerProvider
 }
 
 String _$adminClaimsControllerHash() =>
-    r'c66cadcb32f3f62e549867380cc0d46f304a2376';
+    r'c7ca8c23fced0356d4f46792ae9cf16bc236068a';
 
 /// The claims with one [status], 20 at a time as the admin scrolls (the
 /// website pages them with Previous / Next).

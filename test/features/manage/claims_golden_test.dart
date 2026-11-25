@@ -38,8 +38,14 @@ void main() {
             method: ClaimMethod.orderMatch,
             productName: 'Recycled Denim Jeans',
           ),
+          claimFor(
+            5,
+            productName: 'Hemp Overshirt',
+            score: 34,
+            isDuplicate: true,
+          ),
         ],
-        total: 2,
+        total: 3,
       ),
     ),
     details: {
@@ -53,7 +59,7 @@ void main() {
   );
 
   final cases = <String, (Widget, double, bool)>{
-    'list': (const AdminClaimsScreen(scope: AdminScope()), 760, false),
+    'list': (const AdminClaimsScreen(scope: AdminScope()), 920, false),
     // A brand reviews; an admin overrules (below).
     'review_reject': (
       AdminClaimScreen(scope: const BrandScope('b1'), claimId: pending.id),

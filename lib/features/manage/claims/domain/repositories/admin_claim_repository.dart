@@ -5,7 +5,11 @@ import 'package:staka/features/manage/claims/domain/models/claim.dart';
 /// The ownership claims review queue.
 abstract interface class AdminClaimRepository {
   /// [page] starts at 1; 20 per page.
-  Future<Result<ClaimPage>> fetchClaims(ClaimStatus status, int page);
+  Future<Result<ClaimPage>> fetchClaims(
+    ClaimStatus status,
+    int page, {
+    ClaimSort sort = ClaimSort.newest,
+  });
 
   Future<Result<ClaimDetail>> fetchClaim(String id);
 

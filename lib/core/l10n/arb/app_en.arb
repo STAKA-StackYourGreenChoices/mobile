@@ -4539,5 +4539,48 @@
         "type": "String"
       }
     }
-  }
+  },
+  "automaticCheckTitle": "Automatic check",
+  "@automaticCheckTitle": {
+    "description": "V2-8: the card above the decision on a claim."
+  },
+  "automaticCheckBody": "STAKA read the receipt and compared it with this claim. It only helps: you decide.",
+  "automaticCheckPending": "Still checking this receipt. Refresh in a minute, or decide without it.",
+  "automaticCheckFailed": "Couldn't read this receipt. Check the shop, date and piece yourself.",
+  "analysisShop": "Shop",
+  "analysisBoughtOn": "Bought on",
+  "analysisTotal": "Total",
+  "analysisNotFound": "Not found",
+  "analysisBrand": "Brand on the receipt",
+  "analysisProduct": "This piece on the receipt",
+  "analysisDateFits": "Bought before the claim",
+  "analysisYes": "Yes",
+  "analysisNo": "No",
+  "analysisUnsure": "Not sure",
+  "analysisScore": "Match score {score} of 100",
+  "@analysisScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "claimScoreShort": "Score {score}",
+  "@claimScoreShort": {
+    "description": "V2-8: on a claim in the list.",
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "reusedReceipt": "Reused receipt",
+  "@reusedReceipt": {
+    "description": "V2-8: pill on a claim whose receipt file came with an earlier claim."
+  },
+  "receiptUsedBefore": "This receipt was used before, for another claim.",
+  "openEarlierClaim": "Open the earlier claim",
+  "claimSortLabel": "Order",
+  "claimSortNewest": "Newest",
+  "claimSortScore": "Best match"
 }

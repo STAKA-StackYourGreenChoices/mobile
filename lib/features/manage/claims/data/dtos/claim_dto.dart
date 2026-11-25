@@ -26,6 +26,8 @@ class ClaimDto {
     this.receiptMimeType,
     this.receiptAttempt,
     this.disputeStatus,
+    this.score,
+    this.isDuplicate,
   });
 
   factory fromJson(Map<String, dynamic> json) => _$ClaimDtoFromJson(json);
@@ -43,6 +45,10 @@ class ClaimDto {
   final int? receiptAttempt;
   final ClaimUserDto user;
   final ClaimProductDto product;
+
+  /// V2-8: in lists and details once the receipt was checked.
+  final int? score;
+  final bool? isDuplicate;
 
   /// `dispute.status` (V2-12): OPEN | UPHELD | OVERTURNED.
   @JsonKey(readValue: _readDisputeStatus)
@@ -67,6 +73,8 @@ class ClaimDto {
     receiptMimeType: receiptMimeType,
     receiptAttempt: receiptAttempt,
     isDisputed: disputeStatus == 'OPEN',
+    score: score,
+    isDuplicate: isDuplicate ?? false,
     user: ClaimUser(id: user.id, name: user.name, email: user.email),
     product: ClaimProduct(
       id: product.id,
@@ -114,11 +122,38 @@ class ClaimProductDto {
   final String? imageUrl;
 }
 
-/// `ClaimDetailDto`: a claim plus its `history`.
+/// `ClaimDetailDto`: a claim plus its `history` and `analysis` (V2-8).
 ClaimDetail claimDetailFromJson(Map<String, dynamic> json) => ClaimDetail(
   claim: ClaimDto.fromJson(json).toDomain(),
   history: [
     for (final item in json['history'] as List<dynamic>? ?? const [])
       ClaimDto.fromJson(item as Map<String, dynamic>).toDomain(),
   ],
+  analysis: switch (json['analysis']) {
+    final Map<String, dynamic> analysis => receiptAnalysisFromJson(analysis),
+    _ => null,
+  },
 );
+
+/// `{status, merchant?, purchaseDate?, total?, brandMatched?,
+/// productMatched?, dateOk?, duplicateOfClaimId?, score?}`. `total` may
+/// come as a number or as a decimal string.
+ReceiptAnalysis receiptAnalysisFromJson(Map<String, dynamic> json) =>
+    ReceiptAnalysis(
+      status: AnalysisStatus.fromApi(json['status']),
+      merchant: json['merchant'] as String?,
+      purchaseDate: switch (json['purchaseDate']) {
+        final String date => DateTime.tryParse(date),
+        _ => null,
+      },
+      total: switch (json['total']) {
+        final num total => total,
+        final String total => num.tryParse(total),
+        _ => null,
+      },
+      brandMatched: json['brandMatched'] as bool?,
+      productMatched: json['productMatched'] as bool?,
+      dateOk: json['dateOk'] as bool?,
+      duplicateOfClaimId: json['duplicateOfClaimId'] as String?,
+      score: (json['score'] as num?)?.toInt(),
+    );

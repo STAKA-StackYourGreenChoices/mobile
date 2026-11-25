@@ -18,13 +18,18 @@ class AdminClaimRemoteDataSource {
   final Dio _dio;
   final ManageScope _scope;
 
-  Future<ClaimPage> list(ClaimStatus status, int page) async {
+  Future<ClaimPage> list(
+    ClaimStatus status,
+    int page, {
+    ClaimSort sort = ClaimSort.newest,
+  }) async {
     final response = await _dio.get<Map<String, dynamic>>(
       _scope.path('/claims'),
       queryParameters: {
         'status': status.apiName,
         'page': page,
         'limit': pageSize,
+        if (sort == ClaimSort.score) 'sort': 'score',
       },
     );
     final body = response.data!;

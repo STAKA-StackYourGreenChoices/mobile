@@ -5996,6 +5996,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} is empty.'**
   String csvEmptyFile(String name);
+
+  /// V2-8: the card above the decision on a claim.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic check'**
+  String get automaticCheckTitle;
+
+  /// No description provided for @automaticCheckBody.
+  ///
+  /// In en, this message translates to:
+  /// **'STAKA read the receipt and compared it with this claim. It only helps: you decide.'**
+  String get automaticCheckBody;
+
+  /// No description provided for @automaticCheckPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Still checking this receipt. Refresh in a minute, or decide without it.'**
+  String get automaticCheckPending;
+
+  /// No description provided for @automaticCheckFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t read this receipt. Check the shop, date and piece yourself.'**
+  String get automaticCheckFailed;
+
+  /// No description provided for @analysisShop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get analysisShop;
+
+  /// No description provided for @analysisBoughtOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Bought on'**
+  String get analysisBoughtOn;
+
+  /// No description provided for @analysisTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get analysisTotal;
+
+  /// No description provided for @analysisNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get analysisNotFound;
+
+  /// No description provided for @analysisBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand on the receipt'**
+  String get analysisBrand;
+
+  /// No description provided for @analysisProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'This piece on the receipt'**
+  String get analysisProduct;
+
+  /// No description provided for @analysisDateFits.
+  ///
+  /// In en, this message translates to:
+  /// **'Bought before the claim'**
+  String get analysisDateFits;
+
+  /// No description provided for @analysisYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get analysisYes;
+
+  /// No description provided for @analysisNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get analysisNo;
+
+  /// No description provided for @analysisUnsure.
+  ///
+  /// In en, this message translates to:
+  /// **'Not sure'**
+  String get analysisUnsure;
+
+  /// No description provided for @analysisScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Match score {score} of 100'**
+  String analysisScore(int score);
+
+  /// V2-8: on a claim in the list.
+  ///
+  /// In en, this message translates to:
+  /// **'Score {score}'**
+  String claimScoreShort(int score);
+
+  /// V2-8: pill on a claim whose receipt file came with an earlier claim.
+  ///
+  /// In en, this message translates to:
+  /// **'Reused receipt'**
+  String get reusedReceipt;
+
+  /// No description provided for @receiptUsedBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'This receipt was used before, for another claim.'**
+  String get receiptUsedBefore;
+
+  /// No description provided for @openEarlierClaim.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the earlier claim'**
+  String get openEarlierClaim;
+
+  /// No description provided for @claimSortLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get claimSortLabel;
+
+  /// No description provided for @claimSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get claimSortNewest;
+
+  /// No description provided for @claimSortScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Best match'**
+  String get claimSortScore;
 }
 
 class _AppLocalizationsDelegate

@@ -10,6 +10,7 @@ import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/manage/claims/presentation/state/claim_decision_controller.dart';
 import 'package:staka/features/manage/claims/presentation/state/claim_review_controller.dart';
 import 'package:staka/features/manage/claims/presentation/state/claim_review_state.dart';
+import 'package:staka/features/manage/claims/presentation/widgets/automatic_check_card.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_decision_panel.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_facts.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_history.dart';
@@ -80,6 +81,17 @@ class AdminClaimScreen extends ConsumerWidget {
                 pathParameters: {'id': claimId},
               ),
             ),
+            if (detail.analysis case final analysis?)
+              AutomaticCheckCard(
+                analysis: analysis,
+                onEarlierClaimPressed: switch (scope) {
+                  AdminScope() => (id) => context.goNamed(
+                    scope.claimRoute.name,
+                    pathParameters: {'id': id},
+                  ),
+                  BrandScope() => null,
+                },
+              ),
             switch (scope) {
               BrandScope() => ClaimDecisionPanel(
                 scope: scope,

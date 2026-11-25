@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'package:staka/core/error/result.dart';
 import 'package:staka/features/manage/claims/data/repositories/admin_claim_repository_impl.dart';
 import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/manage/claims/presentation/state/admin_claims_revision.dart';
 import 'package:staka/features/manage/claims/presentation/state/claim_list_state.dart';
+import 'package:staka/features/manage/claims/presentation/state/claim_sort.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
 
 part 'admin_claims_controller.g.dart';
@@ -18,8 +18,12 @@ class AdminClaimsController extends _$AdminClaimsController {
   /// Bumped on every reload, so answers to an older one are dropped.
   int _generation = 0;
 
+  late ClaimSort _sort;
+
   @override
   ClaimListState build(ManageScope scope, ClaimStatus status) {
+    // A new order starts the list again.
+    _sort = ref.watch(claimSortChoiceProvider(scope));
     ref.listen(
       adminClaimsRevisionProvider(scope),
       (_, _) => unawaited(refresh()),
@@ -47,7 +51,7 @@ class AdminClaimsController extends _$AdminClaimsController {
     state = current.copy(isLoadingMore: true);
     final result = await ref
         .read(adminClaimRepositoryProvider(scope))
-        .fetchClaims(status, current.loadedPages + 1);
+        .fetchClaims(status, current.loadedPages + 1, sort: _sort);
     if (!ref.mounted || generation != _generation) return;
     state = switch (result) {
       Ok(:final value) => ClaimListLoaded(
@@ -63,7 +67,7 @@ class AdminClaimsController extends _$AdminClaimsController {
     final generation = ++_generation;
     final result = await ref
         .read(adminClaimRepositoryProvider(scope))
-        .fetchClaims(status, 1);
+        .fetchClaims(status, 1, sort: _sort);
     if (!ref.mounted || generation != _generation) return;
     state = switch (result) {
       Ok(value: ClaimPage(total: 0)) => const ClaimListEmpty(),

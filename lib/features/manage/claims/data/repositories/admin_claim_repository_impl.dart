@@ -26,8 +26,11 @@ class AdminClaimRepositoryImpl implements AdminClaimRepository {
   final AdminClaimRemoteDataSource _remote;
 
   @override
-  Future<Result<ClaimPage>> fetchClaims(ClaimStatus status, int page) =>
-      guardApi(() => _remote.list(status, page));
+  Future<Result<ClaimPage>> fetchClaims(
+    ClaimStatus status,
+    int page, {
+    ClaimSort sort = ClaimSort.newest,
+  }) => guardApi(() => _remote.list(status, page, sort: sort));
 
   @override
   Future<Result<ClaimDetail>> fetchClaim(String id) =>

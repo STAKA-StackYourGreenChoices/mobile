@@ -30,6 +30,9 @@ class FakeAdminClaimRepository implements AdminClaimRepository {
   final Map<String, Result<Product>> products;
   final List<Result<ClaimDetail>> _decisions;
   final List<ClaimPageRequest> requests = [];
+
+  /// The order asked for with each page (V2-8).
+  final List<ClaimSort> sorts = [];
   final List<String> approved = [];
   final List<(String, String)> rejected = [];
 
@@ -37,9 +40,14 @@ class FakeAdminClaimRepository implements AdminClaimRepository {
   final List<(String, ClaimStatus, String)> overruled = [];
 
   @override
-  Future<Result<ClaimPage>> fetchClaims(ClaimStatus status, int page) async {
+  Future<Result<ClaimPage>> fetchClaims(
+    ClaimStatus status,
+    int page, {
+    ClaimSort sort = ClaimSort.newest,
+  }) async {
     final request = (status: status, page: page);
     requests.add(request);
+    sorts.add(sort);
     return await _pages(request);
   }
 
@@ -91,7 +99,11 @@ Claim claimFor(
   String? mimeType = 'image/png',
   String? rejectionReason,
   String productName = 'Organic Cotton Tee',
+  int? score,
+  bool isDuplicate = false,
 }) => Claim(
+  score: score,
+  isDuplicate: isDuplicate,
   id: claimId(n),
   method: method,
   status: status,
@@ -117,8 +129,25 @@ Claim claimFor(
   ),
 );
 
-Result<ClaimDetail> detailOf(Claim claim, {List<Claim>? history}) =>
-    Ok(ClaimDetail(claim: claim, history: history ?? [claim]));
+Result<ClaimDetail> detailOf(
+  Claim claim, {
+  List<Claim>? history,
+  ReceiptAnalysis? analysis,
+}) => Ok(
+  ClaimDetail(claim: claim, history: history ?? [claim], analysis: analysis),
+);
+
+/// A finished check that read everything and found a reused file.
+final ReceiptAnalysis sampleAnalysis = ReceiptAnalysis(
+  status: AnalysisStatus.done,
+  merchant: 'Terra Threads, Bandra West',
+  purchaseDate: DateTime.utc(2026, 11, 2),
+  total: 1299,
+  brandMatched: true,
+  productMatched: false,
+  duplicateOfClaimId: claimId(9),
+  score: 64,
+);
 
 /// A valid 1 × 1 PNG, as a receipt photo.
 final Uint8List onePixelPng = base64Decode(

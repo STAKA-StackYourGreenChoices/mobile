@@ -3737,4 +3737,78 @@ class AppLocalizationsEn extends AppLocalizations {
   String csvEmptyFile(String name) {
     return '$name is empty.';
   }
+
+  @override
+  String get automaticCheckTitle => 'Automatic check';
+
+  @override
+  String get automaticCheckBody =>
+      'STAKA read the receipt and compared it with this claim. It only helps: you decide.';
+
+  @override
+  String get automaticCheckPending =>
+      'Still checking this receipt. Refresh in a minute, or decide without it.';
+
+  @override
+  String get automaticCheckFailed =>
+      'Couldn\'t read this receipt. Check the shop, date and piece yourself.';
+
+  @override
+  String get analysisShop => 'Shop';
+
+  @override
+  String get analysisBoughtOn => 'Bought on';
+
+  @override
+  String get analysisTotal => 'Total';
+
+  @override
+  String get analysisNotFound => 'Not found';
+
+  @override
+  String get analysisBrand => 'Brand on the receipt';
+
+  @override
+  String get analysisProduct => 'This piece on the receipt';
+
+  @override
+  String get analysisDateFits => 'Bought before the claim';
+
+  @override
+  String get analysisYes => 'Yes';
+
+  @override
+  String get analysisNo => 'No';
+
+  @override
+  String get analysisUnsure => 'Not sure';
+
+  @override
+  String analysisScore(int score) {
+    return 'Match score $score of 100';
+  }
+
+  @override
+  String claimScoreShort(int score) {
+    return 'Score $score';
+  }
+
+  @override
+  String get reusedReceipt => 'Reused receipt';
+
+  @override
+  String get receiptUsedBefore =>
+      'This receipt was used before, for another claim.';
+
+  @override
+  String get openEarlierClaim => 'Open the earlier claim';
+
+  @override
+  String get claimSortLabel => 'Order';
+
+  @override
+  String get claimSortNewest => 'Newest';
+
+  @override
+  String get claimSortScore => 'Best match';
 }

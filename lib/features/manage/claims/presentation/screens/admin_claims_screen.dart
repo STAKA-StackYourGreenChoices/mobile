@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/manage/claims/domain/models/claim.dart';
 import 'package:staka/features/manage/claims/presentation/state/admin_claims_controller.dart';
+import 'package:staka/features/manage/claims/presentation/state/claim_sort.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claims_scroll_view.dart';
 import 'package:staka/features/manage/shared/manage_routes.dart';
 import 'package:staka/features/manage/shared/manage_scope.dart';
@@ -44,6 +45,10 @@ class _AdminClaimsScreenState extends ConsumerState<AdminClaimsScreen> {
         onRefresh: controller.refresh,
         onRetry: controller.retry,
         onLoadMore: controller.loadMore,
+        sort: ref.watch(claimSortChoiceProvider(widget.scope)),
+        onSortSelected: ref
+            .read(claimSortChoiceProvider(widget.scope).notifier)
+            .select,
         onClaimPressed: (claim) => context.goNamed(
           widget.scope.claimRoute.name,
           pathParameters: {'id': claim.id},

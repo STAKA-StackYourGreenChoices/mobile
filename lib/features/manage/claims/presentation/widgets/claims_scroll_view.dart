@@ -23,8 +23,14 @@ class ClaimsScrollView extends StatelessWidget {
     required this.onRetry,
     required this.onLoadMore,
     required this.onClaimPressed,
+    this.sort,
+    this.onSortSelected,
     super.key,
   });
+
+  /// The list's order (V2-8); null hides the choice.
+  final ClaimSort? sort;
+  final ValueChanged<ClaimSort>? onSortSelected;
 
   /// Under the heading: what claims are, for this side.
   final String description;
@@ -94,6 +100,34 @@ class ClaimsScrollView extends StatelessWidget {
                     },
                     onSelected: onStatusSelected,
                   ),
+                  if ((sort, onSortSelected) case (
+                    final sort?,
+                    final onSelected?,
+                  )) ...[
+                    const SizedBox(height: AppSpacing.md),
+                    Semantics(
+                      label: l10n.claimSortLabel,
+                      container: true,
+                      child: SegmentedButton<ClaimSort>(
+                        showSelectedIcon: false,
+                        segments: [
+                          ButtonSegment(
+                            value: ClaimSort.newest,
+                            icon: const Icon(Icons.schedule_rounded),
+                            label: Text(l10n.claimSortNewest),
+                          ),
+                          ButtonSegment(
+                            value: ClaimSort.score,
+                            icon: const Icon(Icons.speed_rounded),
+                            label: Text(l10n.claimSortScore),
+                          ),
+                        ],
+                        selected: {sort},
+                        onSelectionChanged: (picked) =>
+                            onSelected(picked.single),
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: AppSpacing.lg),
                 ],
               ),

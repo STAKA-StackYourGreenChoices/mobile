@@ -3,6 +3,7 @@ import 'package:staka/core/design/app_spacing.dart';
 import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/manage/claims/domain/models/claim.dart';
+import 'package:staka/features/manage/claims/presentation/widgets/automatic_check_card.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/claim_labels.dart';
 import 'package:staka/features/manage/claims/presentation/widgets/disputed_pill.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_thumbnail.dart';
@@ -49,7 +50,19 @@ class ClaimRow extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: context.text.label,
                     ),
-                    if (claim.isDisputed) const DisputedPill(),
+                    if (claim.isDisputed ||
+                        claim.isDuplicate ||
+                        claim.score != null)
+                      Wrap(
+                        spacing: AppSpacing.xs,
+                        runSpacing: AppSpacing.xxs,
+                        children: [
+                          if (claim.isDisputed) const DisputedPill(),
+                          if (claim.isDuplicate) const ReusedReceiptPill(),
+                          if (claim.score case final score?)
+                            ClaimScorePill(score: score),
+                        ],
+                      ),
                     Text(
                       switch (claim.user.email) {
                         final email? => l10n.claimUserLine(
