@@ -6,6 +6,7 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/features/wardrobe/domain/models/impact.dart';
 import 'package:staka/shared/formatters/date_format.dart';
 import 'package:staka/shared/formatters/share_labels.dart';
+import 'package:staka/shared/widgets/layout/row_trailing.dart';
 
 /// One activity entry: an icon, what happened, when and how, and points
 /// if any. Opens the tag when it's about one.
@@ -59,7 +60,7 @@ class ActivityRow extends StatelessWidget {
                   ),
                 ),
                 if (item.points case final points? when points != 0)
-                  Text(
+                  RowTrailing(
                     '${points > 0 ? '+' : '−'}'
                     '${l10n.pointsCount(points.abs())}',
                     style: context.text.label.copyWith(

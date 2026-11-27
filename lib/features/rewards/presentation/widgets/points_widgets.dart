@@ -7,6 +7,7 @@ import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/rewards/points.dart';
 import 'package:staka/shared/formatters/date_format.dart';
 import 'package:staka/shared/widgets/data_display/points_entry_row.dart';
+import 'package:staka/shared/widgets/layout/row_trailing.dart';
 
 /// The balance at the top of the Rewards tab, what expires next, and the
 /// way to the history.
@@ -156,7 +157,7 @@ class EarnRulesCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Text(
+                    RowTrailing(
                       '+${l10n.pointsCount(rule.points)}',
                       style: context.text.label.copyWith(color: colors.success),
                     ),

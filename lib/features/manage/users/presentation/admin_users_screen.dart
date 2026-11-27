@@ -16,6 +16,7 @@ import 'package:staka/shared/widgets/feedback/app_empty_state.dart';
 import 'package:staka/shared/widgets/feedback/app_error_state.dart';
 import 'package:staka/shared/widgets/feedback/app_loader.dart';
 import 'package:staka/shared/widgets/layout/app_scaffold.dart';
+import 'package:staka/shared/widgets/layout/row_trailing.dart';
 
 /// Admin → Users (V2-6): find a shopper by name, email or phone to see
 /// and adjust their points.
@@ -139,7 +140,7 @@ class UserSearchResults extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text(
+                      RowTrailing(
                         l10n.pointsCount(user.pointsBalance),
                         style: context.text.label,
                       ),

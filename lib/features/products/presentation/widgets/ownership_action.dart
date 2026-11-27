@@ -38,9 +38,11 @@ class OwnershipAction extends StatelessWidget {
             spacing: AppSpacing.xs,
             children: [
               Icon(Icons.verified_rounded, color: colors.success),
-              Text(
-                l10n.productInWardrobe,
-                style: context.text.label.copyWith(color: colors.success),
+              Flexible(
+                child: Text(
+                  l10n.productInWardrobe,
+                  style: context.text.label.copyWith(color: colors.success),
+                ),
               ),
             ],
           ),

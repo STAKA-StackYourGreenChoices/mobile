@@ -16,8 +16,9 @@ Future<BrandMembership?> showBrandSwitcherSheet(
     context: context,
     // Over the whole app, like dialogs: the tab bar is covered too.
     useRootNavigator: true,
+    // Scrolls when large text or many brands outgrow the sheet.
     builder: (context) => SafeArea(
-      child: Padding(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.only(bottom: AppSpacing.md),
         child: Column(
           mainAxisSize: MainAxisSize.min,

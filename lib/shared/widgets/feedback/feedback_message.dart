@@ -24,6 +24,17 @@ class FeedbackMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Where the parent limits the height (a fixed area, a page that
+    // doesn't scroll), large text scrolls instead of overflowing. Inside a
+    // list the height is open and nothing changes.
+    return LayoutBuilder(
+      builder: (context, constraints) => constraints.hasBoundedHeight
+          ? SingleChildScrollView(child: _content(context))
+          : _content(context),
+    );
+  }
+
+  Widget _content(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
       child: Column(

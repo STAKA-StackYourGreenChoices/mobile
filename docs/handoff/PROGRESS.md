@@ -92,6 +92,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/brand-rewards` (V2-7): Brand → Rewards list, new/edit form, code stats, voucher-code CSV upload
 - [~] `feat/claim-analysis` (V2-8): Automatic check card, score and Reused receipt pills, Best match order
 - [~] `feat/admin-reward-rules-users` (V2-6/V2-7): Admin Rewards (read-only, Switch off), Reward rules sheet, Users search, user points and Adjust points
+- [~] `test/v2-device-journeys`: shopper and admin journeys follow the V2 screens; new brand reviewer and phone journeys (written, not run: need the V2 API and the phone); 200% text sweep fixed 7 overflows
 - [~] `feat/push-notifications` (V2-9): FCM token registration, permission after the first receipt and in settings, tap routing, foreground banner (not tried on the phone yet: needs `google-services.json`)
 - [~] `feat/analytics` (V2-5): Analytics for Admin (brand filter) and Brand: period chips, funnel with drop-off, channels, top products
 - [~] `feat/notifications-inbox` (V2-9): bell with unread count on the wardrobe, inbox (paged, mark read, mark all, opens the target), Account → Notifications (push/email switches)
@@ -99,6 +100,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done and verified against the r
 - [~] `feat/engagement-events` (V2-5): `SCAN` / `SCAN_UNKNOWN` from the Scan tab (fire-and-forget `POST /events`); `SHARE_CLICKED` came with V2-4
 
 ## Session log (newest first, one line each)
+- 2026-11-27 — `test/v2-device-journeys`: V2 device journeys (shopper/admin updated; brand, phone new; analyze clean, not run on a phone) and a 200% text sweep (7 overflows fixed, 5 regression tests). 667 tests pass; updated goldens admin_user, claims_list, points_history, rewards (light/dark: trailing text re-aligned, no visible change). No API branch has V2 endpoints yet.
 - 2026-11-25 — `feat/admin-reward-rules-users`: V2-6/V2-7 admin rewards, rules and users; last plan slice, M4 code complete. 662 tests pass; updated golden admin_hub (light/dark: Rewards, Reward rules, Users tiles); new goldens admin_rewards, reward_rules, admin_user. Fakes only.
 - 2026-11-25 — `feat/rewards-points`: V2-6 Rewards tab and points history. 600 tests pass; new goldens rewards, points_history; no existing golden changed. Fakes only.
 - 2026-11-25 — `feat/claim-analysis`: V2-8 receipt check on claims. 649 tests pass; updated golden claims_list (light/dark: order choice and a scored, reused claim); new golden automatic_check. Fakes only.

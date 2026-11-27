@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:staka/app/app.dart';
+import 'package:staka/core/config/env.dart';
 
 /// Seeded product every journey uses (Organic Cotton Tee, Terra Threads).
 const seededGtin = '8901234500019';
@@ -13,12 +16,45 @@ const seededGtin = '8901234500019';
 const adminEmail = String.fromEnvironment('LIVE_ADMIN_EMAIL');
 const adminPassword = String.fromEnvironment('LIVE_ADMIN_PASSWORD');
 
+/// A member of Terra Threads' team in the V2 seed (brand journey only).
+const brandEmail = String.fromEnvironment('LIVE_BRAND_EMAIL');
+const brandPassword = String.fromEnvironment('LIVE_BRAND_PASSWORD');
+
+/// A 10-digit mobile number on no account, for the phone journey. Only
+/// with the API's console SMS driver: the code is printed, never texted.
+const testPhone = String.fromEnvironment('LIVE_TEST_PHONE');
+
 /// Starts the real app (real API, real secure storage) signed out.
 Future<void> launchSignedOut(WidgetTester tester) async {
   await const FlutterSecureStorage().deleteAll();
   await tester.pumpWidget(const ProviderScope(child: App()));
-  await waitFor(tester, find.text('Create an account'));
+  await waitFor(tester, find.text('Continue with phone number'));
 }
+
+/// From the welcome screen: Use email instead, then sign in.
+Future<void> signInWithEmail(
+  WidgetTester tester,
+  String email,
+  String password,
+) async {
+  await tapText(tester, 'Use email instead');
+  await waitFor(tester, field('Email'));
+  await fill(tester, 'Email', email);
+  await fill(tester, 'Password', password);
+  await tapButton(tester, 'Sign in');
+}
+
+/// Account → Sign out, back on the welcome screen.
+Future<void> signOut(WidgetTester tester) async {
+  await tapOn(tester, navTab('Account'));
+  await waitFor(tester, find.text('Sign out'));
+  await tapText(tester, 'Sign out');
+  await waitFor(tester, find.text('Continue with phone number'));
+}
+
+/// The bottom bar's [label] tab (the same word can be a page title).
+Finder navTab(String label) =>
+    find.descendant(of: find.byType(NavigationBar), matching: find.text(label));
 
 /// Pumps until [finder] matches: real requests don't schedule frames, so
 /// `pumpAndSettle` alone can return before the answer arrives.
@@ -101,6 +137,40 @@ Future<void> fill(WidgetTester tester, String label, String value) async {
 /// A fresh shopper address per run.
 String throwawayEmail() =>
     'mobile-device-${DateTime.now().microsecondsSinceEpoch}@example.com';
+
+typedef DeviceShopper = ({String email, String password});
+
+/// Registers [name], adds the seeded tee and sends a receipt photo,
+/// straight through the API (the app part belongs to the reviewer).
+Future<DeviceShopper> shopperWithPendingReceipt(String name) async {
+  final dio = Dio(BaseOptions(baseUrl: Env.apiBaseUrl));
+  final email = throwawayEmail();
+  final password = randomPassword();
+  final tokens = await dio.post<Map<String, dynamic>>(
+    '/auth/register',
+    data: {'name': name, 'email': email, 'password': password},
+  );
+  dio.options.headers['authorization'] =
+      'Bearer ${tokens.data!['accessToken']}';
+  final card = await dio.post<Map<String, dynamic>>(
+    '/digital-cards',
+    data: {'gtin': seededGtin},
+  );
+  await dio.post<Object?>(
+    '/digital-cards/${card.data!['id']}/ownership/receipt',
+    data: FormData.fromMap({
+      'file': MultipartFile.fromBytes(
+        base64Decode(
+          'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk'
+          'YPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+        ),
+        filename: 'receipt.png',
+        contentType: DioMediaType('image', 'png'),
+      ),
+    }),
+  );
+  return (email: email, password: password);
+}
 
 String randomPassword() {
   final random = Random.secure();

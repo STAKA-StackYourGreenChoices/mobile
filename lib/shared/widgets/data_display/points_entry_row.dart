@@ -5,6 +5,7 @@ import 'package:staka/core/design/app_typography.dart';
 import 'package:staka/core/l10n/l10n.dart';
 import 'package:staka/core/rewards/points.dart';
 import 'package:staka/shared/formatters/date_format.dart';
+import 'package:staka/shared/widgets/layout/row_trailing.dart';
 
 /// One line of the history: what happened, when, and the points.
 class PointsEntryRow extends StatelessWidget {
@@ -59,7 +60,7 @@ class PointsEntryRow extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
+              RowTrailing(
                 '${delta >= 0 ? '+' : '−'}${l10n.pointsCount(delta.abs())}',
                 style: context.text.label.copyWith(
                   color: delta > 0 ? colors.success : colors.inkMuted,

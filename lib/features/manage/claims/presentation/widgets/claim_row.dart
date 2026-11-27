@@ -8,6 +8,7 @@ import 'package:staka/features/manage/claims/presentation/widgets/claim_labels.d
 import 'package:staka/features/manage/claims/presentation/widgets/disputed_pill.dart';
 import 'package:staka/features/manage/products/presentation/widgets/product_thumbnail.dart';
 import 'package:staka/shared/formatters/date_format.dart';
+import 'package:staka/shared/widgets/layout/row_trailing.dart';
 
 /// One claim in the list: the piece, who claims it, how, and when (sent
 /// while waiting, decided otherwise). Opens the review page.
@@ -83,7 +84,8 @@ class ClaimRow extends StatelessWidget {
                             style: muted,
                           ),
                         ),
-                        if (date != null) Text(formatDate(date), style: muted),
+                        if (date != null)
+                          RowTrailing(formatDate(date), style: muted),
                       ],
                     ),
                   ],
